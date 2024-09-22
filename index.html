@@ -10,7 +10,7 @@
     
 </head>
 <body class="to-pdf" id="print-section">
-    <table border="1" cellpadding="5" cellspacing="0">
+    <table border="1" cellpadding="5" cellspacing="0" style="border: 0">
         <tbody class="table-border-bottom">
             <tr>
                 <td class="header-left" colspan="1">
@@ -44,11 +44,11 @@
             <tr>
                 <td colspan="3">
                     <ul style="padding-left: 0px; margin: 0;">
-                        <li><span>You are NOT an individial</span> <div class="line-complete"></div> <span>W-BBEN-E</span></li>
-                        <li><span>You are a U.S citizien or other U.S. person, including a resident alien individual</span> <div class="line-complete"></div> <span>W-9</span></li>
-                        <li><span>You are a beneficial owner claiming that income is effectively connected with the conduct of trade or business within the United States <div class="line-complete"></div> (other than personal service)</span> <span style="width: 90px">W-8BEN</span></li>
-                        <li><span>You are a beneficial owner who is receiving compensation for personal services performed in the United States</span> <div class="line-complete"></div> <span>8233 or W-4</span></li>
-                        <li><span>You are a person acting as an intermediary</span> <div class="line-complete"></div> <span>W-8IMY</span></li>
+                        <li><span>• You are NOT an individial</span> <div class="line-complete"></div> <span>W-BBEN-E</span></li>
+                        <li><span>• You are a U.S citizien or other U.S. person, including a resident alien individual</span> <div class="line-complete"></div> <span>W-9</span></li>
+                        <li><span>• You are a beneficial owner claiming that income is effectively connected with the conduct of trade or business within the United States <div class="line-complete"></div> (other than personal service)</span> <span style="width: 90px">W-8BEN</span></li>
+                        <li><span>• You are a beneficial owner who is receiving compensation for personal services performed in the United States</span> <div class="line-complete"></div> <span>8233 or W-4</span></li>
+                        <li><span>• You are a person acting as an intermediary</span> <div class="line-complete"></div> <span>W-8IMY</span></li>
                     </ul>
                 </td>
             </tr>
@@ -56,106 +56,90 @@
         <div class="note-if">
             <p><strong>Note: </strong>If you are resident in a FATCA partner jurisdiction (that is, a Model 1 IGA jurisdiction with reciprocity), certain tax account information may be provided to your jurisdiction of residence.</p>
         </div>
-        <table border="1" cellpadding="5" cellspacing="0">
-            <div class="part-1"><span>Part l</span> <strong>Identification of Beneficial Owner</strong> (see instructions)</div>
+        <table border="1" cellpadding="5" cellspacing="0" class="table-without-padding">
+            <div class="part-2"><span> <span class="backg-dark">Part l </span> <strong>Claim of Tax Treaty Benefits </strong>(for chapter 3 purposes only) (see instructions)</span></div>
             <tr>
                 <td colspan="1">
-                    <label for="beneficial-owner">1. Name of individual who is the beneficial owner</label><br />
-                    <input type="text" id="beneficial-owner" title="Enter the beneficial owner's name" placeholder="Enter name" value="Jose" />
+                    <label for="beneficial-owner"><strong class="fs-13">1</strong> Name of individual who is the beneficial owner</label><br />
+                    <span>{ texto escribir }</span>
                 </td>
                 <td colspan="2">
-                    <label for="country">2. Country of citizenship</label><br />
-                    <input type="text" id="country"  value="Country" />
+                    <label for="country"><strong class="fs-13">2</strong> Country of citizenship</label><br />
+                    <span>{ texto escribir }</span>
                 </td>
             </tr>
             <tr>
                 <td colspan="3">
-                    <label for="permanent">3. Permanent residence address (street, apt. or suite no., or rural route). <strong>Do not use a P.O. box or in-care-of address.</strong> <br></label>
-                    <input type="text" id="permanent"  value="Yes"/>
+                    <label for="permanent"><strong class="fs-13">3</strong> Permanent residence address (street, apt. or suite no., or rural route). <strong>Do not use a P.O. box or in-care-of address.</strong> <br></label>
+                    <span>{ texto escribir }</span>
                 </td>
             </tr>
             <tr>
                 <td colspan="1">
                     <label for="cityortown">City or town, state or province. Include postal code where appropriate.</label><br>
-                    <input type="text" id="cityortown" value="yepe">
+                    <span>{ texto escribir }</span>
                 </td>
                 <td colspan="2">
                     <label for="cityortown">Country</label><br>
-                    <input type="text" id="cityortown" value="Panama">
+                    <span>{ texto escribir }</span>
                 </td>
             </tr>
             <tr>
                 <td colspan="3">
-                    <label for="cityortown">4. Mailing address (if different from above)</label><br>
-                    <input type="text" id="cityortown" value="yepe">
+                    <label for="cityortown"><strong class="fs-13">4</strong> Mailing address (if different from above)</label><br>
+                    <span>{ texto escribir }</span>
                 </td>
             </tr>
             <tr>
                 <td colspan="1">
                     <label for="cityortown">City or town, state or province. Include postal code where appropriate</label><br>
-                    <input type="text" id="cityortown" value="yepe">
+                    <span>{ texto escribir }</span>
                 </td>
                 <td colspan="2">
                     <label for="cityortown">Country</label><br>
-                    <input type="text" id="cityortown" value="Panama">
+                    <span>{ texto escribir }</span>
                 </td>
             </tr>
             <tr>
                 <td colspan="3">
-                    <label for="taxpayer">U.S. taxpayer identification number (SSN or ITIN), if required (see instructions)</label> <br>
-                    <input type="text" id="taxpayer" value="123456789">
+                    <label for="taxpayer"><strong class="fs-13">5</strong> U.S. taxpayer identification number (SSN or ITIN), if required (see instructions)</label> <br>
+                    <span>{ texto escribir }</span>
                 </td>
             </tr>
             <tr>
                 <td colspan="1">
-                    <label for="cityortown">6a Foreign tax identifying number (see instructions)</label><br>
-                    <input type="text" id="cityortown" value="yepe">
+                    <label for="cityortown"><strong class="fs-13">6a</strong> Foreign tax identifying number (see instructions)</label><br>
+                    <span>{ texto escribir }</span>
                 </td>
                 <td colspan="2">
-                    <label for="cityortown">6b Check if FTIN not legally required <span><input type="checkbox" id="cityortown" value="Panama"></span></label>
+                    <label for="cityortown"><strong class="fs-13">6b</strong> Check if FTIN not legally required <span><input type="checkbox" id="cityortown" value="Panama"></span></label>
                 </td>
             </tr>
             <tr>
                 <td colspan="1">
-                    <label for="cityortown">7 Reference number(s) (see instructions) </label><br>
-                    <input type="text" id="cityortown" value="yepe">
+                    <label for="cityortown"><strong class="fs-13">7</strong> Reference number(s) (see instructions) </label><br>
+                    <span>{ texto escribir }</span>
                 </td>
                 <td colspan="2">
-                    <label for="cityortown">8 Date of birth (MM-DD-YYYY) (see instructions)</label><br>
-                    <input type="text" id="dob" name="dob" maxlength="10" placeholder="MM-DD-YYYY" oninput="formatDate(this)">
+                    <label for="cityortown"><strong class="fs-13">8</strong> Date of birth (MM-DD-YYYY) (see instructions)</label><br>
+                    <span>{ texto escribir }</span>
                 </td>
             </tr>
         </table>
-        <div class="part-2"><span>Part ll <strong>Claim of Tax Treaty Benefits </strong>(for chapter 3 purposes only) (see instructions)</span></div>
-        <table border="1" cellpadding="5" cellspacing="0">
-            <tr>
+        <div class="part-2"><span> <span class="backg-dark">Part ll </span> <strong>Claim of Tax Treaty Benefits </strong>(for chapter 3 purposes only) (see instructions)</span></div>
+        <table border="1" cellpadding="5" cellspacing="0" class="table-without-padding">
+            <tr class="without-border">
                 <td>
-
+                    <label for=""><strong class="fs-13">9</strong> I certify that the beneficial owner is a resident of { texto escribir } within the meaning of the income tax treaty between the United States and that country.</label>
+                </td>
+            </tr>
+            <tr class="without-border">
+                <td>
+                    <label for=""><strong class="fs-13">10</strong> <strong>Special rates and conditions</strong> (if applicable—see instructions): The beneficial owner is claiming the provisions of Article and paragraph { texto escribir } of the treaty identified on line 9 above to claim a { texto escribir }% rate of withholding on (specify type of income): <br>{ texto a escribir }. <br> Explain the additional conditions in the Article and paragraph the beneficial owner meets to be eligible for the rate of withholding: { texto escribir } </label>
                 </td>
             </tr>
         </table>
+        <div class="part-2"><span> <span class="backg-dark">Part lll </span> <strong>Certification </strong></span></div>
     </main>
-    <script>
-        function formatDate(input) {
-            // Eliminar cualquier carácter que no sea un dígito
-            const value = input.value.replace(/\D/g, '');
-            let formattedValue = '';
-
-            // Formatear el valor
-            for (let i = 0; i < value.length; i++) {
-                if (i === 2 || i === 4) {
-                    formattedValue += '-'; // Agregar el guion
-                }
-                formattedValue += value[i];
-            }
-
-            // Limitar a 10 caracteres
-            if (formattedValue.length > 10) {
-                formattedValue = formattedValue.slice(0, 10);
-            }
-
-            input.value = formattedValue; // Asignar el valor formateado al input
-        }
-    </script>
 </body>
 </html>
