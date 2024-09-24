@@ -273,3 +273,12 @@ input[type="checkbox"] {
     top: 0px;
     left: 2.5px;
   }
+
+.table-spacing-check input[type="checkbox"] {
+    margin-bottom: 5px;
+}
+
+.size-letter-spacing{
+    display: inline-block;
+    line-height: 16px;
+}
