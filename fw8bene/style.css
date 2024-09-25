@@ -282,3 +282,7 @@ input[type="checkbox"] {
     display: inline-block;
     line-height: 16px;
 }
+
+label.ident-list {
+    padding-left: 55px;
+}
