@@ -228,5 +228,22 @@
             </tr>
         </table>
     </main>
+    <script>
+        function adjustWidthForMac() {
+            const userAgent = window.navigator.userAgent.toLowerCase();
+            const lines = document.querySelectorAll('.line');
+    
+            // Detectar si es macOS
+            if (userAgent.indexOf('mac') !== -1) {
+                lines.forEach(line => {
+                    // Obtener el ancho actual y reducirle 9px
+                    let currentWidth = parseInt(window.getComputedStyle(line).width);
+                    line.style.width = (currentWidth - 9) + 'px';
+                });
+            }
+        }
+    
+        adjustWidthForMac(); // Llama a la función para ajustar el ancho si es macOS
+    </script>
 </body>
 </html>
