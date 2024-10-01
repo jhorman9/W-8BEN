@@ -109,7 +109,7 @@
                     <span>{ texto escribir }</span>
                 </td>
                 <td colspan="2" style="width:40%;">
-                    <label for="cityortown" style="width: 100%;display: inline-block;"><strong class="fs-13">6b</strong> Check if FTIN not legally required <span class="border-before" style="display: inline-block;width: 131px; position: relative;" align="end"><span style="background-color: white;z-index: 3;position: relative; vertical-align: middle;"><input type="checkbox" id="cityortown" value="Panama"></span></span></label>
+                    <label for="cityortown" style="width: 100%;display: inline-block;"><strong class="fs-13">6b</strong> Check if FTIN not legally required <span class="border-before" style="display: inline-block;width: 131px; position: relative;" align="end" data-adjust="115"><span style="background-color: white;z-index: 3;position: relative; vertical-align: middle;"><input type="checkbox" id="cityortown" value="Panama"></span></span></label>
                 </td>
             </tr>
             <tr>
@@ -228,5 +228,27 @@
             </tr>
         </table>
     </main>
+    <script>
+        function adjustWidthForOS() {
+            const userAgent = window.navigator.userAgent.toLowerCase();
+            const lines = document.querySelectorAll('.line');
+    
+            // Detectar si es macOS
+            if (userAgent.indexOf('mac') !== -1) {
+                lines.forEach(line => {
+                    // Obtener el valor de ajuste desde el atributo data
+                    const pixelAdjustment = line.getAttribute('data-adjust');
+                    
+                    // Ajustar el ancho al valor obtenido
+                    if (pixelAdjustment) {
+                        line.style.width = pixelAdjustment + 'px';
+                    }
+                });
+            }
+        }
+    
+        // Llama a la función al cargar la página
+        document.addEventListener('DOMContentLoaded', adjustWidthForOS);
+    </script>
 </body>
 </html>
