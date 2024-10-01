@@ -139,6 +139,7 @@ li span:nth-child(1){
     margin-right: -1px;
     padding-left: 5px;
     max-width: 682px;
+    line-height: 16px;
 }
 
 li div:nth-child(2){
