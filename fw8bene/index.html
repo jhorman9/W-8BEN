@@ -1391,23 +1391,21 @@
         </table>
     </main>
     <script>
-        function adjustWidthForMac() {
+        function adjustWidthForOS(pixelAdjustment) {
             const userAgent = window.navigator.userAgent.toLowerCase();
             const lines = document.querySelectorAll('.line');
-            console.log(userAgent)
-    
+
             // Detectar si es macOS
             if (userAgent.indexOf('mac') !== -1) {
                 lines.forEach(line => {
-                    // Obtener el ancho actual y reducirle 9px
+                    // Obtener el ancho actual y reducirle los píxeles pasados por parámetro
                     let currentWidth = parseInt(window.getComputedStyle(line).width);
-                    line.style.width = (currentWidth - 23) + 'px';
-                    console.log(currentWidth)
+                    line.style.width = (currentWidth - pixelAdjustment) + 'px';
                 });
             }
         }
-    
-        adjustWidthForMac(); // Llama a la función para ajustar el ancho si es macOS
+
+        // Llamar a la función con 9px de ajuste si es macOS
     </script>
 </body>
 </html>
