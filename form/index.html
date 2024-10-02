@@ -6,193 +6,39 @@
     <title>Formulario</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<style>
-    fieldset {
-        border: none;
-    }
-    .form-tax {
-        position: relative; /* Necesario para que los pseudoelementos estén dentro del contenedor */
-        display: flex;
-        align-content: center;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: 100vh; /* Altura completa de la ventana */
-        z-index: 3;
-    }
-
-    /* Primera línea */
-    .form-tax::before {
-        content: '';
-        position: absolute;
-        width: 80%;
-        height: 75px;
-        background-color: #0026c640;
-        top: 62%;
-        left: -50%;
-        transform: rotate(-10deg);
-        z-index: 2;
-        background-color: #bfc9f1;
-        opacity: 100%;
-    }
-
-    .line-tax::before {
-        content: '';
-        position: absolute;
-        width: 69%;
-        height: 75px;
-        background-color: rgba(100, 100, 255, 0.2);
-        top: 23.6%;
-        right: -50%;
-        transform: rotate(-10deg);
-        z-index: 2;
-        background-color: #bfc9f1;
-    }
-
-    .line-tax::after{
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 75px;
-        background-color: rgba(100, 100, 255, 0.2);
-        top: 21%;
-        right: -50%;
-        transform: rotate(-10deg);
-        z-index: 2;
-        background-color: #7f92e2;
-    }
-
-    .line-tax2::before {
-        content: '';
-        position: absolute;
-        width: 88%;
-        height: 69px;
-        background-color: rgba(100, 100, 255, 0.2);
-        top: 11.1%;
-        right: -50%;
-        transform: rotate(-10deg);
-        z-index: 1;
-        background-color: #7fef7f;
-    }
-
-    /* Segunda línea */
-    .form-tax::after {
-        content: '';
-        position: absolute;
-        width: 70%;
-        height: 75px;
-        background-color: rgba(100, 100, 255, 0.2);
-        top: 72.1%;
-        left: -50%;
-        transform: rotate(-10deg);
-        z-index: 2;
-        background-color: #7f75fe;
-    }
-    @media (max-width: 991px) {
-        .form-tax::after {
-            top: 72.3%;
-            width: 70%;
-            left: -50%;
-        }
-        .line-tax2::before{
-            top: 11.4%;
-            right: -50%;
-        }
-        .line-tax::before{
-            top: 26.1%;
-            right: -50%;
-        }
-    }
-
-    .form-tax_content {
-        backdrop-filter: blur(2px); /* Desenfoque estilo glassmorfismo */
-        background-color: rgba(255, 255, 255, 0.3); /* Fondo semitransparente */
-        border-radius: 15px; /* Bordes redondeados */
-        border: 1px solid rgba(255, 255, 255, 0.18); /* Borde sutil */
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-        width: 600px;
-        padding: 20px;
-        z-index: 3;
-    }
-
-    .form-tax_content fieldset label{
-        display: block;
-    }
-    .form-tax_content .form-tax-two_column{
-        display: flex;
-        justify-content: space-between;
-        gap: 14px;
-    }
-    .form-tax_content h2{
-        margin-bottom: 14px;
-        text-align: center;
-    }
-    .form-tax_content .form-group label{
-        margin-bottom: 7px;
-        margin-top: 14px;
-    }
-    .form-tax_content .form-tax-two_column .form-group{
-        width: 100%;
-    }
-    .form-tax_content .form-tax-two_column .form-group input, .form-tax_content .form-tax-two_column .form-group select{
-        width: 100%;
-        height: 35px;
-        border-radius: 7px;
-        outline: none;
-        border: 1px solid #b4b4b4;
-    }
-    .tax-text-dark{
-        color: #333;
-    }
-    .tax-separate{
-        margin-bottom: 14px;
-    }
-    .tax-form-bottom {
-    margin-top: 14px;
-    }
-    button.tax-button-primary {
-        background: rgb(0, 38, 198);
-        outline: none;
-        border: none;
-        padding: 7px 14px;
-        width: 100%;
-        color: #fff;
-        border-radius: 7px;
-        cursor: pointer;
-        &hover{
-            background-color: #7fef7f;
-        }
-    }
-</style>
-<body>
+<body class="bg-images">
     <div class="form-tax">
-        <div class="line-tax"></div>
-        <div class="line-tax2"></div>
+        <div class="line-complete">
+            <div class="line-tax-content">
+                <div class="line-tax"></div>
+                <div class="line-tax2"></div>
+                <div class="line-tax3"></div>
+            </div>
+            <div class="line-tax-content2">
+                <div class="line-tax4"></div>
+                <div class="line-tax5"></div>
+            </div>
+        </div>
         <form class="form-tax_content">
             <div>
                 <h2 class="tax-text-dark">Por favor completar el siguiente formulario</h2>
                 <p class="tax-text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis adipisci delectus commodi, ab vel dicta temporibus blanditiis fugiat cupiditate dolor beatae cum velit fugit error voluptatum maiores sint porro exercitationem!</p>
             </div>
-
-            <div class="form-tax-two_column tax-separate">
+            <div class="form-tax-two_column">
                 <fieldset class="form-group">
-                    <label for="inputName" class="tax-text-dark">Business</label>
+                    <label for="inputName" class="tax-text-dark">¿Está completando este formulario como Persona Física o en representación de una Entidad?</label>
                     <select name="" id="">
                         <option value="">Seleccione una opción</option>
-                        <option value="1">Opción 1</option>
-                        <option value="2">Opción 2</option>
-                        <option value="3">Opción 3</option>
+                        <option value="1">Persona Física (humana):</option>
+                        <option value="2">Entidad (por ejemplo: sociedad anónima, compañía anónima, sociedad de responsabilidad limitada,
+                            fundación de interés privado, fideicomiso, etc.): </option>
                     </select>
                 </fieldset>
-                <fieldset class="form-group">
-                    <label for="inputAddress" class="tax-text-dark">Type</label>
-                    <select name="" id="">
-                        <option value="">Seleccione una opción</option>
-                        <option value="1">Opción 1</option>
-                        <option value="2">Opción 2</option>
-                        <option value="3">Opción 3</option>
-                    </select>
-                </fieldset>
+            </div>
+            <div class="form-tax-two_column form-check-container">
+                <fieldset class="form-group form-check"><input type="checkbox" name="" id="financial-institution"><label for="financial-institution"><strong class="form-number">1.</strong> <strong>Institución Financiera</strong> (banco, casa de bolsa, casa de valores, sociedad de corretaje, administradores de fondos, entidad fiduciaria | fideicomisario, aseguradoras cautivas, compañías de seguro que venden productos de seguros convertibles en dinero efectivo, cooperativas de ahorro y crédito, fondos mutuales, sociedades de inversión, centrales de depósito de valores, custodios de títulos valores; y similares)</label></fieldset>
+                <fieldset class="form-group form-check"><input type="checkbox" name="" id="patrimonial-entity"><label for="patrimonial-entity"><strong class="form-number">2.</strong> <strong>Entidad Patrimonial</strong> privada, personal o familiar, que ha otorgado u otorgará mandato a una institución financiera (por ejemplo, banco, fiduciario, casa de valores, casa de bolsa, sociedad de corretaje de valores o similares) para que administre sus activos financieros discrecionalmente, es decir, para que dicha institución financiera tome las decisiones de inversión </label></fieldset>
+                <fieldset class="form-group form-check"><input type="checkbox" name="" id="none-above"><label for="none-above"><strong class="form-number">3.</strong> <strong>Ninguna de las anteriores</strong></label></fieldset>
             </div>
 
             <div class="form-tax-two_column">
