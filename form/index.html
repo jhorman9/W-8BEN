@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./modal.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body class="bg-images">
     <div class="form-tax">
@@ -26,32 +28,67 @@
             </div>
             <div class="form-tax-two_column">
                 <fieldset class="form-group">
-                    <label for="inputName" class="tax-text-dark">¿Está completando este formulario como Persona Física o en representación de una Entidad?</label>
-                    <select name="" id="">
+                    <label for="fisicalorentity" class="tax-text-dark">¿Está completando este formulario como Persona Física o en representación de una Entidad?</label>
+                    <select name="fisicalorentity" id="fisicalorentity">
                         <option value="">Seleccione una opción</option>
-                        <option value="1">Persona Física (humana):</option>
-                        <option value="2">Entidad (por ejemplo: sociedad anónima, compañía anónima, sociedad de responsabilidad limitada,
-                            fundación de interés privado, fideicomiso, etc.): </option>
+                        <option value="fisical">Persona Física (humana)</option>
+                        <option value="entity">Entidad (por ejemplo: sociedad anónima, compañía anónima, sociedad de responsabilidad limitada,
+                            fundación de interés privado, fideicomiso, etc.)</option>
                     </select>
                 </fieldset>
             </div>
-            <div class="form-tax-two_column form-check-container">
-                <fieldset class="form-group form-check"><input type="checkbox" name="" id="financial-institution"><label for="financial-institution"><strong class="form-number">1.</strong> <strong>Institución Financiera</strong> (banco, casa de bolsa, casa de valores, sociedad de corretaje, administradores de fondos, entidad fiduciaria | fideicomisario, aseguradoras cautivas, compañías de seguro que venden productos de seguros convertibles en dinero efectivo, cooperativas de ahorro y crédito, fondos mutuales, sociedades de inversión, centrales de depósito de valores, custodios de títulos valores; y similares)</label></fieldset>
-                <fieldset class="form-group form-check"><input type="checkbox" name="" id="patrimonial-entity"><label for="patrimonial-entity"><strong class="form-number">2.</strong> <strong>Entidad Patrimonial</strong> privada, personal o familiar, que ha otorgado u otorgará mandato a una institución financiera (por ejemplo, banco, fiduciario, casa de valores, casa de bolsa, sociedad de corretaje de valores o similares) para que administre sus activos financieros discrecionalmente, es decir, para que dicha institución financiera tome las decisiones de inversión </label></fieldset>
-                <fieldset class="form-group form-check"><input type="checkbox" name="" id="none-above"><label for="none-above"><strong class="form-number">3.</strong> <strong>Ninguna de las anteriores</strong></label></fieldset>
+            <div class="form-tax-two_column form-check-container check-entity">
+                <fieldset class="form-group form-check"><input type="checkbox" name="institution" id="financial-institution"><label for="financial-institution"><strong class="form-number">1.</strong> <strong>Institución Financiera</strong> (banco, casa de bolsa, casa de valores, sociedad de corretaje, administradores de fondos, entidad fiduciaria | fideicomisario, aseguradoras cautivas, compañías de seguro que venden productos de seguros convertibles en dinero efectivo, cooperativas de ahorro y crédito, fondos mutuales, sociedades de inversión, centrales de depósito de valores, custodios de títulos valores; y similares)</label></fieldset>
+                <fieldset class="form-group form-check"><input type="checkbox" name="patrimonial" id="patrimonial-entity"><label for="patrimonial-entity"><strong class="form-number">2.</strong> <strong>Entidad Patrimonial</strong> privada, personal o familiar, que ha otorgado u otorgará mandato a una institución financiera (por ejemplo, banco, fiduciario, casa de valores, casa de bolsa, sociedad de corretaje de valores o similares) para que administre sus activos financieros discrecionalmente, es decir, para que dicha institución financiera tome las decisiones de inversión </label></fieldset>
+                <fieldset class="form-group form-check"><input type="checkbox" name="noneabove" id="none-above"><label for="none-above"><strong class="form-number">3.</strong> <strong>Ninguna de las anteriores</strong></label></fieldset>
             </div>
-
-            <div class="form-tax-two_column">
+            <div class="form-tax-two_column country-entity" style="display: none;">
                 <fieldset class="form-group">
-                    <label for="inputName" class="tax-text-dark">Nombre y Apellido</label>
-                    <input type="text" id="inputName" class="form-control" required>
+                    <label for="country" class="tax-text-dark">Seleccione el país</label>
+                    <select name="country" id="country">
+                        <option value="0">Seleccione una opción</option>
+                        <option value="ar">Constituida en Argentina</option>
+                        <option value="aru">Constituida en Aruba</option>
+                        <option value="bah">Constituida en Bahamas</option>
+                        <option value="bar">Constituida en Barbados</option>
+                        <option value="bel">Constituida en Belice</option>
+                        <option value="ber">Constituida en Bermuda</option>
+                        <option value="bol">Constituida en Bolivia</option>
+                        <option value="bra">Constituida en Brasil</option>
+                        <option value="bri">Constituida en British Virgin Islands</option>
+                        <option value="cay">Constituida en Cayman Islands</option>
+                        <option value="chi">Constituida en Chile</option>
+                        <option value="col">Constituida en Colombia</option>
+                        <option value="cos">Constituida en Costa Rica</option>
+                        <option value="cur">Constituida en Curazao</option>
+                        <option value="ecu">Constituida en Ecuador</option>
+                        <option value="esp">Constituida en España</option>
+                        <option value="sal">Constituida en El Salvador</option>
+                        <option value="gua">Constituida en Guatemala</option>
+                        <option value="hon">Constituida en Honduras</option>
+                        <option value="hong">Constituida en Hong Kong</option>
+                        <option value="jam">Constituida en Jamaica</option>
+                        <option value="mal">Constituida en Malta</option>
+                        <option value="mex">Constituida en México</option>
+                        <option value="nic">Constituida en Nicaragua</option>
+                        <option value="pan">Constituida en Panamá</option>
+                        <option value="par">Constituida en Paraguay</option>
+                        <option value="per">Constituida en Perú</option>
+                        <option value="por">Constituida en Portugal</option>
+                        <option value="kitt">Constituida en St. Kitts and Nevis</option>
+                        <option value="uru">Constituida en Uruguay</option>
+                        <option value="ven">Constituida en Venezuela</option>
+                        <option value="otro">OTRO</option>
+                    </select>
                 </fieldset>
                 <fieldset class="form-group">
-                    <label for="inputAddress" class="tax-text-dark">Domicilio</label>
-                    <input type="text" id="inputAddress" class="form-control" required>
+                    <label for="typeentity" class="tax-text-dark">Tipo de entidad</label>
+                    <select name="typeentity" id="typeentity">
+                        <option value="">Seleccione una opción</option>
+                    </select>
                 </fieldset>
             </div>
-            <div class="form-tax-two_column">
+            <!-- <div class="form-tax-two_column">
                 <fieldset class="form-group">
                     <label for="inputCity" class="tax-text-dark">Ciudad</label>
                     <input type="text" id="inputCity" class="form-control" required>
@@ -60,11 +97,12 @@
                     <label for="inputState" class="tax-text-dark">Departamento</label>
                     <input type="text" id="inputState" class="form-control" required>
                 </fieldset>
-            </div>
+            </div> -->
             <div class="tax-form-bottom">
-                <button class="tax-button-primary">Continuar</button>
+                <button type="submit" class="tax-button-primary">Continuar</button>
             </div>
         </form>
     </div>
+    <script src="./script.js"></script>
 </body>
 </html>

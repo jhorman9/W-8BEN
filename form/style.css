@@ -11,7 +11,7 @@
     border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.18);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 600px;
+    width: 800px;
     padding: 20px;
     margin: 35px 14px;
     z-index: 3;
@@ -80,7 +80,7 @@ fieldset {
     padding-top: 0;
 }
 .form-tax_content .form-tax-two_column.form-check-container{
-    display: block;
+    display: none;
 }
 .tax-text-dark{
     color: #333;
@@ -103,7 +103,7 @@ button.tax-button-primary {
     color: #fff;
     border-radius: 7px;
     cursor: pointer;
-    &hover{
-        background-color: #7fef7f;
-    }
+}
+button.tax-button-primary:hover {
+    background-color: #55b030;
 }
