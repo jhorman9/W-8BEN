@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-    <div class="bg-images">
+    <!-- <div class="bg-images">
         <div class="form-tax" id="step1">
             <div class="line-complete">
                 <div class="line-tax-content">
@@ -138,25 +138,15 @@
                         </div>
                     </fieldset>
                 </div>
-                <!-- <div class="form-tax-two_column">
-                    <fieldset class="form-group">
-                        <label for="inputCity" class="tax-text-dark">Ciudad</label>
-                        <input type="text" id="inputCity" class="form-control" required>
-                    </fieldset>
-                    <fieldset class="form-group">
-                        <label for="inputState" class="tax-text-dark">Departamento</label>
-                        <input type="text" id="inputState" class="form-control" required>
-                    </fieldset>
-                </div> -->
                 <div class="tax-form-bottom">
                     <button type="button" class="tax-button-primary" onclick="step(1, 2)">Continuar</button>
                 </div>
             </form>
         </div>
-    </div> 
+    </div>  -->
         
         <!-- Se realiza el step 2 -->
-
+<!-- 
         <div class="bg-images">
             <div class="form-tax" id="step2" style="display: none;">
                 <div class="line-complete">
@@ -267,14 +257,14 @@
                     </div>
                 </form>
             </div>
-        </div> 
+        </div>  -->
 
         <!-- Step 2 END -->
 
 
         <!-- Se realiza el step 3 -->
 
-        <div class="bg-images">
+        <!-- <div class="bg-images">
             <div class="form-tax" id="step3" style="display: none;">
                 <div class="line-complete">
                     <div class="line-tax-content">
@@ -291,7 +281,7 @@
                     <div>
                         <h2 class="tax-text-dark">Por favor completar el siguiente formulario</h2>
                         <p class="tax-text-dark" style="text-align: center;"><strong>CUESTIONARIO “A” W-8BEN-E</strong></p>
-                        <button class="button-taxt-back" type="button" onclick="step(3,2)">Atrás</button>
+                        <button class="button-taxt-back" type="button" onclick="step(3,2)"><img src="./arrow.png" alt="Ir Atrás"></button>
                     </div>
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
@@ -379,14 +369,14 @@
                     </div>
                 </form>
             </div>
-        </div> 
+        </div>  -->
 
         <!-- Step 3 END -->
 
         <!-- Se realiza el step 4 -->
 
         <div class="bg-images">
-            <div class="form-tax" id="step4" style="display: none;">
+            <div class="form-tax" id="step4" style="">
                 <div class="line-complete">
                     <div class="line-tax-content">
                         <div class="line-tax"></div>
@@ -402,17 +392,17 @@
                     <div>
                         <h2 class="tax-text-dark">Por favor completar el siguiente formulario</h2>
                         <p class="tax-text-dark" style="text-align: center;"><strong>CUESTIONARIO B</strong></p>
-                        <button class="button-taxt-back" type="button" onclick="step(4,3)">Atrás</button>
+                        <button class="button-taxt-back" type="button" onclick="step(4,3)"><img src="./arrow.png" alt="Ir Atrás"></button>
                     </div>
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
-                            <label for="fisicalorentity" class="tax-text-dark"><strong>1.</strong> <strong> Campo opcional.</strong> Por favor escriba el nombre corporativo completo (denominación social) de su Entidad: </label>
-                            <select name="" id="">
-                                <option value="">Seleccione una opción</option>
-                                <option value="">Fideicomiso (“Trust”) con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>
-                                <option value="">Fundación de Interés Privado con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>
-                                <option value="">“Stichting” con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>                                
-                                <option value="">Ninguna de las anteriores</option>
+                            <label for="typeEntity" class="tax-text-dark"><strong>1.</strong> <strong> Campo opcional.</strong> Por favor escriba el nombre corporativo completo (denominación social) de su Entidad: </label>
+                            <select name="" id="typeEntity">
+                                <option value="0">Seleccione una opción</option>
+                                <option value="fideicomiso">Fideicomiso (“Trust”) con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>
+                                <option value="fundacion">Fundación de Interés Privado con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>
+                                <option value="stichting">“Stichting” con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>                                
+                                <option value="none">Ninguna de las anteriores</option>
                             </select>
                             <div class="response-indicator">
                                 <span>&#10003;</span>
@@ -420,7 +410,7 @@
                         </fieldset>
                     </div>
                     <div class="tax-form-bottom">
-                        <button type="button" class="tax-button-primary" onclick="step(4, 5)">Continuar</button>
+                        <button type="button" class="tax-button-primary">Continuar</button>
                     </div>
                 </form>
             </div>
@@ -429,6 +419,206 @@
         <!-- Step 4 END -->
 
         
+        <!-- Se realiza el step 5 -->
+
+        <div class="bg-images">
+            <div class="form-tax" id="step5" style="display: none;">
+                <div class="line-complete">
+                    <div class="line-tax-content">
+                        <div class="line-tax"></div>
+                        <div class="line-tax2"></div>
+                        <div class="line-tax3"></div>
+                    </div>
+                    <div class="line-tax-content2">
+                        <div class="line-tax4"></div>
+                        <div class="line-tax5"></div>
+                    </div>
+                </div>
+                <form class="form-tax_content">
+                    <div>
+                        <h2 class="tax-text-dark">Por favor completar el siguiente formulario</h2>
+                        <p class="tax-text-dark" style="text-align: center;"><strong>CUESTIONARIO “B.1 - Fideicomiso (Trust)”</strong></p>
+                        <button class="button-taxt-back" type="button"><img src="./arrow.png" onclick="step(5,4)" alt="Ir Atrás"></button>
+                    </div>
+                    <span>Por favor responda:</span>
+                    <div class="form-tax-two_column">
+                        <fieldset class="form-group">
+                            <label for="competent" class="tax-text-dark"><strong>1.</strong> <strong> Campo obligatorio.</strong> ¿Las cortes de los EE.UU. son competentes para decidir asuntos relacionados con la administración del Trust?</label>
+                            <select class="competent" name="" id="competent">
+                                <option value="0">Seleccione una opción</option>
+                                <option value="yes">Si</option>
+                                <option value="no">No</option>
+                            </select>
+                            <div class="response-indicator">
+                                <span>&#10003;</span>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="form-tax-two_column" style="padding-bottom: 7px;">
+                        <fieldset class="form-group">
+                            <label for="born" class="tax-text-dark"><strong>2.</strong> <strong> Campo obligatorio.</strong> ¿Alguna persona nacida en los EE.UU o que resida en los EE.UU. tiene facultad para tomar alguna decisión sobre el fideicomiso o es fideicomitente, fiduciaria, protectora o beneficiaria del fideicomiso?</label>
+                            <select class="born" name="" id="born">
+                                <option value="0">Seleccione una opción</option>
+                                <option value="yes">Si</option>
+                                <option value="no">No</option>
+                            </select>
+                            <div class="response-indicator">
+                                <span>&#10003;</span>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="form-tax-two_column" style="padding-bottom: 7px;">
+                        <fieldset class="form-group">
+                            <label for="born" class="tax-text-dark"><strong>3.</strong> <strong> Campo obligatorio.</strong> ¿Alguna persona nacida en los EE.UU o que resida en los EE.UU. tiene facultad para tomar alguna decisión sobre el fideicomiso o es fideicomitente, fiduciaria, protectora o beneficiaria del fideicomiso?</label>
+                            <select class="born" name="" id="born">
+                                <option value="0">Seleccione una opción</option>
+                                <option value="yes">Si</option>
+                                <option value="no">No</option>
+                            </select>
+                            <div class="response-indicator">
+                                <span>&#10003;</span>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="form-tax-two_column" style="padding-bottom: 7px;">
+                        <fieldset class="form-group">
+                            <label for="born" class="tax-text-dark">¿Alguna persona nacida en los EE.UU o que resida en los EE.UU. tiene facultad para tomar alguna decisión sobre el fideicomiso o es fideicomitente, fiduciaria, protectora o beneficiaria del fideicomiso?</label>
+                            <select class="born" name="" id="born">
+                                <option value="0">Seleccione una opción</option>
+                                <option value="yes">Si</option>
+                                <option value="no">No</option>
+                            </select>
+                            <div class="response-indicator">
+                                <span>&#10003;</span>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="form-tax-two_column" style="padding-bottom: 7px;">
+                        <fieldset class="form-group">
+                            <label for="born" class="tax-text-dark">¿El fideicomiso es revocable?</label>
+                            <select class="born" name="" id="born">
+                                <option value="0">Seleccione una opción</option>
+                                <option value="yes">Si</option>
+                                <option value="no">No</option>
+                            </select>
+                            <div class="response-indicator">
+                                <span>&#10003;</span>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="form-tax-two_column" style="padding-bottom: 7px;">
+                        <fieldset class="form-group">
+                            <label for="born" class="tax-text-dark">¿Alguna persona o entidad que aporta bienes al fideicomiso tiene algún tipo de control o influencia sobre el fideicomiso, ya sea de manera formal o informal?</label>
+                            <select class="born" name="" id="born">
+                                <option value="0">Seleccione una opción</option>
+                                <option value="yes">Si</option>
+                                <option value="no">No</option>
+                            </select>
+                            <div class="response-indicator">
+                                <span>&#10003;</span>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <span style="margin-top: 30px;"><strong>NOTA:</strong> Usted debe revisar el contrato de fideicomiso para derivar de ahí las respuestas correctas a estas preguntas. Consulte con su abogado si lo considera necesario. </span>
+                    <div class="tax-form-bottom">
+                        <button type="button" class="tax-button-primary">Continuar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Step 5 END -->
+
+        <!-- Se realiza el step 6 -->
+
+        <div class="bg-images">
+            <div class="form-tax" id="step6" style="display: none;">
+                <div class="line-complete">
+                    <div class="line-tax-content">
+                        <div class="line-tax"></div>
+                        <div class="line-tax2"></div>
+                        <div class="line-tax3"></div>
+                    </div>
+                    <div class="line-tax-content2">
+                        <div class="line-tax4"></div>
+                        <div class="line-tax5"></div>
+                    </div>
+                </div>
+                <form class="form-tax_content">
+                    <div>
+                        <h2 class="tax-text-dark">Por favor completar el siguiente formulario</h2>
+                        <p class="tax-text-dark" style="text-align: center;"><strong>CUESTIONARIO B2</strong></p>
+                        <button class="button-taxt-back" type="button" onclick="step(6,4)"><img src="./arrow.png" alt="Ir Atrás"></button>
+                    </div>
+                    <div class="form-tax-two_column">
+                        <fieldset class="form-group">
+                            <label for="typeEntity" class="tax-text-dark"><strong>1.</strong> <strong> Campo opcional.</strong> Por favor escriba el nombre corporativo completo (denominación social) de su Entidad: </label>
+                            <select class="typeEntity" name="" id="typeEntity">
+                                <option value="0">Seleccione una opción</option>
+                                <option value="fideicomiso">Fideicomiso (“Trust”) con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>
+                                <option value="fundacion">Fundación de Interés Privado con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>
+                                <option value="stichting">“Stichting” con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>                                
+                                <option value="none">Ninguna de las anteriores</option>
+                            </select>
+                            <div class="response-indicator">
+                                <span>&#10003;</span>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="tax-form-bottom">
+                        <button type="button" class="tax-button-primary">Continuar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Step 6 END -->
+
+        <!-- Se realiza el step 7 -->
+
+        <div class="bg-images">
+            <div class="form-tax" id="step7" style="display: none;">
+                <div class="line-complete">
+                    <div class="line-tax-content">
+                        <div class="line-tax"></div>
+                        <div class="line-tax2"></div>
+                        <div class="line-tax3"></div>
+                    </div>
+                    <div class="line-tax-content2">
+                        <div class="line-tax4"></div>
+                        <div class="line-tax5"></div>
+                    </div>
+                </div>
+                <form class="form-tax_content">
+                    <div>
+                        <h2 class="tax-text-dark">Por favor completar el siguiente formulario</h2>
+                        <p class="tax-text-dark" style="text-align: center;"><strong>CUESTIONARIO B3</strong></p>
+                        <button class="button-taxt-back" type="button" onclick="step(7,4)"><img src="./arrow.png" alt="Ir Atrás"></button>
+                    </div>
+                    <div class="form-tax-two_column">
+                        <fieldset class="form-group">
+                            <label for="typeEntity" class="tax-text-dark"><strong>1.</strong> <strong> Campo opcional.</strong> Por favor escriba el nombre corporativo completo (denominación social) de su Entidad: </label>
+                            <select class="typeEntity" name="" id="typeEntity">
+                                <option value="0">Seleccione una opción</option>
+                                <option value="fideicomiso">Fideicomiso (“Trust”) con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>
+                                <option value="fundacion">Fundación de Interés Privado con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>
+                                <option value="stichting">“Stichting” con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>                                
+                                <option value="none">Ninguna de las anteriores</option>
+                            </select>
+                            <div class="response-indicator">
+                                <span>&#10003;</span>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="tax-form-bottom">
+                        <button type="button" class="tax-button-primary">Continuar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    <!-- Step 7 END -->
+
         <script src="./script.js"></script>
 </body>
 </html>

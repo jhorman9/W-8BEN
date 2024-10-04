@@ -44,7 +44,7 @@ fieldset {
 	margin: 0;
     position: relative;
     z-index: 2;
-    padding: 0 12px;
+    padding: 0;
 }
 
 .form-tax_content fieldset label{
