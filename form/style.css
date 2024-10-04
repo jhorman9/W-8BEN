@@ -44,6 +44,7 @@ fieldset {
 	margin: 0;
     position: relative;
     z-index: 2;
+    padding: 0 12px;
 }
 
 .form-tax_content fieldset label{
@@ -119,4 +120,25 @@ button.tax-button-primary:hover {
     color: green;
     border-radius: 50%;
     z-index: 1;
+}
+
+button.button-taxt-back{
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    padding: 7px 14px;
+    border-radius: 7px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    &:hover{
+        opacity: 0.9;
+    }
+}
+
+button.button-taxt-back img{
+    width: 30px;
 }
