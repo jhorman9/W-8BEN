@@ -142,3 +142,15 @@ button.button-taxt-back{
 button.button-taxt-back img{
     width: 30px;
 }
+
+.next-content-child + .content-child{
+    padding-left: 14px;
+}
+
+.tax-full-width{
+    width: 100%;
+}
+
+#tax-isShow{
+    display: none;
+}

@@ -4,6 +4,16 @@ const checkEntity = document.querySelectorAll(".check-entity input");
 const checkEntityContainer = document.querySelector(".check-entity");
 const countryEntity = document.querySelector(".country-entity");
 const typeEntity = document.querySelector('#typeentity');
+
+function displayInfoModal() {
+    Swal.fire({
+        title: 'Información importante',
+        html: `Por las particularidades de su situación, su caso no puede ser cubierto por las funciones de esta plataforma. Le sugerimos contactarnos directamente a <a href='mailto:info@giin.tax'>info@giin.tax</a> para brindarle asesoría personalizada en el llenado de sus formularios. Tenga en cuenta que para este servicio se aplicarán honorarios profesionales.`,
+        icon: 'info',
+        confirmButtonText: 'Ok'
+    });
+}
+
  document.addEventListener("DOMContentLoaded", function() {
 
      fisicalEntity.addEventListener("change", (e) => {
@@ -44,12 +54,7 @@ const typeEntity = document.querySelector('#typeentity');
 
                  if(lastChecked.id == 'financial-institution' || lastChecked.id == 'patrimonial-entity'){
                      countryEntity.style.display = 'none'
-                     Swal.fire({
-                         title: 'Información importante',
-                         html: `Por las particularidades de su situación, su caso no puede ser cubierto por las funciones de esta plataforma. Le sugerimos contactarnos directamente a <a href='mailto:info@giin.tax' style='font-weight='bold''>info@giin.tax</a> para brindarle asesoría personalizada en el llenado de sus formularios. Tenga en cuenta que para este servicio se aplicarán honorarios profesionales. Estaremos encantados de atenderle.`,
-                         icon: 'info',
-                         confirmButtonText: 'Ok'
-                     })
+                     displayInfoModal();
 
                  }
 
@@ -148,9 +153,8 @@ const typeEntity = document.querySelector('#typeentity');
 
 document.addEventListener('DOMContentLoaded', () => {
     const typeEntity = document.querySelector('#typeEntity');
-    const continueButton = document.querySelector('.tax-button-primary');
+    const continueButton = document.querySelectorAll('.tax-button-primary');
 
-    // Función para manejar el cambio de vista
     function handleStep() {
         const selectedValue = typeEntity.value;
         if(selectedValue == 'fideicomiso'){
@@ -163,49 +167,140 @@ document.addEventListener('DOMContentLoaded', () => {
             step(4,7);
         }
         if(selectedValue == 'none'){
-            Swal.fire({
-                title: 'Información importante',
-                html: `Por las particularidades de su situación, su caso no puede ser cubierto por las funciones de esta plataforma. Le sugerimos contactarnos directamente a <a href='mailto:info@giin.tax' style='font-weight='bold''>info@giin.tax</a> para brindarle asesoría personalizada en el llenado de sus formularios. Tenga en cuenta que para este servicio se aplicarán honorarios profesionales. Estaremos encantados de atenderle.`,
-                icon: 'info',
-                confirmButtonText: 'Ok'
-            });
+           displayInfoModal();
         }
     }
 
     typeEntity.addEventListener('change', handleStep);
 
-    continueButton.addEventListener('click', handleStep);
+    continueButton.forEach(button => {
+        button.addEventListener('click', handleStep);
+    });
+    
 });
 
 document.addEventListener('DOMContentLoaded', () => {
     const born = document.querySelector('#born');
     const competent = document.querySelector('#competent');
-    let isTrue= null;
-    let isTrue2= null;
+    const isShow = document.querySelector('#tax-isShow');
+    const fideicomiso = document.querySelector('#fideicomiso');
+    const revocable = document.querySelector('#revocable');
+    const entityFideicomiso = document.querySelector('#entityFideicomiso');
+    const fideicomisoContract = document.querySelector('#fideicomisoContract');
+    const taxThirdtrue = document.querySelector('#tax-thirdtrue');
+    const continueStep8 = document.querySelector('#continue-step8');
+    
+    let isTrue = null;
+    let isTrue2 = null;
+    let isTrue01 = null;
+    let isTrue02 = null;
+    let isTrue03 = null;
 
     function checkValues() {
-        if (isTrue !== null && isTrue2 !== null) {
+        if (isTrue !== 0 && isTrue2 !== 0) {
             if (isTrue === 'yes' && isTrue2 === 'yes') {
-                console.log("Los dos son 'si'");
+                isShow.style.display = 'block';
             } 
             if (isTrue === 'no' || isTrue2 === 'no') {
-                Swal.fire({
-                    title: 'Información importante',
-                    html: `Por las particularidades de su situación, su caso no puede ser cubierto por las funciones de esta plataforma. Le sugerimos contactarnos directamente a <a href='mailto:info@giin.tax' style='font-weight='bold''>info@giin.tax</a> para brindarle asesoría personalizada en el llenado de sus formularios. Tenga en cuenta que para este servicio se aplicarán honorarios profesionales. Estaremos encantados de atenderle.`,
-                    icon: 'info',
-                    confirmButtonText: 'Ok'
-                });
+                isShow.style.display = 'none';
+                displayInfoModal();
+            }
+        }
+        if ((isTrue01 != 0 && isTrue02 != 0 && isTrue03 != 0)) {
+            if (isTrue01 === 'yes' || isTrue02 === 'yes' || isTrue03 === 'yes') {
+                taxThirdtrue.style.display = 'none';
+                step(5, 8);
+            }
+            if (isTrue01 === 'no' && isTrue02 === 'no' && isTrue03 === 'no') {
+                taxThirdtrue.style.display = 'block';
+                if(fideicomisoContract.value == 'yes') {
+                    step(5, 9);
+                }
+                if(fideicomisoContract.value == 'no'){
+                    step(5, 10);
+                }
             }
         }
     }
 
-    born.addEventListener('change', (e) => {
-        isTrue = e.target.value;
-        checkValues();
-    });
+    function updateValues() {
+        isTrue = born.value;
+        isTrue2 = competent.value;
+        isTrue01 = revocable.value;
+        isTrue02 = entityFideicomiso.value;
+        isTrue03 = fideicomiso.value;
 
-    competent.addEventListener('change', (e) => {
-        isTrue2 = e.target.value;
         checkValues();
+    }
+
+    born.addEventListener('change', updateValues);
+    competent.addEventListener('change', updateValues);
+    revocable.addEventListener('change', updateValues);
+    entityFideicomiso.addEventListener('change', updateValues);
+    fideicomiso.addEventListener('change', updateValues);
+    fideicomisoContract.addEventListener('change', updateValues);
+
+    continueStep8.addEventListener('click', (e) => {
+        updateValues();
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const personEntity = document.querySelector('#person-entity');
+    const revocableFoundation = document.querySelector('#revocable-foundation');
+    const entityPerson = document.querySelector('#entity-person');
+    const foundationRecord = document.querySelector('#foundation-record');
+    const continueStep11 = document.querySelector('#continue-step11');
+    const taxThirdtrue2 = document.querySelector('#tax-thirdtrue2');
+
+    let isTrue001 = false;
+    let isTrue002 = false;
+    let isTrue003 = false;
+
+    function checkValues01() {
+        if ((isTrue001 != 0 && isTrue002 != 0 && isTrue003 != 0)) {
+            if (isTrue001 === 'yes' || isTrue002 === 'yes' || isTrue003 === 'yes') {
+                taxThirdtrue2.style.display = 'none';
+                step(6, 11);
+            }
+            if (isTrue001 === 'no' && isTrue002 === 'no' && isTrue003 === 'no') {
+                taxThirdtrue2.style.display = 'block';
+                if(foundationRecord.value == 'yes') {
+                    step(6, 12);
+                }
+                if(foundationRecord.value == 'no'){
+                    step(6, 13);
+                }
+            }
+        }
+    }
+
+    function updateValues01() {
+        isTrue001 = personEntity.value;
+        isTrue002 = revocableFoundation.value;
+        isTrue003 = entityPerson.value;
+
+        checkValues01();
+    }
+
+    personEntity.addEventListener('change', updateValues01);
+    revocableFoundation.addEventListener('change', updateValues01);
+    entityPerson.addEventListener('change', updateValues01);
+    foundationRecord.addEventListener('change', updateValues01);
+
+    continueStep11.addEventListener('click', (e) => {
+        updateValues01();
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const continueStep14 = document.querySelector('#continue-step14');
+    const taxThirdtrue3 = document.querySelector('#tax-thirdtrue3');
+    const backTO = document.querySelector('#backTo');
+
+    console.log(backTO);
+
+    backTO.addEventListener('click', (e) => {
+        console.log(e)
     });
 });
