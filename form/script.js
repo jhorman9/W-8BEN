@@ -1,155 +1,70 @@
-const fisicalEntity = document.querySelector("#fisicalorentity");
-const country = document.querySelector("#country");
-const checkEntity = document.querySelectorAll(".check-entity input");
-const checkEntityContainer = document.querySelector(".check-entity");
-const countryEntity = document.querySelector(".country-entity");
-const typeEntity = document.querySelector('#typeentity');
+document.addEventListener('DOMContentLoaded', () => {
+    const fisicalOrEntity = document.querySelector('#fisical-or-entity');
+    const financialInstitution = document.querySelector('#financial-institution');
+    const patrimonialEntity = document.querySelector('#patrimonial-entity');
+    const noneAbove = document.querySelector('#none-above');
+    const buttonFirst = document.querySelector('#buttonFirst');
 
-function displayInfoModal() {
-    Swal.fire({
-        title: 'Información importante',
-        html: `Por las particularidades de su situación, su caso no puede ser cubierto por las funciones de esta plataforma. Le sugerimos contactarnos directamente a <a href='mailto:info@giin.tax'>info@giin.tax</a> para brindarle asesoría personalizada en el llenado de sus formularios. Tenga en cuenta que para este servicio se aplicarán honorarios profesionales.`,
-        icon: 'info',
-        confirmButtonText: 'Ok'
+    let selectedOption = null;
+    let isFinancial = false;
+    let isPatrimonial = false;
+    let isNoneAbove = false;
+
+    const checkboxes = [financialInstitution, patrimonialEntity, noneAbove];
+    
+    function handleCheckboxSelection(e) {
+        checkboxes.forEach((checkbox) => {
+            if (checkbox !== e.target) {
+                checkbox.checked = false;
+            }
+        });
+    }
+    
+    checkboxes.forEach((checkbox) => {
+        checkbox.addEventListener('change', handleCheckboxSelection);
     });
-}
 
- document.addEventListener("DOMContentLoaded", function() {
-
-     fisicalEntity.addEventListener("change", (e) => {
-         const fisicalEntityValue = e.target.value;
-
-         if(fisicalEntityValue && fisicalEntityValue == 'fisical'){
-             localStorage.setItem("formulario", "W-8BEN");
-             checkEntity.forEach(otherCheck => {
-                 otherCheck.checked = false;
-             });
-         }else{
-             localStorage.removeItem("formulario");
-         }
-
-         if (fisicalEntityValue == 'entity') {
-             checkEntityContainer.style.display = "block"; 
-         }else{
-             checkEntityContainer.style.display = "none";
-             countryEntity.style.display = "none";
-         }
-     });
-
-     let lastChecked = null;
-
-     checkEntity && (
-         checkEntity.forEach(check => {
-             check.addEventListener("change", (e) => {
-                 if (e.target.checked) {
-                     checkEntity.forEach(otherCheck => {
-                         if (otherCheck !== e.target) {
-                             otherCheck.checked = false;
-                         }
-                     });
-                     lastChecked = e.target;
-                 } else {
-                     e.target.checked = true;
-                 };
-
-                 if(lastChecked.id == 'financial-institution' || lastChecked.id == 'patrimonial-entity'){
-                     countryEntity.style.display = 'none'
-                     displayInfoModal();
-
-                 }
-
-                 if(lastChecked.id == 'none-above'){
-                     countryEntity.style.display = 'flex';
-                 }else{
-                     countryEntity.style.display = 'none';
-                 }
-             });
-         })
-     )
-
-     country && (
-         country.addEventListener("change", (e) => {
-             const countryValue = e.target.value;
+    function updateValues00() {
+        selectedOption = fisicalOrEntity.value;
+        isFinancial = financialInstitution.checked;
+        isPatrimonial = patrimonialEntity.checked;
+        isNoneAbove = noneAbove.checked;
         
-             const countryEntity = {
-                 "ar": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada", "Sociedad Anónima Unipersonal (S.A.U.)"],
-                 "aru": ["“Naamloze Vennootschap (N.V.)", "Besloten Vennootschap (B.V.)"],
-                 "bah": ["International Business Company","Limited Liability Company"],
-                 "bar": ["Limited Company", "Limited Liabilty Company", "International Business Company"],
-                 "bel": ["Public Limited Company", "Limited Liability Company"],
-                 "ber": ["Exempted Company"],
-                 "bol":["Sociedad Anónima", "Sociedad de Responsabilidad Limitada"],
-                 "bra": ["Sociedade Anonima", "LTDA"],
-                 "bri": ["BVI Business Company", "Limited Liability Company"],
-                 "cay": ["Exempted Company", "Limited Liability Company"],
-                 "chi": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada"],
-                 "col": ["Sociedad Anónima", "Sociedad por Acciones Simplificada (S.A.S.)"],
-                 "cos": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada"],
-                 "cur": ["Naamloze Vennootschap (N.V.)", "Besloten Vennootschap (B.V.)"],
-                 "ecu": ["Sociedad Anónima", "Compañía Anónima", "Sociedad de Responsabilidad Limitada"],
-                 "esp": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada (S.L.)", "Sociedad Limitada Nueva Empresa (SLNE)"],
-                 "sal": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada", "Sociedad Anónima de Capital Variable"],
-                 "gua": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada", "Sociedad Anónima de Capital Variable"],
-                 "hon": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada"],
-                 "hong": ["Public Limited Company"],
-                 "jam": ["Public Limited Company"],
-                 "mal": ["Public Limited Company"],
-                 "mex": ["Sociedad Anónima", "Sociedad Anónima de Capital Variable", "Sociedad de Responsabilidad Limitada"],
-                 "nic": ["Compañía Anónima", "Sociedad de Responsabilidad Limitada", "constituida en Nicaragua"],
-                 "pan": ["“Sociedad Anónima ” (S.A.) (Inc.) (Corp.)", "Sociedad de Responsabilidad Limitada"],
-                 "par": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada"],
-                 "per": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada"],
-                 "por": ["Sociedade Anónima (S.A.)", "Sociedade por Quotas (Lda.)", "Sociedade Unipessoal por Quotas", "Sociedade por Quotas de Responsabilidade Limitada com Participação em Beneficios (Lda. com PAB)"],
-                 "kitt": ["International Business Company", "Limited Liability Company"],
-                 "uru": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada"],
-                 "ven": ["Sociedad Anónima", "Compañía Anónima", "Sociedad de Responsabilidad Limitada"],
-                 "otro": ["otro"]
-             };
+        checkValues00();
+    }
+
+    function checkValues00() {
         
-             const arrayEntity = countryEntity[countryValue];
-            
-             if(arrayEntity){
-                 typeEntity.innerHTML = `
-                 <option value="0">Seleccione una opción</option>
-                 ${arrayEntity.map(entity => `<option value="${entity.replace(/\s+/g, '')}">${entity}</option>`).join("")}`;
-             }
-         })
-     );
+        if (selectedOption === 'entity') {
+            console.log('Es una entidad');
+        }
 
- });
+        if(selectedOption === 'fisical'){
+            console.log('Es un fiscal');
+        }
 
- const selects = document.querySelectorAll('select');
- const inputCheck = document.querySelectorAll('input[type="checkbox"]');
- const indicators = document.querySelectorAll('.response-indicator');
+        if (isFinancial) {
+            console.log('Ha seleccionado Institución Financiera');
+        }
 
- function updateSelectIndicators() {
-     const selectsCheck = document.querySelectorAll('.response-indicator');
-    
-     selects.forEach((select, index) => {
-         if (select.value === '0') {
-             selectsCheck[index].style.display = 'none';
-         } else {
-             selectsCheck[index].style.display = 'block';
-         }
-     });
+        if (isPatrimonial) {
+            console.log('Ha seleccionado Entidad Patrimonial');
+        }
 
- }
+        if (isNoneAbove) {
+            console.log('Ha seleccionado Ninguna de las anteriores');
+        }
+    }
 
- selects.forEach(select => {
-     select.addEventListener('change', updateSelectIndicators);
- });
+    fisicalOrEntity.addEventListener('change', updateValues00);
+    financialInstitution.addEventListener('change', updateValues00);
+    patrimonialEntity.addEventListener('change', updateValues00);
+    noneAbove.addEventListener('change', updateValues00);
 
- document.addEventListener('DOMContentLoaded', updateSelectIndicators);
-
- function step(number1, number2) {
-     let actuallyContent = document.querySelector(`#step${number1}`);
-     let nextContent = document.querySelector(`#step${number2}`);
-
-     actuallyContent.style.display = 'none';
-    
-     nextContent.style.display = 'flex';
- }
-
+    buttonFirst.addEventListener('click', (e) => {
+        updateValues00(); 
+    });
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     const typeEntity = document.querySelector('#typeEntity');
@@ -294,13 +209,124 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    const continueStep14 = document.querySelector('#continue-step14');
     const taxThirdtrue3 = document.querySelector('#tax-thirdtrue3');
-    const backTO = document.querySelector('#backTo');
+    const stitchEntity = document.querySelector('#sticht-entity');
+    const stichtRevocable = document.querySelector('#sticht-revocable');
+    const stichtEntityPerson = document.querySelector('#sticht-entity-person');
+    const stichtFoundationRecord = document.querySelector('#sticht-foundation-record');
+    const continueStep14 = document.querySelector('#continue-step14');
 
-    console.log(backTO);
+    let isTrue0001 = false;
+    let isTrue0002 = false;
+    let isTrue0003 = false;
 
-    backTO.addEventListener('click', (e) => {
-        console.log(e)
+    function checkValues0001() {
+        if ((isTrue0001 != false && isTrue0002 != false && isTrue0003 != false)) {
+            if(isTrue0001 == 'yes' || isTrue0002 == 'yes' || isTrue0003 == 'yes'){
+                step(7, 14);
+                taxThirdtrue3.style.display = 'none';
+            }
+            if(isTrue0001 == 'no' && isTrue0002 == 'no' && isTrue0003 == 'no'){
+                taxThirdtrue3.style.display = 'flex';
+
+                if(stichtFoundationRecord.value == 'yes'){
+                    step(7, 15);
+                }
+                if(stichtFoundationRecord.value == 'no'){
+                    step(7, 16);
+                }
+            }
+        }
+    }
+
+    function updateValues0001() {
+        isTrue0001 = stitchEntity.value;
+        isTrue0002 = stichtRevocable.value;
+        isTrue0003 = stichtEntityPerson.value;
+
+        checkValues0001();
+    }
+
+    stitchEntity.addEventListener('change', updateValues0001);
+    stichtRevocable.addEventListener('change', updateValues0001);
+    stichtEntityPerson.addEventListener('change', updateValues0001);
+    stichtFoundationRecord.addEventListener('change', updateValues0001);
+
+    continueStep14.addEventListener('click', (e) => {
+        updateValues0001();
     });
 });
+
+//Funcionalidad de pasos, para poder moverse a diferentes contenedores
+function step(number1, number2) {
+    const allSteps = document.querySelectorAll("[id^='step']");
+
+    let actuallyContent = document.querySelector(`#step${number1}`);
+    let nextContent = document.querySelector(`#step${number2}`);
+
+    if (!actuallyContent || !nextContent) {
+        console.error(`Paso no encontrado: step${number1} o step${number2}`);
+        return;
+    }
+
+    allSteps.forEach(step => {
+        step.style.display = 'none';
+    });
+
+    const validSteps = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+    if (!validSteps.includes(number1) || !validSteps.includes(number2)) {
+        console.error(`Número de paso inválido: ${number1} o ${number2}`);
+        return;
+    }
+
+    actuallyContent.style.display = 'none';
+    nextContent.style.display = 'flex';
+}
+
+//Funcionalidad de validación de formularios, para el manejo informativo.
+function displayInfoModal() {
+    Swal.fire({
+      position: "center",
+      icon: "info",
+      title: "Información importante",
+      text: "Por las particularidades de su situación, su caso no puede ser cubierto por las funciones de esta plataforma. Le sugerimos contactarnos directamente a info@giin.tax para brindarle asesoría personalizada en el llenado de sus formularios. Tenga en cuenta que para este servicio se aplicarán honorarios profesionales.",
+      showConfirmButton: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: '¿Desea continuar con el proceso?',
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonText: 'Sí',
+          cancelButtonText: 'No',
+        }).then((confirmResult) => {
+          if (!confirmResult.isConfirmed) {
+            let timerInterval;
+            Swal.fire({
+              position: "center",
+              icon: "info",
+              title: "Le esperamos",
+              html: "Este formulario se reiniciará de manera automática en <b></b> segundos.",
+              timer: 5000,
+              timerProgressBar: true,
+              showConfirmButton: false,
+              allowOutsideClick: false,
+              didOpen: () => {
+                Swal.showLoading();
+                const b = Swal.getHtmlContainer().querySelector('b');
+                timerInterval = setInterval(() => {
+                  b.textContent = Math.round(Swal.getTimerLeft() / 1000);
+                }, 100);
+              },
+              willClose: () => {
+                clearInterval(timerInterval);
+                window.location.reload();
+              }
+            });
+          } else {
+            Swal.close();
+          }
+        });
+      }
+    });
+  }

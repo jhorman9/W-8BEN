@@ -29,9 +29,9 @@
                 </div>
                 <div class="form-tax-two_column">
                     <fieldset class="form-group">
-                        <label for="fisicalorentity" class="tax-text-dark">¿Está completando este formulario como Persona Física o en representación de una Entidad?</label>
-                        <select class="isResponse" name="fisicalorentity" id="fisicalorentity">
-                            <option value="0">Seleccione una opción</option>
+                        <label for="fisical-or-entity" class="tax-text-dark">¿Está completando este formulario como Persona Física o en representación de una Entidad?</label>
+                        <select class="isResponse" name="fisical-or-entity" id="fisical-or-entity">
+                            <option value="0" selected disabled>Seleccione una opción</option>
                             <option value="fisical">Persona Física (humana)</option>
                             <option value="entity">Entidad (por ejemplo: sociedad anónima, compañía anónima, sociedad de responsabilidad limitada,
                                 fundación de interés privado, fideicomiso, etc.)</option>
@@ -44,7 +44,7 @@
                 
                 <div class="form-tax-two_column form-check-container check-entity">
                     <fieldset class="form-group form-check">
-                        <input class="isResponse" type="checkbox" name="institution" id="financial-institution">
+                        <input class="isResponse" type="checkbox" name="financial-institution" id="financial-institution">
                         <label for="financial-institution">
                             <div class="response-indicator">
                                 <span>&#10003;</span>
@@ -90,7 +90,7 @@
                     <fieldset class="form-group">
                         <label for="country" class="tax-text-dark">Seleccione el país</label>
                         <select name="country" id="country" class="isResponse">
-                            <option value="0">Seleccione una opción</option>
+                            <option value="0" selected disabled>Seleccione una opción</option>
                             <option value="ar">Constituida en Argentina</option>
                             <option value="aru">Constituida en Aruba</option>
                             <option value="bah">Constituida en Bahamas</option>
@@ -131,7 +131,7 @@
                     <fieldset class="form-group">
                         <label for="typeentity" class="tax-text-dark">Tipo de entidad</label>
                         <select name="typeentity" id="typeentity" class="isResponse">
-                            <option value="0">Seleccione una opción</option>
+                            <option value="0" selected disabled>Seleccione una opción</option>
                         </select>
                         <div class="response-indicator">
                             <span>&#10003;</span>
@@ -139,11 +139,11 @@
                     </fieldset>
                 </div>
                 <div class="tax-form-bottom">
-                    <button type="button" class="tax-button-primary" onclick="step(1, 2)">Continuar</button>
+                    <button type="button" enabled class="tax-button-primary" id="buttonFirst">Continuar</button>
                 </div>
             </form>
         </div>
-    </div>
+    </div> 
         
         <!-- Se realiza el step 2 -->
  
@@ -177,7 +177,7 @@
                         <fieldset class="form-group">
                             <label for="fisicalorentity" class="tax-text-dark"><strong>2.</strong> ¿Usted nació o vive en los EE.UU.?</label>
                             <select name="" id="">
-                                <option value="0">Seleccione una opción</option>
+                                <option value="0" selected disabled>Seleccione una opción</option>
                                 <option value="yes">Si</option>
                                 <option value="no">No</option>
                             </select>
@@ -190,7 +190,7 @@
                         <fieldset class="form-group">
                             <label for="nationality" class="tax-text-dark"><strong>3.</strong> Indique su nacionalidad</label>
                             <select name="" id="nationality">
-                                <option value="0">Seleccione una opción</option>
+                                <option value="0" selected disabled>Seleccione una opción</option>
                                 <option value="ar">Argentina</option>
                                 <option value="bra">Brasil</option>
                                 <option value="ar">Bolivia</option>
@@ -281,7 +281,7 @@
                     <div>
                         <h2 class="tax-text-dark">Por favor completar el siguiente formulario</h2>
                         <p class="tax-text-dark" style="text-align: center;"><strong>CUESTIONARIO “A” W-8BEN-E</strong></p>
-                        <button class="button-taxt-back" type="button" onclick="step(3,2)"><img src="./arrow.png" alt="Ir Atrás"></button>
+                        <button class="button-taxt-back" type="button" onclick="step(3,1)"><img src="./arrow.png" alt="Ir Atrás"></button>
                     </div>
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
@@ -306,7 +306,7 @@
                             <label for="nationality" class="tax-text-dark"><strong>3.</strong> <strong>Campo obligatorio</strong>  ¿La Entidad mantiene un negocio en funcionamiento en su país de constitución?</label>
                             <p style="margin: 3px 0;"> <strong>Nota:</strong> Un 'negocio en funcionamiento' se refiere, en términos generales, a una Entidad que mantiene activamente su operación principal en el mismo país de su constitución. Esto implica que realiza actividades comerciales normales, tales como la venta de productos o servicios, cuenta con empleados y dispone de oficinas o un local comercial. En esencia, se trata de una empresa que opera continuamente en su país de constitución y genera la mayor parte de sus ingresos allí. Negocio en funcionamiento NO incluye que el propósito de la Entidad consista meramente en ser titular de cuentas financieras o propietario de inmuebles o de derechos de propiedad intelectual, y recibir rentas derivadas de dichos bienes sin contar con personal contratado que gestione la administración de dichos bienes.</p>
                             <select name="" id="nationality">
-                                <option value="0">Seleccione una opción</option>
+                                <option value="0" selected disabled>Seleccione una opción</option>
                                 <option value="yes">Si</option>
                                 <option value="no">No</option>
                             </select>
@@ -376,7 +376,7 @@
         <!-- Se realiza el step 4 -->
 
         <div class="bg-images">
-            <div class="form-tax" id="step4" style="">
+            <div class="form-tax" id="step4" style="display: none;">
                 <div class="line-complete">
                     <div class="line-tax-content">
                         <div class="line-tax"></div>
@@ -392,13 +392,13 @@
                     <div>
                         <h2 class="tax-text-dark">Por favor completar el siguiente formulario</h2>
                         <p class="tax-text-dark" style="text-align: center;"><strong>CUESTIONARIO B</strong></p>
-                        <button class="button-taxt-back" type="button" onclick="step(4,3)"><img src="./arrow.png" alt="Ir Atrás"></button>
+                        <button class="button-taxt-back" type="button" onclick="step(4,1)"><img src="./arrow.png" alt="Ir Atrás"></button>
                     </div>
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
                             <label for="typeEntity" class="tax-text-dark"><strong>1.</strong> <strong> Campo opcional.</strong> Por favor escriba el nombre corporativo completo (denominación social) de su Entidad: </label>
                             <select name="" id="typeEntity">
-                                <option value="0">Seleccione una opción</option>
+                                <option value="0" selected disabled>Seleccione una opción</option>
                                 <option value="fideicomiso">Fideicomiso (“Trust”) con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>
                                 <option value="fundacion">Fundación de Interés Privado con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>
                                 <option value="stichting">“Stichting” con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>                                
@@ -445,7 +445,7 @@
                         <fieldset class="form-group">
                             <label for="competent" class="tax-text-dark"><strong>1.</strong> <strong> Campo obligatorio.</strong> ¿Las cortes de los EE.UU. son competentes para decidir asuntos relacionados con la administración del Trust?</label>
                             <select class="competent" name="" id="competent">
-                                <option value="0">Seleccione una opción</option>
+                                <option value="0" selected disabled>Seleccione una opción</option>
                                 <option value="yes">Si</option>
                                 <option value="no">No</option>
                             </select>
@@ -458,7 +458,7 @@
                         <fieldset class="form-group">
                             <label for="born" class="tax-text-dark"><strong>2.</strong> <strong> Campo obligatorio.</strong> ¿Alguna persona nacida en los EE.UU o que resida en los EE.UU. tiene facultad para tomar alguna decisión sobre el fideicomiso o es fideicomitente, fiduciaria, protectora o beneficiaria del fideicomiso?</label>
                             <select class="born" name="" id="born">
-                                <option value="0">Seleccione una opción</option>
+                                <option value="0" selected disabled>Seleccione una opción</option>
                                 <option value="yes">Si</option>
                                 <option value="no">No</option>
                             </select>
@@ -481,7 +481,7 @@
                                         <div class="tax-full-width" >
                                             <label for="fideicomiso" class="tax-text-dark" style="margin-top: 3px;">¿La persona o entidad que ha aportado o aportará bienes al fideicomiso (o su cónyuge, si es una persona física) también es beneficiaria de ese fideicomiso?</label>
                                             <select class="fideicomiso" name="" id="fideicomiso">
-                                                <option value="0">Seleccione una opción</option>
+                                                <option value="0" selected disabled>Seleccione una opción</option>
                                                 <option value="yes">Si</option>
                                                 <option value="no">No</option>
                                             </select>
@@ -494,7 +494,7 @@
                                         <div class="tax-full-width">
                                             <label for="revocable" class="tax-text-dark">¿El fideicomiso es revocable?</label>
                                             <select class="revocable" name="" id="revocable">
-                                                <option value="0">Seleccione una opción</option>
+                                                <option value="0" selected disabled>Seleccione una opción</option>
                                                 <option value="yes">Si</option>
                                                 <option value="no">No</option>
                                             </select>
@@ -507,7 +507,7 @@
                                         <fieldset class="form-group">
                                             <label for="entityFideicomiso" class="tax-text-dark">¿Alguna persona o entidad que aporta bienes al fideicomiso tiene algún tipo de control o influencia sobre el fideicomiso, ya sea de manera formal o informal?</label>
                                             <select class="entityFideicomiso" name="" id="entityFideicomiso">
-                                                <option value="0">Seleccione una opción</option>
+                                                <option value="0" selected disabled>Seleccione una opción</option>
                                                 <option value="yes">Si</option>
                                                 <option value="no">No</option>
                                             </select>
@@ -524,7 +524,7 @@
                         <fieldset class="form-group">
                             <label for="fideicomisoContract" class="tax-text-dark">¿El contrato de fideicomiso establece que el fiduciario|fideicomisario debe distribuir el 100% de las ganancias del fideicomiso a los beneficiarios cada año, sin poder acumular esas ganancias ni distribuir los bienes aportados por el fideicomitente?</label>
                             <select class="fideicomisoContract" name="" id="fideicomisoContract">
-                                <option value="0">Seleccione una opción</option>
+                                <option value="0" selected disabled>Seleccione una opción</option>
                                 <option value="yes">Si</option>
                                 <option value="no">No</option>
                             </select>
@@ -577,7 +577,7 @@
                                         <div class="tax-full-width" >
                                             <label for="person-entity" class="tax-text-dark" style="margin-top: 3px;">¿La persona o entidad que ha aportado o aportará bienes a esta fundación de interés privado (o su cónyuge, si es una persona física) también es beneficiaria de la fundación?</label>
                                             <select class="person-entity" name="" id="person-entity">
-                                                <option value="0">Seleccione una opción</option>
+                                                <option value="0" selected disabled>Seleccione una opción</option>
                                                 <option value="yes">Si</option>
                                                 <option value="no">No</option>
                                             </select>
@@ -590,7 +590,7 @@
                                         <div class="tax-full-width">
                                             <label for="revocable-foundation" class="tax-text-dark">¿La fundación es revocable?</label>
                                             <select class="revocable-foundation" name="" id="revocable-foundation">
-                                                <option value="0">Seleccione una opción</option>
+                                                <option value="0" selected disabled>Seleccione una opción</option>
                                                 <option value="yes">Si</option>
                                                 <option value="no">No</option>
                                             </select>
@@ -603,7 +603,7 @@
                                         <fieldset class="form-group">
                                             <label for="entity-person" class="tax-text-dark">¿La persona o entidad que aporta bienes a la fundación tiene algún tipo de control o influencia sobre la fundación, ya sea de manera formal o informal?</label>
                                             <select class="entity-person" name="" id="entity-person">
-                                                <option value="0">Seleccione una opción</option>
+                                                <option value="0" selected disabled>Seleccione una opción</option>
                                                 <option value="yes">Si</option>
                                                 <option value="no">No</option>
                                             </select>
@@ -620,7 +620,7 @@
                         <fieldset class="form-group">
                             <label for="foundation-record" class="tax-text-dark">¿El acta fundacional o su reglamento establece que la fundación debe distribuir el 100% de sus ganancias a los beneficiarios cada año, sin poder acumular esas ganancias ni distribuir los bienes que le hayan sido aportados?</label>
                             <select class="foundation-record" name="" id="foundation-record">
-                                <option value="0">Seleccione una opción</option>
+                                <option value="0" selected disabled>Seleccione una opción</option>
                                 <option value="yes">Si</option>
                                 <option value="no">No</option>
                             </select>
@@ -663,7 +663,7 @@
                         <fieldset class="form-group">
                             <label for="typeEntity" class="tax-text-dark"><strong>1.</strong> <strong> Campo opcional.</strong> Por favor escriba el nombre corporativo completo (denominación social) de su Entidad: </label>
                             <select class="typeEntity" name="" id="typeEntity">
-                                <option value="0">Seleccione una opción</option>
+                                <option value="0" selected disabled>Seleccione una opción</option>
                                 <option value="fideicomiso">Fideicomiso (“Trust”) con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>
                                 <option value="fundacion">Fundación de Interés Privado con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>
                                 <option value="stichting">“Stichting” con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>                                
@@ -708,7 +708,7 @@
                         <fieldset class="form-group">
                             <label for="typeEntity" class="tax-text-dark"><strong>1.</strong> <strong> Campo opcional.</strong> Por favor escriba el nombre corporativo completo (denominación social) de su Entidad: </label>
                             <select class="typeEntity" name="" id="typeEntity">
-                                <option value="0">Seleccione una opción</option>
+                                <option value="0" selected disabled>Seleccione una opción</option>
                                 <option value="fideicomiso">Fideicomiso (“Trust”) con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>
                                 <option value="fundacion">Fundación de Interés Privado con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>
                                 <option value="stichting">“Stichting” con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>                                
@@ -753,7 +753,7 @@
                         <fieldset class="form-group">
                             <label for="typeEntity" class="tax-text-dark"><strong>1.</strong> <strong> Campo opcional.</strong> Por favor escriba el nombre corporativo completo (denominación social) de su Entidad: </label>
                             <select class="typeEntity" name="" id="typeEntity">
-                                <option value="0">Seleccione una opción</option>
+                                <option value="0" selected disabled>Seleccione una opción</option>
                                 <option value="fideicomiso">Fideicomiso (“Trust”) con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>
                                 <option value="fundacion">Fundación de Interés Privado con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>
                                 <option value="stichting">“Stichting” con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>                                
@@ -808,7 +808,7 @@
                                         <div class="tax-full-width" >
                                             <label for="stitch-entity" class="tax-text-dark" style="margin-top: 3px;">¿La persona o entidad que ha aportado o aportará bienes a esta Stichting - o su cónyuge, si es una persona física - también es beneficiaria de la Stichting?</label>
                                             <select class="stitch-entity" name="" id="sticht-entity">
-                                                <option value="0">Seleccione una opción</option>
+                                                <option value="0" selected disabled>Seleccione una opción</option>
                                                 <option value="yes">Si</option>
                                                 <option value="no">No</option>
                                             </select>
@@ -821,7 +821,7 @@
                                         <div class="tax-full-width">
                                             <label for="sticht-revocable" class="tax-text-dark">¿La Stichting es revocable?</label>
                                             <select class="sticht-revocable" name="" id="sticht-revocable">
-                                                <option value="0">Seleccione una opción</option>
+                                                <option value="0" selected disabled>Seleccione una opción</option>
                                                 <option value="yes">Si</option>
                                                 <option value="no">No</option>
                                             </select>
@@ -834,7 +834,7 @@
                                         <fieldset class="form-group">
                                             <label for="sticht-entity-person" class="tax-text-dark">¿La persona o entidad que aporta bienes a la Stichting tiene algún tipo de control o influencia sobre la Stichting, ya sea de manera formal o informal?</label>
                                             <select class="sticht-entity-person" name="" id="sticht-entity-person">
-                                                <option value="0">Seleccione una opción</option>
+                                                <option value="0" selected disabled>Seleccione una opción</option>
                                                 <option value="yes">Si</option>
                                                 <option value="no">No</option>
                                             </select>
@@ -851,7 +851,7 @@
                         <fieldset class="form-group">
                             <label for="sticht-foundation-record" class="tax-text-dark">¿El documento constitutivo de la Stichting (o su reglamento o carta de deseos) establece que la Stichting debe distribuir el 100% de sus ganancias a los beneficiarios cada año, sin poder acumular esas ganancias ni distribuir los bienes que le haya sido aportados? </label>
                             <select class="sticht-foundation-record" name="" id="sticht-foundation-record">
-                                <option value="0">Seleccione una opción</option>
+                                <option value="0" selected disabled>Seleccione una opción</option>
                                 <option value="yes">Si</option>
                                 <option value="no">No</option>
                             </select>
@@ -868,6 +868,292 @@
         </div>
 
     <!-- Step 7 END -->
+
+     <!-- Se realiza el step 14 -->
+
+     <div class="bg-images">
+        <div class="form-tax" id="step14" style="display: none;">
+            <div class="line-complete">
+                <div class="line-tax-content">
+                    <div class="line-tax"></div>
+                    <div class="line-tax2"></div>
+                    <div class="line-tax3"></div>
+                </div>
+                <div class="line-tax-content2">
+                    <div class="line-tax4"></div>
+                    <div class="line-tax5"></div>
+                </div>
+            </div>
+            <form class="form-tax_content">
+                <div>
+                    <h2 class="tax-text-dark">Por favor completar el siguiente formulario</h2>
+                    <p class="tax-text-dark" style="text-align: center;"><strong>CUESTIONARIO “B.3.1 – Stichting (Grantor Trust)”</strong></p>
+                    <button class="button-taxt-back" type="button" onclick="step(14,7)"><img src="./arrow.png" alt="Ir Atrás"></button>
+                </div>
+                <div class="form-tax-two_column">
+                    <fieldset class="form-group">
+                        <label for="sticht-name" class="tax-text-dark"><strong>1.</strong> <strong> Campo opcional.</strong>Por favor, escriba el nombre de la Stichting. Este nombre se encuentra en el acta fundacional o documento constitutivo.</label>
+                        <input type="text" id="sticht-name" name="sticht-name" placeholder="Escribir aquí...">
+                        <div class="response-indicator">
+                            <span>&#10003;</span>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="form-tax-two_column">
+                    <fieldset class="form-group">
+                        <label for="sticht-country" class="tax-text-dark"><strong>2.</strong> <strong> Campos obligatorios.</strong> Por favor, indique el país bajo cuyas leyes se rige la Stichting. Dicha información la encontrará en el acta fundacional o documento constitutivo</label>
+                        <select class="sticht-country" name="" id="sticht-country">
+                            <option value="0" selected disabled>Seleccione una opción</option>
+                            <option value="aruba">Aruba</option>
+                            <option value="bonaire">Bonaire</option>
+                            <option value="curazao">Curazao</option>
+                            <option value="paises bajos">Paises Bajos</option>
+                            <option value="sint maarten">Sint Maarten</option>
+                        </select> 
+                        <div class="response-indicator">
+                            <span>&#10003;</span>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="form-tax-two_column">
+                    <fieldset class="form-group">
+                        <label for="sticht-address" class="tax-text-dark"><strong>3.</strong> <strong> Campo opcional.</strong> Por favor, escriba la dirección completa del domicilio de la Stichting. Incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, y código postal (si en su país se utiliza el código postal). <strong>No puede utilizar una dirección de P.O. Box.</strong> </label>
+                        <input type="text" id="sticht-address" name="sticht-address" placeholder="Escribir aquí...">
+                        <div class="response-indicator">
+                            <span>&#10003;</span>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="form-tax-two_column">
+                    <fieldset class="form-group">
+                        <label for="sticht-address2" class="tax-text-dark"><strong>4.</strong> <strong> Campo opcional.</strong> Campo opcional. Si usted lo desea, por favor escriba una dirección para la recepción de correo físico que sea distinta a la dirección del domicilio de la Stichting. Incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, código postal (si en su país se utiliza el código postal) y país. <strong>Sí puede utilizar una dirección de P.O. Box.</strong> </label>
+                        <input type="text" id="sticht-address2" name="sticht-address2" placeholder="Escribir aquí...">
+                        <div class="response-indicator">
+                            <span>&#10003;</span>
+                        </div>
+                    </fieldset>
+                </div>
+                <p style="margin: 3px 0;"> <strong>Nota:</strong>  Si esta dirección de correo es en los EE.UU., su institución financiera o proveedor probablemente le solicitará una explicación acerca del porqué su dirección de correspondencia es en los EE.UU. a pesar de que la dirección del domicilio de la Stichting no es en los EE.UU.  </p>
+                <div class="form-tax-two_column">
+                    <fieldset class="form-group">
+                        <label for="sticht-date" class="tax-text-dark"><strong>5.</strong> <strong> Campo opcional.</strong>  Por favor, indique la fecha que desea en su formulario: MES | DÍA | AÑO</strong> </label>
+                        <input type="date" id="sticht-date" name="sticht-date">
+                        <div class="response-indicator">
+                            <span>&#10003;</span>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="form-tax-two_column">
+                    <fieldset class="form-group">
+                        <label for="sticht-name2" class="tax-text-dark"><strong>6.</strong> <strong> Campo opcional.</strong>  Por favor escriba el nombre y apellido de la persona que firmará el formulario.</strong> </label>
+                        <input type="text" id="sticht-name2" name="sticht-name2" placeholder="Escribir aquí...">
+                        <div class="response-indicator">
+                            <span>&#10003;</span>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="tax-form-bottom">
+                    <button type="button" class="tax-button-primary">Continuar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Step 14 END -->
+
+         <!-- Se realiza el step 15 -->
+
+         <div class="bg-images">
+            <div class="form-tax" id="step15" style="display: none;">
+                <div class="line-complete">
+                    <div class="line-tax-content">
+                        <div class="line-tax"></div>
+                        <div class="line-tax2"></div>
+                        <div class="line-tax3"></div>
+                    </div>
+                    <div class="line-tax-content2">
+                        <div class="line-tax4"></div>
+                        <div class="line-tax5"></div>
+                    </div>
+                </div>
+                <form class="form-tax_content">
+                    <div>
+                        <h2 class="tax-text-dark">Por favor completar el siguiente formulario</h2>
+                        <p class="tax-text-dark" style="text-align: center;"><strong>CUESTIONARIO “B.3.2 – Stichting Simple Trust”</strong></p>
+                        <p>Con este cuestionario se va a completar el Form W-8IMYcomo Simple trust. </p>
+                        <button class="button-taxt-back" type="button" onclick="step(15,7)"><img src="./arrow.png" alt="Ir Atrás"></button>
+                    </div>
+                    <div class="form-tax-two_column">
+                        <fieldset class="form-group">
+                            <label for="sticht-name-1" class="tax-text-dark"><strong>1.</strong> <strong> Campo opcional.</strong>Por favor, escriba el nombre de la Stichting. Este nombre se encuentra en el acta fundacional o documento constitutivo. </label>
+                            <input type="text" id="sticht-name-1" name="sticht-name-1" placeholder="Escribir aquí...">
+                            <div class="response-indicator">
+                                <span>&#10003;</span>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="form-tax-two_column">
+                        <fieldset class="form-group">
+                            <label for="sticht-country-1" class="tax-text-dark"><strong>2.</strong> <strong> Campos obligatorios.</strong> Por favor, indique el país bajo cuyas leyes se rige la Stichting. Dicha información la encontrará en el acta fundacional o documento constitutivo</label>
+                            <select class="sticht-country-1" name="" id="sticht-country-1">
+                                <option value="0" selected disabled>Seleccione una opción</option>
+                                <option value="aruba">Aruba</option>
+                                <option value="bonaire">Bonaire</option>
+                                <option value="curazao">Curazao</option>
+                                <option value="paises bajos">Paises Bajos</option>
+                                <option value="sint maarten">Sint Maarten</option>
+                            </select> 
+                            <div class="response-indicator">
+                                <span>&#10003;</span>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="form-tax-two_column">
+                        <fieldset class="form-group">
+                            <label for="sticht-address-1" class="tax-text-dark"><strong>3.</strong> <strong> Campo opcional.</strong> Por favor, escriba la dirección completa del domicilio de la Stichting. Incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, y código postal (si en su país se utiliza el código postal).<strong>No puede utilizar una dirección de P.O. Box.</strong> </label>
+                            <input type="text" id="sticht-address-1" name="sticht-address-1" placeholder="Escribir aquí..." disabled>
+                            <div class="response-indicator">
+                                <span>&#10003;</span>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="form-tax-two_column">
+                        <fieldset class="form-group">
+                            <label for="sticht-address-2" class="tax-text-dark"><strong>4.</strong> <strong> Campo opcional.</strong> Si usted lo desea, por favor escriba una dirección para la recepción de correo físico que sea distinta a la dirección del domicilio de la Stichting. Incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, código postal (si en su país se utiliza el código postal) y país. <strong>Sí puede utilizar una dirección de P.O. Box.</strong> </label>
+                            <input type="text" id="sticht-address-2" name="sticht-address-2" placeholder="Escribir aquí..." disabled>
+                            <div class="response-indicator">
+                                <span>&#10003;</span>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <p style="margin: 3px 0;"> <strong>Nota:</strong>  Si esta dirección de correo es en los EE.UU., su institución financiera o proveedor probablemente le solicitará una explicación acerca del porqué su dirección de correspondencia es en los EE.UU. a pesar de que la dirección del domicilio de la Stichting no es en los EE.UU. </p>
+                    <div class="form-tax-two_column">
+                        <fieldset class="form-group">
+                            <label for="sticht-date-1" class="tax-text-dark"><strong>5.</strong> <strong> Campo opcional.</strong>  Por favor, indique la fecha que desea en su formulario: MES | DÍA | AÑO</strong> </label>
+                            <input type="date" id="sticht-date-1" name="sticht-date-1">
+                            <div class="response-indicator">
+                                <span>&#10003;</span>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="form-tax-two_column">
+                        <fieldset class="form-group">
+                            <label for="sticht-name-2" class="tax-text-dark"><strong>6.</strong> <strong> Campo opcional.</strong>  Por favor escriba el nombre y apellido de la persona que firmará el formulario.</strong> </label>
+                            <input type="text" id="sticht-name-2" name="sticht-name-2" placeholder="Escribir aquí...">
+                            <div class="response-indicator">
+                                <span>&#10003;</span>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="tax-form-bottom">
+                        <button type="button" class="tax-button-primary">Continuar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    
+        <!-- Step 15 END -->
+
+        <!-- Se realiza el step 16 -->
+
+        <div class="bg-images">
+            <div class="form-tax" id="step16" style="display: none;">
+                <div class="line-complete">
+                    <div class="line-tax-content">
+                        <div class="line-tax"></div>
+                        <div class="line-tax2"></div>
+                        <div class="line-tax3"></div>
+                    </div>
+                    <div class="line-tax-content2">
+                        <div class="line-tax4"></div>
+                        <div class="line-tax5"></div>
+                    </div>
+                </div>
+                <form class="form-tax_content">
+                    <div>
+                        <h2 class="tax-text-dark">Por favor completar el siguiente formulario</h2>
+                        <p class="tax-text-dark" style="text-align: center;"><strong>“A.3” W-8BEN-E para Stichting Complex Trust. P</strong></p>
+                        <button class="button-taxt-back" type="button" onclick="step(16,7)"><img src="./arrow.png" alt="Ir Atrás"></button>
+                    </div>
+                    <div class="form-tax-two_column">
+                        <fieldset class="form-group">
+                            <label for="sticht-name-11" class="tax-text-dark"><strong>1.</strong> <strong> Campo opcional.</strong>Por favor, escriba el nombre de la Stichting. Este nombre se encuentra en el acta fundacional de la Stichting o documento constitutivo.</label>
+                            <input type="text" id="sticht-name-11" name="sticht-name-11" placeholder="Escribir aquí...">
+                            <div class="response-indicator">
+                                <span>&#10003;</span>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="form-tax-two_column">
+                        <fieldset class="form-group">
+                            <label for="sticht-country-11" class="tax-text-dark"><strong>2.</strong> <strong> Campos obligatorios.</strong> Por favor, indique el país bajo cuyas leyes se rige la Stichting. Dicha información la encontrará en el acta fundacional o documento constitutivo </label>
+                            <select class="sticht-country-11" name="" id="sticht-country-11">
+                                <option value="0" selected disabled>Seleccione una opción</option>
+                                <option value="aruba">Aruba</option>
+                                <option value="bonaire">Bonaire</option>
+                                <option value="curazao">Curazao</option>
+                                <option value="paises bajos">Paises Bajos</option>
+                                <option value="sint maarten">Sint Maarten</option>
+                            </select> 
+                            <div class="response-indicator">
+                                <span>&#10003;</span>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="form-tax-two_column">
+                        <fieldset class="form-group">
+                            <label for="sticht-address-11" class="tax-text-dark"><strong>3.</strong> <strong> Campo opcional.</strong>Por favor, escriba la dirección completa del domicilio de la Stichting. Incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, y código postal (si en su país se utiliza el código postal).<strong>No puede utilizar una dirección de P.O. Box.</strong> </label>
+                            <input type="text" id="sticht-address-11" name="sticht-address-11" placeholder="Escribir aquí..." disabled>
+                            <div class="response-indicator">
+                                <span>&#10003;</span>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="form-tax-two_column">
+                        <fieldset class="form-group">
+                            <label for="sticht-address-22" class="tax-text-dark"><strong>4.</strong> <strong> Campo opcional.</strong> Si usted lo desea, por favor escriba una dirección para la recepción de correo físico que sea distinta a la dirección del domicilio de la Stichting. Incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, código postal (si en su país se utiliza el código postal) y país.<strong>Sí puede utilizar una dirección de P.O. Box.</strong> </label>
+                            <input type="text" id="sticht-address-22" name="sticht-address-22" placeholder="Escribir aquí..." disabled>
+                            <div class="response-indicator">
+                                <span>&#10003;</span>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <p style="margin: 3px 0;"> <strong>Nota:</strong>Si esta dirección de correo es en los EE.UU., su institución financiera o proveedor probablemente le solicitará una explicación acerca del porqué su dirección de correspondencia es en los EE.UU. a pesar de que la dirección del domicilio de la Stichting no es en los EE.UU.  </p>
+                    <div class="form-tax-two_column">
+                        <fieldset class="form-group">
+                            <label for="sticht-identification" class="tax-text-dark"><strong>5.</strong> <strong> Campo opcional.</strong> Por favor ingrese el número de identificación tributaria que le asignó a la Stichting la autoridad fiscal del país de domicilio. Es importante saber que, si este formulario será presentado a una institución financiera de EE.UU., dicha institución podría necesitar este número para evitar retener el 30% en impuestos sobre ciertos intereses. Estos intereses podrían estar exentos de esa retención si se incluye el número de contribuyente de la Stichting, en caso de tenerlo.</strong> </label>
+                            <input type="text" id="sticht-identification" name="sticht-identification">
+                            <div class="response-indicator">
+                                <span>&#10003;</span>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="form-tax-two_column">
+                        <fieldset class="form-group">
+                            <label for="sticht-date-11" class="tax-text-dark"><strong>6.</strong> <strong> Campo opcional.</strong> Indique la fecha para la emisión del formulario: MES | DÍA | AÑO</strong> </label>
+                            <input type="date" id="sticht-date-11" name="sticht-date-11">
+                            <div class="response-indicator">
+                                <span>&#10003;</span>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="form-tax-two_column">
+                        <fieldset class="form-group">
+                            <label for="sticht-name-22" class="tax-text-dark"><strong>7.</strong> <strong> Campo opcional.</strong> Por favor escriba el nombre y apellido de la persona que firmará el formulario W-8</strong> </label>
+                            <input type="text" id="sticht-name-22" name="sticht-name-22" placeholder="Escribir aquí...">
+                            <div class="response-indicator">
+                                <span>&#10003;</span>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="tax-form-bottom">
+                        <button type="button" class="tax-button-primary">Continuar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    
+        <!-- Step 16 END -->
 
     <!-- Se realiza el step 8 -->
 
@@ -894,7 +1180,7 @@
                         <fieldset class="form-group">
                             <label for="typeEntity" class="tax-text-dark"><strong>1.</strong> <strong> Campo opcional.</strong> Por favor escriba el nombre corporativo completo (denominación social) de su Entidad: </label>
                             <select class="typeEntity" name="" id="typeEntity">
-                                <option value="0">Seleccione una opción</option>
+                                <option value="0" selected disabled>Seleccione una opción</option>
                                 <option value="fideicomiso">Fideicomiso (“Trust”) con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>
                                 <option value="fundacion">Fundación de Interés Privado con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>
                                 <option value="stichting">“Stichting” con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>                                
@@ -939,7 +1225,7 @@
                     <fieldset class="form-group">
                         <label for="typeEntity" class="tax-text-dark"><strong>1.</strong> <strong> Campo opcional.</strong> Por favor escriba el nombre corporativo completo (denominación social) de su Entidad: </label>
                         <select class="typeEntity" name="" id="typeEntity">
-                            <option value="0">Seleccione una opción</option>
+                            <option value="0" selected disabled>Seleccione una opción</option>
                             <option value="fideicomiso">Fideicomiso (“Trust”) con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>
                             <option value="fundacion">Fundación de Interés Privado con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>
                             <option value="stichting">“Stichting” con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>                                
@@ -984,7 +1270,7 @@
                     <fieldset class="form-group">
                         <label for="typeEntity" class="tax-text-dark"><strong>1.</strong> <strong> Campo opcional.</strong> Por favor escriba el nombre corporativo completo (denominación social) de su Entidad: </label>
                         <select class="typeEntity" name="" id="typeEntity">
-                            <option value="0">Seleccione una opción</option>
+                            <option value="0" selected disabled>Seleccione una opción</option>
                             <option value="fideicomiso">Fideicomiso (“Trust”) con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>
                             <option value="fundacion">Fundación de Interés Privado con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>
                             <option value="stichting">“Stichting” con propósito patrimonial, incluyendo la tenencia de acciones e instrumentos financieros en general</option>                                
