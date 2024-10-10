@@ -4,6 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const patrimonialEntity = document.querySelector('#patrimonial-entity');
     const noneAbove = document.querySelector('#none-above');
     const buttonFirst = document.querySelector('#buttonFirst');
+    const checkEntity = document.querySelector('#check-entity');
+    const countryEntity = document.querySelector('#country-entity');
+    const country = document.querySelector('#country');
+    const typeEntity = document.querySelector('#typeentity');
 
     let selectedOption = null;
     let isFinancial = false;
@@ -11,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let isNoneAbove = false;
 
     const checkboxes = [financialInstitution, patrimonialEntity, noneAbove];
-    
+
     function handleCheckboxSelection(e) {
         checkboxes.forEach((checkbox) => {
             if (checkbox !== e.target) {
@@ -19,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    
+
     checkboxes.forEach((checkbox) => {
         checkbox.addEventListener('change', handleCheckboxSelection);
     });
@@ -29,42 +33,143 @@ document.addEventListener('DOMContentLoaded', () => {
         isFinancial = financialInstitution.checked;
         isPatrimonial = patrimonialEntity.checked;
         isNoneAbove = noneAbove.checked;
-        
+
         checkValues00();
     }
 
     function checkValues00() {
-        
+        selectedOption = fisicalOrEntity.value;
+        isFinancial = financialInstitution.checked;
+        isPatrimonial = patrimonialEntity.checked;
+        isNoneAbove = noneAbove.checked;
+
+        if (selectedOption === 'fisical') {
+            countryEntity.style.display = 'none';
+            checkEntity.style.display = 'none';
+            checkboxes.forEach((checkbox) => {
+                checkbox.checked = false;
+            });
+            noneAbove.checked = false;
+            step(1, 2); 
+            return;
+        }
+
         if (selectedOption === 'entity') {
-            console.log('Es una entidad');
-        }
+            checkEntity.style.display = 'block';
 
-        if(selectedOption === 'fisical'){
-            console.log('Es un fiscal');
-        }
+            if (isFinancial || isPatrimonial) {
+                displayInfoModal();
+                return;
+            }
 
-        if (isFinancial) {
-            console.log('Ha seleccionado Institución Financiera');
-        }
-
-        if (isPatrimonial) {
-            console.log('Ha seleccionado Entidad Patrimonial');
-        }
-
-        if (isNoneAbove) {
-            console.log('Ha seleccionado Ninguna de las anteriores');
+            if (isNoneAbove) {
+                countryEntity.style.display = 'flex';
+                // Esto asegura que se habilite country cuando sea necesario
+                country.addEventListener('change', handleCountryChange); 
+            } else {
+                countryEntity.style.display = 'none';
+            }
         }
     }
+
+    function handleCountryChange(e) {
+        const countryValue = e.target.value;
+
+        const countryEntityMap = {
+            "ar": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada", "Sociedad Anónima Unipersonal (S.A.U.)"],
+            "aru": ["“Naamloze Vennootschap (N.V.)", "Besloten Vennootschap (B.V.)"],
+            "bah": ["International Business Company","Limited Liability Company"],
+            "bar": ["Limited Company", "Limited Liabilty Company", "International Business Company"],
+            "bel": ["Public Limited Company", "Limited Liability Company"],
+            "ber": ["Exempted Company"],
+            "bol":["Sociedad Anónima", "Sociedad de Responsabilidad Limitada"],
+            "bra": ["Sociedade Anonima", "LTDA"],
+            "bri": ["BVI Business Company", "Limited Liability Company"],
+            "cay": ["Exempted Company", "Limited Liability Company"],
+            "chi": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada"],
+            "col": ["Sociedad Anónima", "Sociedad por Acciones Simplificada (S.A.S.)"],
+            "cos": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada"],
+            "cur": ["Naamloze Vennootschap (N.V.)", "Besloten Vennootschap (B.V.)"],
+            "ecu": ["Sociedad Anónima", "Compañía Anónima", "Sociedad de Responsabilidad Limitada"],
+            "esp": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada (S.L.)", "Sociedad Limitada Nueva Empresa (SLNE)"],
+            "sal": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada", "Sociedad Anónima de Capital Variable"],
+            "gua": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada", "Sociedad Anónima de Capital Variable"],
+            "hon": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada"],
+            "hong": ["Public Limited Company"],
+            "jam": ["Public Limited Company"],
+            "mal": ["Public Limited Company"],
+            "mex": ["Sociedad Anónima", "Sociedad Anónima de Capital Variable", "Sociedad de Responsabilidad Limitada"],
+            "nic": ["Compañía Anónima", "Sociedad de Responsabilidad Limitada", "constituida en Nicaragua"],
+            "pan": ["“Sociedad Anónima ” (S.A.) (Inc.) (Corp.)", "Sociedad de Responsabilidad Limitada"],
+            "par": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada"],
+            "per": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada"],
+            "por": ["Sociedade Anónima (S.A.)", "Sociedade por Quotas (Lda.)", "Sociedade Unipessoal por Quotas", "Sociedade por Quotas de Responsabilidade Limitada com Participação em Beneficios (Lda. com PAB)"],
+            "kitt": ["International Business Company", "Limited Liability Company"],
+            "uru": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada"],
+            "ven": ["Sociedad Anónima", "Compañía Anónima", "Sociedad de Responsabilidad Limitada"],
+            "otro": []
+        };
+
+        const arrayEntity = countryEntityMap[countryValue] || [];
+
+        if (arrayEntity.length) {
+            typeEntity.innerHTML = `
+                <option value="0">Seleccione una opción</option>
+                ${arrayEntity.map(entity => `<option value="${entity.replace(/\s+/g, '')}">${entity}</option>`).join("")}
+            `;
+            typeEntity.disabled = false;
+        } else {
+            typeEntity.innerHTML = `<option value="0">Seleccione una opción</option>`;
+            typeEntity.disabled = true;
+        }
+    }
+
+    typeEntity.addEventListener('change', (e) => {
+        const countryValue = country.value;
+        if (e.target.value !== '0' && countryValue !== '0' && countryValue !== 'otro') {
+            step(1, 3); 
+        } else if (countryValue === 'otro') {
+            step(1, 4); 
+        }
+    });
+
+    buttonFirst.addEventListener('click', (e) => {
+        updateValues00();
+    
+        // Si se selecciona 'otro', llamamos a la función que maneja el cambio de país
+        if (country.value === 'otro') {
+            step(1, 4); 
+            return; // Salimos para evitar que se muestre el modal
+        }
+    
+        // Mostramos un modal informativo si no hay selección válida
+        if (selectedOption === 'entity') {
+            if (isFinancial || isPatrimonial) {
+                displayInfoModal();
+            } else if (isNoneAbove) {
+                if (country.value !== '') {
+                    handleCountryChange({ target: { value: country.value } });
+                } else {
+                    console.log('Debe seleccionar un país antes de continuar.');
+                }
+            } else {
+                console.log('Debe seleccionar una opción válida antes de continuar.');
+            }
+        } else {
+            Swal.fire({
+                title: "Tipo de identidad",
+                text: "Debes seleccionar un tipo de identidad",
+                icon: "info"
+            });
+        }
+    });
 
     fisicalOrEntity.addEventListener('change', updateValues00);
     financialInstitution.addEventListener('change', updateValues00);
     patrimonialEntity.addEventListener('change', updateValues00);
     noneAbove.addEventListener('change', updateValues00);
-
-    buttonFirst.addEventListener('click', (e) => {
-        updateValues00(); 
-    });
 });
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const typeEntity = document.querySelector('#typeEntity');
