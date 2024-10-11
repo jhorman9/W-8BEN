@@ -539,6 +539,140 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+
+    const countriesLaw3 = document.querySelector('#countries-law3');
+
+      countriesLaw3.innerHTML = `
+        <option value='0' selected disabled>Seleccione una opción</option>
+        ${countries
+            .filter(entity => entity.name !== 'United States')
+            .map(entity => `<option value="${entity.name}">${entity.name}</option>`)
+            .join("")}      
+            `;
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const countriesEmail = document.querySelector('#trustee-email2');
+
+      countriesEmail.innerHTML = `
+        <option value='0' selected disabled>Seleccione una opción</option>
+        ${countries
+            .map(entity => `<option value="${entity.name}">${entity.name}</option>`)
+            .join("")}      
+            `;
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const stichtCountry02 = document.querySelector('#sticht-country02');
+
+      stichtCountry02.innerHTML = `
+        <option value='0' selected disabled>Seleccione una opción</option>
+        ${countries
+            .map(entity => `<option value="${entity.name}">${entity.name}</option>`)
+            .join("")}      
+            `;
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const stichtCountry002 = document.querySelector('#sticht-country002');
+
+      stichtCountry002.innerHTML = `
+        <option value='0' selected disabled>Seleccione una opción</option>
+        ${countries
+            .map(entity => `<option value="${entity.name}">${entity.name}</option>`)
+            .join("")}      
+            `;
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const stichtCountry004 = document.querySelector('#sticht-country004');
+
+      stichtCountry004.innerHTML = `
+        <option value='0' selected disabled>Seleccione una opción</option>
+        ${countries
+            .map(entity => `<option value="${entity.name}">${entity.name}</option>`)
+            .join("")}      
+            `;
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const countries3 = document.querySelector('#countries-3');
+
+      countries3.innerHTML = `
+        <option value='0' selected disabled>Seleccione una opción</option>
+        ${countries
+            .map(entity => `<option value="${entity.name}">${entity.name}</option>`)
+            .join("")}      
+            `;
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const trusteDirection = document.querySelector('#truste-direction');
+
+      trusteDirection.innerHTML = `
+        <option value='0' selected disabled>Seleccione una opción</option>
+        ${countries
+            .map(entity => `<option value="${entity.name}">${entity.name}</option>`)
+            .join("")}      
+            `;
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const trusteeCountry2 = document.querySelector('#trustee-country2');
+
+      trusteeCountry2.innerHTML = `
+        <option value='0' selected disabled>Seleccione una opción</option>
+        ${countries
+            .map(entity => `<option value="${entity.name}">${entity.name}</option>`)
+            .join("")}      
+            `;
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const directionCountry3 = document.querySelector('#direction-country3');
+
+      directionCountry3.innerHTML = `
+        <option value='0' selected disabled>Seleccione una opción</option>
+        ${countries
+            .map(entity => `<option value="${entity.name}">${entity.name}</option>`)
+            .join("")}      
+            `;
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const directionCountry2 = document.querySelector('#direction-country2');
+
+      directionCountry2.innerHTML = `
+        <option value='0' selected disabled>Seleccione una opción</option>
+        ${countries
+            .map(entity => `<option value="${entity.name}">${entity.name}</option>`)
+            .join("")}      
+            `;
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const countriesLaw2 = document.querySelector('#countries-law2');
+
+      countriesLaw2.innerHTML = `
+        <option value='0' selected disabled>Seleccione una opción</option>
+        ${countries
+            .filter(entity => entity.name !== 'United States')
+            .map(entity => `<option value="${entity.name}">${entity.name}</option>`)
+            .join("")}      
+            `;
+});
+
 
 
 document.addEventListener('DOMContentLoaded', () => {
