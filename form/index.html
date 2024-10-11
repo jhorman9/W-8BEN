@@ -304,7 +304,7 @@
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
                             <label for="benecountry" class="tax-text-dark"><strong>2.</strong> <strong>Campo obligatorio:</strong> País de constitución de la Entidad:</label>
-                            <input type="text" id="benecountry" name="benecountry">
+                            <input type="text" id="benecountry" name="benecountry" disabled>
                             <div class="response-indicator">
                                 <span>&#10003;</span>
                             </div>
@@ -314,11 +314,16 @@
                         <fieldset class="form-group">
                             <label for="benenationality" class="tax-text-dark"><strong>3.</strong> <strong>Campo obligatorio</strong>  ¿La Entidad mantiene un <strong>negocio en funcionamiento</strong> en su país de constitución?</label>
                             <p style="margin: 3px 0;"> <strong>Nota:</strong> Un 'negocio en funcionamiento' se refiere, en términos generales, a una Entidad que mantiene activamente su operación principal en el mismo país de su constitución. Esto implica que realiza actividades comerciales normales, tales como la venta de productos o servicios, cuenta con empleados y dispone de oficinas o un local comercial. En esencia, se trata de una empresa que opera continuamente en su país de constitución y genera la mayor parte de sus ingresos allí. <strong>Negocio en funcionamiento NO incluye</strong> que el propósito de la Entidad <strong>consista meramente en</strong> ser titular de cuentas financieras o propietario de inmuebles o de derechos de propiedad intelectual, y recibir rentas derivadas de dichos bienes sin contar con personal contratado que gestione la administración de dichos bienes.</p>
-                            <select name="" id="benenationality">
-                                <option value="0" selected disabled>Seleccione una opción</option>
-                                <option value="yes">Si</option>
-                                <option value="no">No</option>
-                            </select>
+                            <div class="form-tax-two_column">
+                                <select name="benenationality" id="benenationality">
+                                    <option value="0" selected disabled>Seleccione una opción</option>
+                                    <option value="yes">Si</option>
+                                    <option value="no">No</option>
+                                </select>
+                                <select name="benecountry3" id="benecountry3">
+                                    <option value="0">Seleccione una opción</option>
+                                </select>
+                            </div>
                             <div class="response-indicator">
                                 <span>&#10003;</span>
                             </div>
@@ -327,7 +332,10 @@
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
                             <label for="benepostal" class="tax-text-dark"><strong><strong>4. </strong> Campo opcional (pero el país es obligatorio).</strong> Por favor escriba la dirección completa del domicilio de la Entidad. Incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, y código postal (si en su país de constitución se utiliza el código postal). <strong>No puede utilizar una dirección de P.O. Box.</strong></label>
-                            <input type="text" placeholder="escribir aquí" id="benepostal" name="benepostal">
+                            <div class="form-tax-two_column">
+                                <input type="text" id="benecountry1" name="benecountry1" disabled>
+                                <input type="text" placeholder="escribir aquí" id="benepostal" name="benepostal">
+                            </div>
                             <div class="response-indicator">
                                 <span>&#10003;</span>
                             </div>
@@ -339,7 +347,12 @@
                                 <strong><strong>5.</strong> Campo opcional.</strong> Si usted lo desea, por favor escriba una dirección para la recepción de correo físico que seadistinta a la dirección del domicilio de negocios de la Entidad. Por favor incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, código postal (si en su país se utiliza el código postal) y país. <strong> label puede utilizar una dirección de P.O. Box.</strong>
                             </label>
                             <p style="margin: 3px 0;"> <strong>Nota:</strong>  Si esta dirección de correo es en los EE.UU., su institución financiera le solicitará una explicación acerca del porqué su dirección de correspondencia es en los EE.UU. a pesar de que la dirección de su domicilio no es en los EE.UU. </p>
-                            <input type="text" name="benedirection" id="benedirection" placeholder="escribir aquí">
+                            <div class="form-tax-two_column">
+                                <select name="benecountry2" id="benecountry2">
+                                    <option value="0" selected disabled>Seleccione una opción</option>
+                                </select>
+                                <input type="text" name="benedirection" id="benedirection" placeholder="escribir aquí">
+                            </div>
                             <div class="response-indicator">
                                 <span>&#10003;</span>
                             </div>

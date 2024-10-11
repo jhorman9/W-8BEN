@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "jam": ["Public Limited Company"],
             "mal": ["Public Limited Company"],
             "mex": ["Sociedad Anónima", "Sociedad Anónima de Capital Variable", "Sociedad de Responsabilidad Limitada"],
-            "nic": ["Compañía Anónima", "Sociedad de Responsabilidad Limitada", "constituida en Nicaragua"],
+            "nic": ["Compañía Anónima", "Sociedad de Responsabilidad Limitada"],
             "pan": ["“Sociedad Anónima ” (S.A.) (Inc.) (Corp.)", "Sociedad de Responsabilidad Limitada"],
             "par": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada"],
             "per": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada"],
@@ -136,13 +136,11 @@ document.addEventListener('DOMContentLoaded', () => {
     buttonFirst.addEventListener('click', (e) => {
         updateValues00();
     
-        // Si se selecciona 'otro', llamamos a la función que maneja el cambio de país
         if (country.value === 'otro') {
             step(1, 4); 
-            return; // Salimos para evitar que se muestre el modal
+            return;
         }
     
-        // Mostramos un modal informativo si no hay selección válida
         if (selectedOption === 'entity') {
             if (isFinancial || isPatrimonial) {
                 displayInfoModal();
@@ -156,11 +154,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log('Debe seleccionar una opción válida antes de continuar.');
             }
         } else {
-            Swal.fire({
-                title: "Tipo de identidad",
-                text: "Debes seleccionar un tipo de identidad",
-                icon: "info"
-            });
+            if(countryEntity.style.display == 'flex'){
+                Swal.fire({
+                    title: "Tipo de identidad",
+                    text: "Debes seleccionar un tipo de identidad",
+                    icon: "info"
+                });
+            }
         }
     });
 
@@ -658,6 +658,55 @@ document.addEventListener('DOMContentLoaded', () => {
             .map(entity => `<option value="${entity.name}">${entity.name}</option>`)
             .join("")}      
             `;
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const beneCountry2 = document.querySelector('#benecountry2');
+
+    beneCountry2.innerHTML = `
+    <option value='0' selected disabled>Seleccione una opción</option>
+    ${countries
+        .map(entity => `<option value="${entity.name}">${entity.name}</option>`)
+        .join("")}      
+        `;
+
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const countries2 = [
+        {name: 'Chile', code: 'CL'}, 
+        {name: 'España', code: 'ES'}, 
+        {name: 'Mexico', code: 'MX'}, 
+        {name: 'Portugal', code: 'PT'}, 
+        {name: 'Venezuela', code: 'VE'}
+    ]
+    
+    const beneCountry3 = document.querySelector('#benecountry3');
+    const beneNationality = document.querySelector('#benenationality');
+
+    beneNationality.addEventListener('change', (e) => {
+        if(e.target.value == 'yes'){
+            console.log(e.target.value);
+            console.log(beneCountry3);
+
+            beneCountry3.style.display = 'block';
+            beneCountry3.innerHTML = `
+            <option value='0' selected disabled>Seleccione una opción</option>
+            ${countries2
+                .map(entity => `<option value="${entity.name}">${entity.name}</option>`)
+                .join("")}      
+                `;
+        }else{
+            beneCountry3.style.display = 'none';
+            beneCountry3.innerHTML = `
+            <option value='0' selected disabled>Seleccione una opción</option>   
+                `;
+        }
+    });
+
+
 });
 
 document.addEventListener('DOMContentLoaded', () => {
