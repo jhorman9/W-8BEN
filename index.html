@@ -4,7 +4,247 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>to-pdf</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+    box-sizing: border-box;
+}
+
+body{
+    margin: auto;
+}
+
+/* Ocultar el ícono del calendario */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none; /* Para Chrome */
+}
+input[type="date"] {
+    -webkit-appearance: none; /* Para Safari */
+    appearance: none; /* Para otros navegadores */
+}
+
+.to-pdf{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    width: 19cm;
+    height: 27.94cm;
+}
+
+.to-pdf table:first-child tbody td{
+    border-top: 0;
+}
+
+.to-pdf span, .to-pdf label, .to-pdf p, .to-pdf strong, .to-pdf input[type="text"]{
+    font-size: 11px;
+}
+
+.to-pdf .header-left .title-big{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.to-pdf .header-left .title-big > span{
+    font-weight: 400;
+}
+
+
+table.table-layout {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.header-left {
+    width: 20%; /* Ajusta el ancho de la celda izquierda */
+}
+
+.header-center {
+    width: 60%; /* Ajusta el ancho de la celda central */
+    text-align: center;
+}
+
+.header-right {
+    width: 20%; /* Ajusta el ancho de la celda derecha */
+    text-align: right;
+}
+
+.header-center{
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+td, table{
+    border-left: none;
+    border-right: none;
+}
+
+tr > td + td {
+    border-left: 1px solid black;
+}
+
+input{
+    border: none;
+}
+
+input[type="text"]{
+    width: 100%;
+}
+
+input:focus {
+    outline: none;
+}
+
+.m-0{
+    margin: 0;
+}
+
+.table-border-bottom{
+    border-bottom: 1px solid black;
+}
+
+.line-complete {
+    display: inline-block;
+    width: 100vw;
+    border-bottom: 1px dotted #000;
+    margin-left: 5px;
+    position: absolute !important;
+    bottom: 6px;
+    left: 99px;
+}
+
+.border-before::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    left: 0;
+    border-bottom: 1px dotted black;
+    top: 9px;
+    z-index: 1;
+}
+
+li {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+li:nth-child(3){
+    flex: 1;
+}
+
+li span:nth-child(1){
+    position: relative;
+    z-index: 2;
+    width: fit-content;
+    background-color: white;
+    padding-right: 7px;
+    margin-right: -1px;
+    padding-left: 5px;
+    max-width: 682px;
+    line-height: 16px;
+}
+
+li div:nth-child(2){
+    position: relative;
+    z-index: 1;
+}
+
+li span:nth-child(3) {
+    position: relative;
+    z-index: 2;
+    width: 90px;
+    background-color: white;
+}
+
+.part-1{
+    font-size: 12px;
+}
+
+.table-without-padding td {
+    padding: 0 3px;
+}
+
+.part-2{
+    border-top: 1px solid black;
+}
+
+.part-2 .backg-dark{
+    background-color: #000;
+    padding: 0 7px;
+    color: white;
+    font-size: initial;
+    margin-right: 7px;
+    font-size: 16px;
+    line-height: 0px;
+}
+
+strong.fs-13{
+    font-size: 13px;
+    margin-right: 7px;
+}
+
+table tr.without-border td{
+    border: none;
+}
+
+.note-if{
+    border-top: 1px solid black;
+}
+
+.note-if p{
+    margin: 0;
+    padding: 3px 0;
+}
+
+.table-letter-small td{
+    font-size: 11px;
+}
+
+.border-bottom-table{
+    border-bottom: 1px solid black;
+}
+
+.border-top-none{
+    border-top: 0 !important;
+}
+
+.tablet-listed td{
+    padding-left: 8px;
+}
+
+
+.header {
+    width: 150px;
+    vertical-align: top;
+    font-weight: bold;
+    padding-right: 10px;
+}
+
+.content {
+    vertical-align: top;
+}
+
+.line {
+    border-bottom: 1px solid black;
+    width: 467px;
+    display: inline-block;
+}
+
+.date {
+    border-bottom: 1px solid black;
+    width: 150px;
+    display: inline-block;
+}
+
+.spacer {
+    padding-left: 20px;
+}
+    </style>
 </head>
 <body class="to-pdf content" id="content">
     <table border="1" cellpadding="5" cellspacing="0" style="border: 0">
@@ -16,8 +256,8 @@
                     <p class="m-0">Department of the Treasury Internal Revenue Service</p>
                 </td>
                 <td class="header-center" colspan="2">
-                    <h5 class="m-0"><strong style="font-size: 16px;">Certificate of Foreign Status of Beneficial Owner for United</strong> <br />
-                    <strong style="font-size: 16px;">States Tax Withholding and Reporting (Individuals)</strong></h5>
+                    <h5 class="m-0"><strong style="font-size: 14px;">Certificate of Foreign Status of Beneficial Owner for United</strong> <br />
+                    <strong style="font-size: 14px;">States Tax Withholding and Reporting (Individuals)</strong></h5>
                     <h6 class="m-0"><strong>▶ for use by individuals. Entities must use Form W-8BEN-E.</strong></h6>
                     <h6 class="m-0"><strong>▶ Go to www.irs.gov/FormW8BEN for instructions and the latest information.</strong></h6>
                     <h6 class="m-0"><strong>▶ Give this form to the withholding agent or payer. Do not send to the IRS.</strong></h6>
@@ -32,94 +272,123 @@
         <table class="not-use-form" style="overflow: hidden;">
             <tr class="do-not-use">
                 <td colspan="1" border="0" style="border-right: none !important;">
-                    <h6 style="margin: 0;">Do NOT use this form if:</h6>
+                    <h6 style="margin: 0; font-size: 12px;">Do NOT use this form if:</h6>
                 </td>
-                <td colspan="2" border="0" align="end" style="border-left: none !important;">
-                    <h6 style="margin: 0;">Instead, use Form:</h6>
+                <td colspan="2" border="0" align="end" style="border-left: none !important; width: 150px;">
+                    <h6 style="margin: 0; font-size: 12px;">Instead, use Form:</h6>
                 </td>
             </tr>
-            <tr>
-                <td colspan="3">
-                    <ul style="padding-left: 0px; margin: 0; line-height: 18px; padding-bottom: 3px;">
-                        <li><span>• You are NOT an individual</span>  <span class="border-before" style="text-align: end; width: 626px; display: inline-block;"><span>W-8BEN-E</span></span></li>
-                        <li><span>• You are a U.S. citizen or other U.S. person, including a resident alien individual</span><span class="border-before"><span>W-9</span></span></li>
-                        <li><span>• You are a beneficial owner claiming that income is effectively connected with the conduct of trade or business within the United States <br>(other than personal services) </span> <span class="border-before"><span>W-8ECI</span></span></li>
-                        <li><span>• You are a beneficial owner who is receiving compensation for personal services performed in the United States</span>  <span class="border-before"> <span>8233 or W-4</span></span></li>
-                        <li><span>• You are a person acting as an intermediary </span>  <span class="border-before"><span>W-8IMY</span></span></li>
-                    </ul>
+            <tr class="do-not-use">
+                <td colspan="1" border="0" style="border-right: none !important; text-align: left;">
+                    <h6 style="margin: 0; font-weight: 400; font-size:11px;">• You are NOT an individual</h6>
+                </td>
+                <td colspan="2" border="0" align="right" style="border-left: none !important; text-align: right;">
+                    <h6 style="margin: 0; font-weight: 400; font-size:11px;">W-8BEN-E</h6>
+                </td>
+            </tr>
+            <tr class="do-not-use">
+                <td colspan="1" border="0" style="border-right: none !important; text-align: left;">
+                    <h6 style="margin: 0; font-weight: 400; font-size:11px;">• You are a U.S. citizen or other U.S. person, including a resident alien individual</h6>
+                </td>
+                <td colspan="2" border="0" align="right" style="border-left: none !important; text-align: right;">
+                    <h6 style="margin: 0; font-weight: 400; font-size:11px;">W-9</h6>
+                </td>
+            </tr>
+            <tr class="do-not-use">
+                <td colspan="1" border="0" style="border-right: none !important; text-align: left;">
+                    <h6 style="margin: 0; font-weight: 400; font-size:11px;">• You are a beneficial owner claiming that income is effectively connected with the conduct of trade or business within the United States (other than personal services)</h6>
+                </td>
+                <td colspan="2" border="0" align="right" style="border-left: none !important; text-align: right;">
+                    <h6 style="margin: 0; font-weight: 400; font-size:11px;">W-8ECI</h6>
+                </td>
+            </tr>
+            <tr class="do-not-use">
+                <td colspan="1" border="0" style="border-right: none !important; text-align: left;">
+                    <h6 style="margin: 0; font-weight: 400; font-size:11px;">• You are a beneficial owner who is receiving compensation for personal services performed in the United States</h6>
+                </td>
+                <td colspan="2" border="0" align="right" style="border-left: none !important; text-align: right;">
+                    <h6 style="margin: 0; font-weight: 400; font-size:11px;">8233 or W-4</h6>
+                </td>
+            </tr>
+            <tr class="do-not-use">
+                <td colspan="1" border="0" style="border-right: none !important; text-align: left;">
+                    <h6 style="margin: 0; font-weight: 400; font-size:11px;">• You are a person acting as an intermediary</h6>
+                </td>
+                <td colspan="2" border="0" align="right" style="border-left: none !important; text-align: right;">
+                    <h6 style="margin: 0; font-weight: 400; font-size:11px;">W-8IMY</h6>
                 </td>
             </tr>
         </table>
-        <div class="note-if">
+        <div class="note-if" style="border-bottom: 1px solid #000;">
             <p><strong>Note: </strong>If you are resident in a FATCA partner jurisdiction (that is, a Model 1 IGA jurisdiction with reciprocity), certain tax account information may be provided to your jurisdiction of residence.</p>
         </div>
         <table border="1" cellpadding="5" cellspacing="0" class="table-without-padding">
-            <div class="part-2"><span style="font-size: 13px;"> <span class="backg-dark">Part l </span> <strong style="font-size: 13px;">Claim of Tax Treaty Benefits </strong>(for chapter 3 purposes only) (see instructions)</span></div>
+            <div class="part-2" style="border-top: none;"><span style="font-size: 13px;"> <span class="backg-dark">Part l </span> <strong style="font-size: 13px;">Claim of Tax Treaty Benefits </strong>(for chapter 3 purposes only) (see instructions)</span></div>
             <tr>
                 <td colspan="1">
                     <label for="beneficial-owner"><strong class="fs-13">1</strong> Name of individual who is the beneficial owner</label><br />
-                    <span>{ texto escribir }</span>
+                    <span><?=$name_lastname;?></span>
                 </td>
                 <td colspan="2">
                     <label for="country"><strong class="fs-13">2</strong> Country of citizenship</label><br />
-                    <span>{ texto escribir }</span>
+                    <span><?=$nationality;?></span>
                 </td>
             </tr>
             <tr>
                 <td colspan="3">
                     <label for="permanent"><strong class="fs-13">3</strong> Permanent residence address (street, apt. or suite no., or rural route). <strong>Do not use a P.O. box or in-care-of address.</strong> <br></label>
-                    <span>{ texto escribir }</span>
+                    <span><?=$writedirection;?></span>
                 </td>
             </tr>
             <tr>
                 <td colspan="1">
                     <label for="cityortown">City or town, state or province. Include postal code where appropriate.</label><br>
-                    <span>{ texto escribir }</span>
+                    <span></span>
                 </td>
                 <td colspan="2">
                     <label for="cityortown">Country</label><br>
-                    <span>{ texto escribir }</span>
+                    <span></span>
                 </td>
             </tr>
             <tr>
                 <td colspan="3">
                     <label for="cityortown"><strong class="fs-13">4</strong> Mailing address (if different from above)</label><br>
-                    <span>{ texto escribir }</span>
+                    <span><?=$writedirection2;?></span>
                 </td>
             </tr>
             <tr>
                 <td colspan="1">
                     <label for="cityortown">City or town, state or province. Include postal code where appropriate</label><br>
-                    <span>{ texto escribir }</span>
+                    <span></span>
                 </td>
                 <td colspan="2">
                     <label for="cityortown">Country</label><br>
-                    <span>{ texto escribir }</span>
+                    <span></span>
                 </td>
             </tr>
             <tr>
                 <td colspan="3">
                     <label for="taxpayer"><strong class="fs-13">5</strong> U.S. taxpayer identification number (SSN or ITIN), if required (see instructions)</label> <br>
-                    <span>{ texto escribir }</span>
+                    <span></span>
                 </td>
             </tr>
             <tr>
                 <td colspan="1" style="width:60%;">
                     <label for="cityortown"><strong class="fs-13">6a</strong> Foreign tax identifying number (see instructions)</label><br>
-                    <span>{ texto escribir }</span>
+                    <span><?=$writetaxpayer;?></span>
                 </td>
                 <td colspan="2" style="width:40%;">
-                    <label for="cityortown" style="width: 100%;display: inline-block;"><strong class="fs-13">6b</strong> Check if FTIN not legally required <span class="border-before" style="display: inline-block;width: 115px; position: relative;" align="end" data-adjust="115"><span style="background-color: white;z-index: 3;position: relative; vertical-align: middle;"><input type="checkbox" id="cityortown" value="Panama"></span></span></label>
+                    <label for="cityortown" style="width: 100%;display: inline-block;"><strong class="fs-13">6b</strong> Check if FTIN not legally required ....................<span  style="" align="end"><span style="" valign="middle"><input type="checkbox" id="cityortown" value="Panama"></span></span></label>
                 </td>
             </tr>
             <tr>
                 <td colspan="1">
                     <label for="cityortown"><strong class="fs-13">7</strong> Reference number(s) (see instructions) </label><br>
-                    <span>{ texto escribir }</span>
+                    <span></span>
                 </td>
                 <td colspan="2">
                     <label for="cityortown"><strong class="fs-13">8</strong> Date of birth (MM-DD-YYYY) (see instructions)</label><br>
-                    <span>{ texto escribir }</span>
+                    <span><?=$birthdate0;?></span>
                 </td>
             </tr>
         </table>
@@ -127,7 +396,7 @@
         <table border="1" cellpadding="5" cellspacing="0" class="table-without-padding">
             <tr class="without-border">
                 <td>
-                    <label for=""><strong class="fs-13">9</strong> I certify that the beneficial owner is a resident of { texto escribir } within the meaning of the income tax treaty between the United States and that country.</label>
+                    <label for=""><strong class="fs-13">9</strong> I certify that the beneficial owner is a resident of <?=$nationality;?> within the meaning of the income tax treaty between the United States and that country.</label>
                 </td>
             </tr>
             <tr class="without-border">
@@ -181,7 +450,7 @@
                 <td style="padding-top: 3px;">Furthermore, I authorize this form to be provided to any withholding agent that has control, receipt, or custody of the income of which I am the beneficial owner or any withholding agent that can disburse or make payments of the income of which I am the beneficial owner. <strong>I agree that I will submit a new form within 30 days if any certification made on this form becomes incorrect</strong>.</td>
             </tr>
         </table>
-        <table>
+        <table style="padding-top: 15px;">
             <tr>
                 <td class="header" style="border: none;"></td>
                 <td class="content" style="border: none;">
@@ -190,23 +459,21 @@
                 </td>
             </tr>
             <tr>
-                <td style="border: none; vertical-align: baseline; display: flex; align-items: center; gap: 10px; font-weight: bold; justify-content: center;">
-                    Sign Here <p class="triangule" style="margin: 0; transform: rotateZ(90deg) scale(1.5) rotateX(66deg);font-size: 24px;">▲</p>
+                <td style="border: none; vertical-align: baseline; display:inline; font-weight: bold;">
+                    Sign Here <p class="triangule" style="margin: 0; transform: rotateZ(90deg) scale(1.5) rotateX(66deg);font-size: 24px; display:inline-block;">▲</p>
                 </td>
                 <td style="border: none;">
                     <table>
                         <tr>
-                            <td style="border: none; padding-top: 9px;"><span class="line"></span></td>
-                            <td style="border: none;" class="spacer"></td>
-                            <td style="border: none; padding-top: 6px;"><span class="date" style="text-align: center;">12-15-2024</span></td>
+                            <td style="border: none; padding-top: 9px;"><span class="line" style='width: 400px;'></span></td>
+                            <td style="border: none; padding-top: 6px;"><span class="date" style="text-align: center;"><?=$birthdate01;?></span></td>
                         </tr>
                         <tr>
                             <td style="border: none; font-size: 11px;">Signature of beneficial owner (or individual authorized to sign for beneficial owner)</td>
-                            <td style="border: none;"></td>
                             <td style="border: none; font-size: 11px; text-align: center;">Date (MM-DD-YYYY)</td>
                         </tr>
                         <tr>
-                            <td style="border: none;" colspan="3"><span class="line">{ texto escribir }</span></td>
+                            <td style="border: none;" colspan="3"><span class="line" style='width: 400px;'><?=$name_lastname;?></span></td>
                         </tr>
                         <tr>
                             <td style="border: none; font-size: 11px;">Print name of signer</td>
