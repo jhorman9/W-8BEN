@@ -1,0 +1,461 @@
+<style>
+    * {
+box-sizing: border-box;
+font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body{
+margin: auto;
+}
+
+/* Ocultar el ícono del calendario */
+input[type="date"]::-webkit-calendar-picker-indicator {
+display: none; /* Para Chrome */
+}
+input[type="date"] {
+-webkit-appearance: none; /* Para Safari */
+appearance: none; /* Para otros navegadores */
+}
+
+.to-pdf{
+font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+width: 21.69cm;
+/* height: 27.94cm; */
+}
+
+.to-pdf table:first-child tbody td{
+border-top: 0;
+}
+
+.to-pdf span, .to-pdf label, .to-pdf p, .to-pdf strong, .to-pdf input[type="text"]{
+font-size: 11px;
+}
+
+.to-pdf .header-left .title-big{
+font-size: 24px;
+font-weight: bold;
+}
+
+.to-pdf .header-left .title-big > span{
+font-weight: 400;
+}
+
+
+table.table-layout {
+width: 100%;
+table-layout: fixed;
+}
+
+.header-left {
+width: 20%; /* Ajusta el ancho de la celda izquierda */
+}
+
+.header-center {
+width: 60%; /* Ajusta el ancho de la celda central */
+text-align: center;
+}
+
+.header-right {
+width: 20%; /* Ajusta el ancho de la celda derecha */
+text-align: right;
+}
+
+.header-center{
+text-align: center;
+}
+
+table {
+width: 100%;
+border-collapse: collapse;
+}
+
+th {
+background-color: #f2f2f2;
+}
+
+td, table{
+border-left: none;
+border-right: none;
+}
+
+tr > td + td {
+border-left: 1px solid black;
+}
+
+input{
+border: none;
+}
+
+input[type="text"]{
+width: 100%;
+}
+
+input:focus {
+outline: none;
+}
+
+.m-0{
+margin: 0;
+}
+
+.table-border-bottom{
+border-bottom: 1px solid black;
+}
+
+.line-complete {
+display: inline-block;
+width: 100vw;
+border-bottom: 1px dotted #000;
+margin-left: 5px;
+position: absolute !important;
+bottom: 6px;
+left: 99px;
+}
+
+li{
+position: relative;
+display: flex;
+justify-content: space-between;
+}
+
+li:nth-child(3){
+flex: 1;
+}
+
+li span:nth-child(1){
+position: relative;
+z-index: 2;
+width: fit-content;
+background-color: white;
+padding-right: 7px;
+margin-right: -1px;
+padding-left: 5px;
+max-width: 682px;
+}
+
+li div:nth-child(2){
+position: relative;
+z-index: 1;
+}
+
+li span:nth-child(3) {
+position: relative;
+z-index: 2;
+width: fit-content;
+background-color: white;
+}
+
+.part-1{
+font-size: 12px;
+}
+
+.table-without-padding td {
+padding: 0 3px;
+border-top: 1px solid;
+border-bottom: 1px solid;
+}
+
+.part-2{
+border-top: 1px solid black;
+}
+
+.part-2 .backg-dark{
+background-color: #000;
+padding: 0 7px;
+color: white;
+font-size: initial;
+margin-right: 7px;
+font-size: 16px;
+line-height: 0px;
+}
+
+strong.fs-13{
+font-size: 13px;
+margin-right: 7px;
+}
+
+table tr.without-border td{
+border: none;
+}
+
+.note-if{
+border-top: 1px solid black;
+}
+
+.note-if p{
+margin: 0;
+padding: 3px 0;
+}
+
+.table-letter-small td{
+font-size: 11px;
+}
+
+.border-bottom-table{
+border-bottom: 1px solid black;
+}
+
+.border-top-none{
+border-top: 0 !important;
+}
+
+.tablet-listed td{
+padding-left: 8px;
+}
+
+
+.header {
+width: 150px;
+vertical-align: top;
+font-weight: bold;
+padding-right: 10px;
+}
+
+.content {
+vertical-align: top;
+}
+
+.line {
+border-bottom: 1px solid black;
+width: 467px;
+display: inline-block;
+}
+
+.date {
+border-bottom: 1px solid black;
+width: 150px;
+display: inline-block;
+}
+
+.spacer {
+padding-left: 20px;
+}
+
+.border-before::before {
+position: absolute;
+content: '';
+width: 100%;
+left: 0;
+border-bottom: 1px dotted black;
+top: 9px;
+z-index: 1;
+}
+
+.vertical-align-top_table{
+vertical-align: top;
+}
+
+input[type="checkbox"] {
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+width: 15px;
+height: 15px;
+border: 1px solid black;
+background-color: white;
+display: inline-block;
+vertical-align: middle;
+border-radius: 2px;
+cursor: pointer;
+position: relative;
+margin: 0 3px;
+}
+
+input[type="checkbox"]:checked {
+background-color: #e7f3fe;
+border-color: #7a7a7a;
+}
+
+input[type="checkbox"]:checked::after {
+content: '\2714';
+color: black;
+font-size: 10px;
+position: absolute;
+top: 0px;
+left: 2.5px;
+}
+
+.table-spacing-check input[type="checkbox"] {
+margin-bottom: 5px;
+}
+
+.size-letter-spacing{
+display: inline-block;
+line-height: 16px;
+}
+
+label.ident-list {
+padding-left: 55px;
+}
+</style>
+<body class="to-pdf">
+    <table cellpadding="5" cellspacing="0">
+        <tr>
+            <td colspan="1" style="width: 50%; border: none;">
+                <label for="">Form W-8BEN-E (Rev. 10-2021)</label>
+            </td>
+            <td colspan="0" style="width: 10%; border: none;"></td>
+            <td style="text-align: end; width: 40%; border: none;" colspan="2" >
+                <label for="">Page <strong class="fs-13" style="margin: 0;">7</strong></label>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 13px;"> 
+                    <span class="backg-dark">Part XXI </span> <strong style="font-size: 13px;">501(c) Organization </strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="" class="size-letter-spacing"><strong class="fs-13">35</strong> <input type="checkbox" id=""> I certify that the entity identified in Part I is a 501(c) organization that: <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 34px;">• Has been issued a determination letter from the IRS that is currently in effect concluding that the payee is a section 501(c) organization that is dated; <br><span class="line" style="width: 150px;">{ texto escribir }</span> <strong>or</strong></label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 34px;">• Has provided a copy of an opinion from U.S. counsel certifying that the payee is a section 501(c) organization (without regard to whether the payee is a foreign private foundation). </label>
+                </label> 
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 13px;"> 
+                    <span class="backg-dark">Part XXII </span> <strong style="font-size: 13px;">Nonprofit Organization </strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="" class="size-letter-spacing"><strong class="fs-13">36</strong> <input type="checkbox" id=""> I certify that the entity identified in Part I is a nonprofit organization that meets the following requirements. <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 34px;">• The entity is established and maintained in its country of residence exclusively for religious, charitable, scientific, artistic, cultural or educational purposes;</label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 34px;">• The entity is exempt from income tax in its country of residence;</label><br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 34px;">• The entity has no shareholders or members who have a proprietary or beneficial interest in its income or assets;</label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 34px;">• Neither the applicable laws of the entity’s country of residence nor the entity’s formation documents permit any income or assets of the entity to be distributed to, or applied for the benefit of, a private person or noncharitable entity other than pursuant to the conduct of the entity’s charitable activities or as payment of reasonable compensation for services rendered or payment representing the fair market value of property which the entity has purchased; <strong>and</strong></label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 34px;">• The applicable laws of the entity’s country of residence or the entity’s formation documents require that, upon the entity’s liquidation or dissolution, all of its assets be distributed to an entity that is a foreign government, an integral part of a foreign government, a controlled entity of a foreign government, or another organization that is described in this part or escheats to the government of the entity’s country of residence or any political subdivision thereof. </label>
+                </label> 
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 13px;"> 
+                    <span class="backg-dark">Part XXIII </span> <strong style="font-size: 13px;"> Publicly Traded NFFE or NFFE Affiliate of a Publicly Traded Corporation </strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 0;">
+                <strong>Check box 37a or 37b, whichever applies.</strong>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="" class="size-letter-spacing"><strong class="fs-13">37a</strong> <input type="checkbox" id=""> I certify that: <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 41px;">• The entity identified in Part I is a foreign corporation that is not a financial institution; <strong>and</strong></label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 41px;">• The stock of such corporation is regularly traded on one or more established securities markets, including <span class="line" style="width: 255px;" data-adjust="210"> {texto escribir} </span> (name one securities exchange upon which the stock is regularly traded).</label> 
+                </label> 
+                <label for="" class="size-letter-spacing" style="padding-left: 14px; padding-bottom: 20px;"><strong class="fs-13">b</strong> <input type="checkbox" id=""> I certify that: <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 28px;">• The entity identified in Part I is a foreign corporation that is not a financial institution;</label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 28px;">• The entity identified in Part I is a member of the same expanded affiliated group as an entity the stock of which is regularly traded on an established securities market;</label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 28px;">• The name of the entity, the stock of which is regularly traded on an established securities market, is <span class="line" style="width: 260px" data-adjust="214"> { texto escribir } </span>; <strong>and</strong></label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 28px;">• The name of the securities market on which the stock is regularly traded is <span class="line" style="width: 405px" data-adjust="373"> { texto escribir } </span></label>
+                </label> 
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 13px;"> 
+                    <span class="backg-dark">Part XXIV </span> <strong style="font-size: 13px;">  Excepted Territory NFFE </strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="" class="size-letter-spacing"><strong class="fs-13">38</strong> <input type="checkbox" id=""> I certify that: <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 34px;">• The entity identified in Part I is an entity that is organized in a possession of the United States;</label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 34px;">• The entity identified in Part I:</label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 55px;"><strong>(i)</strong> Does not accept deposits in the ordinary course of a banking or similar business;</label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 55px;"><strong>(ii)</strong> Does not hold, as a substantial portion of its business, financial assets for the account of others; <strong>or</strong></span></label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 55px;"><strong>(iii)</strong> Is not an insurance company (or the holding company of an insurance company) that issues or is obligated to make payments with respect to a financial account; <strong>and</strong></label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 34px;">• All of the owners of the entity identified in Part I are bona fide residents of the possession in which the NFFE is organized or incorporated.</label>
+                </label> 
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 13px;"> 
+                    <span class="backg-dark">Part XXV </span> <strong style="font-size: 13px;">Active NFFE </strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="" class="size-letter-spacing"><strong class="fs-13">39</strong> <input type="checkbox" id=""> I certify that: <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 34px;">• The entity identified in Part I is a foreign entity that is not a financial institution;</label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 34px;">• Less than 50% of such entity’s gross income for the preceding calendar year is passive income; <strong>and</strong></label><br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 34px;">• Less than 50% of the assets held by such entity are assets that produce or are held for the production of passive income (calculated as a weighted average of the percentage of passive assets measured quarterly) (see instructions for the definition of passive income).</label>
+                </label> 
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 13px;"> 
+                    <span class="backg-dark">Part XXVI </span> <strong style="font-size: 13px;">Passive NFFE </strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="" class="size-letter-spacing"><strong class="fs-13">40a</strong> <input type="checkbox" id=""> I certify that the entity identified in Part I is a foreign entity that is not a financial institution (other than an investment entity organized in a possession of the United States) and is not certifying its status as a publicly traded NFFE (or affiliate), excepted territory NFFE, active NFFE, direct reporting NFFE, or sponsored direct reporting NFFE.</label> 
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 0;"><strong>Check box 40b or 40c, whichever applies.</strong></td>
+        </tr>
+        <tr>
+            <td style="border-bottom: 1px solid black;">
+                <label for="" class="size-letter-spacing" style="padding-left: 14px;">
+                    <strong class="fs-13">b</strong><input type="checkbox" id=""> <label for="">I further certify that the entity identified in Part I has no substantial U.S. owners (or, if applicable, no controlling U.S. persons); <strong>or</strong></label> <br>
+                </label>
+                <label for="" class="size-letter-spacing" style="padding-left: 14px;">
+                    <strong class="fs-13">c</strong><input type="checkbox" id="" style="margin-left: 5px;"> <label for="">I further certify that the entity identified in Part I has provided the name, address, and TIN of each substantial U.S. owner (or, if applicable, controlling U.S. person) of the NFFE in Part XXIX</label>
+                </label>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td align="end" style="font-size: 11px; border: none; padding-bottom: 190px;">Form <span style="font-size: 16px; font-weight: bold;">W-8BEN-E</span> (Rev. 10-2021)</td>
+        </tr>
+    </table>
+    <script>
+        function adjustWidthForOS() {
+            const userAgent = window.navigator.userAgent.toLowerCase();
+            const lines = document.querySelectorAll('.line');
+    
+            // Detectar si es macOS
+            if (userAgent.indexOf('mac') !== -1) {
+                lines.forEach(line => {
+                    // Obtener el valor de ajuste desde el atributo data
+                    const pixelAdjustment = line.getAttribute('data-adjust');
+                    
+                    // Ajustar el ancho al valor obtenido
+                    if (pixelAdjustment) {
+                        line.style.width = pixelAdjustment + 'px';
+                    }
+                });
+            }
+        }
+    
+        // Llama a la función al cargar la página
+        document.addEventListener('DOMContentLoaded', adjustWidthForOS);
+    </script>
+</body>

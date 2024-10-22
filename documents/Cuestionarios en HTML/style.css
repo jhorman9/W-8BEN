@@ -1,0 +1,171 @@
+*{
+    box-sizing: border-box;
+}
+
+.line-complete {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.form-tax_content {
+    backdrop-filter: blur(5px);
+    background-color: rgb(255 255 255 / 65%);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 60vw;
+    padding: 20px;
+    margin: 35px 14px;
+    z-index: 3;
+}
+
+.bg-images {
+    background-image: url(https://develop1.webstudiopanama.com/w8-tax/wp-content/uploads/2024/10/RAYAS_Mesa-de-trabajo-1-copia.png),
+                      url(https://develop1.webstudiopanama.com/w8-tax/wp-content/uploads/2024/10/RAYAS_Mesa-de-trabajo-1.png);
+    background-size: 45%, 50%;
+    background-repeat: no-repeat, no-repeat;
+    background-position: left bottom, right top;
+}
+
+fieldset {
+    border: none;
+}
+
+.form-tax {
+    position: relative;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+	min-height: 75vh;
+    z-index: 3;
+}
+
+.form-tax_content fieldset{
+	margin: 0;
+    position: relative;
+    z-index: 2;
+    padding: 0;
+}
+
+.form-tax_content fieldset label{
+    display: block;
+}
+.form-tax_content .form-tax-two_column{
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+}
+.form-tax_content h2{
+    margin-bottom: 14px;
+    text-align: center;
+}
+.form-tax_content .form-group label{
+    margin-bottom: 3px;
+    margin-top: 14px;
+}
+.form-tax_content .form-tax-two_column .form-group{
+    width: 100%;
+}
+.form-tax_content .form-tax-two_column .form-group input, .form-tax_content .form-tax-two_column .form-group select{
+    width: 100%;
+    height: 35px;
+    border-radius: 7px;
+    outline: none;
+    border: 1px solid #b4b4b4;
+}
+.form-tax_content .form-tax-two_column .form-group input[type="checkbox"]{
+    width: initial !important;
+}
+.form-tax_content .form-tax-two_column .form-group.form-check{
+    display: inline-flex;
+    gap: 7px;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+.form-tax_content .form-tax-two_column.form-check-container{
+    display: none;
+}
+.tax-text-dark{
+    color: #333;
+}
+.tax-separate{
+    margin-bottom: 14px;
+}
+.tax-form-bottom {
+margin-top: 14px;
+}
+.form-number{
+    margin-right: 3px;
+}
+button.tax-button-primary {
+    background: rgb(0, 38, 198);
+    outline: none;
+    border: none;
+    padding: 7px 14px;
+    width: 100%;
+    color: #fff;
+    border-radius: 7px;
+    cursor: pointer;
+}
+button.tax-button-primary:hover {
+    background-color: #55b030;
+}
+
+#country-entity-child{
+    display: flex;
+    justify-content: space-between;
+    gap: 7px;
+    width: 100%;
+}
+
+.response-indicator {
+    display: none;
+    position: absolute;
+    bottom: 14px;
+    left: -7px;
+    font-size: 17px;
+    color: green;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+button.button-taxt-back{
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    padding: 7px 14px;
+    border-radius: 7px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    &:hover{
+        opacity: 0.9;
+    }
+}
+
+button.button-taxt-back img{
+    width: 30px;
+}
+
+.next-content-child + .content-child{
+    padding-left: 14px;
+}
+
+.tax-full-width{
+    width: 100%;
+}
+
+#tax-isShow{
+    display: none;
+}
+
+#benecountry3{
+	display: none;
+}
