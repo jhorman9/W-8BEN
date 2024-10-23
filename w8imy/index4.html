@@ -1,0 +1,481 @@
+<body class="to-pdf">
+    <style>
+        * {
+        box-sizing: border-box;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    body{
+        margin: auto;
+    }
+
+    /* Ocultar el ícono del calendario */
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        display: none; /* Para Chrome */
+    }
+    input[type="date"] {
+        -webkit-appearance: none; /* Para Safari */
+        appearance: none; /* Para otros navegadores */
+    }
+
+    .to-pdf{
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        width: 19cm;
+        /* height: 27.94cm; */
+    }
+
+    .to-pdf table:first-child tbody td{
+        border-top: 0;
+    }
+
+    .to-pdf span, .to-pdf label, .to-pdf p, .to-pdf strong, .to-pdf input[type="text"]{
+        font-size: 11px;
+    }
+
+    .to-pdf .header-left .title-big{
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .to-pdf .header-left .title-big > span{
+        font-weight: 400;
+    }
+
+
+    table.table-layout {
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .header-left {
+        width: 20%; /* Ajusta el ancho de la celda izquierda */
+    }
+
+    .header-center {
+        width: 60%; /* Ajusta el ancho de la celda central */
+        text-align: center;
+    }
+
+    .header-right {
+        width: 20%; /* Ajusta el ancho de la celda derecha */
+        text-align: right;
+    }
+
+    .header-center{
+        text-align: center;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    td, table{
+        border-left: none;
+        border-right: none;
+    }
+
+    tr > td + td {
+        border-left: 1px solid black;
+    }
+
+    input{
+        border: none;
+    }
+
+    input[type="text"]{
+        width: 100%;
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    .m-0{
+        margin: 0;
+    }
+
+    .table-border-bottom{
+        border-bottom: 1px solid black;
+    }
+
+    .line-complete {
+        display: inline-block;
+        width: 100vw;
+        border-bottom: 1px dotted #000;
+        margin-left: 5px;
+        position: absolute !important;
+        bottom: 6px;
+        left: 99px;
+    }
+
+    li{
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    li:nth-child(3){
+        flex: 1;
+    }
+
+    li span:nth-child(1){
+        position: relative;
+        z-index: 2;
+        width: fit-content;
+        background-color: white;
+        padding-right: 7px;
+        margin-right: -1px;
+        padding-left: 5px;
+        max-width: 635px;
+    }
+
+    li div:nth-child(2){
+        position: relative;
+        z-index: 1;
+    }
+
+    li span:nth-child(3) {
+        position: relative;
+        z-index: 2;
+        width: fit-content;
+        background-color: white;
+    }
+
+    .part-1{
+        font-size: 12px;
+    }
+
+    .table-without-padding td {
+        padding: 0 3px;
+        border-top: 1px solid;
+        border-bottom: 1px solid;
+    }
+
+    .part-2{
+        border-top: 1px solid black;
+    }
+
+    .part-2 .backg-dark{
+        background-color: #000;
+        padding: 0 7px;
+        color: white;
+        font-size: initial;
+        margin-right: 7px;
+        font-size: 16px;
+        line-height: 0px;
+    }
+
+    strong.fs-13{
+        font-size: 13px;
+        margin-right: 7px;
+    }
+
+    table tr.without-border td{
+        border: none;
+    }
+
+    .note-if{
+        border-top: 1px solid black;
+    }
+
+    .note-if p{
+        margin: 0;
+        padding: 3px 0;
+    }
+
+    .table-letter-small td{
+        font-size: 11px;
+    }
+
+    .border-bottom-table{
+        border-bottom: 1px solid black;
+    }
+
+    .border-top-none{
+        border-top: 0 !important;
+    }
+
+    .tablet-listed td{
+        padding-left: 8px;
+    }
+
+
+    .header {
+        width: 150px;
+        vertical-align: top;
+        font-weight: bold;
+        padding-right: 10px;
+    }
+
+    .content {
+        vertical-align: top;
+    }
+
+    .line {
+        border-bottom: 1px solid black;
+        width: 467px;
+        display: inline-block;
+    }
+
+    .date {
+        border-bottom: 1px solid black;
+        width: 150px;
+        display: inline-block;
+    }
+
+    .spacer {
+        padding-left: 20px;
+    }
+
+    .border-before::before {
+        position: absolute;
+        content: '';
+        width: 100%;
+        left: 0;
+        border-bottom: 1px dotted black;
+        top: 9px;
+        z-index: 1;
+    }
+
+    .vertical-align-top_table{
+        vertical-align: top;
+    }
+
+    input[type="checkbox"] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: 15px;
+        height: 15px;
+        border: 1px solid black;
+        background-color: white;
+        display: inline-block;
+        vertical-align: middle;
+        border-radius: 2px;
+        cursor: pointer;
+        position: relative;
+        margin: 0 3px;
+    }
+    
+    input[type="checkbox"]:checked {
+        background-color: #e7f3fe;
+        border-color: #7a7a7a;
+    }
+    
+    input[type="checkbox"]:checked::after {
+        content: '\2714';
+        color: black;
+        font-size: 10px;
+        position: absolute;
+        top: 0px;
+        left: 2.5px;
+    }
+
+    .table-spacing-check input[type="checkbox"] {
+        margin-bottom: 5px;
+    }
+
+    .size-letter-spacing{
+        display: inline-block;
+        line-height: 16px;
+    }
+
+    label.ident-list {
+        padding-left: 55px;
+    }
+    </style>
+    <table cellpadding="5" cellspacing="0">
+        <tr>
+            <td colspan="1" style="width: 50%; border: none;">
+                <label for="">Form W-8IMY (Rev. 10-2021)</label>
+            </td>
+            <td colspan="0" style="width: 10%; border: none;"></td>
+            <td style="text-align: end; width: 40%; border: none;" colspan="2" >
+                <label for="">Page <strong class="fs-13" style="margin: 0;">4</strong></label>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 16px;"> 
+                    <span class="backg-dark">Part VII </span> <strong style="font-size: 13px;">Withholding Foreign Partnership (WP) or Withholding Foreign Trust (WT) </strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label  class="size-letter-spacing"><strong class="fs-13">20</strong> <input type="checkbox" > I certify that the entity identified in Part I is a withholding foreign partnership or a withholding foreign trust that is compliant with the terms of its WP or WT agreement. </label><br>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 16px;"> 
+                    <span class="backg-dark">Part VIII </span> <strong style="font-size: 13px;">Nonwithholding Foreign Partnership, Simple Trust, or Grantor Trust </strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 0; line-height: 12px;">
+                <strong>Check all that apply.</strong>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label><strong class="fs-13">21a</strong> <input type="checkbox" >I certify that the entity identified in Part I:</label><br>
+                <label for="" class="size-letter-spacing">
+                    <label for="" class="size-letter-spacing" style="padding-left: 41px;">• Is a nonwithholding foreign partnership, a nonwithholding foreign simple trust, or a nonwithholding foreign grantor trust and is providing this form for payments that are not effectively connected, or are not treated as effectively connected, with the conduct of a trade or business in the United States; <strong>and</strong></label>
+                     <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 41px;">• Is using this form to transmit withholding certificates and/or other documentation and has provided or will provide a withholding statement, as required for purposes of chapters 3 and 4, that is subject to the certifications made on this form.</label>
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 0; padding-left:22px;">
+                <label class="size-letter-spacing" for="i-certify-ffi1"><strong class="fs-13">b </strong> 
+                    <label for="" class="size-letter-spacing"></label><input type="checkbox" id="i-certify-ffi1">I certify that the entity identified in Part I is a foreign partnership or foreign grantor trust that is a partner in a lower-tier partnership and is providing this Form W-8IMY for purposes of section 1446(a).
+                </label><br>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 0; padding-left:22px;">
+                <label class="size-letter-spacing" for="i-certify-ffi1"><strong class="fs-13">c </strong> <input type="checkbox" id="i-certify-ffi1">I certify that the entity identified in Part I is a foreign partnership receiving an amount realized on the transfer of an interest in a partnership for purposes of section 1446(f).</label><br>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 0; padding-left:22px;">
+                <label class="size-letter-spacing" for="i-certify-ffi1"><strong class="fs-13">d </strong> <input type="checkbox" id="i-certify-ffi1">I certify that the entity identified in Part I is a foreign partnership providing a withholding statement for a modified amount realized from the transfer (check, when applicable, only if box 21c is checked).</label><br>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 0; padding-left:22px;">
+                <label class="size-letter-spacing" for="i-certify-ffi1"><strong class="fs-13">e </strong> <input type="checkbox" id="i-certify-ffi1">I certify that the entity identified in Part I is a foreign grantor trust providing the form on behalf of each grantor or other owner of the trust under Regulations section 1.1446(f)-1(c)(2)(vii) that is transmitting withholding certificates and providing a withholding statement to allocate the amount realized to each grantor or other owner</label><br>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 0; padding-left:22px;">
+                <label class="size-letter-spacing" for="i-certify-ffi1"><strong class="fs-13">f </strong> <input type="checkbox" id="i-certify-ffi1">To the extent the entity identified in Part I of this form is providing an alternative withholding statement described in Regulations section 1.1441-1(e)(3)(iv)(C)(3) for any payments associated with the form, the entity represents that the information on all of the withholding certificates associated with the withholding statement may be relied on based on the standards of knowledge under section 1441 or section 1471 applicable to the entity.</label><br>
+            </td>
+        </tr>
+        <tr>
+            <td style="border-top: 0; border-bottom: 0;" colspan="3">
+                <label>
+                    <h3 for="" style="align-content: center; margin: 0; width: 100%; border-top: 1px solid black; padding-top: 14px; padding-bottom: 14px;" align="center"><strong style="font-size: 16px; text-align: center;">Chapter 4 Status Certifications</strong></h3>
+                </label>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 16px;"> 
+                    <span class="backg-dark">Part IX </span> <strong style="font-size: 13px;"> Nonparticipating FFI with Exempt Beneficial Owners </strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label  class="size-letter-spacing"><strong class="fs-13">22</strong> <input type="checkbox" >I certify that the entity identified in Part I is using this form to transmit withholding certificates and/or other documentation and has provided or will provide a withholding statement that indicates the portion of the payment allocated to one or more exempt beneficial owners.</label><br>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 13px;"> 
+                    <span class="backg-dark">Part X </span> <strong style="font-size: 13px;">Sponsored FFI </strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="" class="size-letter-spacing"><strong class="fs-13">23a </strong>Name of sponsoring entity: ▶ <span class="line" style="width: 638px;" data-adjust="625">{ texto escribir }</span></label>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>Check the box on line 23b or 23c, whichever applies.</strong></td>
+        </tr>
+        <tr>
+            <td style="">
+                <label  style="padding-left: 20px;"><strong class="fs-13">b</strong> <input type="checkbox" >I certify that the entity identified in Part I:</label><br>
+                <label for="" class="size-letter-spacing">
+                    <label class="ident-list-father size-letter-spacing" style="padding-left: 45px;">• Is an investment entity;</label><br>
+                    <label class="ident-list-father size-letter-spacing" style="padding-left: 45px;">• Is not a QI, WP (except to the extent permitted in the withholding foreign partnership agreement), or WT; <strong>and</strong></label><br>
+                    <label class="ident-list-father size-letter-spacing" style="padding-left: 45px;">• Has agreed with the entity identified above (that is not a nonparticipating FFI) to act as the sponsoring entity for this entity</label>
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td style="">
+                <label  style="padding-left: 20px;" class="size-letter-spacing"><strong class="fs-13">c</strong> <input type="checkbox" >I certify that the entity identified in Part I:</label><br>
+                <label for="" class="size-letter-spacing">
+                    <label class="ident-list-father size-letter-spacing" style="padding-left: 45px;">• Is a controlled foreign corporation as defined in section 957(a);</label><br>
+                    <label class="ident-list-father size-letter-spacing" style="padding-left: 45px;">• Is not a QI, WP, or WT;</label><br>
+                    <label class="ident-list-father size-letter-spacing" style="padding-left: 45px;">• Is wholly owned, directly or indirectly, by the U.S. financial institution identified above that agrees to act as the sponsoring entity for this entity; <strong>and</strong></label><br>
+                    <label class="ident-list-father size-letter-spacing" style="padding-left: 45px;">• Shares a common electronic account system with the sponsoring entity (identified above) that enables the sponsoring entity to identify all account holders and payees of the entity and to access all account and customer information maintained by the entity including, but not limited to, customer identification information, customer documentation, account balance, and all payments made to account holders or payees. </label>
+                </label>
+            </td>
+        </tr>
+    </table>
+    <table cellpadding="5" cellspacing="0" style="margin-top: 3px;">
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 13px;"> 
+                    <span class="backg-dark">Part XI </span> <strong style="font-size: 13px;">Owner-Documented FFI</strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="" class="size-letter-spacing"><strong>Note:</strong>  This status only applies if the U.S. financial institution, participating FFI, reporting Model 1 FFI, or reporting Model 2 FFI to which this form is given has agreed that it will treat the FFI as an owner-documented FFI. The owner-documented FFI must make the certifications below.</label>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 0; border-bottom: 1px solid black;">
+                <label ><strong class="fs-13">24a</strong> <input type="checkbox" >I certify that the FFI identified in Part I:</label><br>
+                <div for="" class="size-letter-spacing">
+                    <label class="size-letter-spacing" style="padding-left: 41px;">• Does not act as an intermediary;</label> <br>
+                    <label class="size-letter-spacing" style="padding-left: 41px;">• Does not accept deposits in the ordinary course of a banking or similar business;</label> <br>
+                    <label class="size-letter-spacing" style="padding-left: 41px;">• Does not hold, as a substantial portion of its business, financial assets for the account of others;</label> <br>
+                    <label class="size-letter-spacing" style="padding-left: 41px;">• Is not an insurance company (or the holding company of an insurance company) that issues or is obligated to make payments with respect to a financial account;</label> <br>
+                    <label class="size-letter-spacing" style="padding-left: 41px;">• Is not affiliated with an entity (other than an FFI that is also treated as an owner-documented FFI) that accepts deposits in the ordinary course of a banking or similar business, holds, as a substantial portion of its business, financial assets for the account of others, or is an insurance company (or the holding company of an insurance company) that issues or is obligated to make payments with respect to a financial account; <strong>and</strong></label> <br>
+                    <label class="size-letter-spacing" style="padding-left: 41px;">• Does not maintain a financial account for any nonparticipating FFI.</label>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td align="end" style="font-size: 11px; border: none;">Form <span style="font-size: 16px; font-weight: bold;">W-8IMY</span> (Rev. 10-2021)</td>
+        </tr>
+    </table>
+    <script>
+        function adjustWidthForOS() {
+            const userAgent = window.navigator.userAgent.toLowerCase();
+            const lines = document.querySelectorAll('.line');
+    
+            // Detectar si es macOS
+            if (userAgent.indexOf('mac') !== -1) {
+                lines.forEach(line => {
+                    // Obtener el valor de ajuste desde el atributo data
+                    const pixelAdjustment = line.getAttribute('data-adjust');
+                    
+                    // Ajustar el ancho al valor obtenido
+                    if (pixelAdjustment) {
+                        line.style.width = pixelAdjustment + 'px';
+                    }
+                });
+            }
+        }
+    
+        // Llama a la función al cargar la página
+        document.addEventListener('DOMContentLoaded', adjustWidthForOS);
+    </script>
+</body>

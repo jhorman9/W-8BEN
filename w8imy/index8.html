@@ -1,0 +1,485 @@
+<body class="to-pdf">
+    <style>
+        * {
+        box-sizing: border-box;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    body{
+        margin: auto;
+    }
+
+    /* Ocultar el ícono del calendario */
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        display: none; /* Para Chrome */
+    }
+    input[type="date"] {
+        -webkit-appearance: none; /* Para Safari */
+        appearance: none; /* Para otros navegadores */
+    }
+
+    .to-pdf{
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        width: 19cm;
+        /* height: 27.94cm; */
+    }
+
+    .to-pdf table:first-child tbody td{
+        border-top: 0;
+    }
+
+    .to-pdf span, .to-pdf label, .to-pdf p, .to-pdf strong, .to-pdf input[type="text"]{
+        font-size: 11px;
+    }
+
+    .to-pdf .header-left .title-big{
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .to-pdf .header-left .title-big > span{
+        font-weight: 400;
+    }
+
+
+    table.table-layout {
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .header-left {
+        width: 20%; /* Ajusta el ancho de la celda izquierda */
+    }
+
+    .header-center {
+        width: 60%; /* Ajusta el ancho de la celda central */
+        text-align: center;
+    }
+
+    .header-right {
+        width: 20%; /* Ajusta el ancho de la celda derecha */
+        text-align: right;
+    }
+
+    .header-center{
+        text-align: center;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    td, table{
+        border-left: none;
+        border-right: none;
+    }
+
+    tr > td + td {
+        border-left: 1px solid black;
+    }
+
+    input{
+        border: none;
+    }
+
+    input[type="text"]{
+        width: 100%;
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    .m-0{
+        margin: 0;
+    }
+
+    .table-border-bottom{
+        border-bottom: 1px solid black;
+    }
+
+    .line-complete {
+        display: inline-block;
+        width: 100vw;
+        border-bottom: 1px dotted #000;
+        margin-left: 5px;
+        position: absolute !important;
+        bottom: 6px;
+        left: 99px;
+    }
+
+    li{
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    li:nth-child(3){
+        flex: 1;
+    }
+
+    li span:nth-child(1){
+        position: relative;
+        z-index: 2;
+        width: fit-content;
+        background-color: white;
+        padding-right: 7px;
+        margin-right: -1px;
+        padding-left: 5px;
+        max-width: 635px;
+    }
+
+    li div:nth-child(2){
+        position: relative;
+        z-index: 1;
+    }
+
+    li span:nth-child(3) {
+        position: relative;
+        z-index: 2;
+        width: fit-content;
+        background-color: white;
+    }
+
+    .part-1{
+        font-size: 12px;
+    }
+
+    .table-without-padding td {
+        padding: 0 3px;
+        border-top: 1px solid;
+        border-bottom: 1px solid;
+    }
+
+    .part-2{
+        border-top: 1px solid black;
+    }
+
+    .part-2 .backg-dark{
+        background-color: #000;
+        padding: 0 7px;
+        color: white;
+        font-size: initial;
+        margin-right: 7px;
+        font-size: 16px;
+        line-height: 0px;
+    }
+
+    strong.fs-13{
+        font-size: 13px;
+        margin-right: 7px;
+    }
+
+    table tr.without-border td{
+        border: none;
+    }
+
+    .note-if{
+        border-top: 1px solid black;
+    }
+
+    .note-if p{
+        margin: 0;
+        padding: 3px 0;
+    }
+
+    .table-letter-small td{
+        font-size: 11px;
+    }
+
+    .border-bottom-table{
+        border-bottom: 1px solid black;
+    }
+
+    .border-top-none{
+        border-top: 0 !important;
+    }
+
+    .tablet-listed td{
+        padding-left: 8px;
+    }
+
+
+    .header {
+        width: 150px;
+        vertical-align: top;
+        font-weight: bold;
+        padding-right: 10px;
+    }
+
+    .content {
+        vertical-align: top;
+    }
+
+    .line {
+        border-bottom: 1px solid black;
+        width: 467px;
+        display: inline-block;
+    }
+
+    .date {
+        border-bottom: 1px solid black;
+        width: 150px;
+        display: inline-block;
+    }
+
+    .spacer {
+        padding-left: 20px;
+    }
+
+    .border-before::before {
+        position: absolute;
+        content: '';
+        width: 100%;
+        left: 0;
+        border-bottom: 1px dotted black;
+        top: 9px;
+        z-index: 1;
+    }
+
+    .vertical-align-top_table{
+        vertical-align: top;
+    }
+
+    input[type="checkbox"] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: 15px;
+        height: 15px;
+        border: 1px solid black;
+        background-color: white;
+        display: inline-block;
+        vertical-align: middle;
+        border-radius: 2px;
+        cursor: pointer;
+        position: relative;
+        margin: 0 3px;
+    }
+    
+    input[type="checkbox"]:checked {
+        background-color: #e7f3fe;
+        border-color: #7a7a7a;
+    }
+    
+    input[type="checkbox"]:checked::after {
+        content: '\2714';
+        color: black;
+        font-size: 10px;
+        position: absolute;
+        top: 0px;
+        left: 2.5px;
+    }
+
+    .table-spacing-check input[type="checkbox"] {
+        margin-bottom: 5px;
+    }
+
+    .size-letter-spacing{
+        display: inline-block;
+        line-height: 16px;
+    }
+
+    label.ident-list {
+        padding-left: 55px;
+    }
+    </style>
+    <table cellpadding="5" cellspacing="0">
+        <tr>
+            <td colspan="1" style="width: 50%; border: none;">
+                <label for="">Form W-8IMY (Rev. 10-2021)</label>
+            </td>
+            <td colspan="0" style="width: 10%; border: none;"></td>
+            <td style="text-align: end; width: 40%; border: none;" colspan="2" >
+                <label for="">Page <strong class="fs-13" style="margin: 0;">8</strong></label>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 13px;"> 
+                    <span class="backg-dark">Part XXIV </span> <strong style="font-size: 13px;">Publicly Traded NFFE or NFFE Affiliate of a Publicly Traded Corporation </strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td style="line-height: 1;">
+                <strong>Check the box on line 37a or 37b, whichever applies.</strong>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label  class="size-letter-spacing"><strong class="fs-13">37a</strong> <input type="checkbox" >I certify that: <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 41px;">• The entity identified in Part I is a foreign corporation that is not a financial institution; <strong>and</strong></label><br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 41px;">• The stock of such corporation is regularly traded on one or more established securities markets, including <span class="line" style="width: 253px;" data-adjust="206">{ texto escribir }</span>.</label><br>
+                </label> 
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label  class="size-letter-spacing" style="padding-left: 14px;"><strong class="fs-13">b</strong> <input type="checkbox" >I certify that: <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 27px;">• The entity identified in Part I is a foreign corporation that is not a financial institution;</label><br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 27px;">• The entity identified in Part I is a member of the same expanded affiliated group as an entity the stock of which is regularly traded on an established securities market;</label><br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 27px;">•  The name of the entity, the stock of which is regularly traded on an established securities market, is <span class="line" style="width: 261px;" data-adjust="215">{ texto escribir }</span>; <strong>and</strong></label><br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 27px; margin-bottom: 20px;">• The name of the securities market on which the stock is regularly traded is ▶ <span class="line" style="width: 392px;" data-adjust="358">{ texto escribir }</span>.</label><br>
+                </label> 
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 13px;"> 
+                    <span class="backg-dark">Part XXV </span> <strong style="font-size: 13px;">Excepted Territory NFFE </strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label  class="size-letter-spacing"><strong class="fs-13">38</strong> <input type="checkbox" > I certify that: <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 34px;">• The entity identified in Part I is an entity that is organized in a possession of the United States;</label><br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 34px;">• All of the owners of the entity identified in Part I are bona fide residents of the possession in which the NFFE is organized or incorporated. <strong>and</strong></label><br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 34px;">• The entity identified in Part I:</label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 57px;"><strong>(i)</strong> Does not accept deposits in the ordinary course of a banking or similar business;</label><br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 57px;"><strong>(ii)</strong> Does not hold, as a substantial portion of its business, financial assets for the account of others; <strong>and</strong></label><br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 57px;"><strong>(iii)</strong> Is not an insurance company (or the holding company of an insurance company) that issues or is obligated to make payments with respect to a financial account;</label><br>
+                </label> 
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 13px;"> 
+                    <span class="backg-dark">Part XXVI </span> <strong style="font-size: 13px;">Active NFFE </strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label  class="size-letter-spacing"><strong class="fs-13">39</strong> <input type="checkbox" > I certify that: <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 34px;">• The entity identified in Part I is a foreign entity that is not a financial institution;</label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 34px;">• Less than 50% of such entity’s gross income for the preceding calendar year is passive income; <strong>and</strong></label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 34px;">• Less than 50% of the assets held by such entity are assets that produce or are held for the production of passive income (calculated as a weighted average of the percentage of passive assets measured quarterly). See the instructions for the definition of passive income.</label>
+                </label> 
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 13px;"> 
+                    <span class="backg-dark">Part XXVII </span> <strong style="font-size: 13px;">Passive NFFE </strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label  class="size-letter-spacing"><strong class="fs-13">40</strong> <input type="checkbox" > I certify that the entity identified in Part I:</label> 
+                <label for="" class="size-letter-spacing">
+                    <label for="" class="size-letter-spacing" style="padding-left: 34px;">• Is a foreign entity that is not a financial institution (this category includes an entity organized in a possession of the United States that engages (or holds itself out as being engaged) primarily in the business of investing, reinvesting, or trading in securities, partnership interests, commodities, notional principal contracts, insurance or annuity contracts, or any interest in such security, partnership interest,  commodity, notional principal contract, insurance contract, or annuity contract); <strong>and</strong></label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 34px;">• Is using this form to transmit withholding certificates and/or other documentation and has provided or will provide a withholding statement, as required.</label>
+                </label>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 13px;"> 
+                    <span class="backg-dark">Part XXVIII </span> <strong style="font-size: 13px;">Sponsored Direct Reporting NFFE </strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label  class="size-letter-spacing"><strong class="fs-13">41</strong> <input type="checkbox" >Name of sponsoring entity: ▶ <span class="line" style="width: 624px;" data-adjust="614"> { texto escribir } </span></label> 
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 0; padding-bottom: 3px;">
+                <label  class="size-letter-spacing"><strong class="fs-13">42</strong> <input type="checkbox" >  certify that the entity identified in Part I is a direct reporting NFFE that is sponsored by the entity identified on line 41.</label> 
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 13px;"> 
+                    <span class="backg-dark">Part XXIX </span> <strong style="font-size: 13px;">Certification </strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="" class="size-letter-spacing">Under penalties of perjury, I declare that I have examined the information on this form, and to the best of my knowledge and belief, it is true, correct, and complete. Furthermore, I authorize this form to be provided to any withholding agent that has control, receipt, or custody of the income or proceeds for which I am providing this form or any withholding agent that can disburse or make payments of the amounts for which I am providing this form.</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for=""><strong>I agree that I will submit a new form within 30 days if any certification made on this form becomes incorrect.</strong></label>
+            </td>
+        </tr>
+    </table>
+    <table style="margin-top: 10px;">
+        <tr>
+            <td style="border: none; vertical-align: baseline; display: flex; align-items: center; gap: 10px; font-weight: bold; justify-content: center; width: 115px;">
+                Sign Here <p class="triangule" style="margin: 0; transform: rotateZ(90deg) scale(1.5) rotateX(66deg);font-size: 24px;">▲</p>
+            </td>
+            <td style="border: none;">
+                <table cellpadding="5" cellspacing="0">
+                    <tr>
+                        <td style="border: none; padding-top: 16px; padding-bottom: 0;"><span class="line" style="width: 300px"></span></td>
+                        <td style="border: none; padding-bottom: 0;" class="spacer"><span class="line" style="width: 200px; vertical-align: bottom; margin-bottom: -1px;"></span></td>
+                        <td style="border: none; padding-top: 7px; padding-bottom: 0;"><span class="date" style="text-align: center;">12-15-2024</span></td>
+                    </tr>
+                    <tr>
+                        <td style="border: none; font-size: 11px; padding-top: 0; text-align: center;">Signature of authorized official</td>
+                        <td style="border: none; font-size: 11px; text-align: center; vertical-align: text-top; padding-top: 0;">Print name</td>
+                        <td style="border: none; font-size: 11px; text-align: center; vertical-align: top; padding-top: 0;">Date (MM-DD-YYYY)</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td colspan="3" style="line-height: 0;">
+                <span class="line" style="width: 100%"></span> <br>
+            </td>
+        </tr>
+        <tr>
+            <td style="font-size: 11px; border: none; font-weight: bold;"></td>
+            <td style="font-size: 11px; border: none;"></td>
+            <td align="end" style="font-size: 11px; border: none;">Form <span style="font-size: 16px; font-weight: bold;">W-8IMY</span> (Rev. 10-2021)</td>
+        </tr>
+    </table>
+    <script>
+        function adjustWidthForOS() {
+            const userAgent = window.navigator.userAgent.toLowerCase();
+            const lines = document.querySelectorAll('.line');
+    
+            // Detectar si es macOS
+            if (userAgent.indexOf('mac') !== -1) {
+                lines.forEach(line => {
+                    // Obtener el valor de ajuste desde el atributo data
+                    const pixelAdjustment = line.getAttribute('data-adjust');
+                    
+                    // Ajustar el ancho al valor obtenido
+                    if (pixelAdjustment) {
+                        line.style.width = pixelAdjustment + 'px';
+                    }
+                });
+            }
+        }
+    
+        // Llama a la función al cargar la página
+        document.addEventListener('DOMContentLoaded', adjustWidthForOS);
+    </script>
+</body>
