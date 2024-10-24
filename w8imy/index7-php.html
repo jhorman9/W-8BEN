@@ -1,0 +1,440 @@
+<body class="to-pdf">
+    <style>
+        * {
+        box-sizing: border-box;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    body{
+        margin: auto;
+    }
+
+    /* Ocultar el ícono del calendario */
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        display: none; /* Para Chrome */
+    }
+    input[type="date"] {
+        -webkit-appearance: none; /* Para Safari */
+        appearance: none; /* Para otros navegadores */
+    }
+
+    .to-pdf{
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        width: 19cm;
+        /* height: 27.94cm; */
+        page-break-before: always;
+    }
+
+    .to-pdf table:first-child tbody td{
+        border-top: 0;
+    }
+
+    .to-pdf span, .to-pdf label, .to-pdf p, .to-pdf strong, .to-pdf input[type="text"]{
+        font-size: 11px;
+    }
+
+    .to-pdf .header-left .title-big{
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .to-pdf .header-left .title-big > span{
+        font-weight: 400;
+    }
+
+
+    table.table-layout {
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .header-left {
+        width: 20%; /* Ajusta el ancho de la celda izquierda */
+    }
+
+    .header-center {
+        width: 60%; /* Ajusta el ancho de la celda central */
+        text-align: center;
+    }
+
+    .header-right {
+        width: 20%; /* Ajusta el ancho de la celda derecha */
+        text-align: right;
+    }
+
+    .header-center{
+        text-align: center;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    td, table{
+        border-left: none;
+        border-right: none;
+    }
+
+    tr > td + td {
+        border-left: 1px solid black;
+    }
+
+    input{
+        border: none;
+    }
+
+    input[type="text"]{
+        width: 100%;
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    .m-0{
+        margin: 0;
+    }
+
+    .table-border-bottom{
+        border-bottom: 1px solid black;
+    }
+
+    .line-complete {
+        display: inline-block;
+        width: 100vw;
+        border-bottom: 1px dotted #000;
+        margin-left: 5px;
+        position: absolute !important;
+        bottom: 6px;
+        left: 99px;
+    }
+
+    li{
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    li:nth-child(3){
+        flex: 1;
+    }
+
+    li span:nth-child(1){
+        position: relative;
+        z-index: 2;
+        width: fit-content;
+        background-color: white;
+        padding-right: 7px;
+        margin-right: -1px;
+        padding-left: 5px;
+        max-width: 635px;
+    }
+
+    li div:nth-child(2){
+        position: relative;
+        z-index: 1;
+    }
+
+    li span:nth-child(3) {
+        position: relative;
+        z-index: 2;
+        width: fit-content;
+        background-color: white;
+    }
+
+    .part-1{
+        font-size: 12px;
+    }
+
+    .table-without-padding td {
+        padding: 0 3px;
+        border-top: 1px solid;
+        border-bottom: 1px solid;
+    }
+
+    .part-2{
+        border-top: 1px solid black;
+    }
+
+    .part-2 .backg-dark{
+        background-color: #000;
+        padding: 0 7px;
+        color: white;
+        font-size: initial;
+        margin-right: 7px;
+        font-size: 16px;
+    }
+
+    strong.fs-13{
+        font-size: 13px;
+        margin-right: 7px;
+    }
+
+    table tr.without-border td{
+        border: none;
+    }
+
+    .note-if{
+        border-top: 1px solid black;
+    }
+
+    .note-if p{
+        margin: 0;
+        padding: 3px 0;
+    }
+
+    .table-letter-small td{
+        font-size: 11px;
+    }
+
+    .border-bottom-table{
+        border-bottom: 1px solid black;
+    }
+
+    .border-top-none{
+        border-top: 0 !important;
+    }
+
+    .tablet-listed td{
+        padding-left: 8px;
+    }
+
+
+    .header {
+        width: 150px;
+        vertical-align: top;
+        font-weight: bold;
+        padding-right: 10px;
+    }
+
+    .content {
+        vertical-align: top;
+    }
+
+    .line {
+        border-bottom: 1px solid black;
+        width: 467px;
+        display: inline-block;
+    }
+
+    .date {
+        border-bottom: 1px solid black;
+        width: 150px;
+        display: inline-block;
+    }
+
+    .spacer {
+        padding-left: 20px;
+    }
+
+    .border-before::before {
+        position: absolute;
+        content: '';
+        width: 100%;
+        left: 0;
+        border-bottom: 1px dotted black;
+        top: 9px;
+        z-index: 1;
+    }
+
+    .vertical-align-top_table{
+        vertical-align: top;
+    }
+
+    input[type="checkbox"] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: 15px;
+        height: 15px;
+        border: 1px solid black;
+        background-color: white;
+        display: inline-block;
+        vertical-align: middle;
+        border-radius: 2px;
+        cursor: pointer;
+        position: relative;
+        margin: 0 3px;
+    }
+    
+    input[type="checkbox"]:checked {
+        background-color: #e7f3fe;
+        border-color: #7a7a7a;
+    }
+    
+    input[type="checkbox"]:checked::after {
+        content: '\2714';
+        color: black;
+        font-size: 10px;
+        position: absolute;
+        top: 0px;
+        left: 2.5px;
+    }
+
+    .table-spacing-check input[type="checkbox"] {
+        margin-bottom: 5px;
+    }
+
+    .size-letter-spacing{
+        display: inline-block;
+        line-height: 16px;
+    }
+
+    label.ident-list {
+        padding-left: 55px;
+    }
+    </style>
+    <table cellpadding="5" cellspacing="0">
+        <tr>
+            <td colspan="1" style="width: 50%; border: none;">
+                <label for="">Form W-8IMY (Rev. 10-2021)</label>
+            </td>
+            <td colspan="0" style="width: 10%; border: none;"></td>
+            <td style="text-align: right; width: 40%; border: none;" colspan="2" align="right">
+                <label for="">Page <strong class="fs-13" style="margin: 0;">7</strong></label>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 13px;"> 
+                    <span class="backg-dark">Part XX </span> <strong style="font-size: 13px;">Exempt Retirement Plans </strong>(continued)
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td >
+                <label  class="size-letter-spacing">
+                    <label for="" class="size-letter-spacing" style="padding-left: 57px;"><strong>(i)</strong> Is generally exempt from tax on investment income under the laws of the country in which it is established or operates due to its status as a retirement or pension plan;</label>
+                    <label for="" class="size-letter-spacing" style="padding-left: 57px;"><strong>(ii)</strong> Receives at least 50% of its total contributions from sponsoring employers (disregarding transfers of assets from other plans described in this part, retirement and pension accounts described in an applicable Model 1 or Model 2 IGA, other retirement funds described in an applicable Model 1 or Model 2 IGA, or accounts described in Regulations section 1.1471-5(b)(2)(i)(A));</label>
+                    <label for="" class="size-letter-spacing" style="padding-left: 57px;"><strong>(iii)</strong> Either does not permit or penalizes distributions or withdrawals made before the occurrence of specified events related to retirement, disability, or death (except rollover distributions to accounts described in Regulations section 1.1471-5(b)(2)(i)(A) (referring to retirement and pension accounts), to retirement and pension accounts described in an applicable Model 1 or Model 2 IGA, or to other retirement funds described in this part or in an applicable Model 1 or Model 2 IGA); <strong>or</strong></label>
+                    <label for="" class="size-letter-spacing" style="padding-left: 57px;"><strong>(iv)</strong> Limits contributions by employees to the fund by reference to earned income of the employee or may not exceed $50,000 annually.</label>
+                </label> 
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="size-letter-spacing" style="padding-left: 14px;"><strong class="fs-13">c</strong> <input type="checkbox" >I certify that the entity identified in Part I:<br>
+                <label for="">
+                    <label class="size-letter-spacing" style="padding-left: 24px;">• Is organized for the provision of retirement, disability, or death benefits (or any combination thereof) to beneficiaries that are former employees of one or more employers in consideration for services rendered;</label><br>
+                    <label class="size-letter-spacing" style="padding-left: 24px;">• Has fewer than 50 participants;</label> <br>
+                    <label class="size-letter-spacing" style="padding-left: 24px;">• Is sponsored by one or more employers, each of which is not an investment entity or passive NFFE;</label> <br>
+                    <label class="size-letter-spacing" style="padding-left: 24px;">• Employee and employer contributions to the fund (disregarding transfers of assets from other plans described in this part, retirement and pension accounts described in an applicable Model 1 or Model 2 IGA, or accounts described in Regulations section 1.1471-5(b)(2)(i)(A)) are limited by reference to earned income and compensation of the employee, respectively;</label> <br>
+                    <label class="size-letter-spacing" style="padding-left: 24px;">• Participants that are not residents of the country in which the fund is established or operated are not entitled to more than 20% of the fund’s assets; <strong>and</strong></label> <br>
+                    <label class="size-letter-spacing" style="padding-left: 24px;">• Is subject to government regulation and provides annual information reporting about its beneficiaries to the relevant tax authorities in the country in which the fund is established or operates</label>
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="size-letter-spacing" style="padding-left: 14px;"><strong class="fs-13">d</strong> <input type="checkbox" >I certify that the entity identified in Part I is formed pursuant to a pension plan that would meet the requirements of section 401(a), other than the requirement that the plan be funded by a trust created or organized in the United States.<br> </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="size-letter-spacing" style="padding-left: 14px;"><strong class="fs-13">e</strong> <input type="checkbox" >I certify that the entity identified in Part I is established exclusively to earn income for the benefit of one or more retirement funds described in this part or in an applicable Model 1 or Model 2 IGA, accounts described in Regulations section 1.1471-5(b)(2)(i)(A) (referring to retirement and pension accounts), or retirement and pension accounts described in an applicable Model 1 or Model 2 IGA.<br> </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="size-letter-spacing" style="padding-left: 14px;"><strong class="fs-13">f</strong> <input type="checkbox" >I certify that the entity identified in Part I:</label><br> 
+                <label for="" class="size-letter-spacing">
+                    <label for="" class="size-letter-spacing" style="padding-left: 38px;">• Is established and sponsored by a foreign government, international organization, central bank of issue, or government of a U.S. possession (each as defined in Regulations section 1.1471-6) or an exempt beneficial owner described in an applicable Model 1 or Model 2 IGA to provide retirement, disability, or death benefits to beneficiaries or participants that are current or former employees of the sponsor (or persons designated by such employees); <strong>or</strong></label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 38px;">• Is established and sponsored by a foreign government, international organization, central bank of issue, or government of a U.S. possession (each as defined in Regulations section 1.1471-6) or an exempt beneficial owner described in an applicable Model 1 or Model 2 IGA to provide retirement, disability, or death benefits to beneficiaries or participants that are not current or former employees of such sponsor, but are in consideration of personal services performed for the sponsor.</label>                    
+                </label>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 13px;"> 
+                    <span class="backg-dark">Part XXI </span> <strong style="font-size: 13px;">Excepted Nonfinancial Group Entity </strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="size-letter-spacing"><strong class="fs-13">34</strong> <input type="checkbox" >I certify that the entity identified in Part I:<br>
+                    <label class="size-letter-spacing" style="padding-left: 35px;">• Is a holding company, treasury center, or captive finance company and substantially all of the entity’s activities are functions described in Regulations section 1.1471-5(e)(5)(i)(C) through (E);</label> <br>
+                    <label class="size-letter-spacing" style="padding-left: 35px;">• Is a member of a nonfinancial group described in Regulations section 1.1471-5(e)(5)(i)(B);</label> <br>
+                    <label class="size-letter-spacing" style="padding-left: 35px;">• Is not a depository or custodial institution (other than for members of the entity’s expanded affiliated group); <strong>and</strong></label> <br>
+                    <label class="size-letter-spacing" style="padding-left: 35px;">• Does not function (or hold itself out) as an investment fund, such as a private equity fund, venture capital fund, leveraged buyout fund, or any investment vehicle with an investment strategy to acquire or fund companies and then hold interests in those companies as capital assets for investment purposes.</label>
+                </label> 
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 13px;"> 
+                    <span class="backg-dark">Part XXII </span> <strong style="font-size: 13px;">Excepted Nonfinancial Start-Up Company </strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label  class="size-letter-spacing"><strong class="fs-13">35</strong> <input type="checkbox" >I certify that the entity identified in Part I:<br>
+                    <label for="">
+                        <label class="size-letter-spacing" style="padding-left: 35px;">• Was formed on (or in the case of a new line of business, the date of board resolution approving the new line of business)</label> <br>
+                        <label class="size-letter-spacing" style="padding-left: 35px;"><span class="line" width="380" data-adjust="360" style="width: 380px;"> </span></label> (date must be less than 24 months prior to date of payment); <br>
+                        <label class="size-letter-spacing" style="padding-left: 35px;">• Is not yet operating a business and has no prior operating history or is investing capital in assets with the intent to operate a new line of business other than that of a financial institution or passive NFFE; <strong>and</strong></label> <br>
+                        <label class="size-letter-spacing" style="padding-left: 35px; padding-top: 6px;">• Does not function (or hold itself out) as an investment fund, such as a private equity fund, venture capital fund, leveraged buyout fund, or any investment vehicle whose purpose is to acquire or fund companies and then hold interests in those companies as capital assets for investment purposes. </label>
+                    </label>
+                </label> 
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 13px;"> 
+                    <span class="backg-dark">Part XXIII </span> <strong style="font-size: 13px;"> Excepted Nonfinancial Entity in Liquidation or Bankruptcy </strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td style="border-bottom: 1px solid black;">
+                <label  class="size-letter-spacing"><strong class="fs-13">36</strong> <input type="checkbox" >I certify that the entity identified in Part I: <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 34px;">• Filed a plan of liquidation, filed a plan for reorganization, or filed for bankruptcy on the following date: <span class="line" style="width: 176px;" data-adjust="101"> </span></label><br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 34px;">• Has not been engaged during the past 5 years in business as a financial institution or acted as a passive NFFE;</label><br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 34px;">• Is either liquidating or emerging from a reorganization or bankruptcy with the intent to continue or recommence operations as a nonfinancial entity; <strong>and</strong></label>
+                    <label for="" class="size-letter-spacing" style="padding-left: 34px;">• Has provided, or will provide, documentary evidence such as a bankruptcy filing or other public documentation that supports its claim if it remains in bankruptcy or liquidation for more than 3 years.</label>
+                </label> 
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td align="right" style="font-size: 11px; border: none; text-align: right;">Form <span style="font-size: 16px; font-weight: bold;">W-8IMY</span> (Rev. 10-2021)</td>
+        </tr>
+    </table>
+    <script>
+        function adjustWidthForOS() {
+            const userAgent = window.navigator.userAgent.toLowerCase();
+            const lines = document.querySelectorAll('.line');
+    
+            // Detectar si es macOS
+            if (userAgent.indexOf('mac') !== -1) {
+                lines.forEach(line => {
+                    // Obtener el valor de ajuste desde el atributo data
+                    const pixelAdjustment = line.getAttribute('data-adjust');
+                    
+                    // Ajustar el ancho al valor obtenido
+                    if (pixelAdjustment) {
+                        line.style.width = pixelAdjustment + 'px';
+                    }
+                });
+            }
+        }
+    
+        // Llama a la función al cargar la página
+        document.addEventListener('DOMContentLoaded', adjustWidthForOS);
+    </script>
+</body>

@@ -1,0 +1,515 @@
+<body class="to-pdf">
+    <style>
+        * {
+        box-sizing: border-box;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    body{
+        margin: auto;
+    }
+
+    /* Ocultar el ícono del calendario */
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        display: none; /* Para Chrome */
+    }
+    input[type="date"] {
+        -webkit-appearance: none; /* Para Safari */
+        appearance: none; /* Para otros navegadores */
+    }
+
+    .to-pdf{
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        width: 19cm;
+        page-break-before: always;
+        /* height: 27.94cm; */
+    }
+
+    .to-pdf table:first-child tbody td{
+        border-top: 0;
+    }
+
+    .to-pdf span, .to-pdf label, .to-pdf p, .to-pdf strong, .to-pdf input[type="text"]{
+        font-size: 11px;
+    }
+
+    .to-pdf .header-left .title-big{
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .to-pdf .header-left .title-big > span{
+        font-weight: 400;
+    }
+
+
+    table.table-layout {
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .header-left {
+        width: 20%; /* Ajusta el ancho de la celda izquierda */
+    }
+
+    .header-center {
+        width: 60%; /* Ajusta el ancho de la celda central */
+        text-align: center;
+    }
+
+    .header-right {
+        width: 20%; /* Ajusta el ancho de la celda derecha */
+        text-align: right;
+    }
+
+    .header-center{
+        text-align: center;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    td, table{
+        border-left: none;
+        border-right: none;
+    }
+
+    tr > td + td {
+        border-left: 1px solid black;
+    }
+
+    input{
+        border: none;
+    }
+
+    input[type="text"]{
+        width: 100%;
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    .m-0{
+        margin: 0;
+    }
+
+    .table-border-bottom{
+        border-bottom: 1px solid black;
+    }
+
+    .line-complete {
+        display: inline-block;
+        width: 100vw;
+        border-bottom: 1px dotted #000;
+        margin-left: 5px;
+        position: absolute !important;
+        bottom: 6px;
+        left: 99px;
+    }
+
+    li{
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    li:nth-child(3){
+        flex: 1;
+    }
+
+    li span:nth-child(1){
+        position: relative;
+        z-index: 2;
+        width: fit-content;
+        background-color: white;
+        padding-right: 7px;
+        margin-right: -1px;
+        padding-left: 5px;
+        max-width: 635px;
+    }
+
+    li div:nth-child(2){
+        position: relative;
+        z-index: 1;
+    }
+
+    li span:nth-child(3) {
+        position: relative;
+        z-index: 2;
+        width: fit-content;
+        background-color: white;
+    }
+
+    .part-1{
+        font-size: 12px;
+    }
+
+    .table-without-padding td {
+        padding: 0 3px;
+        border-top: 1px solid;
+        border-bottom: 1px solid;
+    }
+
+    .part-2{
+        border-top: 1px solid black;
+    }
+
+    .part-2 .backg-dark{
+        background-color: #000;
+        padding: 0 7px;
+        color: white;
+        font-size: initial;
+        margin-right: 7px;
+        font-size: 16px;
+    }
+
+    strong.fs-13{
+        font-size: 13px;
+        margin-right: 7px;
+    }
+
+    table tr.without-border td{
+        border: none;
+    }
+
+    .note-if{
+        border-top: 1px solid black;
+    }
+
+    .note-if p{
+        margin: 0;
+        padding: 3px 0;
+    }
+
+    .table-letter-small td{
+        font-size: 11px;
+    }
+
+    .border-bottom-table{
+        border-bottom: 1px solid black;
+    }
+
+    .border-top-none{
+        border-top: 0 !important;
+    }
+
+    .tablet-listed td{
+        padding-left: 8px;
+    }
+
+
+    .header {
+        width: 150px;
+        vertical-align: top;
+        font-weight: bold;
+        padding-right: 10px;
+    }
+
+    .content {
+        vertical-align: top;
+    }
+
+    .line {
+        border-bottom: 1px solid black;
+        width: 467px;
+        display: inline-block;
+    }
+
+    .date {
+        border-bottom: 1px solid black;
+        width: 150px;
+        display: inline-block;
+    }
+
+    .spacer {
+        padding-left: 20px;
+    }
+
+    .border-before::before {
+        position: absolute;
+        content: '';
+        width: 100%;
+        left: 0;
+        border-bottom: 1px dotted black;
+        top: 9px;
+        z-index: 1;
+    }
+
+    .vertical-align-top_table{
+        vertical-align: top;
+    }
+
+    input[type="checkbox"] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: 15px;
+        height: 15px;
+        border: 1px solid black;
+        background-color: white;
+        display: inline-block;
+        vertical-align: middle;
+        border-radius: 2px;
+        cursor: pointer;
+        position: relative;
+        margin: 0 3px;
+    }
+    
+    input[type="checkbox"]:checked {
+        background-color: #e7f3fe;
+        border-color: #7a7a7a;
+    }
+    
+    input[type="checkbox"]:checked::after {
+        content: '\2714';
+        color: black;
+        font-size: 10px;
+        position: absolute;
+        top: 0px;
+        left: 2.5px;
+    }
+
+    .table-spacing-check input[type="checkbox"] {
+        margin-bottom: 5px;
+    }
+
+    .size-letter-spacing{
+        display: inline-block;
+        line-height: 16px;
+    }
+
+    label.ident-list {
+        padding-left: 55px;
+    }
+    .arrow {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid black;
+    padding-bottom: 4px;
+    }
+    .arrow {
+    transform: rotate(270deg);
+    }
+    </style>
+    <table border="1" cellpadding="5" cellspacing="0" class="table-without-padding" style="border-top: 0; border-bottom: 0;">
+        <tr>
+            <td colspan="1" style="width: 50%; border: none;">
+                <label for="">Form W-8IMY (Rev. 10-2021)</label>
+            </td>
+            <td colspan="0" style="width: 10%; border: none;"></td>
+            <td style="text-align: end; width: 40%; border: none;" colspan="2" align="right">
+                <label for="">Page <strong class="fs-13" style="margin: 0;">2</strong></label>
+            </td>
+        </tr>
+    </table>
+    <table cellpadding="5" cellspacing="0" class="table-without-padding" >
+        <table cellpadding="5" cellspacing="0" class="table-without-padding" style="border:0; border-top: 1px solid black;">
+            <tr style="border: none;">
+                <td class="part-2 border-bottom-table border-top-none" style="width: 65px; border-bottom: 0; padding-left: 0;vertical-align: text-top; padding-right: 0; border: none;" colspan="1"><span style="font-size: 13px;"> 
+                    <span class="backg-dark">Part ll </span>
+                </td>
+                <td colspan="2" style="border-bottom: 0; border-left: 0; padding-left: 0;">
+                    <div style="font-size: 13px; ">
+                        <strong style="font-size: 13px;">Disregarded Entity or Branch Receiving Payment.</strong> (Complete only if a disregarded entity with a GIIN or a branch of an FFI in a country other than the FFI’s country of residence. Do not complete Part II for QDD branches. See instructions.)                            
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <table cellpadding="5" cellspacing="0" class="table-without-padding table-letter-small">
+            <tr>
+                <td style="border-bottom: 0;">
+                    <label for=""><strong class="fs-13">11</strong> Chapter 4 Status (FATCA status) of disregarded entity or branch receiving payment.</label>
+                    <table style="width: 100%; margin-bottom: 3px;" cellpadding="5" cellspacing="0" class="table-without-padding table-letter-small">
+                        <tr style="padding-top: 3px;">
+                          <!-- Columna izquierda -->
+                          <td style="vertical-align: top; border: none; padding-right: 14px; padding-top: 3px; padding-left: 0;">
+                            <input type="checkbox" id="branch-treated" style="margin-bottom: 3px;">
+                            <label for="branch-treated" >Branch treated as nonparticipating FFI.</label>
+                            <br>
+                  
+                            <input type="checkbox" id="participating-FFI">
+                            <label for="participating-FFI">Participating FFI.</label>
+                            <br>
+                  
+                          </td>
+                  
+                          <!-- Columna derecha -->
+                          <td style="vertical-align: top; border: none; padding-top: 3px;">
+                            <input type="checkbox" id="reportingModel1" style="margin-bottom: 3px;">
+                            <label for="reportingModel1">Reporting Model 1 FFI.</label>
+                            <br>
+                  
+                            <input type="checkbox" id="reportingModel2">
+                            <label for="reportingModel2">Reporting Model 2 FFI.</label>
+                            <br>
+
+                          </td>
+
+                          <td style="border: none;">
+                            <input type="checkbox" id="us-branch" >
+                            <label for="us-branch">U.S. Branch.</label>
+                            <br>
+
+                          </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-top: 0;">
+                    <label for=""><strong class="fs-13">12</strong> Address of branch (street, apt. or suite no., or rural route). <strong>Do not use a P.O. box or in-care-of address</strong> (other than a
+                        registered address).</label><br>
+                    <span style="width: 100%; display: inline-block;" align=""> </span>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-top: 0;">
+                    <label for="">City or town, state or province. Include postal code where appropriate.</label><br>
+                    <span style="width: 100%; display: inline-block;" align=""> </span>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-top: 0;">
+                    <label for="">Country</label><br>
+                    <span style="width: 100%; display: inline-block;" align=""> </span>
+                </td>
+            </tr>
+            <tr></tr>
+                <td style="border-top: 0; border-bottom: 0;">
+                    <div style="display: inline;">
+                        <label for="" style="width: 107px; align-content: center;"><strong class="fs-13">13</strong> GIIN (if any) <span class="arrow"></span> <span style="width: 100%; display: inline-block; border-bottom: 1px solid black; padding-top: 3px; width: 610px;" align=""> </span></label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-top: 0; border-bottom: 0;" colspan="3">
+                    <div>
+                        <h3 for="" style="align-content: center; margin: 0; margin-top: 14px; width: 100%;" align="center"><strong style="font-size: 16px; text-align: center;">Chapter 3 Status Certifications</strong></h3>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-left: 0; border-top: 0;">
+                    <table cellpadding="5" cellspacing="0" class="table-without-padding" style="border:0; border-top: 1px solid black; margin-top: 17px;">
+                        <tr style="border: none;">
+                            <td class="part-2 border-bottom-table border-top-none" style="width: 66px; border-bottom: 0; padding-left: 0;vertical-align: text-top; padding-right: 0; border: none;" colspan="1">                                    
+                                <span style="font-size: 16px;"> 
+                                    <span class="backg-dark">Part lll </span>
+                                </span>
+                            </td>
+                            <td colspan="2" style="border-bottom: 0; border-left: 0; padding-left: 0;">
+                                <div style="font-size: 13px;">
+                                    <strong style="font-size: 13px;">Qualified Intermediary</strong>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 0;">
+                    <strong>All Qualified Intermediaries</strong>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 0; margin-top: 3px;">
+                    <strong class="fs-13">14</strong> <input type="checkbox" id="beneficial-owner" style="padding-bottom: 3px;"><label for="beneficial-owner">I certify that the entity identified in Part I (or branch, if relevant): <br>
+                        <label for="" class="size-letter-spacing" style="padding-left: 32px;">• Is a QI with respect to the accounts identified on line 10 or in a withholding statement associated with this form (as required) that is one or more of the following:</label> <br>
+                        <label for="" class="size-letter-spacing" style="padding-left: 57px;"><strong>(i)</strong> Not acting for its own account;</label><br>
+                        <label for="" class="size-letter-spacing" style="padding-left: 57px;"><strong>(ii)</strong> A QDD receiving payments on underlying securities and/or potential section 871(m) transactions;</label><br>
+                        <label for="" class="size-letter-spacing" style="padding-left: 57px;"><strong>(iii)</strong> A QI assuming primary withholding responsibility for payments of substitute interest, as permitted by the QI Agreement</label><br>
+                        <label for="" class="size-letter-spacing" style="padding-left: 32px;">• Has provided or will provide a withholding statement (as required) for purposes of chapters 3 and 4, and section 1446(a), or section 1446(f), subject to the certifications made on this form.</label>
+                        <label for="" class="size-letter-spacing" style="padding-left: 32px;">• To the extent it acts as a disclosing QI for purposes of section 1446(a) or (f) for payments associated with this form, the QI is to provide the required payee documentation to associate with an amount realized or an amount subject to withholding on a PTP distribution.</label>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 0;">
+                    <strong>Qualified Intermediaries When Not Acting As Qualified Derivatives Dealers (check all that apply)</strong>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 0; margin-top: 3px; padding-bottom: 3px;">
+                    <strong class="fs-13">15a</strong> <input type="checkbox" id="beneficial-derives"><label for="beneficial-derives">I certify that the entity identified in Part I of this form assumes primary withholding responsibility for purposes of chapters 3 and 4 for each account identified on a withholding statement attached to this form (or, if no withholding statement is attached to this form, for all accounts).</label>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 0; padding-left:22px;">
+                    <strong class="fs-13">b</strong> <input type="checkbox" id="beneficial-derives"><label for="beneficial-derives">I certify that the entity identified in Part I of this form assumes primary withholding and reporting responsibility for each payment of an amount realized from the sale of an interest in a publicly traded partnership under section 1446(f) associated with each account identified on a withholding statement attached to this form for receiving such amounts (or, if no withholding statement is attached to this form, for all accounts). </label>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 0; padding-left:22px;">
+                    <strong class="fs-13">c</strong> <input type="checkbox" id="beneficial-derives"><label for="beneficial-derives">I certify that the entity identified in Part I of this form assumes primary withholding as a nominee under Regulations section 1.1446-4(b)(3) for each distribution by a publicly traded partnership associated with each account identified on a withholding statement attached to this form for receiving such distributions (or, if no withholding statement is attached to this form, for all accounts).</label>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 0; padding-left:22px;">
+                    <strong class="fs-13">d</strong> <input type="checkbox" id="beneficial-derives"><label for="beneficial-derives">I certify that the entity identified in Part I of this form is a QI acting as a qualified securities lender assuming primary withholding and reporting responsibilities with respect to payments that are U.S. source substitute dividends received from the withholding agent associated with each account identified on a withholding statement attached to this form (or, if no withholding statement is attached to this form, for all accounts).</label>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 0; padding-left:22px;">
+                    <strong class="fs-13">e</strong> <input type="checkbox" id="beneficial-derives"><label for="beneficial-derives">I certify that the entity identified in Part I of this form assumes primary withholding responsibility for purposes of chapters 3 and 4 and primary Form 1099 reporting and backup withholding responsibility for all payments of U.S. source interest and substitute interest associated with this form, as permitted by the QI Agreement.</label>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 0; padding-left:22px;">
+                    <strong class="fs-13">f</strong> <input type="checkbox" id="beneficial-derives"><label for="beneficial-derives">I certify that the entity identified in Part I of this form assumes primary Form 1099 reporting and backup withholding responsibility or reporting responsibility as a participating FFI or registered deemed-compliant FFI with respect to accounts that it maintains that are held by specified U.S. persons as permitted under Regulations sections 1.6049-4(c)(4)(i) or (c)(4)(ii) in lieu of Form 1099 reporting for each account identified on a withholding statement attached to this form (or, if no withholding statement is attached to this form, for all accounts). </label>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 0; padding-left:22px;">
+                    <strong class="fs-13">g</strong> <input type="checkbox" id="beneficial-derives"><label for="beneficial-derives">I certify that the entity identified in Part I of this form does not assume primary Form 1099 reporting and backup withholding responsibility for each account identified on a withholding statement attached to this form (or, if no withholding statement is attached to this form, for all accounts).</label>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 0; padding-left:22px;">
+                    <strong class="fs-13">h</strong> <input type="checkbox" id="beneficial-derives"><label for="beneficial-derives">(Complete only to the extent the entity identified in Part I of this form does not assume primary Form 1099 reporting and backup withholding responsibility.) If the entity identified in Part I of this form has allocated or will allocate a portion of a payment to a chapter 4 withholding rate pool of U.S. payees on a withholding statement associated with this form, I certify that the entity meets the requirements of Regulations section 1.6049-4(c)(4)(iii) with respect to any account holder of an account it maintains that is included in such a withholding rate pool.</label>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 0; padding-left:22px; border-bottom: 1px solid black;">
+                    <strong class="fs-13">i</strong> <input type="checkbox" id="beneficial-derives"><label for="beneficial-derives">(Complete only to the extent the entity identified in Part I of this form does not assume primary Form 1099 reporting and backup withholding responsibility.) If the entity identified in Part I of this form has allocated or will allocate a portion of a payment to a chapter 4 withholding rate pool of U.S. payees on a withholding statement associated with this form, to the extent the U.S. payees are account holders of an intermediary or flowthrough entity receiving a payment from the entity, I certify that the entity has obtained, or will obtain, documentation sufficient to establish each such intermediary or flow-through entity status as a participating FFI, registered deemed-compliant FFI, or FFI that is a QI.</label>
+                </td>
+            </tr>
+        </table>
+    </table>
+    <table>
+        <tr>
+            <td align="right" style="font-size: 11px; border: none; padding-bottom: 180px; text-align: right;">Form <span style="font-size: 16px; font-weight: bold;">W-8IMY</span> (Rev. 10-2021)</td>
+        </tr>
+    </table>
+    <script>
+        function adjustWidthForOS() {
+            const userAgent = window.navigator.userAgent.toLowerCase();
+            const lines = document.querySelectorAll('.line');
+    
+            // Detectar si es macOS
+            if (userAgent.indexOf('mac') !== -1) {
+                lines.forEach(line => {
+                    // Obtener el valor de ajuste desde el atributo data
+                    const pixelAdjustment = line.getAttribute('data-adjust');
+                    
+                    // Ajustar el ancho al valor obtenido
+                    if (pixelAdjustment) {
+                        line.style.width = pixelAdjustment + 'px';
+                    }
+                });
+            }
+        }
+    
+        // Llama a la función al cargar la página
+        document.addEventListener('DOMContentLoaded', adjustWidthForOS);
+    </script>
+</body>

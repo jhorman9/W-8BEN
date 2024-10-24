@@ -1,0 +1,494 @@
+<body class="to-pdf">
+    <style>
+        * {
+        box-sizing: border-box;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    body{
+        margin: auto;
+    }
+
+    /* Ocultar el ícono del calendario */
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        display: none; /* Para Chrome */
+    }
+    input[type="date"] {
+        -webkit-appearance: none; /* Para Safari */
+        appearance: none; /* Para otros navegadores */
+    }
+
+    .to-pdf{
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        width: 19cm;
+        /* height: 27.94cm; */
+        page-break-before: always;
+    }
+
+    .to-pdf table:first-child tbody td{
+        border-top: 0;
+    }
+
+    .to-pdf span, .to-pdf label, .to-pdf p, .to-pdf strong, .to-pdf input[type="text"]{
+        font-size: 11px;
+    }
+
+    .to-pdf .header-left .title-big{
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .to-pdf .header-left .title-big > span{
+        font-weight: 400;
+    }
+
+
+    table.table-layout {
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .header-left {
+        width: 20%; /* Ajusta el ancho de la celda izquierda */
+    }
+
+    .header-center {
+        width: 60%; /* Ajusta el ancho de la celda central */
+        text-align: center;
+    }
+
+    .header-right {
+        width: 20%; /* Ajusta el ancho de la celda derecha */
+        text-align: right;
+    }
+
+    .header-center{
+        text-align: center;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    td, table{
+        border-left: none;
+        border-right: none;
+    }
+
+    tr > td + td {
+        border-left: 1px solid black;
+    }
+
+    input{
+        border: none;
+    }
+
+    input[type="text"]{
+        width: 100%;
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    .m-0{
+        margin: 0;
+    }
+
+    .table-border-bottom{
+        border-bottom: 1px solid black;
+    }
+
+    .line-complete {
+        display: inline-block;
+        width: 100vw;
+        border-bottom: 1px dotted #000;
+        margin-left: 5px;
+        position: absolute !important;
+        bottom: 6px;
+        left: 99px;
+    }
+
+    li{
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    li:nth-child(3){
+        flex: 1;
+    }
+
+    li span:nth-child(1){
+        position: relative;
+        z-index: 2;
+        width: fit-content;
+        background-color: white;
+        padding-right: 7px;
+        margin-right: -1px;
+        padding-left: 5px;
+        max-width: 635px;
+    }
+
+    li div:nth-child(2){
+        position: relative;
+        z-index: 1;
+    }
+
+    li span:nth-child(3) {
+        position: relative;
+        z-index: 2;
+        width: fit-content;
+        background-color: white;
+    }
+
+    .part-1{
+        font-size: 12px;
+    }
+
+    .table-without-padding td {
+        padding: 0 3px;
+        border-top: 1px solid;
+        border-bottom: 1px solid;
+    }
+
+    .part-2{
+        border-top: 1px solid black;
+    }
+
+    .part-2 .backg-dark{
+        background-color: #000;
+        padding: 0 7px;
+        color: white;
+        font-size: initial;
+        margin-right: 7px;
+        font-size: 16px;
+    }
+
+    strong.fs-13{
+        font-size: 13px;
+        margin-right: 7px;
+    }
+
+    table tr.without-border td{
+        border: none;
+    }
+
+    .note-if{
+        border-top: 1px solid black;
+    }
+
+    .note-if p{
+        margin: 0;
+        padding: 3px 0;
+    }
+
+    .table-letter-small td{
+        font-size: 11px;
+    }
+
+    .border-bottom-table{
+        border-bottom: 1px solid black;
+    }
+
+    .border-top-none{
+        border-top: 0 !important;
+    }
+
+    .tablet-listed td{
+        padding-left: 8px;
+    }
+
+
+    .header {
+        width: 150px;
+        vertical-align: top;
+        font-weight: bold;
+        padding-right: 10px;
+    }
+
+    .content {
+        vertical-align: top;
+    }
+
+    .line {
+        border-bottom: 1px solid black;
+        width: 467px;
+        display: inline-block;
+    }
+
+    .date {
+        border-bottom: 1px solid black;
+        width: 150px;
+        display: inline-block;
+    }
+
+    .spacer {
+        padding-left: 20px;
+    }
+
+    .border-before::before {
+        position: absolute;
+        content: '';
+        width: 100%;
+        left: 0;
+        border-bottom: 1px dotted black;
+        top: 9px;
+        z-index: 1;
+    }
+
+    .vertical-align-top_table{
+        vertical-align: top;
+    }
+
+    input[type="checkbox"] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: 15px;
+        height: 15px;
+        border: 1px solid black;
+        background-color: white;
+        display: inline-block;
+        vertical-align: middle;
+        border-radius: 2px;
+        cursor: pointer;
+        position: relative;
+        margin: 0 3px;
+    }
+    
+    input[type="checkbox"]:checked {
+        background-color: #e7f3fe;
+        border-color: #7a7a7a;
+    }
+    
+    input[type="checkbox"]:checked::after {
+        content: '\2714';
+        color: black;
+        font-size: 10px;
+        position: absolute;
+        top: 0px;
+        left: 2.5px;
+    }
+
+    .table-spacing-check input[type="checkbox"] {
+        margin-bottom: 5px;
+    }
+
+    .size-letter-spacing{
+        display: inline-block;
+        line-height: 16px;
+    }
+
+    label.ident-list {
+        padding-left: 55px;
+    }
+    </style>
+    <table cellpadding="5" cellspacing="0" style="border-bottom: 1px solid black;">
+        <tr>
+            <td colspan="1" style="width: 50%; border: none;">
+                <label for="">Form W-8IMY (Rev. 10-2021)</label>
+            </td>
+            <td colspan="0" style="width: 10%; border: none;"></td>
+            <td style="text-align: right; width: 40%; border: none;" colspan="2" align="right">
+                <label for="">Page <strong class="fs-13" style="margin: 0;">3</strong></label>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-bottom: 0;" colspan="1"> 
+                <label for=""><strong>Qualified Derivatives Dealers</strong></label>                                   
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 0; border-top: 0;">
+                <label class="size-letter-spacing"><strong class="fs-13">16a</strong> <input type="checkbox">I certify that each QDD identified in Part I of this form or on a withholding statement associated with this form meets the requirements to act as a QDD (including approval by the IRS to so act) and assumes primary withholding and reporting responsibilities under chapters 3, 4, and 61 and section 3406 with respect to any payments it makes with respect to potential section 871(m) transactions.</label><br>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 0; border-top: 0; padding-left: 20px;">
+                <label class="size-letter-spacing"><strong class="fs-13">b</strong> <input type="checkbox">Entity classification of QDD: <input type="checkbox" id="" style="margin-left: 14px;"> <label for="">Corporation</label> <input type="checkbox" id="" style="margin-left: 14px;"> <label for="">partnership</label> <input type="checkbox" id="" style="margin-left: 14px;"> <label for="">Disregarded Entity</label></label><br>
+            </td>
+        </tr>
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important; margin-top: 3px;" colspan="1">                                    
+                <span style="font-size: 16px;"> 
+                    <span class="backg-dark">Part IV </span> <strong style="font-size: 13px;">Nonqualified Intermediary</strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 0; line-height: 12px;">
+                <strong>Check all that apply.</strong>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="size-letter-spacing" for="i-certify-ffi1"><strong class="fs-13">17a </strong> <input type="checkbox" id="i-certify-ffi1">(All nonqualified intermediaries and QIs that are not acting in their capacity as such check here.) I certify that the entity identified in Part I of this form is not acting as a QI with respect to each account(s) for which this form is provided and is not acting for its own account. </label><br>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 0; padding-left:22px;">
+                <label class="size-letter-spacing" for="i-certify-ffi1"><strong class="fs-13">b </strong> <input type="checkbox" id="i-certify-ffi1">I certify that the entity identified in Part I of this form is using this form to transmit withholding certificates and/or other documentation and has provided, or will provide, a withholding statement, as required. <strong>Note</strong>: If this form is provided for purposes of the entity’s interest in a publicly traded partnership, see the instructions for Part IV before checking this <strong>box</strong>.</label><br>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 0; padding-left:22px;">
+                <label class="size-letter-spacing" for="i-certify-ffi1"><strong class="fs-13">c </strong> <input type="checkbox" id="i-certify-ffi1">I certify that the entity identified in Part I of this form meets the requirements of Regulations section 1.6049-4(c)(4)(iii) with respect to any account holder of an account it maintains that is included in a withholding rate pool of U.S. payees provided on a withholding statement associated with this form (excluding a distribution from a publicly traded partnership).</label><br>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 0; padding-left:22px;">
+                <label class="size-letter-spacing" for="i-certify-ffi1"><strong class="fs-13">d </strong> <input type="checkbox" id="i-certify-ffi1">I certify that the entity identified in Part I of this form is acting as a qualified securities lender (other than a QI) assuming primary withholding and reporting responsibilities with respect to payments associated with this form that are U.S. source substitute dividends received from the withholding agent</label><br>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 0; padding-left:22px;">
+                <label class="size-letter-spacing" for="i-certify-ffi1"><strong class="fs-13">e </strong> <input type="checkbox" id="i-certify-ffi1">To the extent that the entity identified in Part I of this form is providing an alternative withholding statement described in Regulations section 1.1441-1(e)(3)(iv)(C)(3) for any payments associated with the form, the entity represents that the information on all of the withholding statements associated with this withholding certificate have been (or will be) verified for inconsistency with any other account information the entity has for the beneficial owners for determining the rate of withholding with respect to each payee (applying the standards of knowledge under section 1441 or section 1471, as applicable).</label><br>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 16px;"> 
+                    <span class="backg-dark">Part V </span> <strong style="font-size: 13px;"> Territory Financial Institution </strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="i-certify-ffi" class="size-letter-spacing"><strong class="fs-13">18a</strong> <input type="checkbox" id="i-certify-ffi">I certify that the entity identified in Part I is a financial institution (other than an investment entity that is not also a depository institution, custodial institution, or specified insurance company) that is incorporated or organized under the laws of a territory of the United States.</label><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Check the box on line 18b or 18c, whichever applies.</strong>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 0; padding-left:22px;">
+                <label class="size-letter-spacing" for="i-certify-ffi1"><strong class="fs-13">b </strong> <input type="checkbox" id="i-certify-ffi1">I further certify that the entity identified in Part I is using this form as evidence of its agreement with the withholding agent to be treated as a U.S. person for purposes of chapters 3 and 4 with respect to any reportable amounts and withholdable payments associated with this withholding certificate.</label><br>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 0; padding-left:22px;">
+                <label class="size-letter-spacing" for="i-certify-ffi1"><strong class="fs-13">c </strong> <input type="checkbox" id="i-certify-ffi1">I further certify that the entity identified in Part I:</label><br>
+                <label for="" class="size-letter-spacing">
+                    <label for="" class="size-letter-spacing" style="padding-left: 25px;">• Is using this form to transmit withholding certificates and/or other documentation for the persons for whom it receives a payment of a reportable amount or a withholdable payment; <strong>and</strong></label>
+                     <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 25px;">• Has provided or will provide a withholding statement, as required.</label>
+                </label>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <strong>Check the boxes on lines 18d, and 18e or 18f, as applicable</strong>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 0; padding-left:22px;">
+                <label class="size-letter-spacing" for="i-certify-ffi1"><strong class="fs-13">d </strong> <input type="checkbox" id="i-certify-ffi1">I certify that the entity identified in Part I agrees to be treated as a U.S. person under Regulations section 1.1446(f)-4(a)(2)(i)(B) with respect to amounts realized on sales of interests in publicly traded partnerships.</label><br>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 0; padding-left:22px;">
+                <label class="size-letter-spacing" for="i-certify-ffi1"><strong class="fs-13">e </strong> <input type="checkbox" id="i-certify-ffi1">I certify that the entity identified in Part I agrees to be treated as a U.S. person (as described in Regulations section 1.1441-1(b)(2)(iv)(A)) and as a nominee under Regulations section 1.1446-4(b)(3) with respect to distributions by publicly traded partnerships, <strong>or</strong></label><br>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 0; padding-left:22px;">
+                <label class="size-letter-spacing" for="i-certify-ffi1"><strong class="fs-13">f </strong> <input type="checkbox" id="i-certify-ffi1">Is not acting as a nominee for distributions from publicly traded partnerships and is providing withholding statements for the distributions. <strong>Note</strong>: If this form is provided for an amount realized, see the instructions for Part V before providing a withholding statement for an amount realized when the entity does not check the box on line 18d.</label><br>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 16px;"> 
+                    <span class="backg-dark">Part VI </span> <strong style="font-size: 13px;"> Certain U.S. Branches </strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="i-certify-ffi" class="size-letter-spacing"><strong class="fs-13">19a</strong> <input type="checkbox" id="i-certify-ffi">I certify that the entity identified in Part I is a U.S. branch receiving reportable amounts or withholdable payments that are not income effectively connected with the conduct of a trade or business in the United States, distributions from publicly traded partnerships, or amounts realized on sales of interests in publicly traded partnerships. </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Check the box on line 19b or 19c, whichever applies.</strong>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 0; padding-left:22px;">
+                <label class="size-letter-spacing" for="i-certify-ffi1"><strong class="fs-13">b </strong> <input type="checkbox" id="i-certify-ffi1">I certify that the entity identified in Part I is a U.S. branch of a foreign bank or insurance company described in Regulations section 1.1441-1(b)(2)(iv)(A) that is using this form as evidence of its agreement with the withholding agent to be treated as a U.S. person with respect to any reportable amounts or withholdable payments associated with this withholding certificate</label>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 0; padding-left:22px;">
+                <label class="size-letter-spacing" for="i-certify-ffi1"><strong class="fs-13">c </strong> <input type="checkbox" id="i-certify-ffi1">I certify that the entity identified in Part I:</label>
+                <label for="" class="size-letter-spacing">
+                    <label for="" class="size-letter-spacing" style="padding-left: 25px;">• Is using this form to transmit withholding certificates and/or other documentation for the persons for whom the branch receives a payment of a reportable amount;</label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 25px;">• Has provided or will provide a withholding statement, as required; <strong>and</strong></label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 25px;">• In the case of a withholdable payment, is applying the rules described in Regulations section 1.1471-4(d)(2)(iii)(C).</label>
+                </label>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <strong>Check the boxes on lines 19d, and 19e or 19f, as applicable</strong>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 0; padding-left:22px;">
+                <label class="size-letter-spacing" for="i-certify-ffi1"><strong class="fs-13">d </strong> <input type="checkbox" id="i-certify-ffi1">I certify that the entity identified in Part I is a U.S. branch (as described in Regulations section 1.1446(f)-4(a)(2)(i)(B)) that is acting as a U.S. person with respect to amounts realized on the sales of interests in publicly traded partnerships,</label><br>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 0; padding-left:22px;">
+                <label class="size-letter-spacing" for="i-certify-ffi1"><strong class="fs-13">e </strong> <input type="checkbox" id="i-certify-ffi1">I certify that the entity identified in Part I is a U.S. branch (as described in Regulations section 1.1441-1(b)(2)(iv)(A)) that is treated as a U.S. person and as a nominee with respect to distributions by publicly traded partnerships under Regulations section 1.1446-4(b)(3), <strong>or</strong> </label><br>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 0; padding-left:22px; border-bottom: 1px solid black;">
+                <label class="size-letter-spacing" for="i-certify-ffi1"><strong class="fs-13">f </strong> <input type="checkbox" id="i-certify-ffi1">Is not acting as a nominee for distributions from publicly traded partnerships and is providing withholding statements for the distributions. <br><strong>Note</strong>: If this form is provided for an amount realized, see the instructions for Part VI before providing a withholding statement for an amount realized when the U.S. branch does not check the box on line 19d. </label><br>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td align="right" style="font-size: 11px; border: none; padding-bottom: 20px;">Form <span style="font-size: 16px; font-weight: bold;">W-8IMY</span> (Rev. 10-2021)</td>
+        </tr>
+    </table>
+    <script>
+        function adjustWidthForOS() {
+            const userAgent = window.navigator.userAgent.toLowerCase();
+            const lines = document.querySelectorAll('.line');
+    
+            // Detectar si es macOS
+            if (userAgent.indexOf('mac') !== -1) {
+                lines.forEach(line => {
+                    // Obtener el valor de ajuste desde el atributo data
+                    const pixelAdjustment = line.getAttribute('data-adjust');
+                    
+                    // Ajustar el ancho al valor obtenido
+                    if (pixelAdjustment) {
+                        line.style.width = pixelAdjustment + 'px';
+                    }
+                });
+            }
+        }
+    
+        // Llama a la función al cargar la página
+        document.addEventListener('DOMContentLoaded', adjustWidthForOS);
+    </script>
+</body>

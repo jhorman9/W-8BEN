@@ -313,7 +313,7 @@
     <table border="1" cellpadding="5" cellspacing="0" style="border: 0">
         <tbody class="table-border-bottom">
             <tr style='border-top: none'>
-                <td class="header-left" colspan="1" style="width: 18%; padding: 0; border-top:0px">
+                <td class="header-left" colspan="1" style="width: 19%; padding: 0; border-top:0px">
                     <p class="m-0 title-big"><span class="">Form</span> W-8IMY</p>
                     <p class="m-0">(Rev. October 2021)</p>
                     <p class="m-0">Department of the Treasury Internal Revenue Service</p>
@@ -325,7 +325,7 @@
                     <h6 class="m-0"><strong><span class="arrow"></span> Go to www.irs.gov/FormW8IMY for instructions and the latest information.</strong></h6>
                     <h6 class="m-0"><strong><span class="arrow"></span> Give this form to the withholding agent or payer. Do not send to the IRS.</strong></h6>
                 </td>
-                <td class="header-right" colspan="1" style="width: 16%; padding: 0; border-top:0px">
+                <td class="header-right" colspan="1" style="width: 15%; padding: 0; border-top:0px">
                     <span class="m-0">OMB No. 1545-1621</span>
                 </td>
             </tr>
@@ -337,8 +337,8 @@
                 <td colspan="1" border="0" style="border-right: none !important;">
                     <h6 style="margin: 0; font-size: 12px;">Do not use this form for:</h6>
                 </td>
-                <td colspan="2" border="0" align="end" style="border-left: none !important; text-align: end;">
-                    <h6 style="margin: 0; font-size: 12px; text-align: end;" align='end'>Instead, use Form:</h6>
+                <td colspan="2" border="0" align="right" style="border-left: none !important; width: 150px;">
+                    <h6 style="margin: 0; font-size: 12px;">Instead, use Form:</h6>
                 </td>
             </tr>
             <tr class="do-not-use">
@@ -398,7 +398,7 @@
                 </td>
             </tr>
         </table>
-        <table border="1" cellpadding="5" cellspacing="0" class="table-without-padding" style="border-bottom: 0; border-top: 0;">
+        <table border="1" cellpadding="5" cellspacing="0" class="table-without-padding" style="border-bottom: 0;">
             <div class="part-2" style='border-top: 0'><span style="font-size: 13px;"> <span class="backg-dark">Part l </span> <strong style="font-size: 13px;">Identification of Entity </strong></span></div>
             <tr>
                 <td colspan="1" style="line-height: 18px;">
@@ -410,8 +410,8 @@
                     <span><?=$countries_law2;?></span>
                 </td>
             </tr>
-            <tr style="border-bottom: 1px solid #000;">
-                <td colspan="3" style="line-height: 18px; border-bottom: none">
+            <tr>
+                <td colspan="3" style="line-height: 18px;">
                     <label for="permanent"><strong class="fs-13">3</strong> Name of disregarded entity (if applicable), see instructions <br></label>
                     <span> </span>
                 </td>
@@ -471,13 +471,19 @@
                         </tr>
                         <tr>
                             <td style="border: none;">
-                                <input type="checkbox" id="international-organization" value="<?=$marcada?>"> <label for="international-organization">Nonwithholding foreign grantor trust. Complete Part VIII.</label>
+                                <!--<input type="checkbox" id="international-organization" value="true" class="checkbox <?=$marcada;?>"> <label for="international-organization">Nonwithholding foreign grantor trust. Complete Part VIII.</label>                                -->
+                                <?php if($marcada != ""){?>
+                                    <input type="checkbox" id="international-organization" value="true" class="checkbox checked"> <label for="international-organization">Nonwithholding foreign grantor trust. Complete Part VIII.</label>                                
+                                <?php }else{?>
+                                    <input type="checkbox" id="international-organization" value="true" class="checkbox"> <label for="international-organization">Nonwithholding foreign grantor trust. Complete Part VIII.</label>                                
+                                <?php } ?>
+                                
                             </td>
                         </tr>
                     </table>
                 </td>
             </tr>
-            <tr style="border-top: 1px solid #000;">
+            <tr>
                 <td colspan="3" style="line-height: 18px;">
                   <label for="cityortown">
                     <strong class="fs-13">5</strong> Chapter 4 Status (FATCA status) (See instructions for details and complete the certification below for the entity’s applicable status.)<br>                

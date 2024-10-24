@@ -1,0 +1,459 @@
+<body class="to-pdf">
+    <style>
+        * {
+        box-sizing: border-box;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    body{
+        margin: auto;
+    }
+
+    /* Ocultar el ícono del calendario */
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        display: none; /* Para Chrome */
+    }
+    input[type="date"] {
+        -webkit-appearance: none; /* Para Safari */
+        appearance: none; /* Para otros navegadores */
+    }
+
+    .to-pdf{
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        width: 19cm;
+        /* height: 27.94cm; */
+        page-break-before: always;
+    }
+
+    .to-pdf table:first-child tbody td{
+        border-top: 0;
+    }
+
+    .to-pdf span, .to-pdf label, .to-pdf p, .to-pdf strong, .to-pdf input[type="text"]{
+        font-size: 11px;
+    }
+
+    .to-pdf .header-left .title-big{
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .to-pdf .header-left .title-big > span{
+        font-weight: 400;
+    }
+
+
+    table.table-layout {
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .header-left {
+        width: 20%; /* Ajusta el ancho de la celda izquierda */
+    }
+
+    .header-center {
+        width: 60%; /* Ajusta el ancho de la celda central */
+        text-align: center;
+    }
+
+    .header-right {
+        width: 20%; /* Ajusta el ancho de la celda derecha */
+        text-align: right;
+    }
+
+    .header-center{
+        text-align: center;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    td, table{
+        border-left: none;
+        border-right: none;
+    }
+
+    tr > td + td {
+        border-left: 1px solid black;
+    }
+
+    input{
+        border: none;
+    }
+
+    input[type="text"]{
+        width: 100%;
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    .m-0{
+        margin: 0;
+    }
+
+    .table-border-bottom{
+        border-bottom: 1px solid black;
+    }
+
+    .line-complete {
+        display: inline-block;
+        width: 100vw;
+        border-bottom: 1px dotted #000;
+        margin-left: 5px;
+        position: absolute !important;
+        bottom: 6px;
+        left: 99px;
+    }
+
+    li{
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    li:nth-child(3){
+        flex: 1;
+    }
+
+    li span:nth-child(1){
+        position: relative;
+        z-index: 2;
+        width: fit-content;
+        background-color: white;
+        padding-right: 7px;
+        margin-right: -1px;
+        padding-left: 5px;
+        max-width: 635px;
+    }
+
+    li div:nth-child(2){
+        position: relative;
+        z-index: 1;
+    }
+
+    li span:nth-child(3) {
+        position: relative;
+        z-index: 2;
+        width: fit-content;
+        background-color: white;
+    }
+
+    .part-1{
+        font-size: 12px;
+    }
+
+    .table-without-padding td {
+        padding: 0 3px;
+        border-top: 1px solid;
+        border-bottom: 1px solid;
+    }
+
+    .part-2{
+        border-top: 1px solid black;
+    }
+
+    .part-2 .backg-dark{
+        background-color: #000;
+        padding: 0 7px;
+        color: white;
+        font-size: initial;
+        margin-right: 7px;
+        font-size: 16px;
+    }
+
+    strong.fs-13{
+        font-size: 13px;
+        margin-right: 7px;
+    }
+
+    table tr.without-border td{
+        border: none;
+    }
+
+    .note-if{
+        border-top: 1px solid black;
+    }
+
+    .note-if p{
+        margin: 0;
+        padding: 3px 0;
+    }
+
+    .table-letter-small td{
+        font-size: 11px;
+    }
+
+    .border-bottom-table{
+        border-bottom: 1px solid black;
+    }
+
+    .border-top-none{
+        border-top: 0 !important;
+    }
+
+    .tablet-listed td{
+        padding-left: 8px;
+    }
+
+
+    .header {
+        width: 150px;
+        vertical-align: top;
+        font-weight: bold;
+        padding-right: 10px;
+    }
+
+    .content {
+        vertical-align: top;
+    }
+
+    .line {
+        border-bottom: 1px solid black;
+        width: 467px;
+        display: inline-block;
+    }
+
+    .date {
+        border-bottom: 1px solid black;
+        width: 150px;
+        display: inline-block;
+    }
+
+    .spacer {
+        padding-left: 20px;
+    }
+
+    .border-before::before {
+        position: absolute;
+        content: '';
+        width: 100%;
+        left: 0;
+        border-bottom: 1px dotted black;
+        top: 9px;
+        z-index: 1;
+    }
+
+    .vertical-align-top_table{
+        vertical-align: top;
+    }
+
+    input[type="checkbox"] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: 15px;
+        height: 15px;
+        border: 1px solid black;
+        background-color: white;
+        display: inline-block;
+        vertical-align: middle;
+        border-radius: 2px;
+        cursor: pointer;
+        position: relative;
+        margin: 0 3px;
+    }
+    
+    input[type="checkbox"]:checked {
+        background-color: #e7f3fe;
+        border-color: #7a7a7a;
+    }
+    
+    input[type="checkbox"]:checked::after {
+        content: '\2714';
+        color: black;
+        font-size: 10px;
+        position: absolute;
+        top: 0px;
+        left: 2.5px;
+    }
+
+    .table-spacing-check input[type="checkbox"] {
+        margin-bottom: 5px;
+    }
+
+    .size-letter-spacing{
+        display: inline-block;
+        line-height: 16px;
+    }
+
+    label.ident-list {
+        padding-left: 55px;
+    }
+
+    .arrow {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid black;
+    padding-bottom: 4px;
+    }
+    .arrow {
+    transform: rotate(270deg);
+    }
+    </style>
+    <table cellpadding="5" cellspacing="0">
+        <tr>
+            <td colspan="1" style="width: 50%; border: none;">
+                <label for="">Form W-8IMY (Rev. 10-2021)</label>
+            </td>
+            <td colspan="0" style="width: 10%; border: none;"></td>
+            <td style="text-align: right; width: 40%; border: none;" colspan="2" align="right">
+                <label for="">Page <strong class="fs-13" style="margin: 0;">5</strong></label>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 13px;"> 
+                    <span class="backg-dark">Part XI </span> <strong style="font-size: 13px;">Owner-Documented FFI</strong> (continued)
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 0;">
+                <label>
+                    <strong>Check the box on line 24b or 24c, whichever applies.</strong>
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="size-letter-spacing"  style="padding-left: 20px;"><strong class="fs-13">b</strong> <input type="checkbox" >I certify that the FFI identified in Part I:</label><br>
+                <label for="" class="size-letter-spacing">
+                    <span class="size-letter-spacing" style="padding-left: 47px;">• Has provided, or will provide, an FFI owner reporting statement (including any applicable owner documentation) that contains:</span> <br>
+                    <span class="size-letter-spacing" style="padding-left: 57px;"><strong>(i)</strong> The name, address, TIN (if any), chapter 4 status, and type of documentation provided (if required) of every individual and specified U.S. person that owns a direct or indirect equity interest in the owner-documented FFI (looking through all entities other than specified U.S. persons);</span><br>
+                    <span class="size-letter-spacing" style="padding-left: 57px;"><strong>(ii)</strong> The name, address, TIN (if any), chapter 4 status, and type of documentation provided (if required) of every individual and specified U.S. person that owns a debt interest in the owner-documented FFI (including any indirect debt interest, which includes debt interests in any entity that directly or indirectly owns the payee or any direct or indirect equity interest in a debt holder of the payee) that constitutes a financial account in excess of 150,000 (disregarding all such debt interests owned by participating FFIs, registered deemed-compliant FFIs, certified deemed-compliant FFIs, excepted NFFEs, exempt beneficial owners, or U.S. persons other than specified U.S. persons); <strong>and</strong></span><br>
+                    <span class="size-letter-spacing" style="padding-left: 57px;"><strong >(iii)</strong> Any additional information the withholding agent requests in order to fulfill its obligations with respect to the entity.</span>
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td style="border-bottom: 1px solid black;">
+                <label class="size-letter-spacing"  style="padding-left: 20px;"><strong class="fs-13">c</strong> <input type="checkbox" >I certify that the FFI identified in Part I:</label><br>
+                <label for="" class="size-letter-spacing" style="padding-left: 45px;">
+                    • Has provided, or will provide, an auditor’s letter, signed no more than 4 years prior to the date of payment, from an independent accounting firm or legal representative with a location in the United States stating that the firm or representative has reviewed the FFI’s documentation with respect to all of its owners and debt holders identified in Regulations section 1.1471-3(d)(6)(iv)(A)(2) and that the FFI meets all the requirements to be an owner-documented FFI. The FFI identified in Part I has also provided, or will provide, an FFI owner reporting statement and Form W-9, with applicable waivers, as described in Regulations section 1.1471-3(d)(6)(iv).
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 13px;"> 
+                    <span class="backg-dark">Part XII </span> <strong style="font-size: 13px;">Certified Deemed-Compliant Nonregistering Local Bank</strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label ><strong class="fs-13">25</strong> <input type="checkbox" >I certify that the FFI identified in Part I:</label><br>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom: 7px;">
+                <label class="size-letter-spacing" style="padding-left: 35px;">• Operates and is licensed solely as a bank or credit union (or similar cooperative credit organization operated without profit) in its country of incorporation or organization;</label>
+                <label class="size-letter-spacing" style="padding-left: 35px;">• Engages primarily in the business of receiving deposits from and making loans to, with respect to a bank, retail customers unrelated to such bank and, with respect to a credit union or similar cooperative credit organization, members, provided that no member has a greater than 5% interest in such credit union or cooperative credit organization;</label>
+                <label class="size-letter-spacing" style="padding-left: 35px;">• Does not solicit account holders outside its country of organization;</label>
+                <label class="size-letter-spacing" style="padding-left: 35px;">• Has no fixed place of business outside such country (for this purpose, a fixed place of business does not include a location that is not advertised to the public and from which the FFI performs solely administrative support functions);</label>
+                <label class="size-letter-spacing" style="padding-left: 35px;">• Has no more than $175 million in assets on its balance sheet and, if it is a member of an expanded affiliated group, the group has no more than $500 million in total assets on its consolidated or combined balance sheets; <strong>and</strong></label>
+                <label class="size-letter-spacing" style="padding-left: 35px;">• Does not have any member of its expanded affiliated group that is an FFI, other than an FFI that is incorporated or organized in the same country as the FFI identified in Part I and that meets the requirements set forth in this Part XII.</label>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 13px;"> 
+                    <span class="backg-dark">Part XIII </span> <strong style="font-size: 13px;">Certified Deemed-Compliant FFI With Only Low-Value Accounts</strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label  class="size-letter-spacing"><strong class="fs-13">26</strong> <input type="checkbox" >I certify that the FFI identified in Part I:</label><br>
+                <label for="">
+                    <label class="size-letter-spacing" style="padding-left: 35px;">• Is not engaged primarily in the business of investing, reinvesting, or trading in securities, partnership interests, commodities, notional principal contracts, insurance or annuity contracts, or any interest (including a futures or forward contract or option) in such security, partnership interest, commodity, notional principal contract, insurance contract, or annuity contract;</label> <br>
+                    <label class="size-letter-spacing" style="padding-left: 35px;">• No financial account maintained by the FFI or any member of its expanded affiliated group, if any, has a balance or value in excess of $50,000 (as determined after applying applicable account aggregation rules); <strong>and</strong></label>
+                    <label class="size-letter-spacing" style="padding-left: 35px;">• Neither the FFI nor the FFI’s entire expanded affiliated group, if any, has more than $50 million in assets on its consolidated or combined balance sheet as of the end of its most recent accounting year.</label>
+                </label>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 16px;"> 
+                    <span class="backg-dark">Part XIV </span> <strong style="font-size: 13px;"> Certified Deemed-Compliant Sponsored, Closely Held Investment Vehicle</strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td style="">
+                <label ><strong class="fs-13">27a</strong> <input type="checkbox" >Name of sponsoring entity: <span class="arrow"></span> <span class="line" style="width: 513px;" data-adjust="502"> </span></label><br>
+                <label  style="padding-left: 14px;"><strong class="fs-13">b</strong> <input type="checkbox" >I certify that the FFI identified in Part I:</label><br>
+                <label for="" class="size-letter-spacing" style="padding-left: 41px;">
+                    <label class="size-letter-spacing">• Is an FFI solely because it is an investment entity described in Regulations section 1.1471-5(e)(4);</label> <br>
+                    <label>• Is not a QI, WP, or WT;</label> <br>
+                    <label>• Will have all of its due diligence, withholding, and reporting responsibilities (determined as if the FFI were a participating FFI) fulfilled by the sponsoring entity identified on line 27a; <strong>and</strong></label> <br>
+                    <label>• 20 or fewer individuals own all of the debt and equity interests in the entity (disregarding debt interests owned by U.S. financial institutions, participating FFIs, registered deemed-compliant FFIs, and certified deemed-compliant FFIs and equity interests owned by an entity that owns 100% of the equity interests in the FFI identified in Part I and is itself a sponsored FFI).</label>
+                </label>
+            </td>
+        </tr>
+    </table>
+    <table cellpadding="5" cellspacing="0" style="margin-top: 3px;">
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 13px;"> 
+                    <span class="backg-dark">Part XV </span> <strong style="font-size: 13px;">Certified Deemed-Compliant Limited Life Debt Investment Entity</strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 0; border-bottom: 1px solid black;">
+                <label ><strong class="fs-13">28</strong> <input type="checkbox" >I certify that the FFI identified in Part I:</label><br>
+                <label for="" class="size-letter-spacing">
+                    <label class="size-letter-spacing" style="padding-left: 35px;">• Was in existence as of January 17, 2013;</label>
+                    <label class="size-letter-spacing" style="padding-left: 35px;">• Issued all classes of its debt or equity interests to investors on or before January 17, 2013, pursuant to a trust indenture or similar agreement; <strong>and</strong></label>
+                    <label class="size-letter-spacing" style="padding-left: 35px;">• Is certified deemed-compliant because it satisfies the requirements to be treated as a limited life debt investment entity (such as the restrictions with respect to its assets and other requirements under Regulations section 1.1471-5(f)(2)(iv)).</label> 
+                </label>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td align="right" style="font-size: 11px; border: none;">Form <span style="font-size: 16px; font-weight: bold;">W-8IMY</span> (Rev. 10-2021)</td>
+        </tr>
+    </table>
+    <script>
+        function adjustWidthForOS() {
+            const userAgent = window.navigator.userAgent.toLowerCase();
+            const lines = document.querySelectorAll('.line');
+    
+            // Detectar si es macOS
+            if (userAgent.indexOf('mac') !== -1) {
+                lines.forEach(line => {
+                    // Obtener el valor de ajuste desde el atributo data
+                    const pixelAdjustment = line.getAttribute('data-adjust');
+                    
+                    // Ajustar el ancho al valor obtenido
+                    if (pixelAdjustment) {
+                        line.style.width = pixelAdjustment + 'px';
+                    }
+                });
+            }
+        }
+    
+        // Llama a la función al cargar la página
+        document.addEventListener('DOMContentLoaded', adjustWidthForOS);
+    </script>
+</body>
