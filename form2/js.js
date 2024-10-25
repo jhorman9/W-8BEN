@@ -458,129 +458,129 @@ document.addEventListener('DOMContentLoaded', () => {
     noneAbove.addEventListener('change', updateValues00);
 });
 
-// (function ($) {
+/* (function ($) {
 
-//     // Seleccionamos todos los elementos con la clase 'btn-finalizar'
-//     document.querySelectorAll('.btn-finalizar').forEach(button => {
-//         // Agregamos el listener a cada botón
-//         button.addEventListener('click', function(event) {
+     // Seleccionamos todos los elementos con la clase 'btn-finalizar'
+     document.querySelectorAll('.btn-finalizar').forEach(button => {
+         // Agregamos el listener a cada botón
+         button.addEventListener('click', function(event) {
             
-//             const tipo = event.target.getAttribute("data-tipo");      
-//             const nombreformulario= event.target.getAttribute("date-formulario");          
-//             const tipoform = event.target.getAttribute("data-variable");  
+             const tipo = event.target.getAttribute("data-tipo");      
+             const nombreformulario= event.target.getAttribute("date-formulario");          
+             const tipoform = event.target.getAttribute("data-variable");  
                         
-//             let stepForm = document.querySelector(`#${nombreformulario}`);
+             let stepForm = document.querySelector(`#${nombreformulario}`);
 
-//             console.log(stepForm);
+             console.log(stepForm);
 
-//             let erroresValidadores = 0;               
+             let erroresValidadores = 0;               
         
-//             let formData = new FormData();
+             let formData = new FormData();
                 
-//             formData.append('action', 'submit_questionnaire');
-//             formData.append('nonce', questionnarie_ajax.nonce); // 
-//             formData.append('tipo_formulario', tipo);
-//             formData.append('tipoform', tipoform);
+             formData.append('action', 'submit_questionnaire');
+             formData.append('nonce', questionnarie_ajax.nonce);  
+             formData.append('tipo_formulario', tipo);
+             formData.append('tipoform', tipoform);
 
-//             stepForm.querySelectorAll('input, select').forEach(input => {
+             stepForm.querySelectorAll('input, select').forEach(input => {
 
-//                 let id = input.id;
-//                 let value = input.value;
+                 let id = input.id;
+                 let value = input.value;
 
-//                 if(tipoform === "personaFisica"){
-//                     // Busca el campo en el array por ID
-//                     let datos = personaFisica.find(field => field.id === id);
+                 if(tipoform === "personaFisica"){
+                     // Busca el campo en el array por ID
+                     let datos = personaFisica.find(field => field.id === id);
                     
-//                     if (datos) {
-//                         datos.value = value;
+                     if (datos) {
+                         datos.value = value;
 
-//                         if (datos.required && datos.value === "") {
-//                             erroresValidadores++;
-//                             // Puedes mostrar algún mensaje de error específico aquí
-//                             console.log(`El campo ${datos.id} es requerido.`);
-//                         }else{
-//                             formData.append(id, value);
-//                         }
-//                     }
-//                 }
+                         if (datos.required && datos.value === "") {
+                             erroresValidadores++;
+                             // Puedes mostrar algún mensaje de error específico aquí
+                             console.log(`El campo ${datos.id} es requerido.`);
+                         }else{
+                             formData.append(id, value);
+                         }
+                     }
+                 }
 
-//                 if(tipoform === "formularioFideicomisoTrust"){
-
-//                     // Busca el campo en el array por ID
-//                     let datos = formularioFideicomisoTrust.find(field => field.id === id);
-                    
-//                     if (datos) {
-//                         datos.value = value;
-
-//                         if (datos.required && datos.value === "") {
-//                             erroresValidadores++;
-//                             // Puedes mostrar algún mensaje de error específico aquí
-//                             console.log(`El campo ${datos.id} es requerido.`);
-//                         }else{
-//                             formData.append(id, value);
-//                         }
-//                     }
-
-//                 }
-
-//                 if(tipoform === "custionarioA"){
+                 if(tipoform === "formularioFideicomisoTrust"){
 
 //                     // Busca el campo en el array por ID
-//                     let datos = custionarioA.find(field => field.id === id);
+                     let datos = formularioFideicomisoTrust.find(field => field.id === id);
                     
-//                     if (datos) {
-//                         datos.value = value;
+                     if (datos) {
+                         datos.value = value;
 
-//                         if (datos.required && datos.value === "") {
-//                             erroresValidadores++;
-//                             // Puedes mostrar algún mensaje de error específico aquí
-//                             console.log(`El campo ${datos.id} es requerido.`);
-//                         }else{
-//                             formData.append(id, value);
-//                         }
-//                     }
+                         if (datos.required && datos.value === "") {
+                             erroresValidadores++;
+                             // Puedes mostrar algún mensaje de error específico aquí
+                             console.log(`El campo ${datos.id} es requerido.`);
+                         }else{
+                             formData.append(id, value);
+                         }
+                     }
 
-//                 }
-//             });
+                 }
 
-//             if(erroresValidadores > 0){
-//                 console.log("No están completos los campos requeridos.");
-//                 alert('Por favor, complete todos los campos requeridos.');
-//                 return; // Detener el flujo si hay errores            
-//             }else{
+                 if(tipoform === "custionarioA"){
+
+                     // Busca el campo en el array por ID
+                     let datos = custionarioA.find(field => field.id === id);
+                    
+                     if (datos) {
+                         datos.value = value;
+
+                         if (datos.required && datos.value === "") {
+                             erroresValidadores++;
+                             // Puedes mostrar algún mensaje de error específico aquí
+                             console.log(`El campo ${datos.id} es requerido.`);
+                         }else{
+                            formData.append(id, value);
+                         }
+                     }
+
+                 }
+             });
+
+             if(erroresValidadores > 0){
+                 console.log("No están completos los campos requeridos.");
+                 alert('Por favor, complete todos los campos requeridos.');
+                 return; // Detener el flujo si hay errores            
+             }else{
                 
-//                 $.ajax({
-//                     url: questionnarie_ajax.ajax_url,
-//                     type: 'POST',
-//                     data: formData,
-//                     processData: false,
-//                     contentType: false,
-//                     beforeSend: function () {
-//                         // Mostrar un loader si es necesario
-//                     },
-//                     success: function (response) {
-//                         console.log(response);
-//                         let data = JSON.parse(response);
-//                         if (data.code == 0) {
-//                             window.location.href = data.url;                         
-//                         } else {
-//                             alert('Hubo un error al enviar el formulario.');
-//                             location.reload();
-//                         }
-//                     },
-//                     error: function () {
-//                         alert('Error de conexión.');
-//                         location.reload();
-//                     }
-//                 });
-//             }
+                 $.ajax({
+                     url: questionnarie_ajax.ajax_url,
+                     type: 'POST',
+                     data: formData,
+                     processData: false,
+                     contentType: false,
+                     beforeSend: function () {
+                         // Mostrar un loader si es necesario
+                     },
+                     success: function (response) {
+                         console.log(response);
+                         let data = JSON.parse(response);
+                         if (data.code == 0) {
+                             window.location.href = data.url;                         
+                         } else {
+                             alert('Hubo un error al enviar el formulario.');
+                             location.reload();
+                         }
+                     },
+                     error: function () {
+                         alert('Error de conexión.');
+                         location.reload();
+                     }
+                 });
+             }
                         
             
 
-//         });
-//     });
+         });
+     });
 
-// })(jQuery);
+ })(jQuery);*/
 
 document.addEventListener('DOMContentLoaded', () => {
     const livingEeuu = document.querySelector('#livingeeuu');

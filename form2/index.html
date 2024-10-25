@@ -190,7 +190,7 @@
                             </div>
                         </fieldset>
                     </div>
-                    <div class="AreLivingEEUU" style="display: none;">
+                    <div class="AreLivingEEUU" style="display: none;" >
                         <div class="form-tax-two_column country-entity">
                             <fieldset class="form-group">
                                 <label for="nationality" class="tax-text-dark"><strong>3.</strong> Indique su nacionalidad</label>
@@ -222,43 +222,45 @@
                                 </div>
                             </fieldset>
                         </div>
-                        <div class="form-tax-two_column">
-                            <fieldset class="form-group">
-                                <label for="writedirection" class="tax-text-dark"><strong><strong>4.</strong> Campo opcional (pero el país es obligatorio).</strong> Escriba la dirección completa de residencia en la que efectivamente usted vive. Incluya el nombre o número de casa o edificio, número de apartamento, calle o avenida, ciudad, y código postal (si en su país se utiliza el código postal). <strong>No puede utilizar una dirección de P.O. Box.</strong></label>
+                        <div class="form-group">
+                            <label for="writedirection" class="tax-text-dark"><strong><strong>4.</strong> Campo obligatorio (pero el país es obligatorio).</strong> Escriba la dirección completa de residencia en la que efectivamente usted vive. Incluya el nombre o número de casa o edificio, número de apartamento, calle o avenida, ciudad, y código postal (si en su país se utiliza el código postal). <strong>No puede utilizar una dirección de P.O. Box.</strong></label>
+                            <div class="form-tax-two_column">
                                 <select name="writedirection" id="writedirection" required>
-                                    <option value="" selected disabled>Seleccione una opción</option>
-                                    <option value="Argentina">Argentina</option>
-                                    <option value="Brasil">Brasil</option>
-                                    <option value="Bolivia">Bolivia</option>
-                                    <option value="Chile">Chile</option>
-                                    <option value="Colombia">Colombia</option>
-                                    <option value="Costa Rica">Costa Rica</option>
-                                    <option value="República Dominicana">República Dominicana</option>
-                                    <option value="Ecuador">Ecuador</option>
-                                    <option value="España">España</option>
-                                    <option value="El Salvador">El Salvador</option>
-                                    <option value="Guatemala">Guatemala</option>
-                                    <option value="Honduras">Honduras</option>
-                                    <option value="México">México</option>
-                                    <option value="Nicaragua">Nicaragua</option>
-                                    <option value="Panamá">Panamá</option>
-                                    <option value="Perú">Perú</option>
-                                    <option value="Paraguay">Paraguay</option>
-                                    <option value="Portugal">Portugal</option>
-                                    <option value="Uruguay">Uruguay</option>
-                                    <option value="Venezuela">Venezuela</option>
-                                </select>
-                                <div class="response-indicator">
-                                    <span>&#10003;</span>
-                                </div>
-                            </fieldset>
+                                        <option value="" selected disabled>Seleccione una opción</option>
+                                        <option value="Argentina">Argentina</option>
+                                        <option value="Brasil">Brasil</option>
+                                        <option value="Bolivia">Bolivia</option>
+                                        <option value="Chile">Chile</option>
+                                        <option value="Colombia">Colombia</option>
+                                        <option value="Costa Rica">Costa Rica</option>
+                                        <option value="República Dominicana">República Dominicana</option>
+                                        <option value="Ecuador">Ecuador</option>
+                                        <option value="España">España</option>
+                                        <option value="El Salvador">El Salvador</option>
+                                        <option value="Guatemala">Guatemala</option>
+                                        <option value="Honduras">Honduras</option>
+                                        <option value="México">México</option>
+                                        <option value="Nicaragua">Nicaragua</option>
+                                        <option value="Panamá">Panamá</option>
+                                        <option value="Perú">Perú</option>
+                                        <option value="Paraguay">Paraguay</option>
+                                        <option value="Portugal">Portugal</option>
+                                        <option value="Uruguay">Uruguay</option>
+                                        <option value="Venezuela">Venezuela</option>
+                                    </select>
+                                    <input type="text" >
+                                    <div class="response-indicator">
+                                        <span>&#10003;</span>
+                                    </div>
+                            </div>
                         </div>
-                        <div class="form-tax-two_column">
-                            <fieldset class="form-group">
-                                <label for="writedirection2" class="tax-text-dark"><strong><strong>5.</strong> Campo opcional.</strong> Si usted lo desea, escriba una dirección para la recepción de correo físico que sea distinta a su dirección de residencia física. Si esta dirección es en los EE.UU., su institución financiera le solicitará una explicación acerca del porqué su dirección de correspondencia es en los EE.UU. a pesar de que su dirección de residencia física no es en los EE.UU. <strong>Puede utilizar una dirección de P.O. Box.</strong></label>
+                        <div class="form-group">
+                            <label for="writedirection2" class="tax-text-dark"><strong><strong>5.</strong> Campo opcional.</strong> Si usted lo desea, escriba una dirección para la recepción de correo físico que sea distinta a su dirección de residencia física. Si esta dirección es en los EE.UU., su institución financiera le solicitará una explicación acerca del porqué su dirección de correspondencia es en los EE.UU. a pesar de que su dirección de residencia física no es en los EE.UU. <strong>Puede utilizar una dirección de P.O. Box.</strong></label>
+                            <fieldset class="form-tax-two_column">
                                 <select name="writedirection2" id="writedirection2">
                                     <option value="0">Seleccione una opción</option>
                                 </select>
+                                <input type="text" >
                                 <div class="response-indicator">
                                     <span>&#10003;</span>
                                 </div>
@@ -266,7 +268,7 @@
                         </div>
                         <div class="form-tax-two_column">
                             <fieldset class="form-group">
-                                <label for="writetaxpayer" class="tax-text-dark"><strong><strong>6.</strong> Campo opcional.</strong> Escriba el número de contribuyente de impuesto sobre la renta que le asignó a usted la administración tributaria del país que usted seleccionó como país de residencia física. Sepa que, si este formulario es para entregárselo a una institución financiera de los EE.UU., dicha institución necesitará este número de contribuyente para evitar aplicarle 30% de retenciones de impuesto sobre la renta a rendimientos por concepto de intereses. </label>
+                                <label for="writetaxpayer" class="tax-text-dark"><strong><strong>6.</strong> Campo obligatorio.</strong> Escriba el número de contribuyente de impuesto sobre la renta que le asignó a usted la administración tributaria del país que usted seleccionó como país de residencia física. Sepa que, si este formulario es para entregárselo a una institución financiera de los EE.UU., dicha institución necesitará este número de contribuyente para evitar aplicarle 30% de retenciones de impuesto sobre la renta a rendimientos por concepto de intereses. </label>
                                 <input type="text" placeholder="escribir aquí" name="writetaxpayer" id="writetaxpayer">
                                 <div class="response-indicator">
                                     <span>&#10003;</span>
@@ -275,14 +277,14 @@
                         </div>
                         <div class="form-tax-two_column">
                             <fieldset class="form-group">
-                                <label for="birthdate0" class="tax-text-dark"><strong><strong>7.</strong> Campo opcional.</strong> Indique su fecha de nacimiento: MES | DÍA | AÑO </label>
+                                <label for="birthdate0" class="tax-text-dark"><strong><strong>7.</strong> Campo obligatorio.</strong> Indique su fecha de nacimiento: MES | DÍA | AÑO </label>
                                 <input type="date" id="birthdate0" name="birthdate0">
                                 <div class="response-indicator">
                                     <span>&#10003;</span>
                                 </div>
                             </fieldset>
                             <fieldset class="form-group">
-                                <label for="birthday01" class="tax-text-dark"><strong><strong>8.</strong> Campo opcional.</strong>Indique la fecha para la emisión del formulario: MES | DÍA | AÑO </label>
+                                <label for="birthday01" class="tax-text-dark"><strong><strong>8.</strong> Campo obligatorio.</strong>Indique la fecha para la emisión del formulario: MES | DÍA | AÑO </label>
                                 <input type="date" id="birthdate01" name="birthdate01" placeholder="escribir aquí">
                                 <div class="response-indicator">
                                     <span>&#10003;</span>
@@ -323,7 +325,7 @@
                     </div>
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
-                            <label for="benename" class="tax-text-dark"><strong>1.</strong> <strong>Campo opcional.</strong>Por favor escriba el nombre corporativo completo (denominación social) de su Entidad: </label>
+                            <label for="benename" class="tax-text-dark"><strong>1.</strong> <strong>Campo obligatorio.</strong>Por favor escriba el nombre corporativo completo (denominación social) de su Entidad: </label>
                             <input type="text" placeholder="escribir aquí" name="benename" id="benename">
                             <div class="response-indicator">
                                 <span>&#10003;</span>
@@ -360,7 +362,7 @@
                     </div>
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
-                            <label for="benepostal" class="tax-text-dark"><strong><strong>4. </strong> Campo opcional (pero el país es obligatorio).</strong> Por favor escriba la dirección completa del domicilio de la Entidad. Incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, y código postal (si en su país de constitución se utiliza el código postal). <strong>No puede utilizar una dirección de P.O. Box.</strong></label>
+                            <label for="benepostal" class="tax-text-dark"><strong><strong>4. </strong> Campo obligatorio (pero el país es obligatorio).</strong> Por favor escriba la dirección completa del domicilio de la Entidad. Incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, y código postal (si en su país de constitución se utiliza el código postal). <strong>No puede utilizar una dirección de P.O. Box.</strong></label>
                             <div class="form-tax-two_column">
                                 <input type="text" id="benecountry1" name="benecountry1" disabled>
                                 <input type="text" placeholder="escribir aquí" id="benepostal" name="benepostal">
@@ -373,7 +375,7 @@
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
                             <label for="banedirection" class="tax-text-dark">
-                                <strong><strong>5.</strong> Campo opcional.</strong> Si usted lo desea, por favor escriba una dirección para la recepción de correo físico que seadistinta a la dirección del domicilio de negocios de la Entidad. Por favor incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, código postal (si en su país se utiliza el código postal) y país. <strong> label puede utilizar una dirección de P.O. Box.</strong>
+                                <strong><strong>5.</strong> Campo opcional.</strong> Si usted lo desea, por favor escriba una dirección para la recepción de correo físico que seadistinta a la dirección del domicilio de negocios de la Entidad. Por favor incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, código postal (si en su país se utiliza el código postal) y país. <strong> puede utilizar una dirección de P.O. Box.</strong>
                             </label>
                             <p style="margin: 3px 0;"> <strong>Nota:</strong>  Si esta dirección de correo es en los EE.UU., su institución financiera le solicitará una explicación acerca del porqué su dirección de correspondencia es en los EE.UU. a pesar de que la dirección de su domicilio no es en los EE.UU. </p>
                             <div class="form-tax-two_column">
@@ -389,7 +391,7 @@
                     </div>
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
-                            <label for="numberid" class="tax-text-dark"><strong><strong>6. </strong> Campo opcional.</strong> Por favor ingrese el número de identificación tributaria que le asignó, a la Entidad, la autoridad fiscal del país donde se constituyó. Es importante saber que, si este formulario será presentado a una institución financiera de EE.UU., dicha institución necesita dicho número para evitar retener el 30% en impuestos sobre ciertos intereses. Estos intereses podrían estar exentos de esa retención si se incluye el número de contribuyente.</label>
+                            <label for="numberid" class="tax-text-dark"><strong><strong>6. </strong> Campo obligatorio.</strong> Por favor ingrese el número de identificación tributaria que le asignó, a la Entidad, la autoridad fiscal del país donde se constituyó. Es importante saber que, si este formulario será presentado a una institución financiera de EE.UU., dicha institución necesita dicho número para evitar retener el 30% en impuestos sobre ciertos intereses. Estos intereses podrían estar exentos de esa retención si se incluye el número de contribuyente.</label>
                             <input type="text" placeholder="escribir aquí" name="numberid" id="numberid">
                             <div class="response-indicator">
                                 <span>&#10003;</span>
@@ -398,14 +400,14 @@
                     </div>
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
-                            <label for="benedate0" class="tax-text-dark"><strong><strong>7. </strong>Campo opcional.</strong> Por favor indique la fecha para su formulario: MES | DÍA | AÑO</label>
+                            <label for="benedate0" class="tax-text-dark"><strong><strong>7. </strong>Campo obligatorio.</strong> Por favor indique la fecha para su formulario: MES | DÍA | AÑO</label>
                             <input type="date" name="benedate0" id="benedate0" placeholder="escribir aquí">
                             <div class="response-indicator">
                                 <span>&#10003;</span>
                             </div>
                         </fieldset>
                         <fieldset class="form-group">
-                            <label for="benedate01" class="tax-text-dark"><strong><strong>8. </strong> Campo opcional.</strong> Por favor escriba el nombre y apellido de la persona que firmará el formulario.</strong></label>
+                            <label for="benedate01" class="tax-text-dark"><strong><strong>8. </strong> Campo obligatorio.</strong> Por favor escriba el nombre y apellido de la persona que firmará el formulario.</strong></label>
                             <input type="date" name="benedate01" id="benedate01" placeholder="escribir aquí">
                             <div class="response-indicator">
                                 <span>&#10003;</span>
@@ -709,7 +711,7 @@
                     </div>
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
-                            <label for="trust-w8imy" class="tax-text-dark"><strong>1.</strong> <strong> Campo opcional.</strong> Por favor, escriba el nombre de la fundación de interés privado. Este nombre se encuentra en el acta fundacional o documento constitutivo.</label>
+                            <label for="trust-w8imy" class="tax-text-dark"><strong>1.</strong> <strong> Campo obligatorio.</strong> Por favor, escriba el nombre de la fundación de interés privado. Este nombre se encuentra en el acta fundacional o documento constitutivo.</label>
                             <input type="text" name="trust-w8imy" id="trust-w8imy" placeholder="Escribir aquí..."/>
                             <div class="response-indicator">
                                 <span>&#10003;</span>
@@ -734,7 +736,7 @@
                     </div>
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
-                            <label for="trustee-fideicomiso" class="tax-text-dark"><strong>3.</strong> <strong> Campo opcional.</strong> Por favor, escriba la dirección completa del domicilio de la fundación. Incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, y código postal (si en su país se utiliza el código postal). Incluya el país <strong>No puede utilizar una dirección de P.O. Box.</strong></label>
+                            <label for="trustee-fideicomiso" class="tax-text-dark"><strong>3.</strong> <strong> Campo obligatorio.</strong> Por favor, escriba la dirección completa del domicilio de la fundación. Incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, y código postal (si en su país se utiliza el código postal). Incluya el país <strong>No puede utilizar una dirección de P.O. Box.</strong></label>
                             <div class="form-tax-two_column">
                                 <input type="text" name="trustee-country" id="trustee-country" disabled>
                                 <input type="text" name="trustee-fideicomiso" id="trustee-fideicomiso" placeholder="Escribir aquí...">
@@ -761,14 +763,14 @@
                     <p style="margin: 3px 0;"> <strong>Nota:</strong> Si esta dirección de correo es en los EE.UU., su institución financiera o proveedor probablemente le solicitará una explicación acerca del porqué su dirección de correspondencia es en los EE.UU. a pesar de que la dirección del domicilio de la fundación no es en los EE.UU. </p>
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
-                            <label for="birthdate" class="tax-text-dark"><strong><strong>5.</strong> Campo opcional.</strong> Por favor, indique la fecha que desea en su formulario: MES | DÍA | AÑO </label>
+                            <label for="birthdate" class="tax-text-dark"><strong><strong>5.</strong> Campo obligatorio.</strong> Por favor, indique la fecha que desea en su formulario: MES | DÍA | AÑO </label>
                             <input type="date" id="birthdate" lang="en-US">
                             <div class="response-indicator">
                                 <span>&#10003;</span>
                             </div>
                         </fieldset>
                         <fieldset class="form-group">
-                            <label for="name-sing" class="tax-text-dark"><strong><strong>6.</strong> Campo opcional.</strong> Por favor escriba el nombre y apellido de la persona que firmará el formulario. </label>
+                            <label for="name-sing" class="tax-text-dark"><strong><strong>6.</strong> Campo obligatorio.</strong> Por favor escriba el nombre y apellido de la persona que firmará el formulario. </label>
                             <input type="text" id="name-sing" name="name-sing" placeholder="escribir aquí">
                             <div class="response-indicator">
                                 <span>&#10003;</span>
@@ -807,7 +809,7 @@
                     </div>
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
-                            <label for="trust-foundation" class="tax-text-dark"><strong>1.</strong> <strong> Campo opcional.</strong> Por favor, escriba el nombre de la fundación de interés privado. Este nombre se encuentra en el acta fundacional o documento constitutivo.</label>
+                            <label for="trust-foundation" class="tax-text-dark"><strong>1.</strong> <strong> Campo obligatorio.</strong> Por favor, escriba el nombre de la fundación de interés privado. Este nombre se encuentra en el acta fundacional o documento constitutivo.</label>
                             <input type="text" type="trust-foundation" name="trust-foundation" placeholder="Escribir aquí..."/>
                             <div class="response-indicator">
                                 <span>&#10003;</span>
@@ -832,7 +834,7 @@
                     </div>
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
-                            <label for="direction-complete" class="tax-text-dark"><strong>3.</strong> <strong> Campo opcional.</strong> Por favor, escriba la dirección completa del domicilio de la fundación. Incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, y código postal (si en su país se utiliza el código postal). Incluya el país <strong>No puede utilizar una dirección de P.O. Box.</strong></label>
+                            <label for="direction-complete" class="tax-text-dark"><strong>3.</strong> <strong> Campo obligatorio.</strong> Por favor, escriba la dirección completa del domicilio de la fundación. Incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, y código postal (si en su país se utiliza el código postal). Incluya el país <strong>No puede utilizar una dirección de P.O. Box.</strong></label>
                             <div class="form-tax-two_column">
                                 <input type="text" name="direction-country" id="direction-country" disabled>
                                 <input type="text" name="direction-complete" id="direction-complete" placeholder="Escribir aquí...">
@@ -859,14 +861,14 @@
                     <p style="margin: 3px 0;"> <strong>Nota:</strong> Si esta dirección de correo es en los EE.UU., su institución financiera o proveedor probablemente le solicitará una explicación acerca del porqué su dirección de correspondencia es en los EE.UU. a pesar de que la dirección del domicilio de la fundación no es en los EE.UU. </p>
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
-                            <label for="birthdate02" class="tax-text-dark"><strong><strong>5.</strong> Campo opcional.</strong> Por favor, indique la fecha que desea en su formulario: MES | DÍA | AÑO </label>
+                            <label for="birthdate02" class="tax-text-dark"><strong><strong>5.</strong> Campo obligatorio.</strong> Por favor, indique la fecha que desea en su formulario: MES | DÍA | AÑO </label>
                             <input type="date" id="birthdate02" name="birthdate02" lang="en-US">
                             <div class="response-indicator">
                                 <span>&#10003;</span>
                             </div>
                         </fieldset>
                         <fieldset class="form-group">
-                            <label for="name-sing" class="tax-text-dark"><strong><strong>6.</strong> Campo opcional.</strong> Por favor escriba el nombre y apellido de la persona que firmará el formulario </label>
+                            <label for="name-sing" class="tax-text-dark"><strong><strong>6.</strong> Campo obligatorio.</strong> Por favor escriba el nombre y apellido de la persona que firmará el formulario </label>
                             <input type="text" name="name-sing" id="name-sing" placeholder="escribir aquí">
                             <div class="response-indicator">
                                 <span>&#10003;</span>
@@ -905,7 +907,7 @@
                     </div>
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
-                            <label for="name-foundation" class="tax-text-dark"><strong>1.</strong> <strong> Campo opcional.</strong> Por favor, escriba el nombre de la fundación de interés privado. Este nombre se encuentra en el acta fundacional o documento constitutivo.</label>
+                            <label for="name-foundation" class="tax-text-dark"><strong>1.</strong> <strong> Campo obligatorio.</strong> Por favor, escriba el nombre de la fundación de interés privado. Este nombre se encuentra en el acta fundacional o documento constitutivo.</label>
                             <input type="text" type="name-foundation" name="name-foundation" placeholder="Escribir aquí..."/>
                             <div class="response-indicator">
                                 <span>&#10003;</span>
@@ -930,7 +932,7 @@
                     </div>
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
-                            <label for="writedirection3" class="tax-text-dark"><strong>3.</strong> <strong> Campo opcional.</strong>Por favor, escriba la dirección completa del domicilio de la fundación. Incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, y código postal (si en su país se utiliza el código postal). Incluya el país <strong>No puede utilizar una dirección de P.O. Box.</strong></label>
+                            <label for="writedirection3" class="tax-text-dark"><strong>3.</strong> <strong> Campo obligatorio.</strong>Por favor, escriba la dirección completa del domicilio de la fundación. Incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, y código postal (si en su país se utiliza el código postal). Incluya el país <strong>No puede utilizar una dirección de P.O. Box.</strong></label>
                             <div class="form-tax-two_column">
                                 <input type="text" name="country-direction" id="country-direction" disabled>
                                 <input type="text" name="writedirection3" id="writedirection3" placeholder="Escribir aquí...">
@@ -957,7 +959,7 @@
                     <p style="margin: 3px 0;"> <strong>Nota:</strong>  Si esta dirección de correo es en los EE.UU., su institución financiera o proveedor probablemente le solicitará una explicación acerca del porqué su dirección de correspondencia es en los EE.UU. a pesar de que la dirección del domicilio de la fundación no es en los EE.UU.  </p>
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
-                            <label for="number-identification" class="tax-text-dark"><strong><strong>5.</strong> Campo opcional.</strong> Por favor ingrese el número de identificación tributaria que le asignó a la fundación la autoridad fiscal de su país de domicilio. Es importante saber que, si este formulario será presentado a una institución financiera de EE.UU., dicha institución podría necesitar dicho número para evitar retener el 30% en impuestos sobre ciertos intereses. Estos intereses podrían estar exentos de esa retención si se incluye el número de contribuyente de la fundación, en caso de tenerlo.</label>
+                            <label for="number-identification" class="tax-text-dark"><strong><strong>5.</strong> Campo obligatorio.</strong> Por favor ingrese el número de identificación tributaria que le asignó a la fundación la autoridad fiscal de su país de domicilio. Es importante saber que, si este formulario será presentado a una institución financiera de EE.UU., dicha institución podría necesitar dicho número para evitar retener el 30% en impuestos sobre ciertos intereses. Estos intereses podrían estar exentos de esa retención si se incluye el número de contribuyente de la fundación, en caso de tenerlo.</label>
                             <input type="text" id="number-identification" name="number-identification" placeholder="Escribir aquí..."/>
                             <div class="response-indicator">
                                 <span>&#10003;</span>
@@ -966,14 +968,14 @@
                     </div>
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
-                            <label for="birthdate04" class="tax-text-dark"><strong><strong>6.</strong> Campo opcional.</strong> Indique la fecha para la emisión del formulario: MES | DÍA | AÑO</label>
+                            <label for="birthdate04" class="tax-text-dark"><strong><strong>6.</strong> Campo obligatorio.</strong> Indique la fecha para la emisión del formulario: MES | DÍA | AÑO</label>
                             <input type="date" id="birthdate04" name="birthdate04" lang="en-US">
                             <div class="response-indicator">
                                 <span>&#10003;</span>
                             </div>
                         </fieldset>
                         <fieldset class="form-group">
-                            <label for="birthdate05" class="tax-text-dark"><strong><strong>7.</strong> Campo opcional.</strong> Por favor escriba el nombre y apellido de la persona que firmará el formulario W-8. </label>
+                            <label for="birthdate05" class="tax-text-dark"><strong><strong>7.</strong> Campo obligatorio.</strong> Por favor escriba el nombre y apellido de la persona que firmará el formulario W-8. </label>
                             <input type="text" id="birthdate05" name="birthdate05" placeholder="escribir aquí">
                             <div class="response-indicator">
                                 <span>&#10003;</span>
@@ -1108,7 +1110,7 @@
                 </div>
                 <div class="form-tax-two_column">
                     <fieldset class="form-group">
-                        <label for="sticht-name" class="tax-text-dark"><strong>1.</strong> <strong> Campo opcional.</strong>Por favor, escriba el nombre de la Stichting. Este nombre se encuentra en el acta fundacional o documento constitutivo.</label>
+                        <label for="sticht-name" class="tax-text-dark"><strong>1.</strong> <strong> Campo obligatorio.</strong>Por favor, escriba el nombre de la Stichting. Este nombre se encuentra en el acta fundacional o documento constitutivo.</label>
                         <input type="text" id="sticht-name" name="sticht-name" placeholder="Escribir aquí...">
                         <div class="response-indicator">
                             <span>&#10003;</span>
@@ -1133,7 +1135,7 @@
                 </div>
                 <div class="form-tax-two_column">
                     <fieldset class="form-group">
-                        <label for="sticht-address" class="tax-text-dark"><strong>3.</strong> <strong> Campo opcional.</strong> Por favor, escriba la dirección completa del domicilio de la Stichting. Incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, y código postal (si en su país se utiliza el código postal). <strong>No puede utilizar una dirección de P.O. Box.</strong> </label>
+                        <label for="sticht-address" class="tax-text-dark"><strong>3.</strong> <strong> Campo obligatorio.</strong> Por favor, escriba la dirección completa del domicilio de la Stichting. Incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, y código postal (si en su país se utiliza el código postal). <strong>No puede utilizar una dirección de P.O. Box.</strong> </label>
                         <div class="form-tax-two_column">
                             <input type="text" id="sticht-country01" name="sticht-country01" disabled>
                             <input type="text" id="sticht-address" name="sticht-address" placeholder="Escribir aquí...">
@@ -1145,7 +1147,7 @@
                 </div>
                 <div class="form-tax-two_column">
                     <fieldset class="form-group">
-                        <label for="sticht-address2" class="tax-text-dark"><strong>4.</strong> <strong> Campo opcional.</strong> Campo opcional. Si usted lo desea, por favor escriba una dirección para la recepción de correo físico que sea distinta a la dirección del domicilio de la Stichting. Incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, código postal (si en su país se utiliza el código postal) y país. <strong>Sí puede utilizar una dirección de P.O. Box.</strong> </label>
+                        <label for="sticht-address2" class="tax-text-dark"><strong>4.</strong> <strong> Campo opcional.</strong> Si usted lo desea, por favor escriba una dirección para la recepción de correo físico que sea distinta a la dirección del domicilio de la Stichting. Incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, código postal (si en su país se utiliza el código postal) y país. <strong>Sí puede utilizar una dirección de P.O. Box.</strong> </label>
                         <div class="form-tax-two_column">
                             <select name="sticht-country02" id="sticht-country02">
                                 <option value="0" disabled selected>Seleccione una opción</option>
@@ -1160,7 +1162,7 @@
                 <p style="margin: 3px 0;"> <strong>Nota:</strong>  Si esta dirección de correo es en los EE.UU., su institución financiera o proveedor probablemente le solicitará una explicación acerca del porqué su dirección de correspondencia es en los EE.UU. a pesar de que la dirección del domicilio de la Stichting no es en los EE.UU.  </p>
                 <div class="form-tax-two_column" style="display: block;">
                     <fieldset class="form-group">
-                        <label for="sticht-date" class="tax-text-dark"><strong>5.</strong> <strong> Campo opcional.</strong>  Por favor, indique la fecha que desea en su formulario: MES | DÍA | AÑO</strong> </label>
+                        <label for="sticht-date" class="tax-text-dark"><strong>5.</strong> <strong> Campo obligatorio.</strong>  Por favor, indique la fecha que desea en su formulario: MES | DÍA | AÑO</strong> </label>
                         <input type="date" id="sticht-date" name="sticht-date">
                         <div class="response-indicator">
                             <span>&#10003;</span>
@@ -1169,7 +1171,7 @@
                 </div>
                 <div class="form-tax-two_column">
                     <fieldset class="form-group">
-                        <label for="sticht-name2" class="tax-text-dark"><strong>6.</strong> <strong> Campo opcional.</strong>  Por favor escriba el nombre y apellido de la persona que firmará el formulario.</strong> </label>
+                        <label for="sticht-name2" class="tax-text-dark"><strong>6.</strong> <strong> Campo obligatorio.</strong>  Por favor escriba el nombre y apellido de la persona que firmará el formulario.</strong> </label>
                         <input type="text" id="sticht-name2" name="sticht-name2" placeholder="Escribir aquí...">
                         <div class="response-indicator">
                             <span>&#10003;</span>
@@ -1209,7 +1211,7 @@
                     </div>
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
-                            <label for="sticht-name-1" class="tax-text-dark"><strong>1.</strong> <strong> Campo opcional.</strong>Por favor, escriba el nombre de la Stichting. Este nombre se encuentra en el acta fundacional o documento constitutivo. </label>
+                            <label for="sticht-name-1" class="tax-text-dark"><strong>1.</strong> <strong> Campo obligatorio.</strong>Por favor, escriba el nombre de la Stichting. Este nombre se encuentra en el acta fundacional o documento constitutivo. </label>
                             <input type="text" id="sticht-name-1" name="sticht-name-1" placeholder="Escribir aquí...">
                             <div class="response-indicator">
                                 <span>&#10003;</span>
@@ -1234,7 +1236,7 @@
                     </div>
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
-                            <label for="sticht-address-1" class="tax-text-dark"><strong>3.</strong> <strong> Campo opcional.</strong> Por favor, escriba la dirección completa del domicilio de la Stichting. Incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, y código postal (si en su país se utiliza el código postal).<strong>No puede utilizar una dirección de P.O. Box.</strong> </label>
+                            <label for="sticht-address-1" class="tax-text-dark"><strong>3.</strong> <strong> Campo obligatorio.</strong> Por favor, escriba la dirección completa del domicilio de la Stichting. Incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, y código postal (si en su país se utiliza el código postal).<strong>No puede utilizar una dirección de P.O. Box.</strong> </label>
                             <div class="form-tax-two_column">
                                 <input type="text" name="sticht-country001" id="sticht-country001" disabled>
                                 <input type="text" id="sticht-address-1" name="sticht-address-1" placeholder="Escribir aquí...">
@@ -1261,7 +1263,7 @@
                     <p style="margin: 3px 0;"> <strong>Nota:</strong>  Si esta dirección de correo es en los EE.UU., su institución financiera o proveedor probablemente le solicitará una explicación acerca del porqué su dirección de correspondencia es en los EE.UU. a pesar de que la dirección del domicilio de la Stichting no es en los EE.UU. </p>
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
-                            <label for="sticht-date-1" class="tax-text-dark"><strong>5.</strong> <strong> Campo opcional.</strong>  Por favor, indique la fecha que desea en su formulario: MES | DÍA | AÑO</strong> </label>
+                            <label for="sticht-date-1" class="tax-text-dark"><strong>5.</strong> <strong> Campo obligatorio.</strong>  Por favor, indique la fecha que desea en su formulario: MES | DÍA | AÑO</strong> </label>
                             <input type="date" id="sticht-date-1" name="sticht-date-1">
                             <div class="response-indicator">
                                 <span>&#10003;</span>
@@ -1270,7 +1272,7 @@
                     </div>
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
-                            <label for="sticht-name-2" class="tax-text-dark"><strong>6.</strong> <strong> Campo opcional.</strong>  Por favor escriba el nombre y apellido de la persona que firmará el formulario.</strong> </label>
+                            <label for="sticht-name-2" class="tax-text-dark"><strong>6.</strong> <strong> Campo obligatorio.</strong>  Por favor escriba el nombre y apellido de la persona que firmará el formulario.</strong> </label>
                             <input type="text" id="sticht-name-2" name="sticht-name-2" placeholder="Escribir aquí...">
                             <div class="response-indicator">
                                 <span>&#10003;</span>
@@ -1309,7 +1311,7 @@
                     </div>
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
-                            <label for="sticht-name-11" class="tax-text-dark"><strong>1.</strong> <strong> Campo opcional.</strong>Por favor, escriba el nombre de la Stichting. Este nombre se encuentra en el acta fundacional de la Stichting o documento constitutivo.</label>
+                            <label for="sticht-name-11" class="tax-text-dark"><strong>1.</strong> <strong> Campo obligatorio.</strong>Por favor, escriba el nombre de la Stichting. Este nombre se encuentra en el acta fundacional de la Stichting o documento constitutivo.</label>
                             <input type="text" id="sticht-name-11" name="sticht-name-11" placeholder="Escribir aquí...">
                             <div class="response-indicator">
                                 <span>&#10003;</span>
@@ -1334,7 +1336,7 @@
                     </div>
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
-                            <label for="sticht-address-11" class="tax-text-dark"><strong>3.</strong> <strong> Campo opcional.</strong>Por favor, escriba la dirección completa del domicilio de la Stichting. Incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, y código postal (si en su país se utiliza el código postal).<strong>No puede utilizar una dirección de P.O. Box.</strong> </label>
+                            <label for="sticht-address-11" class="tax-text-dark"><strong>3.</strong> <strong> Campo obligatorio.</strong>Por favor, escriba la dirección completa del domicilio de la Stichting. Incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, y código postal (si en su país se utiliza el código postal).<strong>No puede utilizar una dirección de P.O. Box.</strong> </label>
                             <div class="form-tax-two_column">
                                 <input type="text" id="sticht-country003" name="sticht-country003" disabled>
                                 <input type="text" id="sticht-address-11" name="sticht-address-11" placeholder="Escribir aquí...">
@@ -1361,7 +1363,7 @@
                     <p style="margin: 3px 0;"> <strong>Nota:</strong>Si esta dirección de correo es en los EE.UU., su institución financiera o proveedor probablemente le solicitará una explicación acerca del porqué su dirección de correspondencia es en los EE.UU. a pesar de que la dirección del domicilio de la Stichting no es en los EE.UU.  </p>
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
-                            <label for="sticht-identification" class="tax-text-dark"><strong>5.</strong> <strong> Campo opcional.</strong> Por favor ingrese el número de identificación tributaria que le asignó a la Stichting la autoridad fiscal del país de domicilio. Es importante saber que, si este formulario será presentado a una institución financiera de EE.UU., dicha institución podría necesitar este número para evitar retener el 30% en impuestos sobre ciertos intereses. Estos intereses podrían estar exentos de esa retención si se incluye el número de contribuyente de la Stichting, en caso de tenerlo.</strong> </label>
+                            <label for="sticht-identification" class="tax-text-dark"><strong>5.</strong> <strong> Campo obligatorio.</strong> Por favor ingrese el número de identificación tributaria que le asignó a la Stichting la autoridad fiscal del país de domicilio. Es importante saber que, si este formulario será presentado a una institución financiera de EE.UU., dicha institución podría necesitar este número para evitar retener el 30% en impuestos sobre ciertos intereses. Estos intereses podrían estar exentos de esa retención si se incluye el número de contribuyente de la Stichting, en caso de tenerlo.</strong> </label>
                             <input type="text" id="sticht-identification" name="sticht-identification" placeholder="Escribir aquí...">
                             <div class="response-indicator">
                                 <span>&#10003;</span>
@@ -1370,7 +1372,7 @@
                     </div>
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
-                            <label for="sticht-date-11" class="tax-text-dark"><strong>6.</strong> <strong> Campo opcional.</strong> Indique la fecha para la emisión del formulario: MES | DÍA | AÑO</strong> </label>
+                            <label for="sticht-date-11" class="tax-text-dark"><strong>6.</strong> <strong> Campo obligatorio.</strong> Indique la fecha para la emisión del formulario: MES | DÍA | AÑO</strong> </label>
                             <input type="date" id="sticht-date-11" name="sticht-date-11">
                             <div class="response-indicator">
                                 <span>&#10003;</span>
@@ -1379,7 +1381,7 @@
                     </div>
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
-                            <label for="sticht-name-22" class="tax-text-dark"><strong>7.</strong> <strong> Campo opcional.</strong> Por favor escriba el nombre y apellido de la persona que firmará el formulario W-8</strong> </label>
+                            <label for="sticht-name-22" class="tax-text-dark"><strong>7.</strong> <strong> Campo obligatorio.</strong> Por favor escriba el nombre y apellido de la persona que firmará el formulario W-8</strong> </label>
                             <input type="text" id="sticht-name-22" name="sticht-name-22" placeholder="Escribir aquí...">
                             <div class="response-indicator">
                                 <span>&#10003;</span>
@@ -1418,7 +1420,7 @@
                     </div>
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
-                            <label for="trust-fideicomiso" class="tax-text-dark"><strong>1.</strong> <strong> Campo opcional.</strong>  Por favor, escriba el nombre del fideicomiso (“trust”). Este nombre se encuentra en el contrato de fideicomiso y puede ser una combinación de números y letras o un nombre específico. En cualquier caso, podrá encontrar esta información en el contrato de fideicomiso. </label>
+                            <label for="trust-fideicomiso" class="tax-text-dark"><strong>1.</strong> <strong> Campo obligatorio.</strong>  Por favor, escriba el nombre del fideicomiso (“trust”). Este nombre se encuentra en el contrato de fideicomiso y puede ser una combinación de números y letras o un nombre específico. En cualquier caso, podrá encontrar esta información en el contrato de fideicomiso. </label>
                             <input type="text" type="trust-fideicomiso" name="trust-fideicomiso" id="trust-fideicomiso" placeholder="Escribir aquí..."/>
                             <div class="response-indicator">
                                 <span>&#10003;</span>
@@ -1452,7 +1454,7 @@
                     </div>
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
-                            <label for="trustee-email" class="tax-text-dark"><strong>4.</strong> <strong> Campo opcional.</strong> Campo opcional. Si usted lo desea, por favor escriba una dirección para la recepción de correo físico que sea distinta a la dirección del domicilio del fiduciario | fideicomisario (“trustee”). Incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, código postal (si en su país se utiliza el código postal) y país. <strong>Sí puede utilizar una dirección de P.O. Box.</strong>  </label>
+                            <label for="trustee-email" class="tax-text-dark"><strong>4.</strong> <strong> Campo opcional.</strong> Si usted lo desea, por favor escriba una dirección para la recepción de correo físico que sea distinta a la dirección del domicilio del fiduciario | fideicomisario (“trustee”). Incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, código postal (si en su país se utiliza el código postal) y país. <strong>Sí puede utilizar una dirección de P.O. Box.</strong>  </label>
                             <div class="form-tax-two_column">
                                 <select class="countries-3" name="countries-3" id="countries-3">
                                     <option value="0" selected disabled>Seleccione una opción</option>
@@ -1467,14 +1469,14 @@
                     <p style="margin: 3px 0;"> <strong>Nota:</strong> Si esta dirección de correo es en los EE.UU., su institución financiera probablemente le solicitará una explicación acerca del porqué su dirección de correspondencia es en los EE.UU. a pesar de que la dirección del domicilio del fiduciario no es en los EE.UU. </p>
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
-                            <label for="birthdate06" class="tax-text-dark"><strong><strong>5.</strong> Campo opcional.</strong> Por favor, indique la fecha para la emisión del formulario: MES | DÍA | AÑO </label>
+                            <label for="birthdate06" class="tax-text-dark"><strong><strong>5.</strong> Campo obligatorio.</strong> Por favor, indique la fecha para la emisión del formulario: MES | DÍA | AÑO </label>
                             <input type="date" id="birthdate06" name="birthdate06" lang="en-US">
                             <div class="response-indicator">
                                 <span>&#10003;</span>
                             </div>
                         </fieldset>
                         <fieldset class="form-group">
-                            <label for="name-sing" class="tax-text-dark"><strong><strong>6.</strong> Campo opcional.</strong>Por favor escriba el nombre y apellido de la persona que firmará el formulario W-8. </label>
+                            <label for="name-sing" class="tax-text-dark"><strong><strong>6.</strong> Campo obligatorio.</strong>Por favor escriba el nombre y apellido de la persona que firmará el formulario W-8. </label>
                             <!--<input type="date" name="birthdate07" id="birthdate07" placeholder="escribir aquí">-->
                             <input type="text" id="name-sing" name="name-sing" placeholder="Escribir aquí..."/>
                             <div class="response-indicator">
@@ -1525,7 +1527,7 @@
                 </div>
                 <div class="form-tax-two_column">
                     <fieldset class="form-group">
-                        <label for="name-fideicomiso" class="tax-text-dark"><strong>1.</strong> <strong> Campo opcional.</strong> Por favor, indique el nombre del fideicomiso. Este nombre se encuentra en el contrato de fideicomiso y puede ser una combinación de números y letras o un nombre específico. En cualquier caso, podrá encontrar esta información en el contrato </label>
+                        <label for="name-fideicomiso" class="tax-text-dark"><strong>1.</strong> <strong> Campo obligatorio.</strong> Por favor, indique el nombre del fideicomiso. Este nombre se encuentra en el contrato de fideicomiso y puede ser una combinación de números y letras o un nombre específico. En cualquier caso, podrá encontrar esta información en el contrato </label>
                         <input type="text" type="name-fideicomiso" name="name-fideicomiso" placeholder="Escribir aquí..."/>
                         <div class="response-indicator">
                             <span>&#10003;</span>
@@ -1545,7 +1547,7 @@
                 </div>
                 <div class="form-tax-two_column">
                     <fieldset class="form-group">
-                        <label for="writedirection4" class="tax-text-dark"><strong>3.</strong> <strong> Campo opcional.</strong>Por favor, escriba la dirección completa del domicilio del fiduciario | fideicomisario (“trustee”). Incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, y código postal (si en su país se utiliza el código postal). <strong>No puede utilizar una dirección de P.O. Box.</strong></label>
+                        <label for="writedirection4" class="tax-text-dark"><strong>3.</strong> <strong> Campo obligatorio.</strong>Por favor, escriba la dirección completa del domicilio del fiduciario | fideicomisario (“trustee”). Incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, y código postal (si en su país se utiliza el código postal). <strong>No puede utilizar una dirección de P.O. Box.</strong></label>
                         <div class="form-tax-two_column">
                             <input type="text" name="writedirection04" id="writedirection04" disabled>
                             <input type="text" name="writedirection4" id="writedirection4" placeholder="Escribir aquí...">
@@ -1572,14 +1574,14 @@
                 <p style="margin: 3px 0;"> <strong>Nota:</strong> Si esta dirección de correo es en los EE.UU., su institución financiera o proveedor le solicitará una explicación acerca del porqué su dirección de correspondencia es en los EE.UU. a pesar de que la dirección del domicilio del fiduciario | fideicomisario no es en los EE.UU</p>
                 <div class="form-tax-two_column">
                     <fieldset class="form-group">
-                        <label for="birthdate08" class="tax-text-dark"><strong><strong>5.</strong> Campo opcional.</strong> Indique la fecha para su formulario: MES | DÍA | AÑO </label>
+                        <label for="birthdate08" class="tax-text-dark"><strong><strong>5.</strong> Campo obligatorio.</strong> Indique la fecha para su formulario: MES | DÍA | AÑO </label>
                         <input type="date" id="birthdate08" name="birthdate08" lang="en-US">
                         <div class="response-indicator">
                             <span>&#10003;</span>
                         </div>
                     </fieldset>
                     <fieldset class="form-group">
-                        <label for="name-sing" class="tax-text-dark"><strong><strong>6.</strong> Campo opcional.</strong> Por favor escriba el nombre y apellido de la persona que firmará el formulario </label>
+                        <label for="name-sing" class="tax-text-dark"><strong><strong>6.</strong> Campo obligatorio.</strong> Por favor escriba el nombre y apellido de la persona que firmará el formulario </label>
                         <input type="text" name="name-sing" id="name-sing" placeholder="escribir aquí">
                         <div class="response-indicator">
                             <span>&#10003;</span>
@@ -1618,7 +1620,7 @@
                 </div>
                 <div class="form-tax-two_column">
                     <fieldset class="form-group">
-                        <label for="name-fideicomiso2" class="tax-text-dark"><strong>1.</strong> <strong> Campo opcional.</strong> Por favor, escriba el nombre del fideicomiso (“trust”). Este nombre se encuentra en el contrato de fideicomiso (“trust”) y puede ser una combinación de números y letras o un nombre específico. En cualquier caso, podrá encontrar esta información en el contrato. </label>
+                        <label for="name-fideicomiso2" class="tax-text-dark"><strong>1.</strong> <strong> Campo obligatorio.</strong> Por favor, escriba el nombre del fideicomiso (“trust”). Este nombre se encuentra en el contrato de fideicomiso (“trust”) y puede ser una combinación de números y letras o un nombre específico. En cualquier caso, podrá encontrar esta información en el contrato. </label>
                         <input type="text" type="name-fideicomiso2" name="name-fideicomiso2" placeholder="Escribir aquí..."/>
                         <div class="response-indicator">
                             <span>&#10003;</span>
@@ -1638,7 +1640,7 @@
                 </div>
                 <div class="form-tax-two_column">
                     <fieldset class="form-group">
-                        <label for="writedirection5" class="tax-text-dark"><strong>3.</strong> <strong> Campo opcional.</strong> Por favor, escriba la dirección completa del domicilio del fiduciario | fideicomisario. Incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, y código postal (si en su país se utiliza el código postal) <strong>No puede utilizar una dirección de P.O. Box.</strong></label>
+                        <label for="writedirection5" class="tax-text-dark"><strong>3.</strong> <strong> Campo obligatorio.</strong> Por favor, escriba la dirección completa del domicilio del fiduciario | fideicomisario. Incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, y código postal (si en su país se utiliza el código postal) <strong>No puede utilizar una dirección de P.O. Box.</strong></label>
                         <div class="form-tax-two_column">
                             <input type="text" name="writecountry0" id="writecountry0" disabled>
                             <input type="text" name="writedirection05" id="writedirection05" placeholder="Escribir aquí...">
@@ -1665,7 +1667,7 @@
                 <p style="margin: 3px 0;"> <strong>Nota:</strong> Si esta dirección de correo es en los EE.UU., su institución financiera le solicitará una explicación acerca del porqué su dirección de correspondencia es en los EE.UU. a pesar de que la dirección de su domicilio no es en los EE.UU. </p>
                 <div class="form-tax-two_column">
                     <fieldset class="form-group">
-                        <label for="trustee-fideicomiso2" class="tax-text-dark"><strong>5.</strong> <strong> Campo opcional.</strong>   Por favor ingrese el número de identificación tributaria que le asignó al fideicomiso o al fiduciario | fideicomisario la autoridad fiscal del país de domicilio del fideicomiso. Es importante saber que, si este formulario será presentado a una institución financiera de EE.UU., dicha institución podría necesitar este número para evitar retener el 30% en impuestos sobre ciertos intereses. Estos intereses podrían estar exentos de esa retención si se incluye el número de contribuyente del fideicomiso, en caso de tenerlo.</label>
+                        <label for="trustee-fideicomiso2" class="tax-text-dark"><strong>5.</strong> <strong> Campo obligatorio.</strong>   Por favor ingrese el número de identificación tributaria que le asignó al fideicomiso o al fiduciario | fideicomisario la autoridad fiscal del país de domicilio del fideicomiso. Es importante saber que, si este formulario será presentado a una institución financiera de EE.UU., dicha institución podría necesitar este número para evitar retener el 30% en impuestos sobre ciertos intereses. Estos intereses podrían estar exentos de esa retención si se incluye el número de contribuyente del fideicomiso, en caso de tenerlo.</label>
                         <input type="text" type="trustee-fideicomiso2" name="trustee-fideicomiso2" placeholder="Escribir aquí..."/>
                         <div class="response-indicator">
                             <span>&#10003;</span>
@@ -1674,14 +1676,14 @@
                 </div>
                 <div class="form-tax-two_column">
                     <fieldset class="form-group">
-                        <label for="birthdate09" class="tax-text-dark"><strong><strong>6.</strong> Campo opcional.</strong> Indique la fecha para la emisión del formulario: MES | DÍA | AÑO </label>
+                        <label for="birthdate09" class="tax-text-dark"><strong><strong>6.</strong> Campo obligatorio.</strong> Indique la fecha para la emisión del formulario: MES | DÍA | AÑO </label>
                         <input type="date" id="birthdate09" name="birthdate09" lang="en-US">
                         <div class="response-indicator">
                             <span>&#10003;</span>
                         </div>
                     </fieldset>
                     <fieldset class="form-group">
-                        <label for="birthdate10" class="tax-text-dark"><strong><strong>7.</strong> Campo opcional.</strong> Por favor escriba el nombre y apellido de la persona que firmará el formulario W-8 </label>
+                        <label for="birthdate10" class="tax-text-dark"><strong><strong>7.</strong> Campo obligatorio.</strong> Por favor escriba el nombre y apellido de la persona que firmará el formulario W-8 </label>
                         <input type="date" name="birthdate10" id="birthdate10" placeholder="escribir aquí">
                         <div class="response-indicator">
                             <span>&#10003;</span>
@@ -1695,6 +1697,6 @@
         </div>
     </div>
 <!-- Step 10 END -->
- <script type="text/javascript" src="./js.js" ></script>
+ <script type="text/javascript" src="./js.js"></script>
 </body>
 </html>

@@ -70,12 +70,34 @@ fieldset {
 .form-tax_content .form-tax-two_column .form-group{
     width: 100%;
 }
+
+.form-tax_content select#writedirection, .form-tax_content #writedirection2, .form-tax_content #writedirection + input, .form-tax_content #writedirection2 + input {
+    width: 100%;
+    width: 100%;
+    height: 35px;
+    border-radius: 7px;
+    outline: none;
+    border: 1px solid #b4b4b4;
+    margin-top: 3px;
+}
+
+input[type="text"] {
+    width: 100%;
+    width: 100%;
+    height: 35px;
+    border-radius: 7px;
+    outline: none;
+    border: 1px solid #b4b4b4;
+    margin-top: 3px;
+}
+
 .form-tax_content .form-tax-two_column .form-group input, .form-tax_content .form-tax-two_column .form-group select{
     width: 100%;
     height: 35px;
     border-radius: 7px;
     outline: none;
     border: 1px solid #b4b4b4;
+    margin-top: 3px;
 }
 .form-tax_content .form-tax-two_column .form-group input[type="checkbox"]{
     width: initial !important;
@@ -132,7 +154,7 @@ button.tax-button-primary:hover {
     color: green;
     border-radius: 50%;
     z-index: 1;
-}
+}w
 
 button.button-taxt-back{
     position: absolute;
@@ -146,9 +168,6 @@ button.button-taxt-back{
     color: #fff;
     font-weight: 600;
     cursor: pointer;
-    &:hover{
-        opacity: 0.9;
-    }
 }
 
 button.button-taxt-back img{
@@ -192,5 +211,19 @@ button.button-taxt-back img{
     
     .form-tax_content .form-tax-two_column .form-group{
     	margin-bottom: 0;
+    }
+}
+
+button.button-taxt-back {
+    background: transparent;
+    border: none;
+    position: absolute;
+    top: 6px;
+    left: 6px;
+}
+
+@media(max-width: 991px) {
+    .form-tax_content h2 {
+        padding-top: 14px;
     }
 }
