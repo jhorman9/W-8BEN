@@ -1,0 +1,441 @@
+<?php 
+
+?>
+<style>
+    * {
+box-sizing: border-box;
+font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body{
+margin: auto;
+}
+
+/* Ocultar el ícono del calendario */
+input[type="date"]::-webkit-calendar-picker-indicator {
+display: none; /* Para Chrome */
+}
+input[type="date"] {
+-webkit-appearance: none; /* Para Safari */
+appearance: none; /* Para otros navegadores */
+}
+
+.to-pdf{
+font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+width: 21.69cm;
+/* height: 27.94cm; */
+}
+
+.to-pdf table:first-child tbody td{
+border-top: 0;
+}
+
+.to-pdf span, .to-pdf label, .to-pdf p, .to-pdf strong, .to-pdf input[type="text"]{
+font-size: 11px;
+}
+
+.to-pdf .header-left .title-big{
+font-size: 24px;
+font-weight: bold;
+}
+
+.to-pdf .header-left .title-big > span{
+font-weight: 400;
+}
+
+
+table.table-layout {
+width: 100%;
+table-layout: fixed;
+}
+
+.header-left {
+width: 20%; /* Ajusta el ancho de la celda izquierda */
+}
+
+.header-center {
+width: 60%; /* Ajusta el ancho de la celda central */
+text-align: center;
+}
+
+.header-right {
+width: 20%; /* Ajusta el ancho de la celda derecha */
+text-align: right;
+}
+
+.header-center{
+text-align: center;
+}
+
+table {
+width: 100%;
+border-collapse: collapse;
+}
+
+th {
+background-color: #f2f2f2;
+}
+
+td, table{
+border-left: none;
+border-right: none;
+}
+
+tr > td + td {
+border-left: 1px solid black;
+}
+
+input{
+border: none;
+}
+
+input[type="text"]{
+width: 100%;
+}
+
+input:focus {
+outline: none;
+}
+
+.m-0{
+margin: 0;
+}
+
+.table-border-bottom{
+border-bottom: 1px solid black;
+}
+
+.line-complete {
+display: inline-block;
+width: 100vw;
+border-bottom: 1px dotted #000;
+margin-left: 5px;
+position: absolute !important;
+bottom: 6px;
+left: 99px;
+}
+
+li{
+position: relative;
+display: flex;
+justify-content: space-between;
+}
+
+li:nth-child(3){
+flex: 1;
+}
+
+li span:nth-child(1){
+position: relative;
+z-index: 2;
+width: fit-content;
+background-color: white;
+padding-right: 7px;
+margin-right: -1px;
+padding-left: 5px;
+max-width: 682px;
+}
+
+li div:nth-child(2){
+position: relative;
+z-index: 1;
+}
+
+li span:nth-child(3) {
+position: relative;
+z-index: 2;
+width: fit-content;
+background-color: white;
+}
+
+.part-1{
+font-size: 12px;
+}
+
+.table-without-padding td {
+padding: 0 3px;
+border-top: 1px solid;
+border-bottom: 1px solid;
+}
+
+.part-2{
+border-top: 1px solid black;
+}
+
+.part-2 .backg-dark{
+background-color: #000;
+padding: 0 7px;
+color: white;
+font-size: initial;
+margin-right: 7px;
+font-size: 16px;
+line-height: 0px;
+}
+
+strong.fs-13{
+font-size: 13px;
+margin-right: 7px;
+}
+
+table tr.without-border td{
+border: none;
+}
+
+.note-if{
+border-top: 1px solid black;
+}
+
+.note-if p{
+margin: 0;
+padding: 3px 0;
+}
+
+.table-letter-small td{
+font-size: 11px;
+}
+
+.border-bottom-table{
+border-bottom: 1px solid black;
+}
+
+.border-top-none{
+border-top: 0 !important;
+}
+
+.tablet-listed td{
+padding-left: 8px;
+}
+
+
+.header {
+width: 150px;
+vertical-align: top;
+font-weight: bold;
+padding-right: 10px;
+}
+
+.content {
+vertical-align: top;
+}
+
+.line {
+border-bottom: 1px solid black;
+width: 467px;
+display: inline-block;
+}
+
+.date {
+border-bottom: 1px solid black;
+width: 150px;
+display: inline-block;
+}
+
+.spacer {
+padding-left: 20px;
+}
+
+.border-before::before {
+position: absolute;
+content: '';
+width: 100%;
+left: 0;
+border-bottom: 1px dotted black;
+top: 9px;
+z-index: 1;
+}
+
+.vertical-align-top_table{
+vertical-align: top;
+}
+
+input[type="checkbox"] {
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+width: 15px;
+height: 15px;
+border: 1px solid black;
+background-color: white;
+display: inline-block;
+vertical-align: middle;
+border-radius: 2px;
+cursor: pointer;
+position: relative;
+margin: 0 3px;
+}
+
+input[type="checkbox"]:checked {
+background-color: #e7f3fe;
+border-color: #7a7a7a;
+}
+
+input[type="checkbox"]:checked::after {
+content: '\2714';
+color: black;
+font-size: 10px;
+position: absolute;
+top: 0px;
+left: 2.5px;
+}
+
+.table-spacing-check input[type="checkbox"] {
+margin-bottom: 5px;
+}
+
+.size-letter-spacing{
+display: inline-block;
+line-height: 16px;
+}
+
+label.ident-list {
+padding-left: 55px;
+}
+</style>
+<body class="to-pdf" style="width: 19cm;">
+    <table cellpadding="5" cellspacing="0">
+        <tr>
+            <td colspan="1" style="width: 50%; border: none;">
+                <label for="">Form W-8BEN-E (Rev. 10-2021)</label>
+            </td>
+            <td colspan="0" style="width: 10%; border: none;"></td>
+            <td style="text-align: right; width: 40%; border: none;" colspan="2" >
+                <label for="">Page <strong class="fs-13" style="margin: 0;">5</strong></label>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 13px;"> 
+                    <span class="backg-dark">Part XII </span> <strong style="font-size: 13px;">Nonreporting IGA FFI</strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for=""><strong class="fs-13">26</strong> <input type="checkbox" id="">I certify that the entity identified in Part I: </label><br>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom: 7px;">
+                <label for="" class="size-letter-spacing" style="padding-left: 34px;">• Meets the requirements to be considered a nonreporting financial institution pursuant to an applicable IGA between the United States and</label><br>
+                <label for="" class="size-letter-spacing" style="padding-left: 34px;"><span class="line" width="200" style="width: 200px;"> </span>. The applicable IGA is a <input type="checkbox" id="is-iga"> <label for="is-iga">Model 1 IGA or a</label> <input type="checkbox" id="is-iga2"> <label for="is-iga2">Model 2 IGA; and is treated as a</label> <span class="line" width="200" style="width: 200px;"> </span> under the provisions of the applicable IGA or Treasury regulations(if applicable, see instructions); </label>
+                <label for="" class="size-letter-spacing" style="padding-left: 34px;">• If you are a trustee documented trust or a sponsored entity, provide the name of the trustee or sponsor <span class="line" style="width: 160px;" data-adjust="150">   </span>. The trustee is: <input type="checkbox" name="" id="trustee-is"><label for="trustee-is">U.S.</label> <input type="checkbox" id="foreign-is"> <label for="foreign-is">Foreign</label></label>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 13px;"> 
+                    <span class="backg-dark">Part XIII </span> <strong style="font-size: 13px;">Foreign Government, Government of a U.S. Possession, or Foreign Central Bank of Issue </strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="" class="size-letter-spacing"><strong class="fs-13">27</strong> <input type="checkbox" id="">I certify that the entity identified in Part I is the beneficial owner of the payment, and is not engaged in commercial financial activities of a type engaged in by an insurance company, custodial institution, or depository institution with respect to the payments, accounts, or obligations for which this form is submitted (except as permitted in Regulations section 1.1471-6(h)(2)). </label><br>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 16px;"> 
+                    <span class="backg-dark">Part XIV </span> <strong style="font-size: 13px;">International Organization </strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="" class="size-letter-spacing"><strong>Check box 28a or 28b, whichever applies.</strong></label>
+            </td>
+        </tr>
+        <tr>
+            <td style="">
+                <label for=""><strong class="fs-13">28a</strong> <input type="checkbox" id="">I certify that the entity identified in Part I is an international organization described in section 7701(a)(18).</label><br>
+                <label for="" style="padding-left: 14px;"><strong class="fs-13">b</strong> <input type="checkbox" id="">I certify that the entity identified in Part I:</label><br>
+                <label for="" class="size-letter-spacing" style="padding-left: 41px;">
+                    • Is comprised primarily of foreign governments;<br>
+                    • Is recognized as an intergovernmental or supranational organization under a foreign law similar to the International Organizations Immunities Act or that has in effect a headquarters agreement with a foreign government; <br>
+                    • The benefit of the entity’s income does not inure to any private person; <strong>and</strong> <br>
+                    • Is the beneficial owner of the payment and is not engaged in commercial financial activities of a type engaged in by an insurance company, custodial institution, or depository institution with respect to the payments, accounts, or obligations for which this form is submitted (except as permitted in Regulations section 1.1471-6(h)(2)).
+                </label>
+            </td>
+        </tr>
+    </table>
+    <table cellpadding="5" cellspacing="0" style="margin-top: 3px;">
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 13px;"> 
+                    <span class="backg-dark">Part XV </span> <strong style="font-size: 13px;">Exempt Retirement Plans</strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 0;">
+                <label for="" class="size-letter-spacing"><strong>Check box 29a, b, c, d, e, or f, whichever applies.</strong></label>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 0;">
+                <label for=""><strong class="fs-13">29a</strong> <input type="checkbox" id="">I certify that the entity identified in Part I:</label><br>
+                <label for="" class="size-letter-spacing" style="padding-left: 41px;">
+                    • Is established in a country with which the United States has an income tax treaty in force (see Part III if claiming treaty benefits);<br>
+                    • Is operated principally to administer or provide pension or retirement benefits; <strong>and</strong> <br>
+                    • Is entitled to treaty benefits on income that the fund derives from U.S. sources (or would be entitled to benefits if it derived any such income) as a resident of the other country which satisfies any applicable limitation on benefits requirement.
+                </label>
+                <label for="" style="padding-left: 14px;" class="size-letter-spacing"><strong class="fs-13">b</strong> <input type="checkbox" id=""> I certify that the entity identified in Part I: <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 27px;">• Is organized for the provision of retirement, disability, or death benefits (or any combination thereof) to beneficiaries that are former employees of one or more employers in consideration for services rendered;</label><br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 27px;">• No single beneficiary has a right to more than 5% of the FFI’s assets;</label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 27px;">• Is subject to government regulation and provides annual information reporting about its beneficiaries to the relevant tax authorities in the country in which the fund is established or operated; <strong>and</strong></label>
+                </label>
+                <label class="size-letter-spacing" for="" style="padding-left: 55px;">
+                    <strong>(i)</strong> Is generally exempt from tax on investment income under the laws of the country in which it is established or operates due to its status as a retirement or pension plan;<br>
+                    <strong>(ii)</strong> Receives at least 50% of its total contributions from sponsoring employers (disregarding transfers of assets from other plans described in this part, retirement and pension accounts described in an applicable Model 1 or Model 2 IGA, other retirement funds described in an applicable Model 1 or Model 2 IGA, or accounts described in Regulations section 1.1471-5(b)(2)(i)(A));<br>
+                    <strong>(iii)</strong> Either does not permit or penalizes distributions or withdrawals made before the occurrence of specified events related to retirement, disability, or death (except rollover distributions to accounts described in Regulations section 1.1471-5(b)(2)(i)(A) (referring to retirement and pension accounts), to retirement and pension accounts described in an applicable Model 1 or Model 2 IGA, or to other retirement funds described in this part or in an applicable Model 1 or Model 2 IGA); <strong>or</strong> <br>
+                    <strong>(iv)</strong> Limits contributions by employees to the fund by reference to earned income of the employee or may not exceed $50,000 annually.
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td style="border-bottom: 1px solid black;">
+                <label for="" style="padding-left: 14px;" class="size-letter-spacing"><strong class="fs-13">c</strong> <input type="checkbox" id=""> I certify that the entity identified in Part I: <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 25px;">• Is organized for the provision of retirement, disability, or death benefits (or any combination thereof) to beneficiaries that are former employees of one or more employers in consideration for services rendered;</label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 25px;">• Has fewer than 50 participants;</label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 25px;">• Is sponsored by one or more employers each of which is not an investment entity or passive NFFE;</label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 25px;">• Employee and employer contributions to the fund (disregarding transfers of assets from other plans described in this part, retirement and pension accounts described in an applicable Model 1 or Model 2 IGA, or accounts described in Regulations section 1.1471-5(b)(2)(i)(A)) are limited by reference to earned income and compensation of the employee, respectively;</label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 25px;">• Participants that are not residents of the country in which the fund is established or operated are not entitled to more than 20% of the fund’s assets; <strong>and</strong></label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 25px;">• Is subject to government regulation and provides annual information reporting about its beneficiaries to the relevant tax authorities in the country in which the fund is established or operates.</label>
+                </label>                
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td align="right" style="font-size: 11px; border: none;">Form <span style="font-size: 16px; font-weight: bold;">W-8BEN-E</span> (Rev. 10-2021)</td>
+        </tr>
+    </table>
+    <script>
+        function adjustWidthForOS() {
+            const userAgent = window.navigator.userAgent.toLowerCase();
+            const lines = document.querySelectorAll('.line');
+    
+            // Detectar si es macOS
+            if (userAgent.indexOf('mac') !== -1) {
+                lines.forEach(line => {
+                    // Obtener el valor de ajuste desde el atributo data
+                    const pixelAdjustment = line.getAttribute('data-adjust');
+                    
+                    // Ajustar el ancho al valor obtenido
+                    if (pixelAdjustment) {
+                        line.style.width = pixelAdjustment + 'px';
+                    }
+                });
+            }
+        }
+    
+        // Llama a la función al cargar la página
+        document.addEventListener('DOMContentLoaded', adjustWidthForOS);
+    </script>
+</body>

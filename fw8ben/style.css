@@ -1,239 +1,229 @@
-* {
+*{
     box-sizing: border-box;
 }
 
-body{
-    margin: auto;
-}
-
-/* Ocultar el ícono del calendario */
-input[type="date"]::-webkit-calendar-picker-indicator {
-    display: none; /* Para Chrome */
-}
-input[type="date"] {
-    -webkit-appearance: none; /* Para Safari */
-    appearance: none; /* Para otros navegadores */
-}
-
-.to-pdf{
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    width: 21.69cm;
-    /* height: 27.94cm; */
-}
-
-.to-pdf table:first-child tbody td{
-    border-top: 0;
-}
-
-.to-pdf span, .to-pdf label, .to-pdf p, .to-pdf strong, .to-pdf input[type="text"]{
-    font-size: 11px;
-}
-
-.to-pdf .header-left .title-big{
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.to-pdf .header-left .title-big > span{
-    font-weight: 400;
-}
-
-
-table.table-layout {
+.line-complete {
+    position: absolute;
     width: 100%;
-    table-layout: fixed;
+    height: 100vh;
+    overflow: hidden;
 }
 
-.header-left {
-    width: 20%; /* Ajusta el ancho de la celda izquierda */
+.form-tax_content {
+    backdrop-filter: blur(5px);
+    background-color: rgb(255 255 255 / 65%);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 60vw;
+    padding: 20px;
+    margin: 35px 14px;
+    z-index: 3;
 }
 
-.header-center {
-    width: 60%; /* Ajusta el ancho de la celda central */
-    text-align: center;
+.bg-images {
+    background-image: url(https://develop1.webstudiopanama.com/w8-tax/wp-content/uploads/2024/10/RAYAS_Mesa-de-trabajo-1-copia.png),
+                      url(https://develop1.webstudiopanama.com/w8-tax/wp-content/uploads/2024/10/RAYAS_Mesa-de-trabajo-1.png);
+    background-size: 45%, 50%;
+    background-repeat: no-repeat, no-repeat;
+    background-position: left bottom, right top;
 }
 
-.header-right {
-    width: 20%; /* Ajusta el ancho de la celda derecha */
-    text-align: right;
-}
-
-.header-center{
-    text-align: center;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th {
-    background-color: #f2f2f2;
-}
-
-td, table{
-    border-left: none;
-    border-right: none;
-}
-
-tr > td + td {
-    border-left: 1px solid black;
-}
-
-input{
+fieldset {
     border: none;
 }
 
-input[type="text"]{
-    width: 100%;
-}
-
-input:focus {
-    outline: none;
-}
-
-.m-0{
-    margin: 0;
-}
-
-.table-border-bottom{
-    border-bottom: 1px solid black;
-}
-
-.line-complete {
-    display: inline-block;
-    width: 100vw;
-    border-bottom: 1px dotted #000;
-    margin-left: 5px;
-    position: absolute !important;
-    bottom: 6px;
-    left: 99px;
-}
-
-.border-before::before {
-    position: absolute;
-    content: '';
-    width: 100%;
-    left: 0;
-    border-bottom: 1px dotted black;
-    top: 9px;
-    z-index: 1;
-}
-
-li {
+.form-tax {
     position: relative;
     display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+	min-height: 75vh;
+    z-index: 3;
+}
+
+.form-tax_content fieldset{
+	margin: 0;
+    position: relative;
+    z-index: 2;
+    padding: 0;
+}
+
+.form-tax_content fieldset label{
+    display: block;
+}
+.form-tax_content .form-tax-two_column{
+    display: flex;
     justify-content: space-between;
+    gap: 14px;
+}
+.form-tax_content h2{
+    margin-bottom: 14px;
+    text-align: center;
+}
+.form-tax_content .form-group label{
+    margin-bottom: 3px;
+    margin-top: 14px;
+}
+.form-tax_content .form-tax-two_column .form-group{
+    width: 100%;
 }
 
-li:nth-child(3){
-    flex: 1;
+.form-tax_content select#writedirection, .form-tax_content #writedirection2, .form-tax_content #writedirection + input, .form-tax_content #writedirection2 + input {
+    width: 100%;
+    width: 100%;
+    height: 35px;
+    border-radius: 7px;
+    outline: none;
+    border: 1px solid #b4b4b4;
+    margin-top: 3px;
 }
 
-li span:nth-child(1){
-    position: relative;
-    z-index: 2;
-    width: fit-content;
-    background-color: white;
-    padding-right: 7px;
-    margin-right: -1px;
-    padding-left: 5px;
-    max-width: 682px;
-    line-height: 16px;
+input[type="text"] {
+    width: 100%;
+    width: 100%;
+    height: 35px;
+    border-radius: 7px;
+    outline: none;
+    border: 1px solid #b4b4b4;
+    margin-top: 3px;
 }
 
-li div:nth-child(2){
-    position: relative;
-    z-index: 1;
+.form-tax_content .form-tax-two_column .form-group input, .form-tax_content .form-tax-two_column .form-group select{
+    width: 100%;
+    height: 35px;
+    border-radius: 7px;
+    outline: none;
+    border: 1px solid #b4b4b4;
+    margin-top: 3px;
 }
-
-li span:nth-child(3) {
-    position: relative;
-    z-index: 2;
-    width: 90px;
-    background-color: white;
+.form-tax_content .form-tax-two_column .form-group input[type="checkbox"]{
+    width: initial !important;
 }
-
-.part-1{
-    font-size: 12px;
+.form-tax_content .form-tax-two_column .form-group.form-check{
+    display: inline-flex;
+    gap: 7px;
+    padding-bottom: 0;
+    padding-top: 0;
 }
-
-.table-without-padding td {
-    padding: 0 3px;
+.form-tax_content .form-tax-two_column.form-check-container{
+    display: none;
 }
-
-.part-2{
-    border-top: 1px solid black;
+.tax-text-dark {
+    color: #333;
+    font-weight: initial;
 }
-
-.part-2 .backg-dark{
-    background-color: #000;
-    padding: 0 7px;
-    color: white;
-    font-size: initial;
-    margin-right: 7px;
-    font-size: 16px;
-    line-height: 0px;
+.tax-separate{
+    margin-bottom: 14px;
 }
-
-strong.fs-13{
-    font-size: 13px;
-    margin-right: 7px;
+.tax-form-bottom {
+margin-top: 14px;
 }
-
-table tr.without-border td{
+.form-number{
+    margin-right: 3px;
+}
+button.tax-button-primary {
+    background: rgb(0, 38, 198);
+    outline: none;
     border: none;
+    padding: 7px 14px;
+    width: 100%;
+    color: #fff;
+    border-radius: 7px;
+    cursor: pointer;
+}
+button.tax-button-primary:hover {
+    background-color: #55b030;
 }
 
-.note-if{
-    border-top: 1px solid black;
+#country-entity-child{
+    display: flex;
+    justify-content: space-between;
+    gap: 7px;
+    width: 100%;
 }
 
-.note-if p{
-    margin: 0;
-    padding: 3px 0;
+.response-indicator {
+    display: none;
+    position: absolute;
+    bottom: 14px;
+    left: -7px;
+    font-size: 17px;
+    color: green;
+    border-radius: 50%;
+    z-index: 1;
+}w
+
+button.button-taxt-back{
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    padding: 7px 14px;
+    border-radius: 7px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
 }
 
-.table-letter-small td{
-    font-size: 11px;
+button.button-taxt-back img{
+    width: 30px;
 }
 
-.border-bottom-table{
-    border-bottom: 1px solid black;
+.next-content-child + .content-child{
+    padding-left: 14px;
 }
 
-.border-top-none{
-    border-top: 0 !important;
+.tax-full-width{
+    width: 100%;
 }
 
-.tablet-listed td{
-    padding-left: 8px;
+#tax-isShow{
+    display: none;
 }
 
-
-.header {
-    width: 150px;
-    vertical-align: top;
-    font-weight: bold;
-    padding-right: 10px;
+#benecountry3{
+	display: none;
 }
 
-.content {
-    vertical-align: top;
+@media (max-width: 991px) {
+    .bg-images {
+        background-image: url(https://develop1.webstudiopanama.com/w8-tax/wp-content/uploads/2024/10/RAYAS_Mesa-de-trabajo-1-copia.png), url(https://develop1.webstudiopanama.com/w8-tax/wp-content/uploads/2024/10/RAYAS_Mesa-de-trabajo-1.png);
+        background-size: 75%, 75%;
+        background-repeat: no-repeat, no-repeat;
+        background-position: left bottom, right top;
+    }
 }
 
-.line {
-    border-bottom: 1px solid black;
-    width: 467px;
-    display: inline-block;
+@media (max-width: 767px) {
+    .line-tax {
+        top: 17%;
+    }
+    
+    .form-tax_content .form-tax-two_column {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .form-tax_content .form-tax-two_column .form-group{
+    	margin-bottom: 0;
+    }
 }
 
-.date {
-    border-bottom: 1px solid black;
-    width: 150px;
-    display: inline-block;
+button.button-taxt-back {
+    background: transparent;
+    border: none;
+    position: absolute;
+    top: 6px;
+    left: 6px;
 }
 
-.spacer {
-    padding-left: 20px;
+@media(max-width: 991px) {
+    .form-tax_content h2 {
+        padding-top: 14px;
+    }
 }

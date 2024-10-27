@@ -458,7 +458,7 @@ document.addEventListener('DOMContentLoaded', () => {
     noneAbove.addEventListener('change', updateValues00);
 });
 
-/* (function ($) {
+ (function ($) {
 
      // Seleccionamos todos los elementos con la clase 'btn-finalizar'
      document.querySelectorAll('.btn-finalizar').forEach(button => {
@@ -580,7 +580,7 @@ document.addEventListener('DOMContentLoaded', () => {
          });
      });
 
- })(jQuery);*/
+ })(jQuery);
 
 document.addEventListener('DOMContentLoaded', () => {
     const livingEeuu = document.querySelector('#livingeeuu');

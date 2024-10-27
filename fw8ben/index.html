@@ -1,3 +1,7 @@
+<?php 
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -244,6 +248,19 @@ table tr.without-border td{
 .spacer {
     padding-left: 20px;
 }
+
+.arrow {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid black;
+    padding-bottom: 4px;
+    }
+    .arrow {
+    transform: rotate(270deg);
+    }
     </style>
 </head>
 <body class="to-pdf content" id="content">
@@ -258,9 +275,9 @@ table tr.without-border td{
                 <td class="header-center" colspan="2">
                     <h5 class="m-0"><strong style="font-size: 14px;">Certificate of Foreign Status of Beneficial Owner for United</strong> <br />
                     <strong style="font-size: 14px;">States Tax Withholding and Reporting (Individuals)</strong></h5>
-                    <h6 class="m-0"><strong>▶ for use by individuals. Entities must use Form W-8BEN-E.</strong></h6>
-                    <h6 class="m-0"><strong>▶ Go to www.irs.gov/FormW8BEN for instructions and the latest information.</strong></h6>
-                    <h6 class="m-0"><strong>▶ Give this form to the withholding agent or payer. Do not send to the IRS.</strong></h6>
+                    <h6 class="m-0"><strong><span class="arrow"style="display: inline-block;width: 0;height: 0;border-left: 5px solid transparent;border-right: 5px solid transparent;border-top: 6px solid black;padding-bottom: 4px;"></span> for use by individuals. Entities must use Form W-8BEN-E.</strong></h6>
+                    <h6 class="m-0"><strong><span class="arrow"style="display: inline-block;width: 0;height: 0;border-left: 5px solid transparent;border-right: 5px solid transparent;border-top: 6px solid black;padding-bottom: 4px;"></span> Go to www.irs.gov/FormW8BEN for instructions and the latest information.</strong></h6>
+                    <h6 class="m-0"><strong><span class="arrow"style="display: inline-block;width: 0;height: 0;border-left: 5px solid transparent;border-right: 5px solid transparent;border-top: 6px solid black;padding-bottom: 4px;"></span> Give this form to the withholding agent or payer. Do not send to the IRS.</strong></h6>
                 </td>
                 <td class="header-right" colspan="1">
                     <span class="m-0">OMB No. 1545-1621</span>
@@ -274,7 +291,7 @@ table tr.without-border td{
                 <td colspan="1" border="0" style="border-right: none !important;">
                     <h6 style="margin: 0; font-size: 12px;">Do NOT use this form if:</h6>
                 </td>
-                <td colspan="2" border="0" align="end" style="border-left: none !important; width: 150px;">
+                <td colspan="2" border="0" align="right" style="border-left: none !important; width: 150px;">
                     <h6 style="margin: 0; font-size: 12px;">Instead, use Form:</h6>
                 </td>
             </tr>
@@ -401,7 +418,7 @@ table tr.without-border td{
             </tr>
             <tr class="without-border">
                 <td>
-                    <label for=""><strong class="fs-13">10</strong> <strong>Special rates and conditions</strong> (if applicable—see instructions): The beneficial owner is claiming the provisions of Article and paragraph <br> <span class="line" style="width: 200px;">{ texto escribir }</span> of the treaty identified on line 9 above to claim a <span class="line" style="width: 75px">{ porcentaje }</span>% rate of withholding on (specify type of income): <br><span class="line" style="width: 100%;">{ texto escribir }</span> <br> Explain the additional conditions in the Article and paragraph the beneficial owner meets to be eligible for the rate of withholding: <span class="line" style="width: 100%;">{ texto escribir }</span> </label>
+                    <label for=""><strong class="fs-13">10</strong> <strong>Special rates and conditions</strong> (if applicable—see instructions): The beneficial owner is claiming the provisions of Article and paragraph <br> <span class="line" style="width: 150px;"> </span> of the treaty identified on line 9 above to claim a <span class="line" style="width: 75px">{ porcentaje }</span>% rate of withholding on (specify type of income): <br><span class="line" style="width: 100%; padding-top: 16px !important;"> </span> <br> Explain the additional conditions in the Article and paragraph the beneficial owner meets to be eligible for the rate of withholding: <span class="line" style="width: 100%;"> </span> </label>
                 </td>
             </tr>
         </table>
@@ -460,13 +477,13 @@ table tr.without-border td{
             </tr>
             <tr>
                 <td style="border: none; vertical-align: baseline; display:inline; font-weight: bold;">
-                    Sign Here <p class="triangule" style="margin: 0; transform: rotateZ(90deg) scale(1.5) rotateX(66deg);font-size: 24px; display:inline-block;">▲</p>
+                    Sign Here <p class="triangule" style="margin: 0;font-size: 24px; display: inline-block; margin-left: 7px;"><span class="arrow" style="display: inline-block;width: 0;height: 0;border-left: 10px solid transparent;border-right: 10px solid transparent;border-top: 15px solid black;padding-bottom: 8px; transform: rotate(270deg);"></span></p>
                 </td>
                 <td style="border: none;">
                     <table>
                         <tr>
                             <td style="border: none; padding-top: 9px;"><span class="line" style='width: 400px;'></span></td>
-                            <td style="border: none; padding-top: 6px;"><span class="date" style="text-align: center;"><?=$birthdate01;?></span></td>
+                            <td style="border: none; padding-top: 6px;"><span class="date" style="text-align: center;"><?=$birthdate1;?></span></td>
                         </tr>
                         <tr>
                             <td style="border: none; font-size: 11px;">Signature of beneficial owner (or individual authorized to sign for beneficial owner)</td>
@@ -491,7 +508,7 @@ table tr.without-border td{
             <tr>
                 <td style="font-size: 11px; border: none; font-weight: bold;">For Paperwork Reduction Act Notice, see separate instructions.</td>
                 <td style="font-size: 11px; border: none;">Cat. No. 25047Z</td>
-                <td align="end" style="font-size: 11px; border: none;">Form <span style="font-size: 18px; font-weight: bold;">W-8BEN</span> (Rev. 10-2021)</td>
+                <td align="right" style="font-size: 11px; border: none;">Form <span style="font-size: 18px; font-weight: bold;">W-8BEN</span> (Rev. 10-2021)</td>
             </tr>
         </table>
     </main>

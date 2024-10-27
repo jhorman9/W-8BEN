@@ -1,0 +1,584 @@
+<?php 
+
+?>
+<style>
+    * {
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    body{
+    margin: auto;
+    }
+
+    /* Ocultar el ícono del calendario */
+    input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none; /* Para Chrome */
+    }
+    input[type="date"] {
+    -webkit-appearance: none; /* Para Safari */
+    appearance: none; /* Para otros navegadores */
+    }
+
+    .to-pdf{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    width: 19cm;
+    /* height: 27.94cm; */
+    }
+
+    .to-pdf table:first-child tbody td{
+    border-top: 0;
+    }
+
+    .to-pdf span, .to-pdf label, .to-pdf p, .to-pdf strong, .to-pdf input[type="text"]{
+    font-size: 11px;
+    }
+
+    .to-pdf .header-left .title-big{
+    font-size: 24px;
+    font-weight: bold;
+    }
+
+    .to-pdf .header-left .title-big > span{
+    font-weight: 400;
+    }
+
+
+    table.table-layout {
+    width: 100%;
+    table-layout: fixed;
+    }
+
+    .header-left {
+    width: 20%; /* Ajusta el ancho de la celda izquierda */
+    }
+
+    .header-center {
+    width: 60%; /* Ajusta el ancho de la celda central */
+    text-align: center;
+    }
+
+    .header-right {
+    width: 20%; /* Ajusta el ancho de la celda derecha */
+    text-align: right;
+    }
+
+    .header-center{
+    text-align: center;
+    }
+
+    table {
+    width: 100%;
+    border-collapse: collapse;
+    }
+
+    th {
+    background-color: #f2f2f2;
+    }
+
+    td, table{
+    border-left: none;
+    border-right: none;
+    }
+
+    tr > td + td {
+    border-left: 1px solid black;
+    }
+
+    input{
+    border: none;
+    }
+
+    input[type="text"]{
+    width: 100%;
+    }
+
+    input:focus {
+    outline: none;
+    }
+
+    .m-0{
+    margin: 0;
+    }
+
+    .table-border-bottom{
+    border-bottom: 1px solid black;
+    }
+
+    .line-complete {
+    display: inline-block;
+    width: 100vw;
+    border-bottom: 1px dotted #000;
+    margin-left: 5px;
+    position: absolute !important;
+    bottom: 6px;
+    left: 99px;
+    }
+
+    li{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    }
+
+    li:nth-child(3){
+    flex: 1;
+    }
+
+    li span:nth-child(1){
+    position: relative;
+    z-index: 2;
+    width: fit-content;
+    background-color: white;
+    padding-right: 7px;
+    margin-right: -1px;
+    padding-left: 5px;
+    max-width: 682px;
+    }
+
+    li div:nth-child(2){
+    position: relative;
+    z-index: 1;
+    }
+
+    li span:nth-child(3) {
+    position: relative;
+    z-index: 2;
+    width: fit-content;
+    background-color: white;
+    }
+
+    .part-1{
+    font-size: 12px;
+    }
+
+    .table-without-padding td {
+    padding: 0 3px;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    }
+
+    .part-2{
+    border-top: 1px solid black;
+    }
+
+    .part-2 .backg-dark{
+    background-color: #000;
+    padding: 0 7px;
+    color: white;
+    font-size: initial;
+    margin-right: 7px;
+    font-size: 16px;
+    }
+
+    strong.fs-13{
+    font-size: 13px;
+    margin-right: 7px;
+    }
+
+    table tr.without-border td{
+    border: none;
+    }
+
+    .note-if{
+    border-top: 1px solid black;
+    }
+
+    .note-if p{
+    margin: 0;
+    padding: 3px 0;
+    }
+
+    .table-letter-small td{
+    font-size: 11px;
+    }
+
+    .border-bottom-table{
+    border-bottom: 1px solid black;
+    }
+
+    .border-top-none{
+    border-top: 0 !important;
+    }
+
+    .tablet-listed td{
+    padding-left: 8px;
+    }
+
+
+    .header {
+    width: 150px;
+    vertical-align: top;
+    font-weight: bold;
+    padding-right: 10px;
+    }
+
+    .content {
+    vertical-align: top;
+    }
+
+    .line {
+    border-bottom: 1px solid black;
+    width: 467px;
+    display: inline-block;
+    }
+
+    .date {
+    border-bottom: 1px solid black;
+    width: 150px;
+    display: inline-block;
+    }
+
+    .spacer {
+    padding-left: 20px;
+    }
+
+    .border-before::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    left: 0;
+    border-bottom: 1px dotted black;
+    top: 9px;
+    z-index: 1;
+    }
+
+    .vertical-align-top_table{
+    vertical-align: top;
+    }
+
+    input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border: 1px solid black;
+    background-color: white;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative;
+    margin: 0 3px;
+    }
+
+    input[type="checkbox"]:checked {
+    background-color: #e7f3fe;
+    border-color: #7a7a7a;
+    }
+
+    input[type="checkbox"]:checked::after {
+    content: '\2714';
+    color: black;
+    font-size: 10px;
+    position: absolute;
+    top: 0px;
+    left: 2.5px;
+    }
+
+    .table-spacing-check input[type="checkbox"] {
+    margin-bottom: 5px;
+    }
+
+    .size-letter-spacing{
+    display: inline-block;
+    line-height: 16px;
+    }
+
+    label.ident-list {
+    padding-left: 55px;
+    }
+</style>
+
+<body class="to-pdf" style="width: 19cm;">
+    <table border="1" cellpadding="5" cellspacing="0" class="table-without-padding" style="border-top: 0; border-bottom: 0;">
+        <tr>
+            <td style="width: 50%; border: none;">
+                <label for="">Form W-8BEN-E (Rev. 10-2021)</label>
+            </td>
+            <td colspan="0" style="width: 10%; border: none;"></td>
+            <td style="text-align: right; width: 40%; border: none;" colspan="2" >
+                <label for="">Page <strong class="fs-13" style="margin: 0;">2</strong></label>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left: 0;" colspan="4">
+                <div class="part-2"><span style="font-size: 13px;"> <span class="backg-dark">Part l </span> <strong style="font-size: 13px;">Identification of Beneficial Owner </strong>(continued)</span></div>
+            </td>
+        </tr>
+        <tr class="without-border">
+            <td colspan="4">
+                <label for=""><strong class="fs-13">8</strong> U.S. taxpayer identification number (TIN), if required</label>
+                <br>
+                <span style="text-align: center; width: 100%;" class="date"> </span>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 20%;">
+                <label for=""><strong class="fs-13">9a</strong> GIIN <br>   </label>
+            </td>
+            <td style="white-space: nowrap; width: 15%;">
+                <label for=""><strong class="fs-13">b</strong> Foreign TIN <br>   </label>
+            </td>
+            <td align="end" valign="middle" colspan="2">
+                <label for="check-ftin" style="vertical-align: middle;"><strong class="fs-13">c</strong> Check if FTIN not legally required <span class="arrow"style="display: inline-block;width: 0;height: 0;border-left: 5px solid transparent;border-right: 5px solid transparent;border-top: 6px solid black;padding-bottom: 4px;"></span>........<input type="checkbox" id="check-ftin"> </label>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <label for=""><strong class="fs-13">10</strong> Reference number(s) (see instructions) <br> <span style="text-align: center; width: 100%;display: inline-block;"> </span> </label>
+            </td>
+        </tr>
+        <tr>
+            <td style="border-bottom: none; padding-bottom: 17px;" colspan="4">
+                <label for=""><strong>Note</strong>: Please complete remainder of the form including signing the form in Part XXX.</label>
+            </td>
+        </tr>
+    </table>
+    <table cellpadding="5" cellspacing="0" class="table-without-padding" >
+        <table cellpadding="5" cellspacing="0" class="table-without-padding" style="border:0; border-top: 1px solid black;">
+            <tr style="border: none;">
+                <td class="part-2 border-bottom-table border-top-none" style="width: 65px; border-bottom: 0; padding-left: 0;vertical-align: text-top; padding-right: 0; border: none;" colspan="1"><span style="font-size: 13px;"> 
+                    <span class="backg-dark">Part ll </span>
+                </td>
+                <td colspan="2" style="border-bottom: 0; border-left: 0; padding-left: 0;">
+                    <div style="font-size: 13px; ">
+                        <strong style="font-size: 13px;">Disregarded Entity or Branch Receiving Payment.</strong> (Complete only if a disregarded entity with a GIIN or a branch of an FFI in a country other than the FFI’s country of residence. See instructions.)
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <table cellpadding="5" cellspacing="0" class="table-without-padding table-letter-small">
+            <tr>
+                <td style="border-bottom: 0;">
+                    <label for=""><strong class="fs-13">11</strong> Chapter 4 Status (FATCA status) of disregarded entity or branch receiving payment</label>
+                    <table style="width: 100%; margin-bottom: 3px;" cellpadding="5" cellspacing="0" class="table-without-padding table-letter-small">
+                        <tr style="padding-top: 3px;">
+                          <!-- Columna izquierda -->
+                          <td style="vertical-align: top; border: none; padding-right: 14px; padding-top: 3px; padding-left: 0;">
+                            <input type="checkbox" style="margin-bottom: 3px;">
+                            <label >Branch treated as nonparticipating FFI.</label>
+                            <br>
+                  
+                            <input type="checkbox">
+                            <label>Participating FFI.</label>
+                            <br>
+                  
+                          </td>
+                  
+                          <!-- Columna derecha -->
+                          <td style="vertical-align: top; border: none; padding-top: 3px;">
+                            <input type="checkbox" id="" style="margin-bottom: 3px;">
+                            <label for="">Reporting Model 1 FFI.</label>
+                            <br>
+                  
+                            <input type="checkbox" id="">
+                            <label for="">Reporting Model 2 FFI.</label>
+                            <br>
+    
+                          </td>
+    
+                          <td style="border: none;">
+                            <input type="checkbox" id="" >
+                            <label for="">U.S. Branch.</label>
+                            <br>
+    
+                          </td>
+                        </tr>
+                      </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-top: 0;">
+                    <label for=""><strong class="fs-13">12</strong> Address of disregarded entity or branch (street, apt. or suite no., or rural route). <strong>Do not use a P.O. box or in-care-of address</strong> (other than a
+                        registered address).</label><br>
+                    <span style="width: 100%; display: inline-block;" align=""> </span>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-top: 0;">
+                    <label for="">City or town, state or province. Include postal code where appropriate.</label><br>
+                    <span style="width: 100%; display: inline-block;" align=""> </span>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-top: 0;">
+                    <label for="">Country</label><br>
+                    <span style="width: 100%; display: inline-block;" align=""> </span>
+                </td>
+            </tr>
+            <tr></tr>
+                <td style="border-top: 0; border-bottom: 0;">
+                    <div style="display: flex;">
+                        <label for="" style="width: 107px; align-content: center;"><strong class="fs-13">13</strong> GIIN (if any)</label>
+                        <span style="width: calc(100% - 87px);display: inline-block;border-bottom: 1px solid black;padding-top: 20px;" align=""> </span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-left: 0; border-top: 0;">
+                    <table cellpadding="5" cellspacing="0" class="table-without-padding" style="border:0; border-top: 1px solid black; margin-top: 17px;">
+                        <tr style="border: none;">
+                            <td class="part-2 border-bottom-table border-top-none" style="width: 66px; border-bottom: 0; padding-left: 0;vertical-align: text-top; padding-right: 0; border: none;" colspan="1">                                    
+                                <span style="font-size: 16px;"> 
+                                    <span class="backg-dark">Part lll </span>
+                                </span>
+                            </td>
+                            <td colspan="2" style="border-bottom: 0; border-left: 0; padding-left: 0;">
+                                <div style="font-size: 13px;">
+                                    <strong style="font-size: 13px;">Claim of Tax Treaty Benefits</strong> (if applicable). (For chapter 3 purposes only.)
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-top: 0; border: 0; padding-bottom: 3px; padding-bottom: 3px;">
+                    <label for=""><strong class="fs-13">14</strong> I certify that (check all that apply):</label>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 0; margin-top: 3px; padding-left: 20px;">
+                    <strong class="fs-13">a</strong> <input type="checkbox" id="" style="padding-bottom: 3px;"><label for="">The beneficial owner is a resident of within the meaning of <span class="line" style="width: 272px;" data-adjust="249"> </span> the income tax treaty between the United States and that country.</label>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 0; margin-top: 3px; padding-bottom: 3px; padding-left: 20px;">
+                    <strong class="fs-13">b</strong> <input type="checkbox" id=""><label for="">The beneficial owner derives the item (or items) of income for which the treaty benefits are claimed, and, if applicable, meets the requirements of the treaty provision dealing with limitation on benefits. The following are types of limitation on benefits provisions that may be included in an applicable tax treaty (check only one; see instructions):</label>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 0; padding-left: 38px;">
+                    <table style="width: 100%; margin-bottom: 3px;" class="table-spacing-check">
+                        <tr>
+                          <!-- Columna izquierda -->
+                          <td style="width: 40%; vertical-align: top; border: none; padding-right: 10px; padding-left: 0;">
+                            <input type="checkbox" id="">
+                            <label for="">Government</label>
+                            <br>
+                  
+                            <input type="checkbox" id="">
+                            <label for="">Tax-exempt pension trust or pension fund</label>
+                            <br>
+                  
+                            <input type="checkbox" id="">
+                            <label for="">Other tax-exempt organization</label>
+                            <br>
+                  
+                            <input type="checkbox" id="">
+                            <label for="">Publicly traded corporation</label>
+                            <br>
+                  
+                            <input type="checkbox" id="">
+                            <label for="">Subsidiary of a publicly traded corporation</label>
+                            <br>
+                  
+                          <!-- Columna derecha -->
+                          <td style="width: 60%; vertical-align: top; border: none;">
+                            <input type="checkbox" id="">
+                            <label for="">Company that meets the ownership and base erosion test</label>
+                            <br>
+                  
+                            <input type="checkbox" id="">
+                            <label for="">Company that meets the derivative benefits test</label>
+                            <br>
+                  
+                            <input type="checkbox" id="">
+                            <label for="">Company with an item of income that meets active trade or business test</label>
+                            <br>
+                  
+                            <input type="checkbox" id="">
+                            <label for="">Favorable discretionary determination by the U.S. competent authority received</label>
+                            <br>
+                  
+                            <input type="checkbox" id="">
+                            <label for="">No LOB article in treaty</label>
+                            <br>
+                  
+                            <input type="checkbox" id="" style="margin-bottom: 0;">
+                            <label for="">Other (specify Article and paragraph): <span class="line" style="width: 185px;" data-adjust="174"> </span></label>
+                            
+                          </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 0; padding-left:22px;">
+                    <strong class="fs-13">c</strong> <input type="checkbox" id=""><label for="">The beneficial owner is claiming treaty benefits for U.S. source dividends received from a foreign corporation or interest from a U.S. trade or business of a foreign corporation and meets qualified resident status (see instructions). </label>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: none;">
+                    <strong class="fs-13">15</strong> <label><strong>Special rates and conditions</strong> (if applicable—see instructions):</label><br>
+                    <label for="">The beneficial owner is claiming the provisions of Article and paragraph <span class="line" style="width: 350px;" data-adjust="327">   </span></label><br>
+                    <label for="">of the treaty identified on line 14a above to claim a <span class="line" style="width: 80px;">50 </span>% rate of withholding on (specify type of income): <span class="line" style="width: 124px;" data-adjust="100">   </span></label><br>
+                    <label for="">Explain the additional conditions in the Article the beneficial owner meets to be eligible for the rate of withholding: <span style="text-decoration: underline;"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec sapien gravida, hendrerit lectus fringilla, tristique enim. Quisque vitae nulla lacus. Aenean felis orci, ultricies vitae scelerisque sit amet, fringilla sed erat.</span></label>
+                </td>
+            </tr>
+        </table>
+    </table>
+    <table class="table-spacing-check" cellpadding="5" cellspacing="0" style="margin-top: 17px; border-bottom: 1px solid black;">
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 16px;"> 
+                    <span class="backg-dark">Part IV </span> <strong style="font-size: 13px;">Sponsored FFI</strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 0">
+                <label for=""><strong class="fs-13">16</strong> Name of sponsoring entity: <span class="line" style="width: 555px;">   </span></label>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 0;">
+                <label for=""><strong class="fs-13">17</strong> <strong>Check whichever box applies.</strong> </label><br>
+                <input type="checkbox" id="" style="margin-bottom: 0;"><label for="">I certify that the entity identified in Part I: </label>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:0" class="size-letter-spacing">
+                <label for="" class="size-letter-spacing" >
+                    <label for="" class="size-letter-spacing" style="padding-left: 10px;">• Is an investment entity;</label><br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 10px;">• Is not a QI, WP (except to the extent permitted in the withholding foreign partnership agreement), or WT; <strong>and</strong></label><br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 10px;">• Has agreed with the entity identified above (that is not a nonparticipating FFI) to act as the sponsoring entity for this entity.</label><br>
+                    <input type="checkbox" id="" style="margin-bottom: 0;"><label for="">I certify that the entity identified in Part I:</label><br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 10px;">• Is a controlled foreign corporation as defined in section 957(a);</label><br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 10px;">• Is not a QI, WP, or WT;</label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 10px;">• Is wholly owned, directly or indirectly, by the U.S. financial institution identified above that agrees to act as the sponsoring entity for this entity; <strong>and</strong></label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 10px;">• Shares a common electronic account system with the sponsoring entity (identified above) that enables the sponsoring entity to identify all account holders and payees of the entity and to access all account and customer information maintained by the entity including, but not limited to, customer identification information, customer documentation, account balance, and all payments made to account holders or payees.</label>
+                </label>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td align="right" style="font-size: 11px; border: none; padding-bottom: 110px;">Form <span style="font-size: 16px; font-weight: bold;">W-8BEN-E</span> (Rev. 10-2021)</td>
+        </tr>
+    </table>
+    <script>
+        function adjustWidthForOS() {
+            const userAgent = window.navigator.userAgent.toLowerCase();
+            const lines = document.querySelectorAll('.line');
+    
+            // Detectar si es macOS
+            if (userAgent.indexOf('mac') !== -1) {
+                lines.forEach(line => {
+                    // Obtener el valor de ajuste desde el atributo data
+                    const pixelAdjustment = line.getAttribute('data-adjust');
+                    
+                    // Ajustar el ancho al valor obtenido
+                    if (pixelAdjustment) {
+                        line.style.width = pixelAdjustment + 'px';
+                    }
+                });
+            }
+        }
+    
+        // Llama a la función al cargar la página
+        document.addEventListener('DOMContentLoaded', adjustWidthForOS);
+    </script>
+</body>
