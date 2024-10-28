@@ -22,6 +22,79 @@ let formularioFideicomisoTrust = [
     {"id": "name-sing", "value": "", "required": false}
 ];
 
+let StichtingGrantorTrustB_3_1 = [
+    {"id": "sticht-name", "value": "", "required": false},
+    {"id": "sticht-country", "value": "", "required": false},
+    {"id": "sticht-address", "value": "", "required": false},
+    {"id": "sticht-country02", "value": "", "required": false},
+    {"id": "sticht-address2", "value": "", "required": false},
+    {"id": "sticht-date", "value": "", "required": false},
+    {"id": "sticht-name2", "value": "", "required": false}
+];
+
+let StichtingSimpleTrustB_3_2 = [
+    {"id": "sticht-name", "value": "", "required": false},
+    {"id": "sticht-country", "value": "", "required": false},
+    {"id": "sticht-address", "value": "", "required": false},
+    {"id": "sticht-country02", "value": "", "required": false},
+    {"id": "sticht-address2", "value": "", "required": false},
+    {"id": "sticht-date", "value": "", "required": false},
+    {"id": "sticht-name2", "value": "", "required": false}
+];
+
+let StichtingComplexTrustA_3 = [
+    {"id": "sticht-name-11", "value": "", "required": false},
+    {"id": "sticht-country-11", "value": "", "required": false},
+    {"id": "sticht-address-11", "value": "", "required": false},
+    {"id": "sticht-country004", "value": "", "required": false},
+    {"id": "sticht-address-22", "value": "", "required": false},
+    {"id": "sticht-identification", "value": "", "required": false},
+    {"id": "sticht-date-11", "value": "", "required": false},    
+    {"id": "sticht-name-22", "value": "", "required": false}    
+];
+
+let FundacionSimpleTrustB_2_2 = [
+
+    {"id": "trust-foundation", "value": "", "required": false},
+    {"id": "country-fundation", "value": "", "required": false},
+    {"id": "direction-complete", "value": "", "required": false},
+    {"id": "direction-email", "value": "", "required": false},
+    {"id": "direction-country2", "value": "", "required": false},
+    {"id": "birthdate02", "value": "", "required": false},
+    {"id": "name-sing", "value": "", "required": false}
+];
+
+let FundacionGrantorTrustB_2_1 = [
+    {"id": "trust-w8imy", "value": "", "required": false},
+    {"id": "countries-w8imy", "value": "", "required": false},
+    {"id": "trustee-fideicomiso", "value": "", "required": false},
+    {"id": "trustee-country2", "value": "", "required": false},
+    {"id": "trustee-w8imy", "value": "", "required": false},
+    {"id": "birthdate", "value": "", "required": false},
+    {"id": "name-sing", "value": "", "required": false}
+];
+
+let FundacionComplexTrustA_2 = [
+    {"id": "name-foundation", "value": "", "required": false},
+    {"id": "countries-law", "value": "", "required": false},
+    {"id": "writedirection3", "value": "", "required": false},
+    {"id": "direction-country3", "value": "", "required": false},
+    {"id": "direction-email2", "value": "", "required": false},
+    {"id": "number-identification", "value": "", "required": false},
+    {"id": "birthdate04", "value": "", "required": false},    
+    {"id": "birthdate05", "value": "", "required": false}    
+];
+
+let formularioFideicomisoTrustB_1_2 = [
+    {"id": "name-fideicomiso", "value": "", "required": false},
+    {"id": "countries-law3", "value": "", "required": false},
+    {"id": "writedirection4", "value": "", "required": false},
+    {"id": "trustee-email2", "value": "", "required": false},
+    {"id": "direction-email02", "value": "", "required": false},
+    {"id": "birthdate08", "value": "", "required": false},
+    {"id": "name-sing", "value": "", "required": false}
+];
+
 let custionarioA =[
     {"id": "benename", "value": "", "required": false},
     {"id": "benecountry", "value": "", "required": false},
@@ -33,6 +106,17 @@ let custionarioA =[
     {"id": "numberid", "value": "", "required": false},
     {"id": "benedate0", "value": "", "required": false},
     {"id": "benedate01", "value": "", "required": false},
+];
+
+let ComplexTrust_A_1 =[
+    {"id": "name-fideicomiso2", "value": "", "required": false},
+    {"id": "countries-2", "value": "", "required": false},
+    {"id": "writedirection05", "value": "", "required": false},
+    {"id": "truste-direction", "value": "", "required": false},
+    {"id": "trustee-email3", "value": "", "required": false},
+    {"id": "trustee-fideicomiso2", "value": "", "required": false},
+    {"id": "birthdate09", "value": "", "required": false},
+    {"id": "name-sing", "value": "", "required": false}
 ];
 
 let countries = [ 
@@ -281,6 +365,26 @@ let countries = [
     {name: 'Zimbabwe', code: 'ZW'} 
 ];
 
+document.addEventListener('DOMContentLoaded', function() {
+    // Selecciona específicamente el campo countries-2 dentro del formulario con ID step10
+    const countrySelect = document.querySelector('#ComplexTrust_A_1 #countries-2');
+    const trusteeField = document.querySelector('#ComplexTrust_A_1 input[name="trustee-fideicomiso2"]');
+
+    if (countrySelect && trusteeField) { // Asegura que ambos elementos existan en el formulario step10
+        countrySelect.addEventListener('change', function() {
+            const selectedCountry = countrySelect.value;
+            const disabledCountries = ["Australia", "British Virgin Islands", "Bermuda", "Cayman Islands"];
+            
+            if (disabledCountries.includes(selectedCountry)) {
+                trusteeField.disabled = true;
+                trusteeField.value = ''; // Elimina el contenido
+            } else {
+                trusteeField.disabled = false;
+            }
+        });
+    }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
 
     const fisicalOrEntity = document.querySelector('#fisical-or-entity');
@@ -458,7 +562,7 @@ document.addEventListener('DOMContentLoaded', () => {
     noneAbove.addEventListener('change', updateValues00);
 });
 
-/* (function ($) {
+ (function ($) {
 
      // Seleccionamos todos los elementos con la clase 'btn-finalizar'
      document.querySelectorAll('.btn-finalizar').forEach(button => {
@@ -541,6 +645,137 @@ document.addEventListener('DOMContentLoaded', () => {
                      }
 
                  }
+
+                 if(tipoform === "ComplexTrust_A_1"){
+
+                    // Busca el campo en el array por ID
+                    let datos = ComplexTrust_A_1.find(field => field.id === id);
+                   
+                    if (datos) {
+                        datos.value = value;
+
+                        if (datos.required && datos.value === "") {
+                            erroresValidadores++;
+                            // Puedes mostrar algún mensaje de error específico aquí
+                            console.log(`El campo ${datos.id} es requerido.`);
+                        }else{
+                           formData.append(id, value);
+                        }
+                    }
+
+                }
+
+                if(tipoform === "formularioFideicomisoTrustB_1_2"){
+                    // Busca el campo en el array por ID
+                     let datos = formularioFideicomisoTrustB_1_2.find(field => field.id === id);
+                   
+                     if (datos) {
+                         datos.value = value;
+ 
+                         if (datos.required && datos.value === "") {
+                             erroresValidadores++;
+                             // Puedes mostrar algún mensaje de error específico aquí
+                             console.log(`El campo ${datos.id} es requerido.`);
+                         }else{
+                            formData.append(id, value);
+                         }
+                     }
+                }
+
+                if( tipoform === "FundacionGrantorTrustB_2_1"){
+                    
+                    // Busca el campo en el array por ID
+                    let datos = FundacionGrantorTrustB_2_1.find(field => field.id === id);
+                   
+                    if (datos) {
+                        datos.value = value;
+
+                        if (datos.required && datos.value === "") {
+                            erroresValidadores++;
+                            // Puedes mostrar algún mensaje de error específico aquí
+                            console.log(`El campo ${datos.id} es requerido.`);
+                        }else{
+                           formData.append(id, value);
+                        }
+                    }
+
+                }
+
+                if( tipoform === "FundacionComplexTrustA_2"){
+                    
+                    // Busca el campo en el array por ID
+                    let datos = FundacionComplexTrustA_2.find(field => field.id === id);
+                   
+                    if (datos) {
+                        datos.value = value;
+
+                        if (datos.required && datos.value === "") {
+                            erroresValidadores++;
+                            // Puedes mostrar algún mensaje de error específico aquí
+                            console.log(`El campo ${datos.id} es requerido.`);
+                        }else{
+                           formData.append(id, value);
+                        }
+                    }
+
+                }
+
+                if(tipoform === "StichtingComplexTrustA_3"){
+
+                        // Busca el campo en el array por ID
+                        let datos = StichtingComplexTrustA_3.find(field => field.id === id);
+                                        
+                        if (datos) {
+                            datos.value = value;
+
+                            if (datos.required && datos.value === "") {
+                                erroresValidadores++;
+                                // Puedes mostrar algún mensaje de error específico aquí
+                                console.log(`El campo ${datos.id} es requerido.`);
+                            }else{
+                                formData.append(id, value);
+                            }
+                        }
+                }
+
+                if( tipoform === "StichtingGrantorTrustB_3_1"){
+                    
+                    // Busca el campo en el array por ID
+                    let datos = StichtingGrantorTrustB_3_1.find(field => field.id === id);
+                   
+                    if (datos) {
+                        datos.value = value;
+
+                        if (datos.required && datos.value === "") {
+                            erroresValidadores++;
+                            // Puedes mostrar algún mensaje de error específico aquí
+                            console.log(`El campo ${datos.id} es requerido.`);
+                        }else{
+                           formData.append(id, value);
+                        }
+                    }
+
+                }
+
+                if( tipoform === "StichtingSimpleTrustB_3_2"){
+                    
+                    // Busca el campo en el array por ID
+                    let datos = StichtingSimpleTrustB_3_2.find(field => field.id === id);
+                   
+                    if (datos) {
+                        datos.value = value;
+
+                        if (datos.required && datos.value === "") {
+                            erroresValidadores++;
+                            // Puedes mostrar algún mensaje de error específico aquí
+                            console.log(`El campo ${datos.id} es requerido.`);
+                        }else{
+                           formData.append(id, value);
+                        }
+                    }
+
+                }
+
              });
 
              if(erroresValidadores > 0){
@@ -580,7 +815,7 @@ document.addEventListener('DOMContentLoaded', () => {
          });
      });
 
- })(jQuery);*/
+ })(jQuery);
 
 document.addEventListener('DOMContentLoaded', () => {
     const livingEeuu = document.querySelector('#livingeeuu');

@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
      <div class="bg-images">
@@ -223,7 +222,7 @@
                             </fieldset>
                         </div>
                         <div class="form-group">
-                            <label for="writedirection" class="tax-text-dark"><strong><strong>4.</strong> Campo obligatorio (pero el país es obligatorio).</strong> Escriba la dirección completa de residencia en la que efectivamente usted vive. Incluya el nombre o número de casa o edificio, número de apartamento, calle o avenida, ciudad, y código postal (si en su país se utiliza el código postal). <strong>No puede utilizar una dirección de P.O. Box.</strong></label>
+                            <label for="writedirection" class="tax-text-dark"><strong><strong>4.</strong> Campo obligatorio.</strong> Escriba la dirección completa de residencia en la que efectivamente usted vive. Incluya el nombre o número de casa o edificio, número de apartamento, calle o avenida, ciudad, y código postal (si en su país se utiliza el código postal). <strong>No puede utilizar una dirección de P.O. Box.</strong></label>
                             <div class="form-tax-two_column">
                                 <select name="writedirection" id="writedirection" required>
                                         <option value="" selected disabled>Seleccione una opción</option>
@@ -248,7 +247,7 @@
                                         <option value="Uruguay">Uruguay</option>
                                         <option value="Venezuela">Venezuela</option>
                                     </select>
-                                    <input type="text" >
+                                    <input type="text" placeholder="escribir aquí">
                                     <div class="response-indicator">
                                         <span>&#10003;</span>
                                     </div>
@@ -260,7 +259,7 @@
                                 <select name="writedirection2" id="writedirection2">
                                     <option value="0">Seleccione una opción</option>
                                 </select>
-                                <input type="text" >
+                                <input type="text" placeholder="escribir aquí">
                                 <div class="response-indicator">
                                     <span>&#10003;</span>
                                 </div>
@@ -362,7 +361,7 @@
                     </div>
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
-                            <label for="benepostal" class="tax-text-dark"><strong><strong>4. </strong> Campo obligatorio (pero el país es obligatorio).</strong> Por favor escriba la dirección completa del domicilio de la Entidad. Incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, y código postal (si en su país de constitución se utiliza el código postal). <strong>No puede utilizar una dirección de P.O. Box.</strong></label>
+                            <label for="benepostal" class="tax-text-dark"><strong><strong>4. </strong> Campo obligatorio.</strong> Por favor escriba la dirección completa del domicilio de la Entidad. Incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, y código postal (si en su país de constitución se utiliza el código postal). <strong>No puede utilizar una dirección de P.O. Box.</strong></label>
                             <div class="form-tax-two_column">
                                 <input type="text" id="benecountry1" name="benecountry1" disabled>
                                 <input type="text" placeholder="escribir aquí" id="benepostal" name="benepostal">
@@ -408,7 +407,7 @@
                         </fieldset>
                         <fieldset class="form-group">
                             <label for="benedate01" class="tax-text-dark"><strong><strong>8. </strong> Campo obligatorio.</strong> Por favor escriba el nombre y apellido de la persona que firmará el formulario.</strong></label>
-                            <input type="date" name="benedate01" id="benedate01" placeholder="escribir aquí">
+                            <input type="text" name="benedate01" id="benedate01" placeholder="escribir aquí">
                             <div class="response-indicator">
                                 <span>&#10003;</span>
                             </div>
@@ -703,7 +702,7 @@
                         <div class="line-tax5"></div>
                     </div>
                 </div>
-                <form class="form-tax_content">
+                <form class="form-tax_content" id="FundacionGrantorTrustB_2_1">
                     <div>
                         <h2 class="tax-text-dark">Por favor completar el siguiente formulario</h2>
                         <p class="tax-text-dark" style="text-align: center;"><strong>CUESTIONARIO B.2.1. (Fundación-Grantor Trust)</strong></p>
@@ -778,7 +777,7 @@
                         </fieldset>
                     </div>
                     <div class="tax-form-bottom">
-                        <button type="button" class="tax-button-primary btn-finalizar" data-tipo="W-8IMY" data-variable="formularioFideicomisoTrust">Finalizar</button>
+                        <button type="button" class="tax-button-primary btn-finalizar" data-tipo="W-8IMY" date-formulario="FundacionGrantorTrustB_2_1" data-variable="FundacionGrantorTrustB_2_1">Finalizar</button>
                     </div>
                 </form>
             </div>
@@ -801,7 +800,7 @@
                         <div class="line-tax5"></div>
                     </div>
                 </div>
-                <form class="form-tax_content">
+                <form class="form-tax_content" id="FundaciónSimpleTrustB_2_2">
                     <div>
                         <h2 class="tax-text-dark">Por favor completar el siguiente formulario</h2>
                         <p class="tax-text-dark" style="text-align: center;"><strong>B.2.2 (Fundación-Simple Trust).</strong></p>
@@ -810,7 +809,7 @@
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
                             <label for="trust-foundation" class="tax-text-dark"><strong>1.</strong> <strong> Campo obligatorio.</strong> Por favor, escriba el nombre de la fundación de interés privado. Este nombre se encuentra en el acta fundacional o documento constitutivo.</label>
-                            <input type="text" type="trust-foundation" name="trust-foundation" placeholder="Escribir aquí..."/>
+                            <input type="text" type="trust-foundation" name="trust-foundation" id="trust-foundation" placeholder="Escribir aquí..."/>
                             <div class="response-indicator">
                                 <span>&#10003;</span>
                             </div>
@@ -876,7 +875,7 @@
                         </fieldset>
                     </div>
                     <div class="tax-form-bottom">
-                        <button type="button" class="tax-button-primary btn-finalizar" data-tipo="W-8IMY" data-variable="formularioFideicomisoTrust">Finalizar</button>
+                        <button type="button" class="tax-button-primary btn-finalizar" data-tipo="W-8IMY" date-formulario="FundacionSimpleTrustB_2_2" data-variable="FundacionSimpleTrustB_2_2">Finalizar</button>
                     </div>
                 </form>
             </div>
@@ -899,7 +898,7 @@
                         <div class="line-tax5"></div>
                     </div>
                 </div>
-                <form class="form-tax_content">
+                <form class="form-tax_content" id="FundacionComplexTrustA_2">
                     <div>
                         <h2 class="tax-text-dark">Por favor completar el siguiente formulario</h2>
                         <p class="tax-text-dark" style="text-align: center;"><strong>CUESTIONARIO A.2 Fundación Complex Trust W-8BEN-E</strong></p>
@@ -908,7 +907,7 @@
                     <div class="form-tax-two_column">
                         <fieldset class="form-group">
                             <label for="name-foundation" class="tax-text-dark"><strong>1.</strong> <strong> Campo obligatorio.</strong> Por favor, escriba el nombre de la fundación de interés privado. Este nombre se encuentra en el acta fundacional o documento constitutivo.</label>
-                            <input type="text" type="name-foundation" name="name-foundation" placeholder="Escribir aquí..."/>
+                            <input type="text" type="name-foundation" name="name-foundation" id="name-foundation" placeholder="Escribir aquí..."/>
                             <div class="response-indicator">
                                 <span>&#10003;</span>
                             </div>
@@ -983,7 +982,7 @@
                         </fieldset>
                     </div>
                     <div class="tax-form-bottom">
-                        <button type="button" class="tax-button-primary btn-finalizar" data-tipo="W-8BEN-E">Finalizar</button>
+                        <button type="button" class="tax-button-primary btn-finalizar" data-tipo="W-8BEN-E" data-variable="FundacionComplexTrustA_2" date-formulario="FundacionComplexTrustA_2">Finalizar</button>
                     </div>
                 </form>
             </div>
@@ -1102,7 +1101,7 @@
                     <div class="line-tax5"></div>
                 </div>
             </div>
-            <form class="form-tax_content">
+            <form class="form-tax_content" id="StichtingGrantorTrustB_3_1">
                 <div>
                     <h2 class="tax-text-dark">Por favor completar el siguiente formulario</h2>
                     <p class="tax-text-dark" style="text-align: center;"><strong>CUESTIONARIO “B.3.1 – Stichting (Grantor Trust)”</strong></p>
@@ -1179,7 +1178,7 @@
                     </fieldset>
                 </div>
                 <div class="tax-form-bottom">
-                    <button type="button" class="tax-button-primary btn-finalizar" data-tipo="W-8IMY" data-variable="formularioFideicomisoTrust">Finalizar</button>
+                    <button type="button" class="tax-button-primary btn-finalizar" data-tipo="W-8IMY" date-formulario="StichtingGrantorTrustB_3_1" data-variable="StichtingGrantorTrustB_3_1">Finalizar</button>
                 </div>
             </form>
         </div>
@@ -1202,7 +1201,7 @@
                         <div class="line-tax5"></div>
                     </div>
                 </div>
-                <form class="form-tax_content">
+                <form class="form-tax_content" id="StichtingSimpleTrustB_3_2">
                     <div>
                         <h2 class="tax-text-dark">Por favor completar el siguiente formulario</h2>
                         <p class="tax-text-dark" style="text-align: center;"><strong>CUESTIONARIO “B.3.2 – Stichting Simple Trust”</strong></p>
@@ -1280,7 +1279,7 @@
                         </fieldset>
                     </div>
                     <div class="tax-form-bottom">
-                        <button type="button" class="tax-button-primary btn-finalizar" data-tipo="W-8IMY" data-variable="formularioFideicomisoTrust">Finalizar</button>
+                        <button type="button" class="tax-button-primary btn-finalizar" data-tipo="W-8IMY" date-formulario="StichtingSimpleTrustB_3_2" data-variable="StichtingSimpleTrustB_3_2">Finalizar</button>
                     </div>
                 </form>
             </div>
@@ -1303,7 +1302,7 @@
                         <div class="line-tax5"></div>
                     </div>
                 </div>
-                <form class="form-tax_content">
+                <form class="form-tax_content" id="StichtingComplexTrustA_3">
                     <div>
                         <h2 class="tax-text-dark">Por favor completar el siguiente formulario</h2>
                         <p class="tax-text-dark" style="text-align: center;"><strong>“A.3” W-8BEN-E para Stichting Complex Trust. P</strong></p>
@@ -1389,7 +1388,7 @@
                         </fieldset>
                     </div>
                     <div class="tax-form-bottom">
-                        <button type="button" class="tax-button-primary btn-finalizar" data-tipo="W-8BEN-E">Finalizar</button>
+                        <button type="button" class="tax-button-primary btn-finalizar" data-tipo="W-8BEN-E" data-variable="StichtingComplexTrustA_3" date-formulario="StichtingComplexTrustA_3">Finalizar</button>
                     </div>
                 </form>
             </div>
@@ -1519,7 +1518,7 @@
                     <div class="line-tax5"></div>
                 </div>
             </div>
-            <form class="form-tax_content">
+            <form class="form-tax_content" id="formularioFideicomisoTrustB_1_2">
                 <div>
                     <h2 class="tax-text-dark">Por favor completar el siguiente formulario</h2>
                     <p class="tax-text-dark" style="text-align: center;"><strong>CUESTIONARIO “B.1.2 – Fideicomiso (Trust)”</strong></p>
@@ -1528,7 +1527,7 @@
                 <div class="form-tax-two_column">
                     <fieldset class="form-group">
                         <label for="name-fideicomiso" class="tax-text-dark"><strong>1.</strong> <strong> Campo obligatorio.</strong> Por favor, indique el nombre del fideicomiso. Este nombre se encuentra en el contrato de fideicomiso y puede ser una combinación de números y letras o un nombre específico. En cualquier caso, podrá encontrar esta información en el contrato </label>
-                        <input type="text" type="name-fideicomiso" name="name-fideicomiso" placeholder="Escribir aquí..."/>
+                        <input type="text" type="name-fideicomiso" name="name-fideicomiso" id="name-fideicomiso" placeholder="Escribir aquí..."/>
                         <div class="response-indicator">
                             <span>&#10003;</span>
                         </div>
@@ -1589,7 +1588,7 @@
                     </fieldset>
                 </div>
                 <div class="tax-form-bottom">
-                    <button type="button" class="tax-button-primary btn-finalizar" data-tipo="W-8IMY" data-variable="formularioFideicomisoTrust">Finalizar</button>
+                    <button type="button" class="tax-button-primary btn-finalizar" data-tipo="W-8IMY" date-formulario="formularioFideicomisoTrustB_1_2" data-variable="formularioFideicomisoTrustB_1_2">Finalizar</button>
                 </div>
             </form>
         </div>
@@ -1612,7 +1611,7 @@
                     <div class="line-tax5"></div>
                 </div>
             </div>
-            <form class="form-tax_content">
+            <form class="form-tax_content" id="ComplexTrust_A_1">
                 <div>
                     <h2 class="tax-text-dark">Por favor completar el siguiente formulario</h2>
                     <p class="tax-text-dark" style="text-align: center;"><strong>CUESTIONARIO “A.1” W-8BEN-E para Complex Trust.</strong></p>                    
@@ -1621,7 +1620,7 @@
                 <div class="form-tax-two_column">
                     <fieldset class="form-group">
                         <label for="name-fideicomiso2" class="tax-text-dark"><strong>1.</strong> <strong> Campo obligatorio.</strong> Por favor, escriba el nombre del fideicomiso (“trust”). Este nombre se encuentra en el contrato de fideicomiso (“trust”) y puede ser una combinación de números y letras o un nombre específico. En cualquier caso, podrá encontrar esta información en el contrato. </label>
-                        <input type="text" type="name-fideicomiso2" name="name-fideicomiso2" placeholder="Escribir aquí..."/>
+                        <input type="text" type="text" name="name-fideicomiso2" id="name-fideicomiso2" placeholder="Escribir aquí..."/>
                         <div class="response-indicator">
                             <span>&#10003;</span>
                         </div>
@@ -1642,10 +1641,8 @@
                     <fieldset class="form-group">
                         <label for="writedirection5" class="tax-text-dark"><strong>3.</strong> <strong> Campo obligatorio.</strong> Por favor, escriba la dirección completa del domicilio del fiduciario | fideicomisario. Incluya el nombre o número de casa o edificio, número de oficina u apartamento, calle o avenida, ciudad, y código postal (si en su país se utiliza el código postal) <strong>No puede utilizar una dirección de P.O. Box.</strong></label>
                         <div class="form-tax-two_column">
-                            <input type="text" name="writecountry0" id="writecountry0" disabled>
+                            <!--<input type="text" name="writecountry0" id="writecountry0" disabled>-->
                             <input type="text" name="writedirection05" id="writedirection05" placeholder="Escribir aquí...">
-                        </div>
-                        <div class="response-indicator">
                             <span>&#10003;</span>
                         </div>
                     </fieldset>
@@ -1657,7 +1654,7 @@
                             <select name="truste-direction" id="truste-direction">
                                 <option value="0">Seleccione una opción</option>
                             </select>
-                            <input type="text" type="trustee-email3" name="trustee-email3" placeholder="Escribir aquí..."/>
+                            <input type="text" type="text" id="trustee-email3" name="trustee-email3" placeholder="Escribir aquí..."/>
                         </div>
                         <div class="response-indicator">
                             <span>&#10003;</span>
@@ -1683,20 +1680,19 @@
                         </div>
                     </fieldset>
                     <fieldset class="form-group">
-                        <label for="birthdate10" class="tax-text-dark"><strong><strong>7.</strong> Campo obligatorio.</strong> Por favor escriba el nombre y apellido de la persona que firmará el formulario W-8 </label>
-                        <input type="date" name="birthdate10" id="birthdate10" placeholder="escribir aquí">
+                        <label for="name-sing" class="tax-text-dark"><strong><strong>7.</strong> Campo obligatorio.</strong> Por favor escriba el nombre y apellido de la persona que firmará el formulario W-8 </label>
+                        <input type="text" name="name-sing" id="name-sing" placeholder="escribir aquí">
                         <div class="response-indicator">
                             <span>&#10003;</span>
                         </div>
                     </fieldset>
                 </div>
                 <div class="tax-form-bottom">
-                    <button type="button" class="tax-button-primary btn-finalizar" data-tipo="W-8BEN-E">Finalizar</button>
+                    <button type="button" class="tax-button-primary btn-finalizar" date-formulario="ComplexTrust_A_1" data-variable="ComplexTrust_A_1" data-tipo="W-8BEN-E">Finalizar</button>
                 </div>
             </form>
         </div>
     </div>
 <!-- Step 10 END -->
- <script type="text/javascript" src="./js.js"></script>
 </body>
 </html>
