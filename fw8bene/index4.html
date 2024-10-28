@@ -1,0 +1,420 @@
+<?php 
+
+?>
+<style>
+    * {
+box-sizing: border-box;
+font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body{
+margin: auto;
+}
+
+/* Ocultar el ícono del calendario */
+input[type="date"]::-webkit-calendar-picker-indicator {
+display: none; /* Para Chrome */
+}
+input[type="date"] {
+-webkit-appearance: none; /* Para Safari */
+appearance: none; /* Para otros navegadores */
+}
+
+.to-pdf{
+font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+width: 19cm;
+/* height: 27.94cm; */
+}
+
+.to-pdf table:first-child tbody td{
+border-top: 0;
+}
+
+.to-pdf span, .to-pdf label, .to-pdf p, .to-pdf strong, .to-pdf input[type="text"]{
+font-size: 11px;
+}
+
+.to-pdf .header-left .title-big{
+font-size: 24px;
+font-weight: bold;
+}
+
+.to-pdf .header-left .title-big > span{
+font-weight: 400;
+}
+
+
+table.table-layout {
+width: 100%;
+table-layout: fixed;
+}
+
+.header-left {
+width: 20%; /* Ajusta el ancho de la celda izquierda */
+}
+
+.header-center {
+width: 60%; /* Ajusta el ancho de la celda central */
+text-align: center;
+}
+
+.header-right {
+width: 20%; /* Ajusta el ancho de la celda derecha */
+text-align: right;
+}
+
+.header-center{
+text-align: center;
+}
+
+table {
+width: 100%;
+border-collapse: collapse;
+}
+
+th {
+background-color: #f2f2f2;
+}
+
+td, table{
+border-left: none;
+border-right: none;
+}
+
+tr > td + td {
+border-left: 1px solid black;
+}
+
+input{
+border: none;
+}
+
+input[type="text"]{
+width: 100%;
+}
+
+input:focus {
+outline: none;
+}
+
+.m-0{
+margin: 0;
+}
+
+.table-border-bottom{
+border-bottom: 1px solid black;
+}
+
+.line-complete {
+display: inline-block;
+width: 100vw;
+border-bottom: 1px dotted #000;
+margin-left: 5px;
+position: absolute !important;
+bottom: 6px;
+left: 99px;
+}
+
+li{
+position: relative;
+display: flex;
+justify-content: space-between;
+}
+
+li:nth-child(3){
+flex: 1;
+}
+
+li span:nth-child(1){
+position: relative;
+z-index: 2;
+width: fit-content;
+background-color: white;
+padding-right: 7px;
+margin-right: -1px;
+padding-left: 5px;
+max-width: 682px;
+}
+
+li div:nth-child(2){
+position: relative;
+z-index: 1;
+}
+
+li span:nth-child(3) {
+position: relative;
+z-index: 2;
+width: fit-content;
+background-color: white;
+}
+
+.part-1{
+font-size: 12px;
+}
+
+.table-without-padding td {
+padding: 0 3px;
+border-top: 1px solid;
+border-bottom: 1px solid;
+}
+
+.part-2{
+border-top: 1px solid black;
+}
+
+.part-2 .backg-dark{
+background-color: #000;
+padding: 0 7px;
+color: white;
+font-size: initial;
+margin-right: 7px;
+font-size: 16px;
+line-height: 0px;
+}
+
+strong.fs-13{
+font-size: 13px;
+margin-right: 7px;
+}
+
+table tr.without-border td{
+border: none;
+}
+
+.note-if{
+border-top: 1px solid black;
+}
+
+.note-if p{
+margin: 0;
+padding: 3px 0;
+}
+
+.table-letter-small td{
+font-size: 11px;
+}
+
+.border-bottom-table{
+border-bottom: 1px solid black;
+}
+
+.border-top-none{
+border-top: 0 !important;
+}
+
+.tablet-listed td{
+padding-left: 8px;
+}
+
+
+.header {
+width: 150px;
+vertical-align: top;
+font-weight: bold;
+padding-right: 10px;
+}
+
+.content {
+vertical-align: top;
+}
+
+.line {
+border-bottom: 1px solid black;
+width: 467px;
+display: inline-block;
+}
+
+.date {
+border-bottom: 1px solid black;
+width: 150px;
+display: inline-block;
+}
+
+.spacer {
+padding-left: 20px;
+}
+
+.border-before::before {
+position: absolute;
+content: '';
+width: 100%;
+left: 0;
+border-bottom: 1px dotted black;
+top: 9px;
+z-index: 1;
+}
+
+.vertical-align-top_table{
+vertical-align: top;
+}
+
+input[type="checkbox"] {
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+width: 15px;
+height: 15px;
+border: 1px solid black;
+background-color: white;
+display: inline-block;
+vertical-align: middle;
+border-radius: 2px;
+cursor: pointer;
+position: relative;
+margin: 0 3px;
+}
+
+input[type="checkbox"]:checked {
+background-color: #e7f3fe;
+border-color: #7a7a7a;
+}
+
+input[type="checkbox"]:checked::after {
+content: '\2714';
+color: black;
+font-size: 10px;
+position: absolute;
+top: 0px;
+left: 2.5px;
+}
+
+.table-spacing-check input[type="checkbox"] {
+margin-bottom: 5px;
+}
+
+.size-letter-spacing{
+display: inline-block;
+line-height: 16px;
+}
+
+label.ident-list {
+padding-left: 55px;
+}
+</style>
+<body class="to-pdf" style="width: 19cm;">
+    <table cellpadding="5" cellspacing="0">
+        <tr>
+            <td colspan="1" style="width: 50%; border: none;">
+                <label for="">Form W-8BEN-E (Rev. 10-2021)</label>
+            </td>
+            <td colspan="0" style="width: 10%; border: none;"></td>
+            <td style="text-align: right; width: 40%; border: none;" colspan="2" align="right">
+                <label for="">Page <strong class="fs-13" style="margin: 0;">4</strong></label>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 13px;"> 
+                    <span class="backg-dark">Part X </span> <strong style="font-size: 13px;">Owner-Documented FFI </strong> (continued)
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="" class="size-letter-spacing"><strong>Check box 24b or 24c, whichever applies.</strong></label>
+            </td>
+        </tr>
+        <tr>
+            <td style="">
+                <label for="" style="padding-left: 20px;"><strong class="fs-13">b</strong> <input type="checkbox" id="">I certify that the FFI identified in Part I:</label><br>
+                <label for="" class="size-letter-spacing">
+                    <label class="ident-list-father" style="padding-left: 45px;">• Has provided, or will provide, an FFI owner reporting statement that contains:</label><br>
+                    <label class="ident-list"><strong>(i)</strong> The name, address, TIN (if any), chapter 4 status, and type of documentation provided (if required) of every individual and specified U.S. person that owns a direct or indirect equity interest in the owner-documented FFI (looking through all entities other than specified U.S. persons); </label><br>
+                    <label class="ident-list"><strong>(ii)</strong> The name, address, TIN (if any), and chapter 4 status of every individual and specified U.S. person that owns a debt interest in the owner-documented FFI (including any indirect debt interest, which includes debt interests in any entity that directly or indirectly owns the payee or any direct or indirect equity interest in a debt holder of the payee) that constitutes a financial account in excess of $50,000 (disregarding all such debt interests owned by participating FFIs, registered deemed-compliant FFIs, certified deemed-compliant FFIs, excepted NFFEs, exempt beneficial owners, or U.S. persons other than specified U.S. persons); <strong>and</strong></label><br>
+                    <label class="ident-list"><strong>(iii)</strong> Any additional information the withholding agent requests in order to fulfill its obligations with respect to the entity.</label><br>
+                    <label class="ident-list-father" style="padding-left: 45px;">• Has provided, or will provide, valid documentation meeting the requirements of Regulations section 1.1471-3(d)(6)(iii) for each person identified in the FFI owner reporting statement</label>
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td style="">
+                <label for="" style="padding-left: 20px;" class="size-letter-spacing"><strong class="fs-13">c</strong> <input type="checkbox" id="">I certify that the FFI identified in Part I has provided, or will provide, an auditor's letter, signed within 4 years of the date of payment, from an independent accounting firm or legal representative with a location in the United States stating that the firm or representative has reviewed the FFI’s documentation with respect to all of its owners and debt holders identified in Regulations section 1.1471-3(d)(6)(iv)(A)(2), and that the FFI meets all the requirements to be an owner-documented FFI. The FFI identified in Part I has also provided, or will provide, an FFI owner reporting statement of its owners that are specified U.S. persons and Form(s) W-9, with applicable waivers</label><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="" class="size-letter-spacing"><strong>Check box 24d if applicable</strong> (optional, see instructions).</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="size-letter-spacing" for="" style="padding-left: 20px;"><strong class="fs-13">d</strong> <input type="checkbox" id="">I certify that the entity identified on line 1 is a trust that does not have any contingent beneficiaries or designated classes with unidentified beneficiaries.</label><br>
+            </td>
+        </tr>
+    </table>
+    <table cellpadding="5" cellspacing="0" style="margin-top: 3px;">
+        <tr>
+            <td class="part-2 border-bottom-table border-top-none" style="width: 65px; vertical-align: text-top; padding: 0; border-top: 1px solid black !important;" colspan="1">                                    
+                <span style="font-size: 13px;"> 
+                    <span class="backg-dark">Part XI </span> <strong style="font-size: 13px;">Restricted Distributor</strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 0;">
+                <label for=""><strong class="fs-13">25a</strong> <input type="checkbox" id="">(All restricted distributors check here) I certify that the entity identified in Part I:</label><br>
+                <label for="" class="size-letter-spacing">
+                    <label for="" class="size-letter-spacing" style="padding-left: 41px;">• Operates as a distributor with respect to debt or equity interests of the restricted fund with respect to which this form is furnished;</label><br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 41px;">• Provides investment services to at least 30 customers unrelated to each other and less than half of its customers are related to each other;</label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 41px;">• Is required to perform AML due diligence procedures under the anti-money laundering laws of its country of organization (which is an FATF-compliant jurisdiction);</label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 41px;">• Operates solely in its country of incorporation or organization, has no fixed place of business outside of that country, and has the same country of incorporation or organization as all members of its affiliated group, if any;</label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 41px;">• Does not solicit customers outside its country of incorporation or organization;</label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 41px;">• Has no more than $175 million in total assets under management and no more than $7 million in gross revenue on its income statement for the most recent accounting year;</label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 41px;">• Is not a member of an expanded affiliated group that has more than $500 million in total assets under management or more than $20 million in gross revenue for its most recent accounting year on a combined or consolidated income statement; <strong>and</strong></label> <br>
+                    <label for="" class="size-letter-spacing" style="padding-left: 41px;">• Does not distribute any debt or securities of the restricted fund to specified U.S. persons, passive NFFEs with one or more substantial U.S. owners, or nonparticipating FFIs.</label>
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 0;">
+                <label>
+                    <strong>Check box 25b or 25c, whichever applies.</strong>
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="size-letter-spacing">I further certify that with respect to all sales of debt or equity interests in the restricted fund with respect to which this form is furnished that are made after December 31, 2011, the entity identified in Part I:</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="size-letter-spacing" for="" style="padding-left: 20px;"><strong class="fs-13">b</strong> <input type="checkbox" id="">Has been bound by a distribution agreement that contained a general prohibition on the sale of debt or securities to U.S. entities and U.S. resident individuals and is currently bound by a distribution agreement that contains a prohibition of the sale of debt or securities to any specified U.S. person, passive NFFE with one or more substantial U.S. owners, or nonparticipating FFI.</label><br>
+            </td>
+        </tr>
+        <tr>
+            <td style="border-bottom: 1px solid black;">
+                <label class="size-letter-spacing" for="" style="padding-left: 20px;"><strong class="fs-13">c</strong> <input type="checkbox" id="">Is currently bound by a distribution agreement that contains a prohibition on the sale of debt or securities to any specified U.S. person, passive NFFE with one or more substantial U.S. owners, or nonparticipating FFI and, for all sales made prior to the time that such a restriction was included in its distribution agreement, has reviewed all accounts related to such sales in accordance with the procedures identified in Regulations section 1.1471-4(c) applicable to preexisting accounts and has redeemed or retired any, or caused the restricted fund to transfer the securities to a distributor that is a participating FFI or reporting Model 1 FFI securities which were sold to specified U.S. persons, passive NFFEs with one or more substantial U.S. owners, or nonparticipating FFIs.</label><br>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td align="right" style="font-size: 11px; border: none; padding-bottom: 303px;">Form <span style="font-size: 16px; font-weight: bold;">W-8BEN-E</span> (Rev. 10-2021)</td>
+        </tr>
+    </table>
+    <script>
+        function adjustWidthForOS() {
+            const userAgent = window.navigator.userAgent.toLowerCase();
+            const lines = document.querySelectorAll('.line');
+    
+            // Detectar si es macOS
+            if (userAgent.indexOf('mac') !== -1) {
+                lines.forEach(line => {
+                    // Obtener el valor de ajuste desde el atributo data
+                    const pixelAdjustment = line.getAttribute('data-adjust');
+                    
+                    // Ajustar el ancho al valor obtenido
+                    if (pixelAdjustment) {
+                        line.style.width = pixelAdjustment + 'px';
+                    }
+                });
+            }
+        }
+    
+        // Llama a la función al cargar la página
+        document.addEventListener('DOMContentLoaded', adjustWidthForOS);
+    </script>
+</body>
