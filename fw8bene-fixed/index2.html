@@ -1,3 +1,6 @@
+<?php 
+
+?>
 <style>
     * {
     box-sizing: border-box;
@@ -20,9 +23,8 @@
     .to-pdf{
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     width: 19cm;
-    page-break-before: always;
     /* height: 27.94cm; */
-    }   
+    }
 
     .to-pdf table:first-child tbody td{
     border-top: 0;
@@ -289,47 +291,47 @@
     }
 </style>
 
-<body class="to-pdf">
+<body class="to-pdf" style="width: 19cm;">
     <table border="1" cellpadding="5" cellspacing="0" class="table-without-padding" style="border-top: 0; border-bottom: 0;">
         <tr>
-            <td colspan="1" style="width: 50%; border: none;">
+            <td style="width: 50%; border: none;">
                 <label for="">Form W-8BEN-E (Rev. 10-2021)</label>
             </td>
             <td colspan="0" style="width: 10%; border: none;"></td>
-            <td style="text-align: end; width: 40%; border: none;" colspan="2" >
+            <td style="text-align: right; width: 40%; border: none;" colspan="2" >
                 <label for="">Page <strong class="fs-13" style="margin: 0;">2</strong></label>
             </td>
         </tr>
         <tr>
-            <td colspan="3" style="padding-left: 0;">
+            <td style="padding-left: 0;" colspan="4">
                 <div class="part-2"><span style="font-size: 13px;"> <span class="backg-dark">Part l </span> <strong style="font-size: 13px;">Identification of Beneficial Owner </strong>(continued)</span></div>
             </td>
         </tr>
         <tr class="without-border">
-            <td colspan="3">
+            <td colspan="4">
                 <label for=""><strong class="fs-13">8</strong> U.S. taxpayer identification number (TIN), if required</label>
                 <br>
-                <span style="text-align: center; width: 100%;" class="date">{ texto escribir }</span>
-            </td>
-        </tr>
-        <tr class="without-border">
-            <td>
-                <label for=""><strong class="fs-13">9a</strong> GIIN <br> { texto escribir } </label>
-            </td>
-            <td style="white-space: nowrap;">
-                <label for=""><strong class="fs-13">b</strong> Foreign TIN <br> { texto escribir } </label>
-            </td>
-            <td align="end" valign="middle">
-                <label for="check-ftin" style="vertical-align: middle;"><strong class="fs-13">c</strong> Check if FTIN not legally required ▶<input type="checkbox" id="check-ftin"> </label>
+                <span style="text-align: center; width: 100%;" class="date"> </span>
             </td>
         </tr>
         <tr>
-            <td colspan="3">
-                <label for=""><strong class="fs-13">10</strong> Reference number(s) (see instructions) <br> <span style="text-align: center; width: 100%;display: inline-block;">{ texto escribir }</span> </label>
+            <td style="width: 20%;">
+                <label for=""><strong class="fs-13">9a</strong> GIIN <br>   </label>
+            </td>
+            <td style="white-space: nowrap; width: 15%;">
+                <label for=""><strong class="fs-13">b</strong> Foreign TIN <br> <?=$taxpayeridentificationnumber;?></label>
+            </td>
+            <td align="end" valign="middle" colspan="2">
+                <label for="check-ftin" style="vertical-align: middle;"><strong class="fs-13">c</strong> Check if FTIN not legally required <span class="arrow"style="display: inline-block;width: 0;height: 0;border-left: 5px solid transparent;border-right: 5px solid transparent;border-top: 6px solid black;padding-bottom: 4px;"></span><?php if($casilla8c != ""){?><input type="checkbox checked" id="check-ftin"><?php }else{?><input type="checkbox" id="check-ftin"><?php }?> </label>
             </td>
         </tr>
         <tr>
-            <td style="border-bottom: none; padding-bottom: 17px;" colspan="3">
+            <td colspan="4">
+                <label for=""><strong class="fs-13">10</strong> Reference number(s) (see instructions) <br> <span style="text-align: center; width: 100%;display: inline-block;"> </span> </label>
+            </td>
+        </tr>
+        <tr>
+            <td style="border-bottom: none; padding-bottom: 17px;" colspan="4">
                 <label for=""><strong>Note</strong>: Please complete remainder of the form including signing the form in Part XXX.</label>
             </td>
         </tr>
@@ -391,26 +393,26 @@
                 <td style="border-top: 0;">
                     <label for=""><strong class="fs-13">12</strong> Address of disregarded entity or branch (street, apt. or suite no., or rural route). <strong>Do not use a P.O. box or in-care-of address</strong> (other than a
                         registered address).</label><br>
-                    <span style="width: 100%; display: inline-block;" align="">{ texto escribir }</span>
+                    <span style="width: 100%; display: inline-block;" align=""> </span>
                 </td>
             </tr>
             <tr>
                 <td style="border-top: 0;">
                     <label for="">City or town, state or province. Include postal code where appropriate.</label><br>
-                    <span style="width: 100%; display: inline-block;" align="">{ texto escribir }</span>
+                    <span style="width: 100%; display: inline-block;" align=""> </span>
                 </td>
             </tr>
             <tr>
                 <td style="border-top: 0;">
                     <label for="">Country</label><br>
-                    <span style="width: 100%; display: inline-block;" align="">{ texto escribir }</span>
+                    <span style="width: 100%; display: inline-block;" align=""> </span>
                 </td>
             </tr>
             <tr></tr>
                 <td style="border-top: 0; border-bottom: 0;">
                     <div style="display: flex;">
                         <label for="" style="width: 107px; align-content: center;"><strong class="fs-13">13</strong> GIIN (if any)</label>
-                        <span style="width: 100%; display: inline; border-bottom: 1px solid black; padding-top: 3px;" align="">{ texto escribir }</span>
+                        <span style="width: calc(100% - 87px);display: inline-block;border-bottom: 1px solid black;padding-top: 20px;" align=""> </span>
                     </div>
                 </td>
             </tr>
@@ -439,7 +441,7 @@
             </tr>
             <tr>
                 <td style="border: 0; margin-top: 3px; padding-left: 20px;">
-                    <strong class="fs-13">a</strong> <input type="checkbox" id="" style="padding-bottom: 3px;"><label for="">The beneficial owner is a resident of within the meaning of <span class="line" style="width: 472px;" data-adjust="449">{ texto escribir }</span> the income tax treaty between the United States and that country.</label>
+                    <strong class="fs-13">a</strong> <input type="checkbox" id="" style="padding-bottom: 3px;"><label for="">The beneficial owner is a resident of within the meaning of <span class="line" style="width: 272px;" data-adjust="249"> </span> the income tax treaty between the United States and that country.</label>
                 </td>
             </tr>
             <tr>
@@ -496,7 +498,7 @@
                             <br>
                   
                             <input type="checkbox" id="" style="margin-bottom: 0;">
-                            <label for="">Other (specify Article and paragraph): <span class="line" style="width: 252px;" data-adjust="234">{ texto escribir }</span></label>
+                            <label for="">Other (specify Article and paragraph): <span class="line" style="width: 185px;" data-adjust="174"> </span></label>
                             
                           </td>
                         </tr>
@@ -511,8 +513,8 @@
             <tr>
                 <td style="border: none;">
                     <strong class="fs-13">15</strong> <label><strong>Special rates and conditions</strong> (if applicable—see instructions):</label><br>
-                    <label for="">The beneficial owner is claiming the provisions of Article and paragraph <span class="line" style="width: 458px;" data-adjust="435"> { texto escribir } </span></label><br>
-                    <label for="">of the treaty identified on line 14a above to claim a <span class="line" style="width: 80px;">50 </span>% rate of withholding on (specify type of income): <span class="line" style="width: 238px;" data-adjust="200"> { texto escribir } </span></label><br>
+                    <label for="">The beneficial owner is claiming the provisions of Article and paragraph <span class="line" style="width: 350px;" data-adjust="327">   </span></label><br>
+                    <label for="">of the treaty identified on line 14a above to claim a <span class="line" style="width: 80px;">50 </span>% rate of withholding on (specify type of income): <span class="line" style="width: 124px;" data-adjust="100">   </span></label><br>
                     <label for="">Explain the additional conditions in the Article the beneficial owner meets to be eligible for the rate of withholding: <span style="text-decoration: underline;"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec sapien gravida, hendrerit lectus fringilla, tristique enim. Quisque vitae nulla lacus. Aenean felis orci, ultricies vitae scelerisque sit amet, fringilla sed erat.</span></label>
                 </td>
             </tr>
@@ -528,7 +530,7 @@
         </tr>
         <tr>
             <td style="padding: 0">
-                <label for=""><strong class="fs-13">16</strong> Name of sponsoring entity: <span class="line" style="width: 649px;"> { texto escribir } </span></label>
+                <label for=""><strong class="fs-13">16</strong> Name of sponsoring entity: <span class="line" style="width: 555px;">   </span></label>
             </td>
         </tr>
         <tr>
@@ -554,7 +556,7 @@
     </table>
     <table>
         <tr>
-            <td align="end" style="font-size: 11px; border: none;">Form <span style="font-size: 16px; font-weight: bold;">W-8BEN-E</span> (Rev. 10-2021)</td>
+            <td align="right" style="font-size: 11px; border: none; padding-bottom: 110px;">Form <span style="font-size: 16px; font-weight: bold;">W-8BEN-E</span> (Rev. 10-2021)</td>
         </tr>
     </table>
     <script>
