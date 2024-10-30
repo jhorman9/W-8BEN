@@ -1,319 +1,345 @@
+<?php 
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>to-pdf</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body class="to-pdf" id="print-section">
+    <title>to-pdf</title>    
     <style>
         * {
-        box-sizing: border-box;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    }
+            box-sizing: border-box;
+        }
 
-    body{
-        margin: auto;
-    }
+        body{
+            margin: auto;
+        }
 
-    /* Ocultar el ícono del calendario */
-    input[type="date"]::-webkit-calendar-picker-indicator {
-        display: none; /* Para Chrome */
-    }
-    input[type="date"] {
-        -webkit-appearance: none; /* Para Safari */
-        appearance: none; /* Para otros navegadores */
-    }
+        /* Ocultar el ícono del calendario */
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            display: none; /* Para Chrome */
+        }
+        input[type="date"] {
+            -webkit-appearance: none; /* Para Safari */
+            appearance: none; /* Para otros navegadores */
+        }
 
-    .to-pdf{
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        width: 19cm;
-        /* height: 27.94cm; */
-        page-break-before: always;
-    }
+        .to-pdf{
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            width: 19cm;
+                page-break-before: always;
+            /* height: 27.94cm; */
+        }
 
-    .to-pdf table:first-child tbody td{
-        border-top: 0;
-    }
+        .to-pdf table:first-child tbody td{
+            border-top: 0;
+        }
 
-    .to-pdf span, .to-pdf label, .to-pdf p, .to-pdf strong, .to-pdf input[type="text"]{
-        font-size: 11px;
-    }
+        .to-pdf span, .to-pdf label, .to-pdf p, .to-pdf strong, .to-pdf input[type="text"]{
+            font-size: 11px;
+        }
 
-    .to-pdf .header-left .title-big{
-        font-size: 24px;
-        font-weight: bold;
-    }
+        .to-pdf .header-left .title-big{
+            font-size: 20px;
+            font-weight: bold;
+        }
 
-    .to-pdf .header-left .title-big > span{
-        font-weight: 400;
-    }
+        .to-pdf .header-left .title-big > span{
+            font-weight: 400;
+        }
 
 
-    table.table-layout {
-        width: 100%;
-        table-layout: fixed;
-    }
+        table.table-layout {
+            width: 100%;
+            table-layout: fixed;
+        }
 
-    .header-left {
-        width: 20%; /* Ajusta el ancho de la celda izquierda */
-    }
+        .header-left {
+            width: 20%; /* Ajusta el ancho de la celda izquierda */
+        }
 
-    .header-center {
-        width: 60%; /* Ajusta el ancho de la celda central */
-        text-align: center;
-    }
+        .header-center {
+            width: 60%; /* Ajusta el ancho de la celda central */
+            text-align: center;
+        }
 
-    .header-right {
-        width: 20%; /* Ajusta el ancho de la celda derecha */
-        text-align: right;
-    }
+        .header-right {
+            width: 20%; /* Ajusta el ancho de la celda derecha */
+            text-align: right;
+        }
 
-    .header-center{
-        text-align: center;
-    }
+        .header-center{
+            text-align: center;
+        }
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
 
-    th {
-        background-color: #f2f2f2;
-    }
+        th {
+            background-color: #f2f2f2;
+        }
 
-    td, table{
-        border-left: none;
-        border-right: none;
-    }
+        td, table{
+            border-left: none;
+            border-right: none;
+        }
 
-    tr > td + td {
-        border-left: 1px solid black;
-    }
+        tr > td + td {
+            border-left: 1px solid black;
+        }
 
-    input{
-        border: none;
-    }
+        input{
+            border: none;
+        }
 
-    input[type="text"]{
-        width: 100%;
-    }
+        input[type="text"]{
+            width: 100%;
+        }
 
-    input:focus {
-        outline: none;
-    }
+        input:focus {
+            outline: none;
+        }
 
-    .m-0{
-        margin: 0;
-    }
+        .m-0{
+            margin: 0;
+        }
 
-    .table-border-bottom{
-        border-bottom: 1px solid black;
-    }
+        .table-border-bottom{
+            border-bottom: 1px solid black;
+        }
 
-    .line-complete {
+        .line-complete {
+            display: inline-block;
+            width: 100vw;
+            border-bottom: 1px dotted #000;
+            margin-left: 5px;
+            position: absolute !important;
+            bottom: 6px;
+            left: 99px;
+        }
+
+        li{
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        li:nth-child(3){
+            flex: 1;
+        }
+
+        li span:nth-child(1){
+            position: relative;
+            z-index: 2;
+            width: fit-content;
+            background-color: white;
+            padding-right: 7px;
+            margin-right: -1px;
+            padding-left: 5px;
+            max-width: 682px;
+        }
+
+        li div:nth-child(2){
+            position: relative;
+            z-index: 1;
+        }
+
+        li span:nth-child(3) {
+            position: relative;
+            z-index: 2;
+            width: fit-content;
+            background-color: white;
+        }
+
+        .part-1{
+            font-size: 12px;
+        }
+
+        .table-without-padding td {
+            padding: 0 3px;
+            border-top: 1px solid;
+            border-bottom: 1px solid;
+        }
+
+        .part-2{
+            border-top: 1px solid black;
+        }
+
+        .part-2 .backg-dark{
+            background-color: #000;
+            padding: 0 7px;
+            color: white;
+            font-size: initial;
+            margin-right: 7px;
+            font-size: 16px;
+            line-height: 0px;
+        }
+
+        strong.fs-13{
+            font-size: 13px;
+            margin-right: 7px;
+        }
+
+        table tr.without-border td{
+            border: none;
+        }
+
+        .note-if{
+            border-top: 1px solid black;
+        }
+
+        .note-if p{
+            margin: 0;
+            padding: 3px 0;
+        }
+
+        .table-letter-small td{
+            font-size: 11px;
+        }
+
+        .border-bottom-table{
+            border-bottom: 1px solid black;
+        }
+
+        .border-top-none{
+            border-top: 0 !important;
+        }
+
+        .tablet-listed td{
+            padding-left: 8px;
+        }
+
+
+        .header {
+            width: 150px;
+            vertical-align: top;
+            font-weight: bold;
+            padding-right: 10px;
+        }
+
+        .content {
+            vertical-align: top;
+        }
+
+        .line {
+            border-bottom: 1px solid black;
+            width: 467px;
+            display: inline-block;
+        }
+
+        .date {
+            border-bottom: 1px solid black;
+            width: 150px;
+            display: inline-block;
+        }
+
+        .spacer {
+            padding-left: 20px;
+        }
+
+        .border-before::before {
+            position: absolute;
+            content: '';
+            width: 100%;
+            left: 0;
+            border-bottom: 1px dotted black;
+            top: 9px;
+            z-index: 1;
+        }
+
+        .vertical-align-top_table{
+            vertical-align: top;
+        }
+
+        input[type="checkbox"] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            background-color: white;
+            display: inline-block;
+            vertical-align: middle;
+            border-radius: 2px;
+            cursor: pointer;
+            margin: 0 3px;
+            position: relative;
+            border: 1px solid transparent; /* Asegura que el borde sea transparente */
+                        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            z-index: 1;
+        }
+        
+        input[type="checkbox"]:checked {
+            background-color: black;
+            border: none; /* Elimina cualquier borde */
+        }
+        
+        input[type="checkbox"]:checked::after {
+            content: '\2714';
+            color: transparent; /* Ajusta el color para el fondo negro */
+            font-size: 10px;
+            position: absolute;
+            top: 0px; /* Ajusta la posición */
+            left: 0px;
+        }
+        
+        .table-spacing-check input[type="checkbox"] {
+            margin-bottom: 10px;
+        }
+
+        .size-letter-spacing{
+            display: inline-block;
+            line-height: 16px;
+        }
+
+        label.ident-list {
+            padding-left: 55px;
+        }
+        .do-not-use h6 {
+            min-width: 180px;
+        }
+        .checkbox{
+            border: none;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background: transparent;
+            width: 0;
+            height: 0;
+        }
+        .checkbox.checked {
+            background-color: black;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            border: none;
+            width: 15px;
+            height: 15px;
+            z-index: 2;
+            position: relative;
+        }
+        input.checkbox.checked{
+            border: none !important;
+        }
+        .arrow {
         display: inline-block;
-        width: 100vw;
-        border-bottom: 1px dotted #000;
-        margin-left: 5px;
-        position: absolute !important;
-        bottom: 6px;
-        left: 99px;
-    }
-
-    li{
-        position: relative;
-        display: flex;
-        justify-content: space-between;
-    }
-
-    li:nth-child(3){
-        flex: 1;
-    }
-
-    li span:nth-child(1){
-        position: relative;
-        z-index: 2;
-        width: fit-content;
-        background-color: white;
-        padding-right: 7px;
-        margin-right: -1px;
-        padding-left: 5px;
-        max-width: 635px;
-    }
-
-    li div:nth-child(2){
-        position: relative;
-        z-index: 1;
-    }
-
-    li span:nth-child(3) {
-        position: relative;
-        z-index: 2;
-        width: fit-content;
-        background-color: white;
-    }
-
-    .part-1{
-        font-size: 12px;
-    }
-
-    .table-without-padding td {
-        padding: 0 3px;
-        border-top: 1px solid;
-        border-bottom: 1px solid;
-    }
-
-    .part-2{
-        border-top: 1px solid black;
-    }
-
-    .part-2 .backg-dark{
-        background-color: #000;
-        padding: 0 7px;
-        color: white;
-        font-size: initial;
-        margin-right: 7px;
-        font-size: 16px;
-        line-height: 0px;
-    }
-
-    strong.fs-13{
-        font-size: 13px;
-        margin-right: 7px;
-    }
-
-    table tr.without-border td{
-        border: none;
-    }
-
-    .note-if{
-        border-top: 1px solid black;
-    }
-
-    .note-if p{
-        margin: 0;
-        padding: 3px 0;
-    }
-
-    .table-letter-small td{
-        font-size: 11px;
-    }
-
-    .border-bottom-table{
-        border-bottom: 1px solid black;
-    }
-
-    .border-top-none{
-        border-top: 0 !important;
-    }
-
-    .tablet-listed td{
-        padding-left: 8px;
-    }
-
-
-    .header {
-        width: 150px;
-        vertical-align: top;
-        font-weight: bold;
-        padding-right: 10px;
-    }
-
-    .content {
-        vertical-align: top;
-    }
-
-    .line {
-        border-bottom: 1px solid black;
-        width: 467px;
-        display: inline-block;
-    }
-
-    .date {
-        border-bottom: 1px solid black;
-        width: 150px;
-        display: inline-block;
-    }
-
-    .spacer {
-        padding-left: 20px;
-    }
-
-    .border-before::before {
-        position: absolute;
-        content: '';
-        width: 100%;
-        left: 0;
-        border-bottom: 1px dotted black;
-        top: 9px;
-        z-index: 1;
-    }
-
-    .vertical-align-top_table{
-        vertical-align: top;
-    }
-
-    input[type="checkbox"] {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        width: 15px;
-        height: 15px;
-        border: 1px solid black;
-        background-color: white;
-        display: inline-block;
-        vertical-align: middle;
-        border-radius: 2px;
-        cursor: pointer;
-        position: relative;
-        margin: 0 3px;
-    }
-    
-    input[type="checkbox"]:checked {
-        background-color: #e7f3fe;
-        border-color: #7a7a7a;
-    }
-    
-    input[type="checkbox"]:checked::after {
-        content: '\2714';
-        color: black;
-        font-size: 10px;
-        position: absolute;
-        top: 0px;
-        left: 2.5px;
-    }
-
-    .table-spacing-check input[type="checkbox"] {
-        margin-bottom: 5px;
-    }
-
-    .size-letter-spacing{
-        display: inline-block;
-        line-height: 16px;
-    }
-
-    label.ident-list {
-        padding-left: 55px;
-    }
-    .arrow {
-    display: inline-block;
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 6px solid black;
-    padding-bottom: 4px;
-    }
-    .arrow {
-    transform: rotate(270deg);
-    }
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 6px solid black;
+        padding-bottom: 4px;
+        }
+        .arrow {
+        transform: rotate(270deg);
+        }
     </style>
+</head>
+<body class="to-pdf" id="print-section">
     <table border="1" cellpadding="5" cellspacing="0" style="border: 0">
         <tbody class="table-border-bottom">
             <tr style='border-top: none'>
-                <td class="header-left" colspan="1" style="width: 18%; padding: 0; border-top:0px">
+                <td class="header-left" colspan="1" style="width: 19%; padding: 0; border-top:0px">
                     <p class="m-0 title-big"><span class="">Form</span> W-8IMY</p>
                     <p class="m-0">(Rev. October 2021)</p>
                     <p class="m-0">Department of the Treasury Internal Revenue Service</p>
@@ -325,7 +351,7 @@
                     <h6 class="m-0"><strong><span class="arrow"></span> Go to www.irs.gov/FormW8IMY for instructions and the latest information.</strong></h6>
                     <h6 class="m-0"><strong><span class="arrow"></span> Give this form to the withholding agent or payer. Do not send to the IRS.</strong></h6>
                 </td>
-                <td class="header-right" colspan="1" style="width: 16%; padding: 0; border-top:0px">
+                <td class="header-right" colspan="1" style="width: 15%; padding: 0; border-top:0px">
                     <span class="m-0">OMB No. 1545-1621</span>
                 </td>
             </tr>
@@ -337,8 +363,8 @@
                 <td colspan="1" border="0" style="border-right: none !important;">
                     <h6 style="margin: 0; font-size: 12px;">Do not use this form for:</h6>
                 </td>
-                <td colspan="2" border="0" align="end" style="border-left: none !important; text-align: end;">
-                    <h6 style="margin: 0; font-size: 12px; text-align: end;" align='end'>Instead, use Form:</h6>
+                <td colspan="2" border="0" align="right" style="border-left: none !important; width: 150px;">
+                    <h6 style="margin: 0; font-size: 12px;">Instead, use Form:</h6>
                 </td>
             </tr>
             <tr class="do-not-use">
@@ -398,7 +424,7 @@
                 </td>
             </tr>
         </table>
-        <table border="1" cellpadding="5" cellspacing="0" class="table-without-padding" style="border-bottom: 0; border-top: 0;">
+        <table border="1" cellpadding="5" cellspacing="0" class="table-without-padding" style="border-bottom: 0;">
             <div class="part-2" style='border-top: 0'><span style="font-size: 13px;"> <span class="backg-dark">Part l </span> <strong style="font-size: 13px;">Identification of Entity </strong></span></div>
             <tr>
                 <td colspan="1" style="line-height: 18px;">
@@ -410,8 +436,8 @@
                     <span><?=$countries_law2;?></span>
                 </td>
             </tr>
-            <tr style="border-bottom: 1px solid #000;">
-                <td colspan="3" style="line-height: 18px; border-bottom: none">
+            <tr>
+                <td colspan="3" style="line-height: 18px;">
                     <label for="permanent"><strong class="fs-13">3</strong> Name of disregarded entity (if applicable), see instructions <br></label>
                     <span> </span>
                 </td>
@@ -426,7 +452,7 @@
                     <table style="margin-bottom: 3px;">
                         <tr>
                             <td style="border: none; padding-left: 0;">
-                                <input type="checkbox" id="simple_trust"> <label for="simple_trust">QI (including a QDD). Complete Part III.</label>
+                                <input type="checkbox" class="checkbox checked-no" id="simple_trust" value="simple_trust"> <label for="simple_trust">QI (including a QDD). Complete Part III.</label>
                             </td>
                         </tr>
                         <tr>
@@ -466,18 +492,27 @@
                         </tr>
                         <tr>
                             <td style="border: none;">
-                                <input type="checkbox" id="integral Part"> <label for="integral Part">Nonwithholding foreign simple trust. Complete Part VIII.</label>
+                                <?php if($nonwithholdingforeignsimpletrust != ""){?>
+                                    <input type="checkbox" class="checkbox checked" id="integral Part"> <label for="integral Part">Nonwithholding foreign simple trust. Complete Part VIII.</label>
+                                <?php }else{?>
+                                    <input type="checkbox" id="integral Part"> <label for="integral Part">Nonwithholding foreign simple trust. Complete Part VIII.</label>
+                                <?php }?>                                  
                             </td>
                         </tr>
                         <tr>
-                            <td style="border: none;">
-                                <input type="checkbox" id="international-organization" value="<?=$marcada?>"> <label for="international-organization">Nonwithholding foreign grantor trust. Complete Part VIII.</label>
+                            <td tyle="border: none;">                                
+                                <?php if($marcada != "" && ($nonwithholdingforeignsimpletrust == "" || $nonwithholdingforeignsimpletrust == null)){?>
+                                    <input type="checkbox" id="international-organization" value="true" class="checkbox checked"> <label for="international-organization">Nonwithholding foreign grantor trust. Complete Part VIII.</label>                                
+                                <?php }else{?>
+                                    <input type="checkbox" id="international-organization" value="true" class="checkbox"> <label for="international-organization">Nonwithholding foreign grantor trust. Complete Part VIII.</label>                                
+                                <?php } ?>
+                                
                             </td>
                         </tr>
                     </table>
                 </td>
             </tr>
-            <tr style="border-top: 1px solid #000;">
+            <tr>
                 <td colspan="3" style="line-height: 18px;">
                   <label for="cityortown">
                     <strong class="fs-13">5</strong> Chapter 4 Status (FATCA status) (See instructions for details and complete the certification below for the entity’s applicable status.)<br>                
@@ -581,8 +616,11 @@
                         <input type="checkbox" id="nonprofit-organization">
                         <label for="nonprofit-organization">Active NFFE. Complete Part XXVI. </label>
                         <br>
-
-                        <input type="checkbox" id="publicly-traded" value="<?=$marcada;?>">
+                        <?php if($marcada != ""){?>
+                            <input type="checkbox" id="publicly-traded" class="checkbox checked">
+                        <?php }else{?>
+                            <input type="checkbox" id="publicly-traded" class="checkbox">
+                        <?php }?>                       
                         <label for="publicly-traded">Passive NFFE. Complete Part XXVII. </label>
                         <br>
 
@@ -690,5 +728,3 @@
         // Llama a la función al cargar la página
         document.addEventListener('DOMContentLoaded', adjustWidthForOS);
     </script>
-</body>
-</html>
