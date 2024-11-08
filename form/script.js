@@ -1,277 +1,155 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const fisicalOrEntity = document.querySelector('#fisical-or-entity');
-    const financialInstitution = document.querySelector('#financial-institution');
-    const patrimonialEntity = document.querySelector('#patrimonial-entity');
-    const noneAbove = document.querySelector('#none-above');
-    const buttonFirst = document.querySelector('#buttonFirst');
-    const checkEntity = document.querySelector('#check-entity');
-    const countryEntity = document.querySelector('#country-entity');
-    const country = document.querySelector('#country');
-    const typeEntity = document.querySelector('#typeentity');
-    const entityContainer = document.querySelector('.entity-type-container');
+//const countriesContainer = document.querySelector('#countries');
 
-    let selectedOption = null;
-    let isFinancial = false;
-    let isPatrimonial = false;
-    let isNoneAbove = false;
+let personaFisica = [
+    {"id": "name-lastname", "value": "", "required": false},
+    {"id": "livingeeuu", "value": "", "required": true},
+    {"id": "nationality", "value": "", "required": true},
+    {"id": "writedirection-country", "value": "", "required": false},
+    {"id": "writedirection", "value": "", "required": false},
+    {"id": "writecity", "value": "", "required": false},
+    {"id": "writecity2", "value": "", "required": false},
+    {"id": "writedirection2-country", "value": "", "required": false},
+    {"id": "writedirection2", "value": "", "required": false},
+    {"id": "writetaxpayer", "value": "", "required": false},
+    {"id": "birthdate0", "value": "", "required": false},
+    {"id": "birthdate01", "value": "", "required": false}
+];
 
-    const checkboxes = [financialInstitution, patrimonialEntity, noneAbove];
+let formularioFideicomisoTrust = [
+    {"id": "trust-fideicomiso", "value": "", "required": false},
+    {"id": "countries-law2", "value": "", "required": false},
+    {"id": "street-address", "value": "", "required": false},
+    {"id": "countries", "value": "", "required": false},
+    {"id": "trustee-email", "value": "", "required": false},
+    {"id": "countries-3", "value": "", "required": false},
+    {"id": "birthdate06", "value": "", "required": false},
+    {"id": "name-sing", "value": "", "required": false},
+    {"id": "writecity17", "value": "", "required": false},
+    {"id": "writecity18", "value": "", "required": false}    
+];
 
-    function handleCheckboxSelection(e) {
-        checkboxes.forEach((checkbox) => {
-            if (checkbox !== e.target) {
-                checkbox.checked = false;
-            }
-        });
-    }
-
-    checkboxes.forEach((checkbox) => {
-        checkbox.addEventListener('change', handleCheckboxSelection);
-    });
-
-    function updateValues00() {
-        selectedOption = fisicalOrEntity.value;
-        isFinancial = financialInstitution.checked;
-        isPatrimonial = patrimonialEntity.checked;
-        isNoneAbove = noneAbove.checked;
-
-        checkValues00();
-    }
-
-    function checkValues00() {
-        selectedOption = fisicalOrEntity.value;
-        isFinancial = financialInstitution.checked;
-        isPatrimonial = patrimonialEntity.checked;
-        isNoneAbove = noneAbove.checked;
-
-        if (selectedOption === 'fisical') {
-            countryEntity.style.display = 'none';
-            checkEntity.style.display = 'none';
-            checkboxes.forEach((checkbox) => {
-                checkbox.checked = false;
-            });
-            noneAbove.checked = false;
-            step(1, 2); 
-            return;
-        }
-
-        if (selectedOption === 'entity') {
-            checkEntity.style.display = 'block';
-
-            if (isFinancial || isPatrimonial) {
-                displayInfoModal();
-                return;
-            }
-
-            if (isNoneAbove) {
-                countryEntity.style.display = 'flex';
-                // Esto asegura que se habilite country cuando sea necesario
-                country.addEventListener('change', handleCountryChange); 
-            } else {
-                countryEntity.style.display = 'none';
-            }
-        }
-    }
-
-    function handleCountryChange(e) {
-        const countryValue = e.target.value;
-
-        const countryEntityMap = {
-            "ar": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada", "Sociedad Anónima Unipersonal (S.A.U.)"],
-            "aru": ["“Naamloze Vennootschap (N.V.)", "Besloten Vennootschap (B.V.)"],
-            "bah": ["International Business Company","Limited Liability Company"],
-            "bar": ["Limited Company", "Limited Liabilty Company", "International Business Company"],
-            "bel": ["Public Limited Company", "Limited Liability Company"],
-            "ber": ["Exempted Company"],
-            "bol":["Sociedad Anónima", "Sociedad de Responsabilidad Limitada"],
-            "bra": ["Sociedade Anonima", "LTDA"],
-            "bri": ["BVI Business Company", "Limited Liability Company"],
-            "cay": ["Exempted Company", "Limited Liability Company"],
-            "chi": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada"],
-            "col": ["Sociedad Anónima", "Sociedad por Acciones Simplificada (S.A.S.)"],
-            "cos": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada"],
-            "cur": ["Naamloze Vennootschap (N.V.)", "Besloten Vennootschap (B.V.)"],
-            "ecu": ["Sociedad Anónima", "Compañía Anónima", "Sociedad de Responsabilidad Limitada"],
-            "esp": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada (S.L.)", "Sociedad Limitada Nueva Empresa (SLNE)"],
-            "sal": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada", "Sociedad Anónima de Capital Variable"],
-            "gua": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada", "Sociedad Anónima de Capital Variable"],
-            "hon": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada"],
-            "hong": ["Public Limited Company"],
-            "jam": ["Public Limited Company"],
-            "mal": ["Public Limited Company"],
-            "mex": ["Sociedad Anónima", "Sociedad Anónima de Capital Variable", "Sociedad de Responsabilidad Limitada"],
-            "nic": ["Compañía Anónima", "Sociedad de Responsabilidad Limitada"],
-            "pan": ["“Sociedad Anónima ” (S.A.) (Inc.) (Corp.)", "Sociedad de Responsabilidad Limitada"],
-            "par": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada"],
-            "per": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada"],
-            "por": ["Sociedade Anónima (S.A.)", "Sociedade por Quotas (Lda.)", "Sociedade Unipessoal por Quotas", "Sociedade por Quotas de Responsabilidade Limitada com Participação em Beneficios (Lda. com PAB)"],
-            "kitt": ["International Business Company", "Limited Liability Company"],
-            "uru": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada"],
-            "ven": ["Sociedad Anónima", "Compañía Anónima", "Sociedad de Responsabilidad Limitada"],
-            "otro": []
-        };
-
-        const arrayEntity = countryEntityMap[countryValue] || [];
-
-        if (arrayEntity.length) {
-            typeEntity.innerHTML = `
-                <option value="0">Seleccione una opción</option>
-                ${arrayEntity.map(entity => `<option value="${entity.replace(/\s+/g, '')}">${entity}</option>`).join("")}
-            `;
-            typeEntity.disabled = false;
-            entityContainer.style.display = 'block';
-        } else {
-            typeEntity.innerHTML = `<option value="0">Seleccione una opción</option>`;
-            typeEntity.disabled = true;
-            entityContainer.style.display = 'none';
-        }
-    }
-
-    typeEntity.addEventListener('change', (e) => {
-        const countryValue = country.value;
-        if (e.target.value !== '0' && countryValue !== '0' && countryValue !== 'otro') {
-            step(1, 3); 
-        } else if (countryValue === 'otro') {
-            step(1, 4); 
-        }
-    });
-
-    buttonFirst.addEventListener('click', (e) => {
-        updateValues00();
+let StichtingGrantorTrustB_3_1 = [
+    {"id": "sticht-name", "value": "", "required": false},
+    {"id": "sticht-country", "value": "", "required": false},
+    {"id": "sticht-address", "value": "", "required": false},
+    {"id": "sticht-country02", "value": "", "required": false},
+    {"id": "sticht-address2", "value": "", "required": false},
+    {"id": "sticht-date", "value": "", "required": false},
+    {"id": "sticht-name2", "value": "", "required": false},
+    {"id": "writecity11", "value": "", "required": false},
+    {"id": "writecity12", "value": "", "required": false},
     
-        if (country.value === 'otro') {
-            entityContainer.style.display = 'none';
-            step(1, 4); 
-            return;
-        }
+
+];
+
+let StichtingSimpleTrustB_3_2 = [
+    {"id": "sticht-name-1", "value": "", "required": false},
+    {"id": "sticht-country-1", "value": "", "required": false},
+    {"id": "sticht-address-1", "value": "", "required": false},
+    {"id": "sticht-country002", "value": "", "required": false},
+    {"id": "sticht-address-2", "value": "", "required": false},
+    {"id": "sticht-date-1", "value": "", "required": false},
+    {"id": "sticht-name-2", "value": "", "required": false},
+    {"id": "writecity13", "value": "", "required": false},
+    {"id": "writecity14", "value": "", "required": false}    
+];
+
+let StichtingComplexTrustA_3 = [
+    {"id": "sticht-name-11", "value": "", "required": false},
+    {"id": "sticht-country-11", "value": "", "required": false},
+    {"id": "sticht-address-11", "value": "", "required": false},
+    {"id": "sticht-country004", "value": "", "required": false},
+    {"id": "sticht-address-22", "value": "", "required": false},
+    {"id": "sticht-identification", "value": "", "required": false},
+    {"id": "sticht-date-11", "value": "", "required": false},    
+    {"id": "sticht-name-22", "value": "", "required": false},    
+    {"id": "writecity15", "value": "", "required": false},
+    {"id": "writecity16", "value": "", "required": false}    
     
-        if (selectedOption === 'entity') {
-            if (isFinancial || isPatrimonial) {
-                displayInfoModal();
-            } else if (isNoneAbove) {
-                if (country.value !== '') {
-                    handleCountryChange({ target: { value: country.value } });
-                } else {
-                    console.log('Debe seleccionar un país antes de continuar.');
-                }
-            } else {
-                console.log('Debe seleccionar una opción válida antes de continuar.');
-            }
-        } else {
-            if(countryEntity.style.display == 'flex'){
-                Swal.fire({
-                    title: "Tipo de identidad",
-                    text: "Debes seleccionar un tipo de identidad",
-                    icon: "info"
-                });
-            }
-        }
-    });
+];
 
-    fisicalOrEntity.addEventListener('change', updateValues00);
-    financialInstitution.addEventListener('change', updateValues00);
-    patrimonialEntity.addEventListener('change', updateValues00);
-    noneAbove.addEventListener('change', updateValues00);
-});
+let FundacionSimpleTrustB_2_2 = [
 
-
-document.addEventListener('DOMContentLoaded', () => {
-    const typeEntity = document.querySelector('#typeEntity');
-    const continueButton = document.querySelectorAll('.tax-button-primary.steps');
-
-    function handleStep() {
-        const selectedValue = typeEntity.value;
-        if(selectedValue == 'fideicomiso'){
-            step(4,5);
-        }
-        if(selectedValue == 'fundacion'){
-            step(4,6);
-        }
-        if(selectedValue == 'stichting'){
-            step(4,7);
-        }
-        if(selectedValue == 'none'){
-           displayInfoModal();
-        }
-    }
-
-    typeEntity.addEventListener('change', handleStep);
-
-    continueButton.forEach(button => {
-        button.addEventListener('click', handleStep);
-    });
+    {"id": "trust-foundation", "value": "", "required": false},
+    {"id": "country-fundation", "value": "", "required": false},
+    {"id": "direction-complete", "value": "", "required": false},
+    {"id": "direction-email", "value": "", "required": false},
+    {"id": "direction-country2", "value": "", "required": false},
+    {"id": "birthdate02", "value": "", "required": false},
+    {"id": "name-sing", "value": "", "required": false},
+    {"id": "writecity7", "value": "", "required": false},
+    {"id": "writecity8", "value": "", "required": false},
     
-});
+];
 
-document.addEventListener('DOMContentLoaded', () => {
-    const born = document.querySelector('#born');
-    const competent = document.querySelector('#competent');
-    const isShow = document.querySelector('#tax-isShow');
-    const fideicomiso = document.querySelector('#fideicomiso');
-    const revocable = document.querySelector('#revocable');
-    const entityFideicomiso = document.querySelector('#entityFideicomiso');
-    const fideicomisoContract = document.querySelector('#fideicomisoContract');
-    const taxThirdtrue = document.querySelector('#tax-thirdtrue');
-    const continueStep8 = document.querySelector('#continue-step8');
+let FundacionGrantorTrustB_2_1 = [
+    {"id": "trust-w8imy", "value": "", "required": false},
+    {"id": "countries-w8imy", "value": "", "required": false},
+    {"id": "trustee-fideicomiso", "value": "", "required": false},
+    {"id": "trustee-country2", "value": "", "required": false},
+    {"id": "trustee-w8imy", "value": "", "required": false},
+    {"id": "birthdate", "value": "", "required": false},
+    {"id": "name-sing", "value": "", "required": false},
+    {"id": "writecity5", "value": "", "required": false},
+    {"id": "writecity6", "value": "", "required": false},    
+];
+
+let FundacionComplexTrustA_2 = [
+    {"id": "name-foundation", "value": "", "required": false},
+    {"id": "countries-law", "value": "", "required": false},
+    {"id": "writedirection3", "value": "", "required": false},
+    {"id": "direction-country3", "value": "", "required": false},
+    {"id": "direction-email2", "value": "", "required": false},
+    {"id": "number-identification", "value": "", "required": false},
+    {"id": "birthdate04", "value": "", "required": false},    
+    {"id": "birthdate05", "value": "", "required": false},
+    {"id": "writecity9", "value": "", "required": false},
+    {"id": "writecity10", "value": "", "required": false}
+];
+
+let formularioFideicomisoTrustB_1_2 = [
+    {"id": "name-fideicomiso", "value": "", "required": false},
+    {"id": "countries-law3", "value": "", "required": false},
+    {"id": "writedirection4", "value": "", "required": false},
+    {"id": "trustee-email2", "value": "", "required": false},
+    {"id": "direction-email02", "value": "", "required": false},
+    {"id": "birthdate08", "value": "", "required": false},
+    {"id": "name-sing", "value": "", "required": false},
+    {"id": "writecity19", "value": "", "required": false},
+    {"id": "writecity20", "value": "", "required": false}
     
-    let isTrue = null;
-    let isTrue2 = null;
-    let isTrue01 = null;
-    let isTrue02 = null;
-    let isTrue03 = null;
+];
 
-    function checkValues() {
-        if (isTrue != 0 && isTrue2 != 0) {
-            if (isTrue === 'yes' && isTrue2 === 'yes') {
-                isShow.style.display = 'block';
-            } 
-            if (isTrue === 'no' || isTrue2 === 'no') {
-                isShow.style.display = 'none';
-                displayInfoModal();
-            }
-        }
-        if ((isTrue01 != 0 && isTrue02 != 0 && isTrue03 != 0)) {
-            if (isTrue01 === 'yes' || isTrue02 === 'yes' || isTrue03 === 'yes') {
-                taxThirdtrue.style.display = 'none';
-                step(5, 8);
-            }
-            if (isTrue01 === 'no' && isTrue02 === 'no' && isTrue03 === 'no') {
-                taxThirdtrue.style.display = 'block';
-                if(fideicomisoContract.value == 'yes') {
-                    step(5, 9);
-                }
-                if(fideicomisoContract.value == 'no'){
-                    step(5, 10);
-                }
-            }
-        }
-    }
+let custionarioA =[
+    {"id": "benename", "value": "", "required": false},
+    {"id": "benecountry", "value": "", "required": false},
+    {"id": "benenationality", "value": "", "required": false},
+    {"id": "benecountry3", "value": "", "required": false},
+    {"id": "benecountry2", "value": "", "required": false},
+    {"id": "benecountry1", "value": "", "required": false},
+    {"id": "benepostal", "value": "", "required": false},
+    {"id": "benedirection", "value": "", "required": false},
+    {"id": "numberid", "value": "", "required": false},
+    {"id": "benedate0", "value": "", "required": false},
+    {"id": "benedate01", "value": "", "required": false},
+    {"id": "writecity3", "value": "", "required": false},
+    {"id": "writecity4", "value": "", "required": false}
+];
 
-    function updateValues() {
-        isTrue = born.value;
-        isTrue2 = competent.value;
-        isTrue01 = revocable.value;
-        isTrue02 = entityFideicomiso.value;
-        isTrue03 = fideicomiso.value;
+let ComplexTrust_A_1 =[
+    {"id": "name-fideicomiso2", "value": "", "required": false},
+    {"id": "countries-2", "value": "", "required": false},
+    {"id": "writedirection05", "value": "", "required": false},
+    {"id": "truste-direction", "value": "", "required": false},
+    {"id": "trustee-email3", "value": "", "required": false},
+    {"id": "trustee-fideicomiso2", "value": "", "required": false},
+    {"id": "birthdate09", "value": "", "required": false},
+    {"id": "name-sing", "value": "", "required": false},
+    {"id": "writecity21", "value": "", "required": false}, 
+    {"id": "writecity22", "value": "", "required": false}    
+];
 
-        checkValues();
-    }
-
-    born.addEventListener('change', updateValues);
-    competent.addEventListener('change', updateValues);
-    revocable.addEventListener('change', updateValues);
-    entityFideicomiso.addEventListener('change', updateValues);
-    fideicomiso.addEventListener('change', updateValues);
-    fideicomisoContract.addEventListener('change', updateValues);
-
-    continueStep8.addEventListener('click', (e) => {
-        updateValues();
-    });
-});
-
-const countriesContainer = document.querySelector('#countries');
-    
-const countries = [ 
+let countries = [ 
     {name: 'Afghanistan', code: 'AF'}, 
     {name: 'Åland Islands', code: 'AX'}, 
     {name: 'Albania', code: 'AL'}, 
@@ -508,14 +386,649 @@ const countries = [
     {name: 'Vanuatu', code: 'VU'}, 
     {name: 'Venezuela', code: 'VE'}, 
     {name: 'Viet Nam', code: 'VN'}, 
-    {name: 'Virgin Islands, British', code: 'VG'}, 
+    {name: 'British Virgin Islands', code: 'VG'}, 
     {name: 'Virgin Islands, U.S.', code: 'VI'}, 
     {name: 'Wallis and Futuna', code: 'WF'}, 
     {name: 'Western Sahara', code: 'EH'}, 
     {name: 'Yemen', code: 'YE'}, 
     {name: 'Zambia', code: 'ZM'}, 
     {name: 'Zimbabwe', code: 'ZW'} 
-  ]
+];
+
+// Selecciona todos los inputs de tipo date
+const dateInputs = document.querySelectorAll('input[type="date"]');
+
+dateInputs.forEach(input => {
+    // Obtiene la fecha en formato YYYY-MM-DD
+    const dateValue = input.value;
+
+    if (dateValue) {
+        // Separa la fecha en año, mes y día
+        const [year, month, day] = dateValue.split('-');
+
+        // Crea una nueva fecha formateada en formato MM/DD/YYYY
+        const formattedDate = `${month}/${day}/${year}`;
+
+        // Cambia el valor del input al nuevo formato
+        input.value = formattedDate;
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Selecciona específicamente el campo countries-2 dentro del formulario con ID step10
+    const countrySelect = document.querySelector('#ComplexTrust_A_1 #countries-2');
+    const trusteeField = document.querySelector('#ComplexTrust_A_1 input[name="trustee-fideicomiso2"]');
+
+    if (countrySelect && trusteeField) { // Asegura que ambos elementos existan en el formulario step10
+        countrySelect.addEventListener('change', function() {
+            const selectedCountry = countrySelect.value;
+            const disabledCountries = ["Australia", "British Virgin Islands", "Bermuda", "Cayman Islands"];
+            
+            if (disabledCountries.includes(selectedCountry)) {
+                trusteeField.disabled = true;
+                trusteeField.value = ''; // Elimina el contenido
+            } else {
+                trusteeField.disabled = false;
+            }
+        });
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Selecciona específicamente el campo countries-2 dentro del formulario con ID step10
+    const countrySelect = document.querySelector('#FundacionComplexTrustA_2 #countries-law');
+    const trusteeField = document.querySelector('#FundacionComplexTrustA_2 input[name="number-identification"]');
+
+    if (countrySelect && trusteeField) { // Asegura que ambos elementos existan en el formulario step10
+        countrySelect.addEventListener('change', function() {
+            const selectedCountry = countrySelect.value;
+            const disabledCountries = ["Islas Caiman"];
+            
+            if (disabledCountries.includes(selectedCountry)) {
+                trusteeField.disabled = true;
+                trusteeField.value = ''; // Elimina el contenido
+            } else {
+                trusteeField.disabled = false;
+            }
+        });
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const fisicalOrEntity = document.querySelector('#fisical-or-entity');
+    const financialInstitution = document.querySelector('#financial-institution');
+    const patrimonialEntity = document.querySelector('#patrimonial-entity');
+    const noneAbove = document.querySelector('#none-above');
+    const buttonFirst = document.querySelector('#buttonFirst');
+    const checkEntity = document.querySelector('#check-entity');
+    const countryEntity = document.querySelector('#country-entity');
+    const country = document.querySelector('#country');
+    const benecountry = document.querySelector('#benecountry');
+    const benecountry1 = document.querySelector("#benecountry1");
+    const typeEntity = document.querySelector('#typeentity');
+    const entityContainer = document.querySelector('.entity-type-container');
+
+    let selectedOption = null;
+    let isFinancial = false;
+    let isPatrimonial = false;
+    let isNoneAbove = false;
+
+    const checkboxes = [financialInstitution, patrimonialEntity, noneAbove];
+
+    function handleCheckboxSelection(e) {
+        checkboxes.forEach((checkbox) => {
+            if (checkbox !== e.target) {
+                checkbox.checked = false;
+            }
+        });
+    }
+
+    checkboxes.forEach((checkbox) => {
+        checkbox.addEventListener('change', handleCheckboxSelection);
+    });
+
+    function updateValues00() {
+        selectedOption = fisicalOrEntity.value;
+        isFinancial = financialInstitution.checked;
+        isPatrimonial = patrimonialEntity.checked;
+        isNoneAbove = noneAbove.checked;
+
+        checkValues00();
+    }
+
+    function checkValues00() {
+        selectedOption = fisicalOrEntity.value;
+        isFinancial = financialInstitution.checked;
+        isPatrimonial = patrimonialEntity.checked;
+        isNoneAbove = noneAbove.checked;
+
+        if (selectedOption === 'fisical') {
+            countryEntity.style.display = 'none';
+            checkEntity.style.display = 'none';
+            checkboxes.forEach((checkbox) => {
+                checkbox.checked = false;
+            });
+            noneAbove.checked = false;
+            step(1, 2); 
+            return;
+        }
+
+        if (selectedOption === 'entity') {
+            checkEntity.style.display = 'block';
+
+            if (isFinancial || isPatrimonial) {
+                displayInfoModal();
+                return;
+            }
+
+            if (isNoneAbove) {
+                countryEntity.style.display = 'flex';
+                // Esto asegura que se habilite country cuando sea necesario
+                country.addEventListener('change', handleCountryChange); 
+            } else {
+                countryEntity.style.display = 'none';
+            }
+        }
+    }
+
+    function handleCountryChange(e) {
+        const countryValue = e.target.value;
+
+        const countryEntityMap = {
+            "ar": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada", "Sociedad Anónima Unipersonal (S.A.U.)"],
+            "aru": ["“Naamloze Vennootschap (N.V.)", "Besloten Vennootschap (B.V.)"],
+            "bah": ["International Business Company","Limited Liability Company"],
+            "bar": ["Limited Company", "Limited Liabilty Company", "International Business Company"],
+            "bel": ["Public Limited Company", "Limited Liability Company"],
+            "ber": ["Exempted Company"],
+            "bol":["Sociedad Anónima", "Sociedad de Responsabilidad Limitada"],
+            "bra": ["Sociedade Anonima", "LTDA"],
+            "bri": ["BVI Business Company", "Limited Liability Company"],
+            "cay": ["Exempted Company", "Limited Liability Company"],
+            "chi": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada"],
+            "col": ["Sociedad Anónima", "Sociedad por Acciones Simplificada (S.A.S.)"],
+            "cos": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada"],
+            "cur": ["Naamloze Vennootschap (N.V.)", "Besloten Vennootschap (B.V.)"],
+            "ecu": ["Sociedad Anónima", "Compañía Anónima", "Sociedad de Responsabilidad Limitada"],
+            "esp": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada (S.L.)", "Sociedad Limitada Nueva Empresa (SLNE)"],
+            "sal": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada", "Sociedad Anónima de Capital Variable"],
+            "gua": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada", "Sociedad Anónima de Capital Variable"],
+            "hon": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada"],
+            "hong": ["Public Limited Company"],
+            "jam": ["Public Limited Company"],
+            "mal": ["Public Limited Company"],
+            "mex": ["Sociedad Anónima", "Sociedad Anónima de Capital Variable", "Sociedad de Responsabilidad Limitada"],
+            "nic": ["Compañía Anónima", "Sociedad de Responsabilidad Limitada"],
+            "pan": ["“Sociedad Anónima ” (S.A.) (Inc.) (Corp.)", "Sociedad de Responsabilidad Limitada"],
+            "par": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada"],
+            "per": ["Sociedad Anónima", "Sociedad Anónima Cerrada (SAC)", "Sociedad de Responsabilidad Limitada"],
+            "por": ["Sociedade Anónima (S.A.)", "Sociedade por Quotas (Lda.)", "Sociedade Unipessoal por Quotas", "Sociedade por Quotas de Responsabilidade Limitada com Participação em Beneficios (Lda. com PAB)"],
+            "kitt": ["International Business Company", "Limited Liability Company"],
+            "uru": ["Sociedad Anónima", "Sociedad de Responsabilidad Limitada"],
+            "ven": ["Sociedad Anónima", "Compañía Anónima", "Sociedad de Responsabilidad Limitada"],
+            "otro": []
+        };
+
+        const arrayEntity = countryEntityMap[countryValue] || [];
+        
+        const selectedText = country.options[country.selectedIndex].text;
+        benecountry.value = selectedText.replace("Constituida en ", "");
+        benecountry1.value = selectedText.replace("Constituida en ", "");
+        
+        const countryArray = ["British Virgin Island", "Bermuda", "Cayman Island"];
+
+        if (countryArray.some(country => selectedText.includes(country))) {
+            document.getElementById("numberid").disabled = true;
+        }else{
+            document.getElementById("numberid").enabled = true;
+        }
+        
+        
+        if (arrayEntity.length) {
+            typeEntity.innerHTML = `
+                <option value="0">Seleccione una opción</option>
+                ${arrayEntity.map(entity => `<option value="${entity.replace(/\s+/g, '')}">${entity}</option>`).join("")}
+            `;
+            typeEntity.disabled = false;
+            entityContainer.style.display = 'block';
+        } else {
+            typeEntity.innerHTML = `<option value="0">Seleccione una opción</option>`;
+            typeEntity.disabled = true;
+            entityContainer.style.display = 'none';
+        }
+    }
+
+    typeEntity.addEventListener('change', (e) => {
+        const countryValue = country.value;
+        if (e.target.value !== '0' && countryValue !== '0' && countryValue !== 'otro') {
+            step(1, 3); 
+        } else if (countryValue === 'otro') {
+            step(1, 4); 
+        }
+    });
+
+    buttonFirst.addEventListener('click', (e) => {
+        updateValues00();
+    
+        if (country.value === 'otro') {
+            entityContainer.style.display = 'none';
+            step(1, 4); 
+            return;
+        }
+    
+        if (selectedOption === 'entity') {
+            if (isFinancial || isPatrimonial) {
+                displayInfoModal();
+            } else if (isNoneAbove) {
+                if (country.value !== '') {
+                    handleCountryChange({ target: { value: country.value } });
+                } else {
+                    console.log('Debe seleccionar un país antes de continuar.');
+                }
+            } else {
+                console.log('Debe seleccionar una opción válida antes de continuar.');
+            }
+        } else {
+            if(countryEntity.style.display == 'flex'){
+                Swal.fire({
+                    title: "Tipo de identidad",
+                    text: "Debes seleccionar un tipo de identidad",
+                    icon: "info"
+                });
+            }
+        }
+    });
+
+    fisicalOrEntity.addEventListener('change', updateValues00);
+    financialInstitution.addEventListener('change', updateValues00);
+    patrimonialEntity.addEventListener('change', updateValues00);
+    noneAbove.addEventListener('change', updateValues00);
+});
+
+ (function ($) {
+
+     // Seleccionamos todos los elementos con la clase 'btn-finalizar'
+     document.querySelectorAll('.btn-finalizar').forEach(button => {
+         // Agregamos el listener a cada botón
+         button.addEventListener('click', function(event) {
+            
+             const tipo = event.target.getAttribute("data-tipo");      
+             const nombreformulario= event.target.getAttribute("date-formulario");          
+             const tipoform = event.target.getAttribute("data-variable");  
+                        
+             let stepForm = document.querySelector(`#${nombreformulario}`);
+
+             console.log(stepForm);
+
+             let erroresValidadores = 0;               
+        
+             let formData = new FormData();
+                
+             formData.append('action', 'submit_questionnaire');
+             formData.append('nonce', questionnarie_ajax.nonce);  
+             formData.append('tipo_formulario', tipo);
+             formData.append('tipoform', tipoform);
+
+             stepForm.querySelectorAll('input, select').forEach(input => {
+
+                 let id = input.id;
+                 let value = input.value;
+
+                 if(tipoform === "personaFisica"){
+                     // Busca el campo en el array por ID
+                     let datos = personaFisica.find(field => field.id === id);
+                    
+                     if (datos) {
+                         datos.value = value;
+
+                         if (datos.required && datos.value === "") {
+                             erroresValidadores++;
+                             // Puedes mostrar algún mensaje de error específico aquí
+                             console.log(`El campo ${datos.id} es requerido.`);
+                         }else{
+                             formData.append(id, value);
+                         }
+                     }
+                 }
+
+                 if(tipoform === "formularioFideicomisoTrust"){
+
+//                     // Busca el campo en el array por ID
+                     let datos = formularioFideicomisoTrust.find(field => field.id === id);
+                    
+                     if (datos) {
+                         datos.value = value;
+
+                         if (datos.required && datos.value === "") {
+                             erroresValidadores++;
+                             // Puedes mostrar algún mensaje de error específico aquí
+                             console.log(`El campo ${datos.id} es requerido.`);
+                         }else{
+                             formData.append(id, value);
+                         }
+                     }
+
+                 }
+
+                 if(tipoform === "custionarioA"){
+
+                     // Busca el campo en el array por ID
+                     let datos = custionarioA.find(field => field.id === id);
+                    
+                     if (datos) {
+                         datos.value = value;
+
+                         if (datos.required && datos.value === "") {
+                             erroresValidadores++;
+                             // Puedes mostrar algún mensaje de error específico aquí
+                             console.log(`El campo ${datos.id} es requerido.`);
+                         }else{
+                            formData.append(id, value);
+                         }
+                     }
+
+                 }
+
+                 if(tipoform === "ComplexTrust_A_1"){
+
+                    // Busca el campo en el array por ID
+                    let datos = ComplexTrust_A_1.find(field => field.id === id);
+                   
+                    if (datos) {
+                        datos.value = value;
+
+                        if (datos.required && datos.value === "") {
+                            erroresValidadores++;
+                            // Puedes mostrar algún mensaje de error específico aquí
+                            console.log(`El campo ${datos.id} es requerido.`);
+                        }else{
+                           formData.append(id, value);
+                        }
+                    }
+
+                }
+
+                if(tipoform === "formularioFideicomisoTrustB_1_2"){
+                    // Busca el campo en el array por ID
+                     let datos = formularioFideicomisoTrustB_1_2.find(field => field.id === id);
+                   
+                     if (datos) {
+                         datos.value = value;
+ 
+                         if (datos.required && datos.value === "") {
+                             erroresValidadores++;
+                             // Puedes mostrar algún mensaje de error específico aquí
+                             console.log(`El campo ${datos.id} es requerido.`);
+                         }else{
+                            formData.append(id, value);
+                         }
+                     }
+                }
+
+                if( tipoform === "FundacionGrantorTrustB_2_1"){
+                    
+                    // Busca el campo en el array por ID
+                    let datos = FundacionGrantorTrustB_2_1.find(field => field.id === id);
+                   
+                    if (datos) {
+                        datos.value = value;
+
+                        if (datos.required && datos.value === "") {
+                            erroresValidadores++;
+                            // Puedes mostrar algún mensaje de error específico aquí
+                            console.log(`El campo ${datos.id} es requerido.`);
+                        }else{
+                           formData.append(id, value);
+                        }
+                    }
+
+                }
+
+                if( tipoform === "FundacionComplexTrustA_2"){
+                    
+                    // Busca el campo en el array por ID
+                    let datos = FundacionComplexTrustA_2.find(field => field.id === id);
+                   
+                    if (datos) {
+                        datos.value = value;
+
+                        if (datos.required && datos.value === "") {
+                            erroresValidadores++;
+                            // Puedes mostrar algún mensaje de error específico aquí
+                            console.log(`El campo ${datos.id} es requerido.`);
+                        }else{
+                           formData.append(id, value);
+                        }
+                    }
+
+                }
+
+                if(tipoform === "StichtingComplexTrustA_3"){
+
+                        // Busca el campo en el array por ID
+                        let datos = StichtingComplexTrustA_3.find(field => field.id === id);
+                                        
+                        if (datos) {
+                            datos.value = value;
+
+                            if (datos.required && datos.value === "") {
+                                erroresValidadores++;
+                                // Puedes mostrar algún mensaje de error específico aquí
+                                console.log(`El campo ${datos.id} es requerido.`);
+                            }else{
+                                formData.append(id, value);
+                            }
+                        }
+                }
+
+                if( tipoform === "StichtingGrantorTrustB_3_1"){
+                    
+                    // Busca el campo en el array por ID
+                    let datos = StichtingGrantorTrustB_3_1.find(field => field.id === id);
+                   
+                    if (datos) {
+                        datos.value = value;
+
+                        if (datos.required && datos.value === "") {
+                            erroresValidadores++;
+                            // Puedes mostrar algún mensaje de error específico aquí
+                            console.log(`El campo ${datos.id} es requerido.`);
+                        }else{
+                           formData.append(id, value);
+                        }
+                    }
+
+                }
+
+                if( tipoform === "StichtingSimpleTrustB_3_2"){
+                    
+                    // Busca el campo en el array por ID
+                    let datos = StichtingSimpleTrustB_3_2.find(field => field.id === id);
+                   
+                    if (datos) {
+                        datos.value = value;
+
+                        if (datos.required && datos.value === "") {
+                            erroresValidadores++;
+                            // Puedes mostrar algún mensaje de error específico aquí
+                            console.log(`El campo ${datos.id} es requerido.`);
+                        }else{
+                           formData.append(id, value);
+                        }
+                    }
+
+                }
+
+                if(tipoform == "FundacionSimpleTrustB_2_2"){
+                    // Busca el campo en el array por ID
+                    let datos = FundacionSimpleTrustB_2_2.find(field => field.id === id);
+                   
+                    if (datos) {
+                        datos.value = value;
+
+                        if (datos.required && datos.value === "") {
+                            erroresValidadores++;
+                            // Puedes mostrar algún mensaje de error específico aquí
+                            console.log(`El campo ${datos.id} es requerido.`);
+                        }else{
+                           formData.append(id, value);
+                        }
+                    }
+                }
+
+             });
+
+             if(erroresValidadores > 0){
+                 console.log("No están completos los campos requeridos.");
+                 alert('Por favor, complete todos los campos requeridos.');
+                 return; // Detener el flujo si hay errores            
+             }else{
+                
+                 $.ajax({
+                     url: questionnarie_ajax.ajax_url,
+                     type: 'POST',
+                     data: formData,
+                     processData: false,
+                     contentType: false,
+                     beforeSend: function () {
+                         // Mostrar un loader si es necesario
+                     },
+                     success: function (response) {
+                         console.log(response);
+                         let data = JSON.parse(response);
+                         if (data.code == 0) {
+                             window.location.href = data.url;                         
+                         } else {
+                             alert('Hubo un error al enviar el formulario.');
+                             location.reload();
+                         }
+                     },
+                     error: function () {
+                         alert('Error de conexión.');
+                         location.reload();
+                     }
+                 });
+             }
+                        
+            
+
+         });
+     });
+
+ })(jQuery);
+
+document.addEventListener('DOMContentLoaded', () => {
+    const livingEeuu = document.querySelector('#livingeeuu');
+
+    console.log(livingEeuu);
+
+    livingEeuu?.addEventListener('change', () => {
+        const selectedValue = livingEeuu.value;
+        console.log(selectedValue);
+        if(selectedValue == 'yes'){
+            document.querySelector('.AreLivingEEUU').style.display = 'none';
+            displayInfoModal2();
+        }
+        if(selectedValue == 'no'){
+            document.querySelector('.AreLivingEEUU').style.display = 'block';
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const typeEntity = document.querySelector('#typeEntity');
+    const continueButton = document.querySelectorAll('.tax-button-primary.steps');
+
+    function handleStep() {
+        const selectedValue = typeEntity.value;
+        if(selectedValue == 'fideicomiso'){
+            step(4,5);
+        }
+        if(selectedValue == 'fundacion'){
+            step(4,6);
+        }
+        if(selectedValue == 'stichting'){
+            step(4,7);
+        }
+        if(selectedValue == 'none'){
+           displayInfoModal();
+        }
+    }
+
+    typeEntity.addEventListener('change', handleStep);
+
+    continueButton.forEach(button => {
+        button.addEventListener('click', handleStep);
+    });
+    
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const born = document.querySelector('#born');
+    const competent = document.querySelector('#competent');
+    const isShow = document.querySelector('#tax-isShow');
+    const fideicomiso = document.querySelector('#fideicomiso');
+    const revocable = document.querySelector('#revocable');
+    const entityFideicomiso = document.querySelector('#entityFideicomiso');
+    const fideicomisoContract = document.querySelector('#fideicomisoContract');
+    const taxThirdtrue = document.querySelector('#tax-thirdtrue');
+    const continueStep8 = document.querySelector('#continue-step8');
+    
+    let isTrue = null;
+    let isTrue2 = null;
+    let isTrue01 = null;
+    let isTrue02 = null;
+    let isTrue03 = null;
+
+    function checkValues() {
+        if (isTrue != 0 && isTrue2 != 0) {
+            if (isTrue === 'yes' && isTrue2 === 'yes') {
+                isShow.style.display = 'none';
+                displayInfoModal();
+            } 
+            if (isTrue === 'no' || isTrue2 === 'no') {
+                isShow.style.display = 'block';
+            }
+        }
+        if ((isTrue01 != 0 && isTrue02 != 0 && isTrue03 != 0)) {
+            if (isTrue01 === 'yes' || isTrue02 === 'yes' || isTrue03 === 'yes') {
+                taxThirdtrue.style.display = 'none';
+                step(5, 8);
+            }
+            if (isTrue01 === 'no' && isTrue02 === 'no' && isTrue03 === 'no') {
+                taxThirdtrue.style.display = 'block';
+                if(fideicomisoContract.value == 'yes') {
+                    step(5, 9);
+                }
+                if(fideicomisoContract.value == 'no'){
+                    step(5, 10);
+                }
+            }
+        }
+    }
+
+    function updateValues() {
+        isTrue = born.value;
+        isTrue2 = competent.value;
+        isTrue01 = revocable.value;
+        isTrue02 = entityFideicomiso.value;
+        isTrue03 = fideicomiso.value;
+
+        checkValues();
+    }
+
+    born.addEventListener('change', updateValues);
+    competent.addEventListener('change', updateValues);
+    revocable.addEventListener('change', updateValues);
+    entityFideicomiso.addEventListener('change', updateValues);
+    fideicomiso.addEventListener('change', updateValues);
+    fideicomisoContract.addEventListener('change', updateValues);
+
+    continueStep8.addEventListener('click', (e) => {
+        updateValues();
+    });
+});
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -679,6 +1192,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    const writedirection2 = document.querySelector('#writedirection2');
+
+    writedirection2.innerHTML = `
+    <option value='0' selected disabled>Seleccione una opción</option>
+    ${countries
+        .map(entity => `<option value="${entity.name}">${entity.name}</option>`)
+        .join("")}      
+        `;
+
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const writedirection2 = document.querySelector('#writedirection2-country');
+
+    writedirection2.innerHTML = `
+    <option value='0' selected disabled>Seleccione una opción</option>
+    ${countries
+        .map(entity => `<option value="${entity.name}">${entity.name}</option>`)
+        .join("")}      
+        `;
+
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+
     const countries2 = [
         {name: 'Chile', code: 'CL'}, 
         {name: 'España', code: 'ES'}, 
@@ -726,8 +1265,6 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
 });
 
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const personEntity = document.querySelector('#person-entity');
     const revocableFoundation = document.querySelector('#revocable-foundation');
@@ -773,6 +1310,73 @@ document.addEventListener('DOMContentLoaded', () => {
 
     continueStep11.addEventListener('click', (e) => {
         updateValues01();
+    });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Variables para el primer selector y el campo de salida
+    const countriesLawSelect = document.getElementById("countries-law3");
+    const writeDirectionOutput = document.getElementById("writedirection04");
+
+    // Variables para el segundo selector y el campo de salida
+    const countriesTrusteeSelect = document.getElementById("countries-w8imy");
+    const trusteeCountryOutput = document.getElementById("trustee-country");
+
+    // Variables para countries-law y su campo de salida
+    const countriesLawDirectionSelect = document.getElementById("countries-law");
+    const countryDirectionOutput = document.getElementById("country-direction");
+
+    // Variables para country-fundation y su campo de salida
+    const countryFundationSelect = document.getElementById("country-fundation");
+    const directionCountryOutput = document.getElementById("direction-country");
+
+    // Variables para sticht-country y su campo de salida
+    const stichtCountrySelect = document.getElementById("sticht-country");
+    const stichtCountryOutput = document.getElementById("sticht-country01");
+
+    // Variables para sticht-country-1 y su campo de salida
+    const stichtCountry1Select = document.getElementById("sticht-country-1");
+    const stichtCountry1Output = document.getElementById("sticht-country001");
+
+    // Variables para sticht-country-11 y su campo de salida
+    const stichtCountry11Select = document.getElementById("sticht-country-11");
+    const stichtCountry11Output = document.getElementById("sticht-country003");
+
+    // Variables para sticht-country-11 y su campo de salida
+    const stichtCountry111Select = document.getElementById("countries-2");
+    const stichtCountry111Output = document.getElementById("writecountry0");
+
+    // Eventos change para cada selector y campo correspondiente
+    stichtCountry111Select.addEventListener("change", () => {
+        stichtCountry111Output.value = stichtCountry111Select.value;
+    });
+
+    countriesLawSelect.addEventListener("change", () => {
+        writeDirectionOutput.value = countriesLawSelect.value;
+    });
+
+    countriesTrusteeSelect.addEventListener("change", () => {
+        trusteeCountryOutput.value = countriesTrusteeSelect.value;
+    });
+
+    countriesLawDirectionSelect.addEventListener("change", () => {
+        countryDirectionOutput.value = countriesLawDirectionSelect.value;
+    });
+
+    countryFundationSelect.addEventListener("change", () => {
+        directionCountryOutput.value = countryFundationSelect.value;
+    });
+
+    stichtCountrySelect.addEventListener("change", () => {
+        stichtCountryOutput.value = stichtCountrySelect.value;
+    });
+
+    stichtCountry1Select.addEventListener("change", () => {
+        stichtCountry1Output.value = stichtCountry1Select.value;
+    });
+
+    stichtCountry11Select.addEventListener("change", () => {
+        stichtCountry11Output.value = stichtCountry11Select.value;
     });
 });
 
@@ -898,3 +1502,36 @@ function displayInfoModal() {
       }
     });
   }
+
+  function displayInfoModal2() {
+    Swal.fire({
+      position: "center",
+      icon: "info",
+      title: "Información importante",
+      text: "Por las particularidades de su situación, su caso no puede ser cubierto por las funciones de esta plataforma. Le sugerimos contactarnos directamente a info@giin.tax para brindarle asesoría personalizada en el llenado de sus formularios. Tenga en cuenta que para este servicio se aplicarán honorarios profesionales.",
+      showConfirmButton: true,
+    }).then(() => {
+            let timerInterval;
+            Swal.fire({
+              position: "center",
+              icon: "info",
+              title: "Le esperamos",
+              html: "Este formulario se reiniciará de manera automática en <b></b> segundos.",
+              timer: 5000,
+              timerProgressBar: true,
+              showConfirmButton: false,
+              allowOutsideClick: false,
+              didOpen: () => {
+                Swal.showLoading();
+                const b = Swal.getHtmlContainer().querySelector('b');
+                timerInterval = setInterval(() => {
+                  b.textContent = Math.round(Swal.getTimerLeft() / 1000);
+                }, 100);
+              },
+              willClose: () => {
+                clearInterval(timerInterval);
+                window.location.reload();
+              }
+            });
+    });
+}
